@@ -1,0 +1,19 @@
+|
+Projektfinanzplanung - Add unique identifier!
+	                 - Finanzierungsart / MIP Rubrik (*)
+	                 - Bedürfnisabklärung (*)
+	                 - Status Projektkredit (*)
+	                 - Investitions-Nr. (*)
+	                 - Kredit- /Budgetsumme (N)
+	                 - Beiträge Dritter (N)
+	                 - Netto-Ausgaben Vorjahre (N)
+	                 - Kreditrest per 1.1. aktuelles Jahr (N)
+	                 - Ist Ausgaben aktuelles Jahr (N)
+	                 - Prognose laufendes Jahr (N)
+	                 - Kreditrest per 1.1. folgendes Jahr (N)
+	                 - Mehrwertabschöpfung folgendes Jahr (N)
+	                 - Prognose folgendes Jahr (N)
+	                 - Mehrwertabschöpfung weitere Jahre (N)(!)
+	                 - Prognose weitere Jahre (N)(!)
+
+(!) Rethink structure of table in regards to dynamic prognoses

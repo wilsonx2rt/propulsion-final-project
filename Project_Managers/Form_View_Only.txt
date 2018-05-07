@@ -1,0 +1,29 @@
+|
+Projektdaten - Namen
+             - Projekttyp
+             - Projektpriorität
+             - Steuerungszyklus
+             - E3 Nummer
+
+|
+Projektzuteilung - Projektverantwortung
+                 - Gesamtprojektleitung
+                 - Projektleitung
+                 - Planerleistung
+                 - Bauleitung
+                 - Zeichnerin
+                 - Kommunikation
+
+|
+Projektfinanzierung - Finanzierungsart
+                    - Investitionsnummer
+                    - Ist-Ausgaben laufendes Jahr
+
+|
+Projektablauf  - Gesamtprojektleitung
+               - Projektleitung
+	           - Planerleistung
+	           - Bauleitung
+	           - ZeichnerIn
+	           - Kommunikation
+	           - Total Aufwand

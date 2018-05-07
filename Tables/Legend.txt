@@ -1,0 +1,4 @@
+(*) Dropdown
+(N) Numeric
+(!) Add Feature
+(L) Has Logic

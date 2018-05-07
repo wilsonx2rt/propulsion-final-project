@@ -1,0 +1,14 @@
+|
+Projektzuteilung - Unique ID
+                 - Jahr (N)
+                 - Quartal (*)
+                 - Phase (N)
+	             - Projektverantwortung (Lenkungsausschuss) (N)
+	             - Gesamtprojektleitung (Koordinationsteam) (N)
+	             - Projektleitung (N)
+	             - Planerleistung (N)
+	             - Bauleitung (N)
+	             - ZeichnerIn (N)
+	             - Bauleitung (Baubegleitung) (N)
+	             - Kommunikation (N)
+	             - Total Aufwand (N)

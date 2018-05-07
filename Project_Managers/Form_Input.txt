@@ -1,0 +1,20 @@
+|
+Projektdaten - Projektziel
+|
+Projektfinanzierung - Prognose (! DYNAMIC)
+
+|
+Kalenderwochen - Meilensteine
+               - Tendenz
+|
+Abhängigkeiten - Inhaltlich
+               - Zeitlich
+               - Kapazitativ
+
+|
+Kommentare - Einfluss externe Faktoren
+           - Kommunikation
+
+|
+Entwicklung - Status
+            - Tendenz

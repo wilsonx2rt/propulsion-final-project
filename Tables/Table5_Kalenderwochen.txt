@@ -1,0 +1,7 @@
+|
+Kalenderwochen - Unique ID
+               - Kalenderwoche (N)
+               - Meilenstein
+               - Tendenz (*)
+               - Jahr (N)
+

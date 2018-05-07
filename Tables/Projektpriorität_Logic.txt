@@ -1,0 +1,52 @@
+Sub Update_Priorities()
+    
+    Dim portfolio As Worksheet
+    Dim i As Long
+    Dim Last As Long
+    
+    Set portfolio = Worksheets("Projektportfolio")
+    portfolio.Activate
+    
+    Last = Cells(Rows.Count, 1).End(xlUp).Row
+    
+    For i = 9 To Last
+    
+        If Cells(i, "F").Value > 3 And Cells(i, "G").Value > 3 Then
+            
+            Cells(i, "I").Value = "3. Priorität Projekt"
+            
+        ElseIf Cells(i, "F").Value > 1 And Cells(i, "G").Value > 1 Or _
+               Cells(i, "F").Value = 1 And Cells(i, "G").Value > 1 Or _
+               Cells(i, "F").Value > 1 And Cells(i, "G").Value = 1 Then
+            
+            If Cells(i, "H").Value = "b)" Then
+            
+                Cells(i, "I").Value = "1. Priorität Projekt"
+                
+            Else
+                
+                Cells(i, "I").Value = "2. Priorität Projekt"
+                
+            End If
+        
+        ElseIf Cells(i, "F").Value = 1 And Cells(i, "G").Value = 1 Then
+        
+            If Cells(i, "H").Value = "a)" Then
+            
+                Cells(i, "I").Value = "Leuchtturmprojekte"
+            
+            Else
+            
+                Cells(i, "I").Value = "1. Priorität Projekt"
+        
+            End If
+            
+        Else
+        
+            Cells(i, 4).Value = ""
+            
+        End If
+    
+    Next i
+
+End Sub

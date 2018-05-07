@@ -1,0 +1,23 @@
+|
+Projektdaten - Add unique identifier!
+	         - Namen
+	         - Radar oder Projektportfolio (*)
+	         - Geschäftsantrag (*)
+	         - Projekttyp (*)
+	         - Projekttart (*)
+	         - Strategische Bedeutung (N)
+	         - Operative Dringlichkeit (N)
+	         - Politische Bedeutung (*)
+	         - Projektpriorität (L)
+	         - Projektcharakter (Projektbezogen) (*)
+	         - Steuerungszyklus (L)
+	         - Projekt-Risikobeurteilung
+	         - Projektziel
+	         - Projekthandbuch (!)(Allow Uplodads!)
+	         - E3-Nummer
+	         - Geschäftskategorie (N)
+	         - Leistungsart (N)
+	         - Verrechenbarkeit (N)
+	         - Geschäftsnummer
+	         - Projektstatus/Projektphase (*)
+	         - Bemerkung

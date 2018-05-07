@@ -1,0 +1,11 @@
+﻿|
+Projektzuteilung - Add unique identifier!
+	             - Federführende Stelle (*)
+	             - Federführende Fachgruppe (*)
+	             - Projektverantwortung (*)
+	             - Gesamtprojektleitung (Koordinationsteam) (*)
+	             - Projektleitung (*)
+	             - Planerleistung (*)
+	             - Bauleitung (Baubegleitung) (*)
+	             - ZeichnerIn (*)
+	             - Kommunikation (*)

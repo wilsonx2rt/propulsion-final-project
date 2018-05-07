@@ -1,0 +1,61 @@
+Sub Update_Steering()
+    
+    Dim portfolio As Worksheet
+    Dim i As Long
+    Dim Last As Long
+    
+    Set portfolio = Worksheets("Projektportfolio")
+    portfolio.Activate
+    
+    Last = Cells(Rows.Count, 1).End(xlUp).Row
+    
+    For i = 9 To Last
+    
+        If Cells(i, "I").Value = "3. Priorität Projekt" And _
+           Cells(i, "J").Value = "Routineprojekt" Then
+
+            Cells(i, "K").Value = "quartal"
+            
+        ElseIf (Cells(i, "I").Value = "1. Priorität Projekt" And _
+                Cells(i, "J").Value = "Herausforderndes oder schwierig organisiertes Projekt") Or _
+               (Cells(i, "I").Value = "1. Priorität Projekt" And _
+                Cells(i, "J").Value = "Bekanntes und gut organisiertes Projekt") Or _
+               (Cells(i, "I").Value = "1. Priorität Projekt" And _
+                Cells(i, "J").Value = "Routineprojekt") Or _
+               (Cells(i, "I").Value = "2. Priorität Projekt" And _
+                Cells(i, "J").Value = "Herausforderndes oder schwierig organisiertes Projekt") Or _
+               (Cells(i, "I").Value = "2. Priorität Projekt" And _
+                Cells(i, "J").Value = "Bekanntes und gut organisiertes Projekt") Or _
+               (Cells(i, "I").Value = "2. Priorität Projekt" And _
+                Cells(i, "J").Value = "Routineprojekt") Or _
+               (Cells(i, "I").Value = "3. Priorität Projekt" And _
+                Cells(i, "J").Value = "Herausforderndes oder schwierig organisiertes Projekt") Or _
+               (Cells(i, "I").Value = "3. Priorität Projekt" And _
+                Cells(i, "J").Value = "Bekanntes und gut organisiertes Projekt") Then
+
+            Cells(i, "K").Value = "monatlich"
+            
+        ElseIf (Cells(i, "I").Value = "Leuchtturmprojekte" And _
+                Cells(i, "J").Value = "Neuartiges oder komplexes Projekt") Or _
+               (Cells(i, "I").Value = "Leuchtturmprojekte" And _
+                Cells(i, "J").Value = "Herausforderndes oder schwierig organisiertes Projekt") Or _
+               (Cells(i, "I").Value = "Leuchtturmprojekte" And _
+                Cells(i, "J").Value = "Bekanntes und gut organisiertes Projekt") Or _
+               (Cells(i, "I").Value = "Leuchtturmprojekte" And _
+                Cells(i, "J").Value = "Routineprojekt") Or _
+               (Cells(i, "J").Value = "Neuartiges oder komplexes Projekt" And _
+                Cells(i, "I").Value = "1. Priorität Projekt") Or _
+               (Cells(i, "J").Value = "Neuartiges oder komplexes Projekt" And _
+                Cells(i, "I").Value = "2. Priorität Projekt") Or _
+               (Cells(i, "J").Value = "Neuartiges oder komplexes Projekt" And _
+                Cells(i, "I").Value = "3. Priorität Projekt") Then
+               
+            Cells(i, "K").Value = "14-tägig"
+            
+        Else
+        
+            Cells(i, "K").Value = ""
+            
+        End If
+    
+    Next i

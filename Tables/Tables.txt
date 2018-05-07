@@ -1,0 +1,12 @@
+|
+Projektportfolio -
+		 - Projektdaten (A: U)
+		 - Projektzuteilung (V: AD)
+		 - Projektfinanzierung (AH: BJ)
+		 - Projektablauf und Ressourcenplanung (BL: CV)
+|
+Cockpit-Daten -
+	      - Kalenderwochen (D: DS)
+	      - Kommentare (DT: DU)
+	      - Abhängigkeiten (DV: EJ)
+	      - Entwicklung (EK: FK)

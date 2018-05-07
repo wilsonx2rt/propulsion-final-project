@@ -1,0 +1,7 @@
+|
+Abhängigkeiten - Unique ID
+               - Inhaltlich
+               - Zeitlich
+               - Kapazitativ
+
+(!) Multiple entries per project (unique id) should be possible
