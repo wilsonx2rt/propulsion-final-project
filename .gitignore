@@ -10,9 +10,9 @@ __pycache__
 
 node_modules
 
-/coverage
+coverage
 
-/build
+build
 
 .DS_Store
 .env.local
