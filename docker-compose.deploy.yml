@@ -1,0 +1,42 @@
+version: '2'
+services:
+  database:
+    image: postgres:9.6.1
+    restart: always
+    env_file:
+      - prod.env
+    volumes:
+      - database:/var/lib/postgresql/data
+
+  app:
+    image: registry.gitlab.propulsion-home.ch/full-stack/batch-2018-03/personal-projects/forecasting-tool:master
+    restart: always
+    env_file:
+      - prod.env
+    depends_on:
+      - database
+    command: 'sh /scripts/run.sh'
+    volumes:
+      - frontend:/frontend-build
+      - run:/run
+      - static-files:/static-files
+      - media-files:/media-files
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - frontend:/frontend
+      - run:/run
+      - static-files:/static-files
+      - media-files:/media-files
+      - ./nginx:/etc/nginx/conf.d
+    ports:
+      - "80:80"
+    command: /bin/bash -c "nginx -g 'daemon off;'"
+
+volumes:
+  database:
+  static-files:
+  media-files:
+  frontend:
+  run:
