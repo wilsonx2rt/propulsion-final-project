@@ -122,11 +122,13 @@ class ProjectData(models.Model):
     name = models.CharField(
         max_length=50,
         verbose_name='project name',
+        help_text='Project Namen',
         unique=True,
     )
 
     radar_portfolio = models.ForeignKey(
         verbose_name='radar or portfolio',
+        help_text='Radar oder Projektportfolio',
         on_delete=models.SET_NULL,
         to='pm_tool.RadarPortfolioDropdown',
         blank=True,
@@ -135,6 +137,7 @@ class ProjectData(models.Model):
 
     business_proposal = models.ForeignKey(
         verbose_name='business proposal',
+        help_text='Geschäftsantrag',
         on_delete=models.SET_NULL,
         to='pm_tool.BusinessProposalDropdown',
         blank=True,
@@ -143,6 +146,7 @@ class ProjectData(models.Model):
 
     project_type = models.ForeignKey(
         verbose_name='project type',
+        help_text='Projekttyp',
         on_delete=models.SET_NULL,
         to='pm_tool.ProjectTypeDropdown',
         blank=True,
@@ -151,6 +155,7 @@ class ProjectData(models.Model):
 
     project_nature = models.ForeignKey(
         verbose_name='project nature',
+        help_text='Projekttart',
         on_delete=models.SET_NULL,
         to='pm_tool.ProjectNatureDropdown',
         blank=True,
@@ -159,16 +164,19 @@ class ProjectData(models.Model):
 
     strategic_importance = models.IntegerField(
         verbose_name='strategic importance',
+        help_text='Strategische Bedeutung',
         blank=True,
     )
 
     operational_urgency = models.IntegerField(
         verbose_name='operational urgency',
+        help_text='Operative Dringlichkeit',
         blank=True,
     )
 
     political_significance = models.ForeignKey(
         verbose_name='political significance',
+        help_text='Politische Bedeutung',
         on_delete=models.SET_NULL,
         to='pm_tool.PoliticalSignificanceDropdown',
         blank=True,
@@ -177,6 +185,7 @@ class ProjectData(models.Model):
 
     project_priority = models.ForeignKey(
         verbose_name='project priority',
+        help_text='Projektpriorität (L)',
         on_delete=models.SET_NULL,
         to='pm_tool.ProjectPriorityDropdown',
         blank=True,
@@ -185,6 +194,7 @@ class ProjectData(models.Model):
 
     project_character = models.ForeignKey(
         verbose_name='project character',
+        help_text='Projektcharakter (Projektbezogen)',
         on_delete=models.SET_NULL,
         to='pm_tool.ProjectCharacterDropdown',
         blank=True,
@@ -193,6 +203,7 @@ class ProjectData(models.Model):
 
     control_cycle = models.ForeignKey(
         verbose_name='control cycle',
+        help_text='Steuerungszyklus (L)',
         on_delete=models.SET_NULL,
         to='pm_tool.ControlCycleDropdown',
         blank=True,
@@ -201,6 +212,7 @@ class ProjectData(models.Model):
 
     risk_assessment = models.ForeignKey(
         verbose_name='risk assessment',
+        help_text='Projekt-Risikobeurteilung',
         on_delete=models.SET_NULL,
         to='pm_tool.RiskAssessmentDropdown',
         blank=True,
@@ -209,12 +221,14 @@ class ProjectData(models.Model):
 
     project_goal = models.CharField(
         verbose_name='project goal',
+        help_text='Projektziel',
         max_length=100,
         blank=True,
     )
 
     project_handbook = models.ForeignKey(
         verbose_name='project handbook',
+        help_text='Projekthandbuch',
         on_delete=models.SET_NULL,
         to='pm_tool.ProjectHandbookDropdown',
         blank=True,
@@ -223,41 +237,46 @@ class ProjectData(models.Model):
 
     project_handbook_file = models.FileField(
         verbose_name='handbook file',
+        help_text='handbuch datai',
         blank=True,
         null=True,
     )
 
-    # TODO: If needed, add file input  field for project habdbook
-
-    e3_number = project_goal = models.CharField(
-        verbose_name='project goal',
+    e3_number = models.CharField(
+        verbose_name='e 3number',
+        help_text='E3-Nummer',
         max_length=20,
         blank=True,
     )
 
     business_category = models.IntegerField(
         verbose_name='business category',
+        help_text='Geschäftskategorie',
         blank=True,
     )
 
     service_nature = models.IntegerField(
         verbose_name='service nature',
+        help_text='Leistungsart',
         blank=True,
     )
 
     invoiceability = models.IntegerField(
         verbose_name='invoicability',
+        help_text='Verrechenbarkeit',
         blank=True,
     )
 
     business_number = models.CharField(
         verbose_name='business',
+        help_text='Geschäftsnummer',
         max_length=20,
         blank=True,
     )
 
     project_status_phase = models.ForeignKey(
         verbose_name='project status or phase',
+        help_text='Projektstatus/Projektphase',
         on_delete=models.SET_NULL,
         to='pm_tool.ProjectStatusPhaseDropdown',
         blank=True,
@@ -266,6 +285,7 @@ class ProjectData(models.Model):
 
     comment = models.TextField(
         verbose_name='comment',
+        Bemerkung='Bemerkung',
         max_length=200,
         blank=True,
     )
