@@ -119,6 +119,8 @@ class ProjectFinances(models.Model):
         blank=True,
     )
 
+    # TODO: MAKE YEARLY FORECASTS DYNAMIC !!!
+
     VAT_following_year = models.IntegerField(
         verbose_name='VAT following year',
         help_text='Mehrwertabschöpfung folgendes Jahr',

@@ -12,3 +12,5 @@ from .project_finances import RequirementsAssessmentDropdown, CreditStatusDropdo
 from .project_finances import FinancingDropdown, ProjectFinances # noqa
 
 from .project_allocation import ProjectAllocation, Year, QuarterlyDetails # noqa
+
+from .milestones import Milestones, MilestoneDropdown, CommentaryOptions, TendenciesDropdown, ClaendarWeek # noqa
