@@ -166,8 +166,8 @@ class ProjectAssignment(models.Model):
         null=True,
     )
 
-    ilustrator = models.ForeignKey(
-        verbose_name='ilustrator',
+    illustrator = models.ForeignKey(
+        verbose_name='illustrator',
         help_text='ZeichnerIn',
         on_delete=models.SET_NULL,
         to='pm_tool.IlustratorDropdown',

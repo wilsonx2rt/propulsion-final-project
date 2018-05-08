@@ -285,7 +285,7 @@ class ProjectData(models.Model):
 
     comment = models.TextField(
         verbose_name='comment',
-        Bemerkung='Bemerkung',
+        help_text='Bemerkung',
         max_length=200,
         blank=True,
     )

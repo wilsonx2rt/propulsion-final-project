@@ -3,6 +3,7 @@ from django.contrib import admin
 from project.pm_tool.models import LeadingRoleDropdown, LeadingTeamDropdown, ProjectResponsibilityDropdown, \
     OverallPMTeamDropdown, PMDropdown, PlannerControlDropdown, ProjectAssignment, CommunicationsDropdown, \
     IlustratorDropdown, ConstructionManagementDropdown
+from project.pm_tool.models.project_allocation import ProjectAllocation, Year, QuarterlyDetails
 from project.pm_tool.models.project_data import RadarPortfolioDropdown, ProjectData, BusinessProposalDropdown, \
     ProjectTypeDropdown, ProjectNatureDropdown, PoliticalSignificanceDropdown, ProjectPriorityDropdown, \
     ProjectCharacterDropdown, ControlCycleDropdown, RiskAssessmentDropdown, ProjectHandbookDropdown, \
@@ -40,3 +41,8 @@ admin.site.register(ProjectAssignment)
 admin.site.register(FinancingDropdown)
 admin.site.register(RequirementsAssessmentDropdown)
 admin.site.register(ProjectFinances)
+
+# Project allocation
+admin.site.register(ProjectAllocation)
+admin.site.register(Year)
+admin.site.register(QuarterlyDetails)

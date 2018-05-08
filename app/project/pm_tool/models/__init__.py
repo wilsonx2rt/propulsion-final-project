@@ -10,3 +10,5 @@ from .project_assignment import CommunicationsDropdown, ProjectAssignment # noqa
 
 from .project_finances import RequirementsAssessmentDropdown, CreditStatusDropdown # noqa
 from .project_finances import FinancingDropdown, ProjectFinances # noqa
+
+from .project_allocation import ProjectAllocation, Year, QuarterlyDetails # noqa
