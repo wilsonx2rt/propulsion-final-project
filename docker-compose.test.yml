@@ -4,6 +4,7 @@ services:
     image: postgres:9.6.1
     restart: always
     env_file: test.env
+
   app:
     image: "${CI_PIPELINE_ID}:${CI_BUILD_REF_NAME}"
     env_file: test.env
