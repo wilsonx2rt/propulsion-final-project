@@ -113,6 +113,11 @@ class ProjectStatusPhaseDropdown(models.Model):
         return self.name
 
 
+"""
+Main
+"""
+
+
 class ProjectData(models.Model):
     name = models.CharField(
         max_length=50,
@@ -178,84 +183,89 @@ class ProjectData(models.Model):
         null=True,
     )
 
+    project_character = models.ForeignKey(
+        verbose_name='project character',
+        on_delete=models.SET_NULL,
+        to='pm_tool.ProjectCharacterDropdown',
+        blank=True,
+        null=True,
+    )
 
-project_character = models.ForeignKey(
-    verbose_name='project character',
-    on_delete=models.SET_NULL,
-    to='pm_tool.ProjectCharacterDropdown',
-    blank=True,
-    null=True,
-)
+    control_cycle = models.ForeignKey(
+        verbose_name='control cycle',
+        on_delete=models.SET_NULL,
+        to='pm_tool.ControlCycleDropdown',
+        blank=True,
+        null=True,
+    )
 
-control_cycle = models.ForeignKey(
-    verbose_name='control cycle',
-    on_delete=models.SET_NULL,
-    to='pm_tool.ControlCycleDropdown',
-    blank=True,
-    null=True,
-)
+    risk_assessment = models.ForeignKey(
+        verbose_name='risk assessment',
+        on_delete=models.SET_NULL,
+        to='pm_tool.RiskAssessmentDropdown',
+        blank=True,
+        null=True,
+    )
 
-risk_assessment = models.ForeignKey(
-    verbose_name='risk assessment',
-    on_delete=models.SET_NULL,
-    to='pm_tool.RiskAssessmentDropdown',
-    blank=True,
-    null=True,
-)
+    project_goal = models.CharField(
+        verbose_name='project goal',
+        max_length=100,
+        blank=True,
+    )
 
-project_goal = models.CharField(
-    verbose_name='project goal',
-    max_length=100,
-    blank=True,
-)
+    project_handbook = models.ForeignKey(
+        verbose_name='project handbook',
+        on_delete=models.SET_NULL,
+        to='pm_tool.ProjectHandbookDropdown',
+        blank=True,
+        null=True,
+    )
 
-project_handbook = models.ForeignKey(
-    verbose_name='project handbook',
-    on_delete=models.SET_NULL,
-    to='pm_tool.ProjectHandbookDropdown',
-    blank=True,
-    null=True,
-)
+    project_handbook_file = models.FileField(
+        verbose_name='handbook file',
+        blank=True,
+        null=True,
+    )
 
-# TODO: If needed, add file input  field for project habdbook
+    # TODO: If needed, add file input  field for project habdbook
 
-e3_number = project_goal = models.CharField(
-    verbose_name='project goal',
-    max_length=20,
-    blank=True,
-)
+    e3_number = project_goal = models.CharField(
+        verbose_name='project goal',
+        max_length=20,
+        blank=True,
+    )
 
-business_category = models.IntegerField(
-    verbose_name='business category',
-    blank=True,
-)
+    business_category = models.IntegerField(
+        verbose_name='business category',
+        blank=True,
+    )
 
-service_nature = models.IntegerField(
-    verbose_name='service nature',
-    blank=True,
-)
+    service_nature = models.IntegerField(
+        verbose_name='service nature',
+        blank=True,
+    )
 
-invoiceability = models.IntegerField(
-    verbose_name='invoicability',
-    blank=True,
-)
+    invoiceability = models.IntegerField(
+        verbose_name='invoicability',
+        blank=True,
+    )
 
-business_number = models.CharField(
-    verbose_name='business',
-    max_length=20,
-    blank=True,
-)
+    business_number = models.CharField(
+        verbose_name='business',
+        max_length=20,
+        blank=True,
+    )
 
-project_status_phase = models.ForeignKey(
-    verbose_name='project status or phase',
-    on_delete=models.SET_NULL,
-    to='pm_tool.ProjectStatusPhaseDropdown',
-    blank=True,
-    null=True,
-)
+    project_status_phase = models.ForeignKey(
+        verbose_name='project status or phase',
+        on_delete=models.SET_NULL,
+        to='pm_tool.ProjectStatusPhaseDropdown',
+        blank=True,
+        null=True,
+    )
 
-comment = models.TextField(
-    verbose_name='comment',
-    max_length=200,
-    blank=True,
-)
+    comment = models.TextField(
+        verbose_name='comment',
+        max_length=200,
+        blank=True,
+    )
