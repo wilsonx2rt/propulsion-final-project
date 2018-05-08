@@ -9,6 +9,8 @@ from project.pm_tool.models.project_data import RadarPortfolioDropdown, ProjectD
     ProjectStatusPhaseDropdown
 
 # Project Data
+from project.pm_tool.models.project_finances import FinancingDropdown, RequirementsAssessmentDropdown, ProjectFinances
+
 admin.site.register(RadarPortfolioDropdown)
 admin.site.register(BusinessProposalDropdown)
 admin.site.register(ProjectTypeDropdown)
@@ -33,3 +35,8 @@ admin.site.register(ConstructionManagementDropdown)
 admin.site.register(IlustratorDropdown)
 admin.site.register(CommunicationsDropdown)
 admin.site.register(ProjectAssignment)
+
+# Project finances
+admin.site.register(FinancingDropdown)
+admin.site.register(RequirementsAssessmentDropdown)
+admin.site.register(ProjectFinances)

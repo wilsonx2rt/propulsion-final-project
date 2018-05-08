@@ -100,8 +100,45 @@ class ProjectFinances(models.Model):
         help_text='Kreditrest per 1.1. aktuelles Jahr',
         blank=True,
     )
-    remaining_credit_current_year = models.IntegerField(
-        verbose_name='remaining credit current year',
-        help_text='',
+
+    spending_current_year = models.IntegerField(
+        verbose_name='spending current year',
+        help_text='Ist Ausgaben aktuelles Jahr',
+        blank=True,
+    )
+
+    forecast_current_year = models.IntegerField(
+        verbose_name='forecast current year',
+        help_text='Prognose laufendes Jahr',
+        blank=True,
+    )
+
+    remaining_credit_following_year = models.IntegerField(
+        verbose_name='remaining credit following year',
+        help_text='Kreditrest per 1.1. folgendes Jahr',
+        blank=True,
+    )
+
+    VAT_following_year = models.IntegerField(
+        verbose_name='VAT following year',
+        help_text='Mehrwertabschöpfung folgendes Jahr',
+        blank=True,
+    )
+
+    forecast_following_year = models.IntegerField(
+        verbose_name='forecast following year',
+        help_text='Prognose folgendes Jahr',
+        blank=True,
+    )
+
+    VAT_further_years = models.IntegerField(
+        verbose_name='VAT following year',
+        help_text='Mehrwertabschöpfung weitere Jahre',
+        blank=True,
+    )
+
+    forecast_further_years = models.IntegerField(
+        verbose_name='forecast further years',
+        help_text='Prognose weitere Jahre',
         blank=True,
     )
