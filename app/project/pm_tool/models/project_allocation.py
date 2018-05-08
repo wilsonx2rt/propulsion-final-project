@@ -14,12 +14,15 @@ class QuarterlyDetails(models.Model):
         help_text='Jahr',
         on_delete=models.SET_NULL,
         to='pm_tool.Year',
+        null=True,
+        blank=True,
     )
 
     quarter = models.CharField(
         verbose_name='quarter',
         help_text='Quartal',
         choices=QUARTER_CHOICES,
+        max_length=20,
     )
 
     project_phase = models.IntegerField(

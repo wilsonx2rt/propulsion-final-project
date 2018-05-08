@@ -12,5 +12,6 @@ Meilensteine - Unique ID
                - Kalenderwoche (N)
                - Meilensteine(*)
                - Tendenz (*)
+               |
                - Kommentare - Einfluss externe Faktoren
                             - Kommunikation

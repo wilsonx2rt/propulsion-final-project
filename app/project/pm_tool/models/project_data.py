@@ -253,18 +253,21 @@ class ProjectData(models.Model):
         verbose_name='business category',
         help_text='Geschäftskategorie',
         blank=True,
+        null=True,
     )
 
     service_nature = models.IntegerField(
         verbose_name='service nature',
         help_text='Leistungsart',
         blank=True,
+        null=True,
     )
 
     invoiceability = models.IntegerField(
         verbose_name='invoicability',
         help_text='Verrechenbarkeit',
         blank=True,
+        null=True,
     )
 
     business_number = models.CharField(

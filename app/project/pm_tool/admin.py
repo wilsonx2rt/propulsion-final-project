@@ -2,18 +2,19 @@ from django.contrib import admin
 
 from project.pm_tool.models import LeadingRoleDropdown, LeadingTeamDropdown, ProjectResponsibilityDropdown, \
     OverallPMTeamDropdown, PMDropdown, PlannerControlDropdown, ProjectAssignment, CommunicationsDropdown, \
-    IlustratorDropdown, ConstructionManagementDropdown
-from project.pm_tool.models.milestones import ClaendarWeek, MilestoneDropdown, TendenciesDropdown, CommentaryOptions, \
-    Milestones
+    IlustratorDropdown, ConstructionManagementDropdown, ProjectDevelopment, ProjectTendencyDropdown, \
+    ProjectStatusDropdown
+from project.pm_tool.models.project_dependencies import ProjectDependencies
+from project.pm_tool.models.project_milestones import ClaendarWeek, MilestoneDropdown, TendenciesDropdown,\
+    CommentaryOptions, Milestones
 from project.pm_tool.models.project_allocation import ProjectAllocation, Year, QuarterlyDetails
 from project.pm_tool.models.project_data import RadarPortfolioDropdown, ProjectData, BusinessProposalDropdown, \
     ProjectTypeDropdown, ProjectNatureDropdown, PoliticalSignificanceDropdown, ProjectPriorityDropdown, \
     ProjectCharacterDropdown, ControlCycleDropdown, RiskAssessmentDropdown, ProjectHandbookDropdown, \
     ProjectStatusPhaseDropdown
-
-# Project Data
 from project.pm_tool.models.project_finances import FinancingDropdown, RequirementsAssessmentDropdown, ProjectFinances
 
+# Project Data
 admin.site.register(RadarPortfolioDropdown)
 admin.site.register(BusinessProposalDropdown)
 admin.site.register(ProjectTypeDropdown)
@@ -49,9 +50,17 @@ admin.site.register(ProjectAllocation)
 admin.site.register(Year)
 admin.site.register(QuarterlyDetails)
 
-# Milestones
+# Project milestones
 admin.site.register(ClaendarWeek)
 admin.site.register(MilestoneDropdown)
 admin.site.register(TendenciesDropdown)
 admin.site.register(CommentaryOptions)
 admin.site.register(Milestones)
+
+# Project dependencies
+admin.site.register(ProjectDependencies)
+
+# Project development
+admin.site.register(ProjectDevelopment)
+admin.site.register(ProjectTendencyDropdown)
+admin.site.register(ProjectStatusDropdown)
