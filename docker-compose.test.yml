@@ -10,4 +10,3 @@ services:
     env_file: test.env
     depends_on:
       - database
-    command: 'sh /scripts/test.sh'
