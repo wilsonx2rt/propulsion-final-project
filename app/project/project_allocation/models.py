@@ -8,7 +8,18 @@ QUARTER_CHOICES = (
 )
 
 
-class QuarterlyDetails(models.Model):
+"""
+Main
+"""
+
+
+class ProjectAllocation(models.Model):
+    project = models.ForeignKey(
+        verbose_name='project assignment',
+        to='project_data.ProjectData',
+        on_delete='models.SET_NULL',
+    )
+
     year = models.ForeignKey(
         verbose_name='year',
         help_text='Jahr',
@@ -83,26 +94,4 @@ class QuarterlyDetails(models.Model):
         verbose_name='total allocation',
         help_text='Total Aufwand',
         blank=True,
-    )
-
-
-"""
-Main
-"""
-
-
-class ProjectAllocation(models.Model):
-    project = models.ForeignKey(
-        verbose_name='project assignment',
-        to='project_data.ProjectData',
-        on_delete='models.SET_NULL',
-    )
-
-    quarterly_details = models.ForeignKey(
-        verbose_name='quarterly details',
-        help_text='Projektablauf & Ressourcenplanung',
-        on_delete=models.SET_NULL,
-        to='project_allocation.QuarterlyDetails',
-        blank=True,
-        null=True,
     )

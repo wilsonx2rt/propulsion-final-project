@@ -1,0 +1,14 @@
+version: '2'
+services:
+  database:
+    image: postgres:9.6.1
+    restart: always
+    env_file: test.env
+
+  app:
+    image: registry.gitlab.propulsion-home.ch/full-stack/batch-2018-03/personal-projects/forecasting-tool:latest
+    env_file: test.env
+    volumes:
+      - ./coverage:/app/htmlcov
+    depends_on:
+      - database
