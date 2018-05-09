@@ -2,6 +2,7 @@ stages:
   - pull
   - build
   - lint
+  - test
   - push
   - deploy
   - cleanup
@@ -18,9 +19,7 @@ pull:
 build:
   stage: build
   script:
-    - ls
-    - echo 'Please'
-    - docker build --tag="$CI_PIPELINE_ID":"$CI_BUILD_REF_NAME" --cache-from="$CI_REGISTRY_IMAGE":latest --pull .
+    - docker build --tag="$CI_PIPELINE_ID":"$CI_BUILD_REF_NAME" --cache-from="$CI_REGISTRY_IMAGE":latest .
 
 lint:
   stage: lint
@@ -28,6 +27,26 @@ lint:
     - export CI_PIPELINE_ID=$CI_PIPELINE_ID
     - export CI_BUILD_REF_NAME=$CI_BUILD_REF_NAME
     - docker-compose -p "$CI_PIPELINE_ID" -f docker-compose.ci.yml run app flake8 .
+
+test:
+  stage: test
+  script:
+    - export CI_PIPELINE_ID=$CI_PIPELINE_ID
+    - export CI_BUILD_REF_NAME=$CI_BUILD_REF_NAME
+    - docker-compose -p "$CI_PIPELINE_ID" -f docker-compose.test.yml run app sh /scripts/test.sh
+  artifacts:
+    paths:
+      - coverage/
+
+pages:
+ stage: deploy
+ dependencies:
+   - test
+ script:
+   - mv htmlcov public
+ artifacts:
+   paths:
+     - public
 
 push image:
   stage: push
@@ -57,5 +76,6 @@ deploy to prod:
 
 cleanup:
   stage: cleanup
+  when: always
   script:
     - docker rmi -f "$CI_PIPELINE_ID":"$CI_BUILD_REF_NAME"

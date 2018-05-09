@@ -6,7 +6,7 @@ services:
     env_file: test.env
 
   app:
-    image: registry.gitlab.propulsion-home.ch/full-stack/batch-2018-03/personal-projects/forecasting-tool:latest
+    image: "${CI_PIPELINE_ID}:${CI_BUILD_REF_NAME}"
     env_file: test.env
     volumes:
       - ./coverage:/app/htmlcov
