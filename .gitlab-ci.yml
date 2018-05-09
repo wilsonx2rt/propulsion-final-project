@@ -3,7 +3,6 @@ stages:
   - build
   - lint
   - test
-  - coverage
   - push
   - deploy
   - cleanup
@@ -42,15 +41,14 @@ test:
       - coverage/
 
 pages:
-  stage: coverage
-  dependencies:
-    - test
-  script:
-    - mv coverage/ public/
-  artifacts:
-    paths:
-      - public
-    expire_in: 30 days
+ stage: deploy
+ dependencies:
+   - test
+ script:
+   - mv htmlcov public
+ artifacts:
+   paths:
+     - public
 
 push image:
   stage: push

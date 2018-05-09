@@ -9,6 +9,6 @@ services:
     image: "${CI_PIPELINE_ID}:${CI_BUILD_REF_NAME}"
     env_file: test.env
     volumes:
-      - ./coverage:/app/local_coverage_report
+      - ./coverage:/app/htmlcov
     depends_on:
       - database
