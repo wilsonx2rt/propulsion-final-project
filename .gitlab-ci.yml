@@ -19,9 +19,7 @@ pull:
 build:
   stage: build
   script:
-    - ls
-    - echo 'Please'
-    - docker build --tag="$CI_PIPELINE_ID":"$CI_BUILD_REF_NAME" --cache-from="$CI_REGISTRY_IMAGE":latest --pull .
+    - docker build --tag="$CI_PIPELINE_ID":"$CI_BUILD_REF_NAME" --cache-from="$CI_REGISTRY_IMAGE":latest .
 
 lint:
   stage: lint
