@@ -19,7 +19,7 @@ class ProjectTendencyDropdown(models.Model):
 class ProjectDevelopment(models.Model):
     project_status = models.ForeignKey(
         verbose_name='project status',
-        to='pm_tool.ProjectStatusDropdown',
+        to='project_development.ProjectStatusDropdown',
         on_delete=models.SET_NULL,
         blank=True,
         null=True,
@@ -27,7 +27,7 @@ class ProjectDevelopment(models.Model):
 
     project_tendency = models.ForeignKey(
         verbose_name='project tendency',
-        to='pm_tool.ProjectTendencyDropdown',
+        to='project_development.ProjectTendencyDropdown',
         on_delete=models.SET_NULL,
         blank=True,
         null=True,

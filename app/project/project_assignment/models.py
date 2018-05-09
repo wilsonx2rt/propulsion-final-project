@@ -99,7 +99,7 @@ Main
 class ProjectAssignment(models.Model):
     project = models.ForeignKey(
         verbose_name='project assignment',
-        to='pm_tool.ProjectData',
+        to='project_data.ProjectData',
         on_delete='models.SET_NULL',
     )
 
@@ -107,7 +107,7 @@ class ProjectAssignment(models.Model):
         verbose_name='leading role',
         help_text='Federführende Stelle',
         on_delete=models.SET_NULL,
-        to='pm_tool.LeadingRoleDropdown',
+        to='project_assignment.LeadingRoleDropdown',
         blank=True,
         null=True,
     )
@@ -116,7 +116,7 @@ class ProjectAssignment(models.Model):
         verbose_name='leading team',
         help_text='Federführende Fachgruppe',
         on_delete=models.SET_NULL,
-        to='pm_tool.LeadingTeamDropdown',
+        to='project_assignment.LeadingTeamDropdown',
         blank=True,
         null=True,
     )
@@ -125,7 +125,7 @@ class ProjectAssignment(models.Model):
         verbose_name='project responsibility',
         help_text='Projektverantwortung',
         on_delete=models.SET_NULL,
-        to='pm_tool.ProjectResponsibilityDropdown',
+        to='project_assignment.ProjectResponsibilityDropdown',
         blank=True,
         null=True,
     )
@@ -134,7 +134,7 @@ class ProjectAssignment(models.Model):
         verbose_name='overall pm team',
         help_text='Gesamtprojektleitung (Koordinationsteam)',
         on_delete=models.SET_NULL,
-        to='pm_tool.OverallPMTeamDropdown',
+        to='project_assignment.OverallPMTeamDropdown',
         blank=True,
         null=True,
     )
@@ -143,7 +143,7 @@ class ProjectAssignment(models.Model):
         verbose_name='project management',
         help_text='Projektleitung',
         on_delete=models.SET_NULL,
-        to='pm_tool.PMDropdown',
+        to='project_assignment.PMDropdown',
         blank=True,
         null=True,
     )
@@ -152,7 +152,7 @@ class ProjectAssignment(models.Model):
         verbose_name='planner control',
         help_text='Planerleistung',
         on_delete=models.SET_NULL,
-        to='pm_tool.PlannerControlDropdown',
+        to='project_assignment.PlannerControlDropdown',
         blank=True,
         null=True,
     )
@@ -161,7 +161,7 @@ class ProjectAssignment(models.Model):
         verbose_name='construction management',
         help_text='Bauleitung (Baubegleitung)',
         on_delete=models.SET_NULL,
-        to='pm_tool.ConstructionManagementDropdown',
+        to='project_assignment.ConstructionManagementDropdown',
         blank=True,
         null=True,
     )
@@ -170,7 +170,7 @@ class ProjectAssignment(models.Model):
         verbose_name='illustrator',
         help_text='ZeichnerIn',
         on_delete=models.SET_NULL,
-        to='pm_tool.IlustratorDropdown',
+        to='project_assignment.IlustratorDropdown',
         blank=True,
         null=True,
     )
@@ -179,7 +179,7 @@ class ProjectAssignment(models.Model):
         verbose_name='communications',
         help_text='Kommunikation',
         on_delete=models.SET_NULL,
-        to='pm_tool.CommunicationsDropdown',
+        to='project_assignment.CommunicationsDropdown',
         blank=True,
         null=True,
     )

@@ -130,7 +130,7 @@ class ProjectData(models.Model):
         verbose_name='radar or portfolio',
         help_text='Radar oder Projektportfolio',
         on_delete=models.SET_NULL,
-        to='pm_tool.RadarPortfolioDropdown',
+        to='project_data.RadarPortfolioDropdown',
         blank=True,
         null=True,
     )
@@ -139,7 +139,7 @@ class ProjectData(models.Model):
         verbose_name='business proposal',
         help_text='Geschäftsantrag',
         on_delete=models.SET_NULL,
-        to='pm_tool.BusinessProposalDropdown',
+        to='project_data.BusinessProposalDropdown',
         blank=True,
         null=True,
     )
@@ -148,7 +148,7 @@ class ProjectData(models.Model):
         verbose_name='project type',
         help_text='Projekttyp',
         on_delete=models.SET_NULL,
-        to='pm_tool.ProjectTypeDropdown',
+        to='project_data.ProjectTypeDropdown',
         blank=True,
         null=True,
     )
@@ -157,7 +157,7 @@ class ProjectData(models.Model):
         verbose_name='project nature',
         help_text='Projekttart',
         on_delete=models.SET_NULL,
-        to='pm_tool.ProjectNatureDropdown',
+        to='project_data.ProjectNatureDropdown',
         blank=True,
         null=True,
     )
@@ -178,7 +178,7 @@ class ProjectData(models.Model):
         verbose_name='political significance',
         help_text='Politische Bedeutung',
         on_delete=models.SET_NULL,
-        to='pm_tool.PoliticalSignificanceDropdown',
+        to='project_data.PoliticalSignificanceDropdown',
         blank=True,
         null=True,
     )
@@ -187,7 +187,7 @@ class ProjectData(models.Model):
         verbose_name='project priority',
         help_text='Projektpriorität (L)',
         on_delete=models.SET_NULL,
-        to='pm_tool.ProjectPriorityDropdown',
+        to='project_data.ProjectPriorityDropdown',
         blank=True,
         null=True,
     )
@@ -196,7 +196,7 @@ class ProjectData(models.Model):
         verbose_name='project character',
         help_text='Projektcharakter (Projektbezogen)',
         on_delete=models.SET_NULL,
-        to='pm_tool.ProjectCharacterDropdown',
+        to='project_data.ProjectCharacterDropdown',
         blank=True,
         null=True,
     )
@@ -205,7 +205,7 @@ class ProjectData(models.Model):
         verbose_name='control cycle',
         help_text='Steuerungszyklus (L)',
         on_delete=models.SET_NULL,
-        to='pm_tool.ControlCycleDropdown',
+        to='project_data.ControlCycleDropdown',
         blank=True,
         null=True,
     )
@@ -214,7 +214,7 @@ class ProjectData(models.Model):
         verbose_name='risk assessment',
         help_text='Projekt-Risikobeurteilung',
         on_delete=models.SET_NULL,
-        to='pm_tool.RiskAssessmentDropdown',
+        to='project_data.RiskAssessmentDropdown',
         blank=True,
         null=True,
     )
@@ -230,7 +230,7 @@ class ProjectData(models.Model):
         verbose_name='project handbook',
         help_text='Projekthandbuch',
         on_delete=models.SET_NULL,
-        to='pm_tool.ProjectHandbookDropdown',
+        to='project_data.ProjectHandbookDropdown',
         blank=True,
         null=True,
     )
@@ -281,7 +281,7 @@ class ProjectData(models.Model):
         verbose_name='project status or phase',
         help_text='Projektstatus/Projektphase',
         on_delete=models.SET_NULL,
-        to='pm_tool.ProjectStatusPhaseDropdown',
+        to='project_data.ProjectStatusPhaseDropdown',
         blank=True,
         null=True,
     )

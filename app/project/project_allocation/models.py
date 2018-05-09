@@ -13,7 +13,7 @@ class QuarterlyDetails(models.Model):
         verbose_name='year',
         help_text='Jahr',
         on_delete=models.SET_NULL,
-        to='pm_tool.Year',
+        to='helper_models.Year',
         null=True,
         blank=True,
     )
@@ -86,14 +86,6 @@ class QuarterlyDetails(models.Model):
     )
 
 
-class Year(models.Model):
-    year = models.CharField(
-        verbose_name='year',
-        help_text='jahr',
-        max_length=4,
-    )
-
-
 """
 Main
 """
@@ -102,7 +94,7 @@ Main
 class ProjectAllocation(models.Model):
     project = models.ForeignKey(
         verbose_name='project assignment',
-        to='pm_tool.ProjectData',
+        to='project_data.ProjectData',
         on_delete='models.SET_NULL',
     )
 
@@ -110,7 +102,7 @@ class ProjectAllocation(models.Model):
         verbose_name='quarterly details',
         help_text='Projektablauf & Ressourcenplanung',
         on_delete=models.SET_NULL,
-        to='pm_tool.QuarterlyDetails',
+        to='project_allocation.QuarterlyDetails',
         blank=True,
         null=True,
     )

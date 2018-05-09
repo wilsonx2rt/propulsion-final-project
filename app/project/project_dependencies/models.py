@@ -6,7 +6,7 @@ from django.db import models
 class ProjectDependencies(models.Model):
     project = models.ForeignKey(
         verbose_name='project assignment',
-        to='pm_tool.ProjectData',
+        to='project_data.ProjectData',
         on_delete='models.SET_NULL',
     )
 

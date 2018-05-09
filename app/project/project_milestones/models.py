@@ -1,13 +1,6 @@
 from django.db import models
 
 
-class ClaendarWeek(models.Model):
-    week = models.CharField(
-        verbose_name='calendar week',
-        max_length=10,
-    )
-
-
 class MilestoneDropdown(models.Model):
     value = models.CharField(
         verbose_name='milestone dropdown value',
@@ -46,7 +39,7 @@ Main
 class Milestones(models.Model):
     project = models.ForeignKey(
         verbose_name='project assignment',
-        to='pm_tool.ProjectData',
+        to='project_data.ProjectData',
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
@@ -56,7 +49,7 @@ class Milestones(models.Model):
         verbose_name='year',
         help_text='Jahr',
         on_delete=models.SET_NULL,
-        to='pm_tool.Year',
+        to='helper_models.Year',
         null=True,
         blank=True,
     )
@@ -64,7 +57,7 @@ class Milestones(models.Model):
     milestone_calendar_week = models.ForeignKey(
         verbose_name='milestone calendar week',
         help_text='Meilenstein Kalenderwocke',
-        to='pm_tool.ClaendarWeek',
+        to='helper_models.CalendarWeek',
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
@@ -74,7 +67,7 @@ class Milestones(models.Model):
         verbose_name='milestone value',
         help_text='Meilstein Inhalt',
         on_delete=models.SET_NULL,
-        to='pm_tool.MilestoneDropdown',
+        to='project_milestones.MilestoneDropdown',
         null=True,
         blank=True,
     )
@@ -83,7 +76,7 @@ class Milestones(models.Model):
         verbose_name='tendency',
         help_text='Tendenz',
         on_delete=models.SET_NULL,
-        to='pm_tool.TendenciesDropdown',
+        to='project_milestones.TendenciesDropdown',
         null=True,
         blank=True,
     )
@@ -92,7 +85,7 @@ class Milestones(models.Model):
         verbose_name='commentary',
         help_text='Kommentare',
         on_delete=models.SET_NULL,
-        to="pm_tool.CommentaryOptions",
+        to="project_milestones.CommentaryOptions",
         null=True,
         blank=True,
     )

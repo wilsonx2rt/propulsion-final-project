@@ -39,7 +39,7 @@ Main
 class ProjectFinances(models.Model):
     project = models.ForeignKey(
         verbose_name='project assignment',
-        to='pm_tool.ProjectData',
+        to='project_data.ProjectData',
         on_delete='models.SET_NULL',
     )
 
@@ -47,7 +47,7 @@ class ProjectFinances(models.Model):
         verbose_name='financing',
         help_text='Finanzierungsart / MIP Rubrik',
         on_delete=models.SET_NULL,
-        to='pm_tool.FinancingDropdown',
+        to='project_finances.FinancingDropdown',
         blank=True,
         null=True,
     )
@@ -56,7 +56,7 @@ class ProjectFinances(models.Model):
         verbose_name='requirements assessment',
         help_text='Bedürfnisabklärung',
         on_delete=models.SET_NULL,
-        to='pm_tool.RequirementsAssessmentDropdown',
+        to='project_finances.RequirementsAssessmentDropdown',
         blank=True,
         null=True,
     )
@@ -65,7 +65,7 @@ class ProjectFinances(models.Model):
         verbose_name='credit status',
         help_text='Status Projektkredit',
         on_delete=models.SET_NULL,
-        to='pm_tool.CreditStatusDropdown',
+        to='project_finances.CreditStatusDropdown',
         blank=True,
         null=True,
     )
