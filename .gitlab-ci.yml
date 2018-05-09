@@ -78,4 +78,8 @@ cleanup:
   stage: cleanup
   when: always
   script:
+    - export CI_PIPELINE_ID=$CI_PIPELINE_ID
+    - export CI_BUILD_REF_NAME=$CI_BUILD_REF_NAME
     - docker rmi -f "$CI_PIPELINE_ID":"$CI_BUILD_REF_NAME"
+    - docker-compose -f docker-compose.test.yml down --remove-orphans
+    - docker-compose -f docker-compose.ci.yml down --remove-orphans
