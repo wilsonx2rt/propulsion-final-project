@@ -36,6 +36,9 @@ test:
     - export CI_PIPELINE_ID=$CI_PIPELINE_ID
     - export CI_BUILD_REF_NAME=$CI_BUILD_REF_NAME
     - docker-compose -p "$CI_PIPELINE_ID" -f docker-compose.test.yml run app sh /scripts/test.sh
+  artifacts:
+    paths:
+      - coverage/
 
 push image:
   stage: push
