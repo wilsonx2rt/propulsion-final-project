@@ -8,10 +8,10 @@ Projektdaten - Add unique identifier!
 	         - Strategische Bedeutung (N)
 	         - Operative Dringlichkeit (N)
 	         - Politische Bedeutung (*)
-	         - Projektpriorität (L)
+	         - Projektpriorität (L)(*)
 	         - Projektcharakter (Projektbezogen) (*)
-	         - Steuerungszyklus (L)
-	         - Projekt-Risikobeurteilung
+	         - Steuerungszyklus (L)(*)
+	         - Projekt-Risikobeurteilung(*)
 	         - Projektziel
 	         - Projekthandbuch (!)(Allow Uplodads!)
 	         - E3-Nummer

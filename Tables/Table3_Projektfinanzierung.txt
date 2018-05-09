@@ -3,7 +3,7 @@ Projektfinanzplanung - Add unique identifier!
 	                 - Finanzierungsart / MIP Rubrik (*)
 	                 - Bedürfnisabklärung (*)
 	                 - Status Projektkredit (*)
-	                 - Investitions-Nr. (*)
+	                 - Investitions-Nr.
 	                 - Kredit- /Budgetsumme (N)
 	                 - Beiträge Dritter (N)
 	                 - Netto-Ausgaben Vorjahre (N)

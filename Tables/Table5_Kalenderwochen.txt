@@ -5,3 +5,13 @@ Kalenderwochen - Unique ID
                - Tendenz (*)
                - Jahr (N)
 
+Merge tables 5 & 6
+|
+Meilensteine - Unique ID
+               - Jahr (N)
+               - Kalenderwoche (N)
+               - Meilensteine(*)
+               - Tendenz (*)
+               |
+               - Kommentare - Einfluss externe Faktoren
+                            - Kommunikation

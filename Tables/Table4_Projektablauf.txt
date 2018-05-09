@@ -12,3 +12,6 @@ Projektzuteilung - Unique ID
 	             - Bauleitung (Baubegleitung) (N)
 	             - Kommunikation (N)
 	             - Total Aufwand (N)
+
+	             total Quartal
+	             total Jahr
