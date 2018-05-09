@@ -78,5 +78,6 @@ deploy to prod:
 
 cleanup:
   stage: cleanup
+  when: always
   script:
     - docker rmi -f "$CI_PIPELINE_ID":"$CI_BUILD_REF_NAME"
