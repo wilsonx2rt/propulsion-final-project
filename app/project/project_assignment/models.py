@@ -103,7 +103,8 @@ class ProjectAssignment(models.Model):
     project = models.ForeignKey(
         verbose_name='project assignment',
         to='project_data.ProjectData',
-        on_delete='models.SET_NULL',
+        on_delete=models.SET_NULL,
+        null=True,
     )
 
     leading_role = models.ForeignKey(
