@@ -1,4 +1,7 @@
+from django.conf import settings
 from django.db import models
+
+
 
 
 class LeadingRoleDropdown(models.Model):
@@ -100,7 +103,8 @@ class ProjectAssignment(models.Model):
     project = models.ForeignKey(
         verbose_name='project assignment',
         to='project_data.ProjectData',
-        on_delete='models.SET_NULL',
+        on_delete=models.SET_NULL,
+        null=True,
     )
 
     leading_role = models.ForeignKey(
@@ -142,8 +146,9 @@ class ProjectAssignment(models.Model):
     project_management = models.ForeignKey(
         verbose_name='project management',
         help_text='Projektleitung',
+        to=settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
-        to='project_assignment.PMDropdown',
+        related_name='project_assignment',
         blank=True,
         null=True,
     )
