@@ -1,0 +1,9 @@
+- model: project_development.projecttendencydropdown
+  pk: 1
+  fields: {value: '-'}
+- model: project_development.projecttendencydropdown
+  pk: 2
+  fields: {value: '='}
+- model: project_development.projecttendencydropdown
+  pk: 3
+  fields: {value: +}

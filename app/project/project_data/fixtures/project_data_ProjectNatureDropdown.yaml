@@ -1,0 +1,21 @@
+- model: project_data.projectnaturedropdown
+  pk: 8
+  fields: {name: 'Grundlagenarbeit, Planung & Diverses'}
+- model: project_data.projectnaturedropdown
+  pk: 9
+  fields: {name: "Grauraum (Strassen, Pl\xE4tze & Verkehr)"}
+- model: project_data.projectnaturedropdown
+  pk: 10
+  fields: {name: Familiengarten}
+- model: project_data.projectnaturedropdown
+  pk: 11
+  fields: {name: Friedhof}
+- model: project_data.projectnaturedropdown
+  pk: 12
+  fields: {name: Velo}
+- model: project_data.projectnaturedropdown
+  pk: 13
+  fields: {name: Spielplatz}
+- model: project_data.projectnaturedropdown
+  pk: 14
+  fields: {name: "Park- & Gr\xFCnanlagen"}

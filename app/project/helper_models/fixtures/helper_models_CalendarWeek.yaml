@@ -1,0 +1,156 @@
+- model: helper_models.calendarweek
+  pk: 1
+  fields: {week: '1'}
+- model: helper_models.calendarweek
+  pk: 2
+  fields: {week: '2'}
+- model: helper_models.calendarweek
+  pk: 3
+  fields: {week: '3'}
+- model: helper_models.calendarweek
+  pk: 4
+  fields: {week: '4'}
+- model: helper_models.calendarweek
+  pk: 5
+  fields: {week: '5'}
+- model: helper_models.calendarweek
+  pk: 6
+  fields: {week: '6'}
+- model: helper_models.calendarweek
+  pk: 7
+  fields: {week: '7'}
+- model: helper_models.calendarweek
+  pk: 8
+  fields: {week: '8'}
+- model: helper_models.calendarweek
+  pk: 9
+  fields: {week: '9'}
+- model: helper_models.calendarweek
+  pk: 10
+  fields: {week: '10'}
+- model: helper_models.calendarweek
+  pk: 11
+  fields: {week: '11'}
+- model: helper_models.calendarweek
+  pk: 12
+  fields: {week: '12'}
+- model: helper_models.calendarweek
+  pk: 13
+  fields: {week: '13'}
+- model: helper_models.calendarweek
+  pk: 14
+  fields: {week: '14'}
+- model: helper_models.calendarweek
+  pk: 15
+  fields: {week: '15'}
+- model: helper_models.calendarweek
+  pk: 16
+  fields: {week: '16'}
+- model: helper_models.calendarweek
+  pk: 17
+  fields: {week: '17'}
+- model: helper_models.calendarweek
+  pk: 18
+  fields: {week: '18'}
+- model: helper_models.calendarweek
+  pk: 19
+  fields: {week: '19'}
+- model: helper_models.calendarweek
+  pk: 20
+  fields: {week: '20'}
+- model: helper_models.calendarweek
+  pk: 21
+  fields: {week: '21'}
+- model: helper_models.calendarweek
+  pk: 22
+  fields: {week: '22'}
+- model: helper_models.calendarweek
+  pk: 23
+  fields: {week: '23'}
+- model: helper_models.calendarweek
+  pk: 24
+  fields: {week: '24'}
+- model: helper_models.calendarweek
+  pk: 25
+  fields: {week: '25'}
+- model: helper_models.calendarweek
+  pk: 26
+  fields: {week: '26'}
+- model: helper_models.calendarweek
+  pk: 27
+  fields: {week: '27'}
+- model: helper_models.calendarweek
+  pk: 28
+  fields: {week: '28'}
+- model: helper_models.calendarweek
+  pk: 29
+  fields: {week: '29'}
+- model: helper_models.calendarweek
+  pk: 30
+  fields: {week: '30'}
+- model: helper_models.calendarweek
+  pk: 31
+  fields: {week: '31'}
+- model: helper_models.calendarweek
+  pk: 32
+  fields: {week: '32'}
+- model: helper_models.calendarweek
+  pk: 33
+  fields: {week: '33'}
+- model: helper_models.calendarweek
+  pk: 34
+  fields: {week: '34'}
+- model: helper_models.calendarweek
+  pk: 35
+  fields: {week: '35'}
+- model: helper_models.calendarweek
+  pk: 36
+  fields: {week: '36'}
+- model: helper_models.calendarweek
+  pk: 37
+  fields: {week: '37'}
+- model: helper_models.calendarweek
+  pk: 38
+  fields: {week: '38'}
+- model: helper_models.calendarweek
+  pk: 39
+  fields: {week: '39'}
+- model: helper_models.calendarweek
+  pk: 40
+  fields: {week: '40'}
+- model: helper_models.calendarweek
+  pk: 41
+  fields: {week: '41'}
+- model: helper_models.calendarweek
+  pk: 42
+  fields: {week: '42'}
+- model: helper_models.calendarweek
+  pk: 43
+  fields: {week: '43'}
+- model: helper_models.calendarweek
+  pk: 44
+  fields: {week: '44'}
+- model: helper_models.calendarweek
+  pk: 45
+  fields: {week: '45'}
+- model: helper_models.calendarweek
+  pk: 46
+  fields: {week: '46'}
+- model: helper_models.calendarweek
+  pk: 47
+  fields: {week: '47'}
+- model: helper_models.calendarweek
+  pk: 48
+  fields: {week: '48'}
+- model: helper_models.calendarweek
+  pk: 49
+  fields: {week: '49'}
+- model: helper_models.calendarweek
+  pk: 50
+  fields: {week: '50'}
+- model: helper_models.calendarweek
+  pk: 51
+  fields: {week: '51'}
+- model: helper_models.calendarweek
+  pk: 52
+  fields: {week: '52'}

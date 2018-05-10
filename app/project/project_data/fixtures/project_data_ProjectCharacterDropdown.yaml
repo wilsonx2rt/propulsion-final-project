@@ -1,0 +1,15 @@
+- model: project_data.projectcharacterdropdown
+  pk: 1
+  fields: {name: offen}
+- model: project_data.projectcharacterdropdown
+  pk: 2
+  fields: {name: Neuartiges oder komplexes Projekt}
+- model: project_data.projectcharacterdropdown
+  pk: 3
+  fields: {name: Herausforderndes oder schwierig organisiertes Projekt}
+- model: project_data.projectcharacterdropdown
+  pk: 4
+  fields: {name: Bekanntes und gut organisiertes Projekt}
+- model: project_data.projectcharacterdropdown
+  pk: 5
+  fields: {name: Routineprojekt}

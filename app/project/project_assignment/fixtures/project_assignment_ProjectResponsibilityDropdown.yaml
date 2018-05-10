@@ -1,0 +1,24 @@
+- model: project_assignment.projectresponsibilitydropdown
+  pk: 1
+  fields: {name: offen}
+- model: project_assignment.projectresponsibilitydropdown
+  pk: 2
+  fields: {name: x}
+- model: project_assignment.projectresponsibilitydropdown
+  pk: 3
+  fields: {name: TWu}
+- model: project_assignment.projectresponsibilitydropdown
+  pk: 4
+  fields: {name: CRa}
+- model: project_assignment.projectresponsibilitydropdown
+  pk: 5
+  fields: {name: MSt}
+- model: project_assignment.projectresponsibilitydropdown
+  pk: 6
+  fields: {name: STs}
+- model: project_assignment.projectresponsibilitydropdown
+  pk: 7
+  fields: {name: SNe}
+- model: project_assignment.projectresponsibilitydropdown
+  pk: 8
+  fields: {name: CSc}

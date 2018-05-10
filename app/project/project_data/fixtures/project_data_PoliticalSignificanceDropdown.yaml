@@ -1,0 +1,9 @@
+- model: project_data.politicalsignificancedropdown
+  pk: 1
+  fields: {name: offen}
+- model: project_data.politicalsignificancedropdown
+  pk: 2
+  fields: {name: a)}
+- model: project_data.politicalsignificancedropdown
+  pk: 3
+  fields: {name: b)}

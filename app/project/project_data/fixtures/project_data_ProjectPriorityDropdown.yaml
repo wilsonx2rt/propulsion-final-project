@@ -1,0 +1,12 @@
+- model: project_data.projectprioritydropdown
+  pk: 1
+  fields: {name: "1. Priorit\xE4t Projekt"}
+- model: project_data.projectprioritydropdown
+  pk: 2
+  fields: {name: "2. Priorit\xE4t Projekt"}
+- model: project_data.projectprioritydropdown
+  pk: 3
+  fields: {name: "3. Priorit\xE4t Projekt"}
+- model: project_data.projectprioritydropdown
+  pk: 4
+  fields: {name: Leuchtturmprojekte}

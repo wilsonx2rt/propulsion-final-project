@@ -1,0 +1,18 @@
+- model: project_data.projecttypedropdown
+  pk: 1
+  fields: {name: offen}
+- model: project_data.projecttypedropdown
+  pk: 2
+  fields: {name: Begleitprojekt}
+- model: project_data.projecttypedropdown
+  pk: 3
+  fields: {name: Strategisches Projekt}
+- model: project_data.projecttypedropdown
+  pk: 4
+  fields: {name: Politisches Projekt}
+- model: project_data.projecttypedropdown
+  pk: 5
+  fields: {name: Infrastruktur Wertvermehrung}
+- model: project_data.projecttypedropdown
+  pk: 6
+  fields: {name: Infrastruktur Werterhalt}

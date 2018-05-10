@@ -1,0 +1,9 @@
+- model: project_data.projecthandbookdropdown
+  pk: 1
+  fields: {name: Ja}
+- model: project_data.projecthandbookdropdown
+  pk: 2
+  fields: {name: Nein}
+- model: project_data.projecthandbookdropdown
+  pk: 3
+  fields: {name: offen}

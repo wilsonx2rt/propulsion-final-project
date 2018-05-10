@@ -1,0 +1,69 @@
+- model: project_finances.financingdropdown
+  pk: 1
+  fields: {name: offen}
+- model: project_finances.financingdropdown
+  pk: 2
+  fields: {name: x}
+- model: project_finances.financingdropdown
+  pk: 3
+  fields: {name: MIP}
+- model: project_finances.financingdropdown
+  pk: 4
+  fields: {name: "MIP Biodiversit\xE4t"}
+- model: project_finances.financingdropdown
+  pk: 5
+  fields: {name: 'MIP ???'}
+- model: project_finances.financingdropdown
+  pk: 6
+  fields: {name: MIP Nachholbedarf FR}
+- model: project_finances.financingdropdown
+  pk: 7
+  fields: {name: MIP Naturreservate S}
+- model: project_finances.financingdropdown
+  pk: 8
+  fields: {name: MIP WUV 3}
+- model: project_finances.financingdropdown
+  pk: 9
+  fields: {name: MIP WUV 4}
+- model: project_finances.financingdropdown
+  pk: 10
+  fields: {name: MIP WUV 5}
+- model: project_finances.financingdropdown
+  pk: 11
+  fields: {name: MIP WUV 6}
+- model: project_finances.financingdropdown
+  pk: 12
+  fields: {name: MIP WUV 7}
+- model: project_finances.financingdropdown
+  pk: 13
+  fields: {name: Budget funkt. Unterh}
+- model: project_finances.financingdropdown
+  pk: 14
+  fields: {name: Honorar GFP}
+- model: project_finances.financingdropdown
+  pk: 15
+  fields: {name: Honorar Elfenau}
+- model: project_finances.financingdropdown
+  pk: 16
+  fields: {name: Honorar Leitung}
+- model: project_finances.financingdropdown
+  pk: 17
+  fields: {name: Honorar GRG}
+- model: project_finances.financingdropdown
+  pk: 18
+  fields: {name: "Honorar Friedh\xF6fe"}
+- model: project_finances.financingdropdown
+  pk: 19
+  fields: {name: "Honorar Natur & \xD6kol"}
+- model: project_finances.financingdropdown
+  pk: 20
+  fields: {name: Honorar Realisierung}
+- model: project_finances.financingdropdown
+  pk: 21
+  fields: {name: Honorar Parkanlagen}
+- model: project_finances.financingdropdown
+  pk: 22
+  fields: {name: Budget Honorar Einna}
+- model: project_finances.financingdropdown
+  pk: 23
+  fields: {name: Fremdfinanziert}
