@@ -1,7 +1,5 @@
-from django.conf import settings
+# from django.conf import settings
 from django.db import models
-
-
 
 
 class LeadingRoleDropdown(models.Model):
@@ -101,7 +99,7 @@ Main
 
 class ProjectAssignment(models.Model):
     project = models.ForeignKey(
-        verbose_name='project assignment',
+        verbose_name='project name',
         to='project_data.ProjectData',
         on_delete=models.SET_NULL,
         null=True,
@@ -142,13 +140,22 @@ class ProjectAssignment(models.Model):
         blank=True,
         null=True,
     )
+# FIXME: THINK ABOUT HOW TO LINK THE USERS THE INITIALS IN THE DOPDOWNS
+    # project_management = models.ForeignKey(
+    #     verbose_name='project management',
+    #     help_text='Projektleitung',
+    #     to=settings.AUTH_USER_MODEL,
+    #     on_delete=models.SET_NULL,
+    #     related_name='project_assignment',
+    #     blank=True,
+    #     null=True,
+    # )
 
     project_management = models.ForeignKey(
         verbose_name='project management',
         help_text='Projektleitung',
-        to=settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
-        related_name='project_assignment',
+        to='project_assignment.PMDropdown',
         blank=True,
         null=True,
     )
@@ -188,3 +195,6 @@ class ProjectAssignment(models.Model):
         blank=True,
         null=True,
     )
+
+    def __str__(self):
+        return self.project.name
