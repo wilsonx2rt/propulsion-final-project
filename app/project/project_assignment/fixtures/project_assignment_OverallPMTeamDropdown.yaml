@@ -1,0 +1,27 @@
+- model: project_assignment.overallpmteamdropdown
+  pk: 1
+  fields: {name: offen}
+- model: project_assignment.overallpmteamdropdown
+  pk: 2
+  fields: {name: x}
+- model: project_assignment.overallpmteamdropdown
+  pk: 3
+  fields: {name: TWu}
+- model: project_assignment.overallpmteamdropdown
+  pk: 4
+  fields: {name: CRa}
+- model: project_assignment.overallpmteamdropdown
+  pk: 5
+  fields: {name: MSt}
+- model: project_assignment.overallpmteamdropdown
+  pk: 6
+  fields: {name: STs}
+- model: project_assignment.overallpmteamdropdown
+  pk: 7
+  fields: {name: SNe}
+- model: project_assignment.overallpmteamdropdown
+  pk: 8
+  fields: {name: NIn}
+- model: project_assignment.overallpmteamdropdown
+  pk: 9
+  fields: {name: CSc}

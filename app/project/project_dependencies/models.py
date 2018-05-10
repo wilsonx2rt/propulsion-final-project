@@ -5,7 +5,7 @@ from django.db import models
 # TODO: ask if it's enough if they can be edited/extended through out the duration of the project
 class ProjectDependencies(models.Model):
     project = models.ForeignKey(
-        verbose_name='project assignment',
+        verbose_name='project name',
         to='project_data.ProjectData',
         on_delete='models.SET_NULL',
     )
@@ -30,3 +30,6 @@ class ProjectDependencies(models.Model):
         null=True,
         blank=True,
     )
+
+    def __str__(self):
+        return self.project.name

@@ -44,15 +44,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'project.api',
-    'project.project_allocation',
     'project.project_data',
+    'project.project_allocation',
     'project.project_assignment',
     'project.project_finances',
     'project.project_milestones',
     'project.project_development',
     'project.project_dependencies',
     'project.helper_models',
+    'project.api',
 ]
 
 MIDDLEWARE = [

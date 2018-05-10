@@ -1,0 +1,18 @@
+- model: project_assignment.leadingteamdropdown
+  pk: 1
+  fields: {name: offen}
+- model: project_assignment.leadingteamdropdown
+  pk: 2
+  fields: {name: x}
+- model: project_assignment.leadingteamdropdown
+  pk: 3
+  fields: {name: Stab}
+- model: project_assignment.leadingteamdropdown
+  pk: 4
+  fields: {name: SSM}
+- model: project_assignment.leadingteamdropdown
+  pk: 5
+  fields: {name: GG}
+- model: project_assignment.leadingteamdropdown
+  pk: 6
+  fields: {name: "N\xD6"}

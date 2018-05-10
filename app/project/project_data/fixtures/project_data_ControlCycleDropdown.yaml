@@ -1,0 +1,15 @@
+- model: project_data.controlcycledropdown
+  pk: 1
+  fields: {name: offen}
+- model: project_data.controlcycledropdown
+  pk: 2
+  fields: {name: x}
+- model: project_data.controlcycledropdown
+  pk: 3
+  fields: {name: "14-t\xE4gig"}
+- model: project_data.controlcycledropdown
+  pk: 4
+  fields: {name: monatlich}
+- model: project_data.controlcycledropdown
+  pk: 5
+  fields: {name: quartal}

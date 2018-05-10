@@ -4,8 +4,11 @@ from django.db import models
 class MilestoneDropdown(models.Model):
     value = models.CharField(
         verbose_name='milestone dropdown value',
-        max_length=20,
+        max_length=100,
     )
+
+    def __str__(self):
+        return self.value
 
 
 class TendenciesDropdown(models.Model):
@@ -14,8 +17,18 @@ class TendenciesDropdown(models.Model):
         max_length=20,
     )
 
+    def __str__(self):
+        return self.value
+
 
 class CommentaryOptions(models.Model):
+    heading = models.CharField(
+        verbose_name='commentary heading',
+        help_text='Kommentar Title',
+        max_length=50,
+        null=True,
+    )
+
     external_factors = models.TextField(
         verbose_name='external factors',
         help_text='Einfluss externe Faktoren',
@@ -30,6 +43,9 @@ class CommentaryOptions(models.Model):
         blank=True
     )
 
+    def __str__(self):
+        return f'{self.heading}'
+
 
 """
 Main
@@ -38,7 +54,7 @@ Main
 
 class Milestones(models.Model):
     project = models.ForeignKey(
-        verbose_name='project assignment',
+        verbose_name='project name',
         to='project_data.ProjectData',
         on_delete=models.SET_NULL,
         null=True,
@@ -89,3 +105,10 @@ class Milestones(models.Model):
         null=True,
         blank=True,
     )
+
+    def __str__(self):
+        str = f'{self.project}/{self.year}/{self.milestone_calendar_week}'
+        return str
+
+    class Meta:
+        verbose_name_plural = "milestones"

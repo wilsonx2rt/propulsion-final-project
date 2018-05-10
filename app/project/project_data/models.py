@@ -166,12 +166,14 @@ class ProjectData(models.Model):
         verbose_name='strategic importance',
         help_text='Strategische Bedeutung',
         blank=True,
+        null=True,
     )
 
     operational_urgency = models.IntegerField(
         verbose_name='operational urgency',
         help_text='Operative Dringlichkeit',
         blank=True,
+        null=True,
     )
 
     political_significance = models.ForeignKey(
@@ -224,6 +226,7 @@ class ProjectData(models.Model):
         help_text='Projektziel',
         max_length=100,
         blank=True,
+        null=True
     )
 
     project_handbook = models.ForeignKey(
@@ -247,6 +250,7 @@ class ProjectData(models.Model):
         help_text='E3-Nummer',
         max_length=20,
         blank=True,
+        null=True,
     )
 
     business_category = models.IntegerField(
@@ -271,10 +275,11 @@ class ProjectData(models.Model):
     )
 
     business_number = models.CharField(
-        verbose_name='business',
+        verbose_name='business number',
         help_text='Geschäftsnummer',
         max_length=20,
         blank=True,
+        null=True,
     )
 
     project_status_phase = models.ForeignKey(
@@ -291,4 +296,8 @@ class ProjectData(models.Model):
         help_text='Bemerkung',
         max_length=200,
         blank=True,
+        null=True,
     )
+
+    def __str__(self):
+        return self.name

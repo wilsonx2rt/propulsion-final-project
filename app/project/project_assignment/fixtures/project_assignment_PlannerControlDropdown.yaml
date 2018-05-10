@@ -1,0 +1,57 @@
+- model: project_assignment.plannercontroldropdown
+  pk: 1
+  fields: {name: offen}
+- model: project_assignment.plannercontroldropdown
+  pk: 2
+  fields: {name: x}
+- model: project_assignment.plannercontroldropdown
+  pk: 3
+  fields: {name: Ext.}
+- model: project_assignment.plannercontroldropdown
+  pk: 4
+  fields: {name: AHo}
+- model: project_assignment.plannercontroldropdown
+  pk: 5
+  fields: {name: AZu}
+- model: project_assignment.plannercontroldropdown
+  pk: 6
+  fields: {name: CFr}
+- model: project_assignment.plannercontroldropdown
+  pk: 7
+  fields: {name: DHu}
+- model: project_assignment.plannercontroldropdown
+  pk: 8
+  fields: {name: FBo(ext.)}
+- model: project_assignment.plannercontroldropdown
+  pk: 9
+  fields: {name: IMe}
+- model: project_assignment.plannercontroldropdown
+  pk: 10
+  fields: {name: IWe}
+- model: project_assignment.plannercontroldropdown
+  pk: 11
+  fields: {name: JEn}
+- model: project_assignment.plannercontroldropdown
+  pk: 12
+  fields: {name: KMu}
+- model: project_assignment.plannercontroldropdown
+  pk: 13
+  fields: {name: LEr}
+- model: project_assignment.plannercontroldropdown
+  pk: 14
+  fields: {name: MSt}
+- model: project_assignment.plannercontroldropdown
+  pk: 15
+  fields: {name: NIn}
+- model: project_assignment.plannercontroldropdown
+  pk: 16
+  fields: {name: SGf}
+- model: project_assignment.plannercontroldropdown
+  pk: 17
+  fields: {name: SNe}
+- model: project_assignment.plannercontroldropdown
+  pk: 18
+  fields: {name: STs}
+- model: project_assignment.plannercontroldropdown
+  pk: 19
+  fields: {name: TWu}

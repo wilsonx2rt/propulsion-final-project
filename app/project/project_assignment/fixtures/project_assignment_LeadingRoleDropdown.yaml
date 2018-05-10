@@ -1,0 +1,42 @@
+- model: project_assignment.leadingroledropdown
+  pk: 1
+  fields: {name: offen}
+- model: project_assignment.leadingroledropdown
+  pk: 2
+  fields: {name: x}
+- model: project_assignment.leadingroledropdown
+  pk: 3
+  fields: {name: SGB}
+- model: project_assignment.leadingroledropdown
+  pk: 4
+  fields: {name: HSB}
+- model: project_assignment.leadingroledropdown
+  pk: 5
+  fields: {name: ISB}
+- model: project_assignment.leadingroledropdown
+  pk: 6
+  fields: {name: SA}
+- model: project_assignment.leadingroledropdown
+  pk: 7
+  fields: {name: SCH}
+- model: project_assignment.leadingroledropdown
+  pk: 8
+  fields: {name: SPA}
+- model: project_assignment.leadingroledropdown
+  pk: 9
+  fields: {name: TAB}
+- model: project_assignment.leadingroledropdown
+  pk: 10
+  fields: {name: VP}
+- model: project_assignment.leadingroledropdown
+  pk: 11
+  fields: {name: ASTRA}
+- model: project_assignment.leadingroledropdown
+  pk: 12
+  fields: {name: SBB}
+- model: project_assignment.leadingroledropdown
+  pk: 13
+  fields: {name: BLS}
+- model: project_assignment.leadingroledropdown
+  pk: 14
+  fields: {name: Andere}

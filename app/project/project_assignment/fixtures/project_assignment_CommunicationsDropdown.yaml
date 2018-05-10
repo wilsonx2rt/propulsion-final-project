@@ -1,0 +1,12 @@
+- model: project_assignment.communicationsdropdown
+  pk: 2
+  fields: {name: offen}
+- model: project_assignment.communicationsdropdown
+  pk: 3
+  fields: {name: x}
+- model: project_assignment.communicationsdropdown
+  pk: 5
+  fields: {name: Ext.}
+- model: project_assignment.communicationsdropdown
+  pk: 6
+  fields: {name: SGB}

@@ -1,0 +1,18 @@
+- model: project_assignment.constructionmanagementdropdown
+  pk: 1
+  fields: {name: offen}
+- model: project_assignment.constructionmanagementdropdown
+  pk: 2
+  fields: {name: x}
+- model: project_assignment.constructionmanagementdropdown
+  pk: 3
+  fields: {name: Ext.}
+- model: project_assignment.constructionmanagementdropdown
+  pk: 4
+  fields: {name: CFr}
+- model: project_assignment.constructionmanagementdropdown
+  pk: 5
+  fields: {name: FBo(ext.)}
+- model: project_assignment.constructionmanagementdropdown
+  pk: 6
+  fields: {name: SGf}

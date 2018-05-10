@@ -1,0 +1,12 @@
+- model: project_data.riskassessmentdropdown
+  pk: 1
+  fields: {name: offen}
+- model: project_data.riskassessmentdropdown
+  pk: 2
+  fields: {name: Einstufung A}
+- model: project_data.riskassessmentdropdown
+  pk: 3
+  fields: {name: Einstufung B}
+- model: project_data.riskassessmentdropdown
+  pk: 4
+  fields: {name: Einstufung C}

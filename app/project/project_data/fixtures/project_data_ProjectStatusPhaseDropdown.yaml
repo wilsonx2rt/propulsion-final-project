@@ -1,0 +1,63 @@
+- model: project_data.projectstatusphasedropdown
+  pk: 1
+  fields: {name: offen}
+- model: project_data.projectstatusphasedropdown
+  pk: 2
+  fields: {name: Sistiert}
+- model: project_data.projectstatusphasedropdown
+  pk: 3
+  fields: {name: Start ausstehend}
+- model: project_data.projectstatusphasedropdown
+  pk: 4
+  fields: {name: Anderes (nicht SIA)}
+- model: project_data.projectstatusphasedropdown
+  pk: 5
+  fields: {name: Anderes (nicht SIA)}
+- model: project_data.projectstatusphasedropdown
+  pk: 6
+  fields: {name: 1 Strategische Planung}
+- model: project_data.projectstatusphasedropdown
+  pk: 7
+  fields: {name: 21 Definition des Bauvorhabens}
+- model: project_data.projectstatusphasedropdown
+  pk: 8
+  fields: {name: 22 Auswahlverfahren}
+- model: project_data.projectstatusphasedropdown
+  pk: 9
+  fields: {name: 31 BGK}
+- model: project_data.projectstatusphasedropdown
+  pk: 10
+  fields: {name: 31 Vorprojekt}
+- model: project_data.projectstatusphasedropdown
+  pk: 11
+  fields: {name: 32 Bauprojekt}
+- model: project_data.projectstatusphasedropdown
+  pk: 12
+  fields: {name: 33 Bewilligungsverfahren}
+- model: project_data.projectstatusphasedropdown
+  pk: 13
+  fields: {name: '41 Ausschreibung, Offertvergleich, Vergabe'}
+- model: project_data.projectstatusphasedropdown
+  pk: 14
+  fields: {name: "51 Ausf\xFChrungsprojekt"}
+- model: project_data.projectstatusphasedropdown
+  pk: 15
+  fields: {name: 52 Realisierung}
+- model: project_data.projectstatusphasedropdown
+  pk: 16
+  fields: {name: '53 Inbetriebnahme, Abschluss'}
+- model: project_data.projectstatusphasedropdown
+  pk: 17
+  fields: {name: Abr. / Archiv}
+- model: project_data.projectstatusphasedropdown
+  pk: 18
+  fields: {name: 61 Betrieb}
+- model: project_data.projectstatusphasedropdown
+  pk: 19
+  fields: {name: "62 \xDCberwachung, \xDCberpr\xFCfung, Wartung"}
+- model: project_data.projectstatusphasedropdown
+  pk: 20
+  fields: {name: 63 Instandhaltung}
+- model: project_data.projectstatusphasedropdown
+  pk: 21
+  fields: {name: Abgeschlossen}
