@@ -31,6 +31,34 @@ class CreditStatusDropdown(models.Model):
         return self.name
 
 
+class YearlyForecast(models.Model):
+    year = models.ForeignKey(
+        verbose_name='year',
+        help_text='Jahr',
+        on_delete=models.SET_NULL,
+        to='helper_models.Year',
+        null=True,
+        blank=True,
+    )
+    VAT = models.IntegerField(
+        verbose_name='VAT',
+        help_text='Mehrwertabschöpfung',
+        blank=True,
+        null=True,
+    )
+
+    forecast_further_years = models.IntegerField(
+        verbose_name='forecast',
+        help_text='Prognose',
+        blank=True,
+        null=True,
+    )
+
+    def __str__(self):
+        str = f'{self.year} Prognose'
+        return str
+
+
 """
 Main
 """
@@ -128,34 +156,13 @@ class ProjectFinances(models.Model):
         null=True,
     )
 
-    # TODO: MAKE YEARLY FORECASTS DYNAMIC !!!
-
-    VAT_following_year = models.IntegerField(
-        verbose_name='VAT following year',
-        help_text='Mehrwertabschöpfung folgendes Jahr',
-        blank=True,
+    yearly_forecasts = models.ForeignKey(
+        verbose_name='yearly forecasts',
+        help_text='Prognosen',
+        on_delete=models.SET_NULL,
+        to='project_finances.YearlyForecast',
         null=True,
-    )
-
-    forecast_following_year = models.IntegerField(
-        verbose_name='forecast following year',
-        help_text='Prognose folgendes Jahr',
         blank=True,
-        null=True,
-    )
-
-    VAT_further_years = models.IntegerField(
-        verbose_name='VAT following year',
-        help_text='Mehrwertabschöpfung weitere Jahre',
-        blank=True,
-        null=True,
-    )
-
-    forecast_further_years = models.IntegerField(
-        verbose_name='forecast further years',
-        help_text='Prognose weitere Jahre',
-        blank=True,
-        null=True,
     )
 
     def __str__(self):
