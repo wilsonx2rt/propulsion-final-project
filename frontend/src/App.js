@@ -3,6 +3,7 @@ import './App.css';
 
 import Header from './Components/Header'
 import Button from './Components/Button';
+import SearchBox from './Components/SearchBox';
 
 class App extends Component {
   render() {
@@ -10,6 +11,7 @@ class App extends Component {
       <div>
         <Header />
         <Button />
+        <SearchBox />
       </div>
     );
   }
