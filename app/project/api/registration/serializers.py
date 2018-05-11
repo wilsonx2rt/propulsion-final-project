@@ -7,13 +7,6 @@ from project.helper_models.models import UserProfile
 User = get_user_model()
 
 
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ['id', 'first_name', 'last_name', 'username']
-        read_only_fields = fields
-
-
 class RegistrationSerializer(serializers.Serializer):
     first_name = serializers.CharField(
         label='PM first name'
@@ -47,7 +40,7 @@ class RegistrationSerializer(serializers.Serializer):
         message = EmailMessage(
             subject='Registration',
             body=f'This is your registration link =>> http://forecastingtool.propulsion-learn.ch/registration/'
-                 f'validation?code={code}&email={email}',
+                 f'validation?email={email}&validation?code={code}',
             to=[email],
         )
         message.send()
