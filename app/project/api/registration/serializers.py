@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from django.core.mail import EmailMessage
 from rest_framework import serializers
 
-from project.helper_models.models import UserProfile
+from project.user.models import UserProfile
 
 User = get_user_model()
 
