@@ -1,0 +1,22 @@
+#search-field__input {
+  box-sizing: border-box;
+  position: relative;
+  right: 280px;
+  bottom: 20px;
+
+  width: 274px;
+  height: 40px;
+  padding: 9px 35px 9px 10px;
+  line-height: 1.3em;
+  font-size: 16px;
+  border: 1px solid white;
+}
+
+#search-field:focus {
+  outline: none;
+}
+
+#search-field__bern-colors {
+  width: 285px;
+  height: 52px;
+}

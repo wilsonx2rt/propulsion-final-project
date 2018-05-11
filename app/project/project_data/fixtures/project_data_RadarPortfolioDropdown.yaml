@@ -1,0 +1,21 @@
+- model: project_data.radarportfoliodropdown
+  pk: 4
+  fields: {name: offen}
+- model: project_data.radarportfoliodropdown
+  pk: 5
+  fields: {name: x}
+- model: project_data.radarportfoliodropdown
+  pk: 6
+  fields: {name: Grundstock}
+- model: project_data.radarportfoliodropdown
+  pk: 7
+  fields: {name: Radar}
+- model: project_data.radarportfoliodropdown
+  pk: 8
+  fields: {name: PP}
+- model: project_data.radarportfoliodropdown
+  pk: 9
+  fields: {name: Sistiert}
+- model: project_data.radarportfoliodropdown
+  pk: 10
+  fields: {name: Abgeschl.}

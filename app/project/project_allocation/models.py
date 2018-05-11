@@ -14,7 +14,7 @@ Main
 
 class ProjectAllocation(models.Model):
     project = models.ForeignKey(
-        verbose_name='project assignment',
+        verbose_name='project name',
         to='project_data.ProjectData',
         on_delete='models.SET_NULL',
     )
@@ -25,7 +25,6 @@ class ProjectAllocation(models.Model):
         on_delete=models.SET_NULL,
         to='helper_models.Year',
         null=True,
-        blank=True,
     )
 
     quarter = models.CharField(
@@ -105,3 +104,7 @@ class ProjectAllocation(models.Model):
         blank=True,
         null=True,
     )
+
+    def __str__(self):
+        str = f'{self.project}/{self.year}/{self.quarter}'
+        return str

@@ -1,0 +1,15 @@
+- model: project_finances.requirementsassessmentdropdown
+  pk: 1
+  fields: {name: offen}
+- model: project_finances.requirementsassessmentdropdown
+  pk: 2
+  fields: {name: x}
+- model: project_finances.requirementsassessmentdropdown
+  pk: 3
+  fields: {name: angemeldet}
+- model: project_finances.requirementsassessmentdropdown
+  pk: 4
+  fields: {name: ausstehend}
+- model: project_finances.requirementsassessmentdropdown
+  pk: 5
+  fields: {name: bewilligt}

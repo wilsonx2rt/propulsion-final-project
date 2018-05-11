@@ -1,0 +1,18 @@
+- model: project_assignment.ilustratordropdown
+  pk: 1
+  fields: {name: offen}
+- model: project_assignment.ilustratordropdown
+  pk: 2
+  fields: {name: x}
+- model: project_assignment.ilustratordropdown
+  pk: 3
+  fields: {name: Ext.}
+- model: project_assignment.ilustratordropdown
+  pk: 4
+  fields: {name: AHo}
+- model: project_assignment.ilustratordropdown
+  pk: 5
+  fields: {name: IMe}
+- model: project_assignment.ilustratordropdown
+  pk: 6
+  fields: {name: JFI}

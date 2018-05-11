@@ -1,0 +1,66 @@
+- model: project_assignment.pmdropdown
+  pk: 1
+  fields: {name: offen}
+- model: project_assignment.pmdropdown
+  pk: 2
+  fields: {name: x}
+- model: project_assignment.pmdropdown
+  pk: 3
+  fields: {name: Ext.}
+- model: project_assignment.pmdropdown
+  pk: 4
+  fields: {name: AHo}
+- model: project_assignment.pmdropdown
+  pk: 5
+  fields: {name: AZu}
+- model: project_assignment.pmdropdown
+  pk: 6
+  fields: {name: CFr}
+- model: project_assignment.pmdropdown
+  pk: 7
+  fields: {name: CRa}
+- model: project_assignment.pmdropdown
+  pk: 8
+  fields: {name: DHu}
+- model: project_assignment.pmdropdown
+  pk: 9
+  fields: {name: FBo(ext.)}
+- model: project_assignment.pmdropdown
+  pk: 10
+  fields: {name: IMe}
+- model: project_assignment.pmdropdown
+  pk: 11
+  fields: {name: IWe}
+- model: project_assignment.pmdropdown
+  pk: 12
+  fields: {name: JEn}
+- model: project_assignment.pmdropdown
+  pk: 13
+  fields: {name: KMu}
+- model: project_assignment.pmdropdown
+  pk: 14
+  fields: {name: LEr}
+- model: project_assignment.pmdropdown
+  pk: 15
+  fields: {name: MSt}
+- model: project_assignment.pmdropdown
+  pk: 16
+  fields: {name: NIn}
+- model: project_assignment.pmdropdown
+  pk: 17
+  fields: {name: SGf}
+- model: project_assignment.pmdropdown
+  pk: 18
+  fields: {name: SNe}
+- model: project_assignment.pmdropdown
+  pk: 19
+  fields: {name: STs}
+- model: project_assignment.pmdropdown
+  pk: 20
+  fields: {name: TWu}
+- model: project_assignment.pmdropdown
+  pk: 21
+  fields: {name: Rki}
+- model: project_assignment.pmdropdown
+  pk: 22
+  fields: {name: Anderes Amt}

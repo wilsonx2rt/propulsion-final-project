@@ -1,9 +1,0 @@
-- model- model: project_data.RadarPortfolioDropdown
-  pk: 1
-  fields:
-    name: John
-
-- model: project_data.RadarPortfolioDropdown
-  pk: 2
-  fields:
-    last_name: McCartney
