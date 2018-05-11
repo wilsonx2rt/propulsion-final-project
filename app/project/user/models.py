@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.db import models
-from project.api.helpers import code_generator
+
+from .helpers import code_generator
 
 
 class UserProfile(models.Model):

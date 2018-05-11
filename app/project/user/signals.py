@@ -1,4 +1,4 @@
-from project.helper_models.models import UserProfile
+from .models import UserProfile
 
 
 def create_profile(sender, **kwargs):

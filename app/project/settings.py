@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'project.api',
+    'project.user',
     'project.project_allocation',
     'project.project_data',
     'project.project_assignment',

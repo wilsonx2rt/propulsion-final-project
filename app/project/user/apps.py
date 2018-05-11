@@ -3,10 +3,10 @@ from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save
 
 
-class MyAppConfig(AppConfig):
-    name = 'project.api'
+class UserAppConfig(AppConfig):
+    name = 'project.user'
 
     def ready(self):
         User = get_user_model()
-        from project.api.signals import create_profile
+        from .signals import create_profile
         post_save.connect(create_profile, sender=User)
