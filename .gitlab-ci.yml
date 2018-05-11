@@ -2,7 +2,7 @@ stages:
   - pull
   - build
   - lint
-  - test
+#  - test
   - push
   - deploy
   - cleanup
@@ -29,15 +29,15 @@ lint:
     - export CI_BUILD_REF_NAME=$CI_BUILD_REF_NAME
     - docker-compose -p "$CI_PIPELINE_ID" -f docker-compose.test.yml run app flake8 .
 
-test:
-  stage: test
-  script:
-    - export CI_PIPELINE_ID=$CI_PIPELINE_ID
-    - export CI_BUILD_REF_NAME=$CI_BUILD_REF_NAME
-    - docker-compose -p "$CI_PIPELINE_ID" -f docker-compose.test.yml run app sh /scripts/test.sh
-  artifacts:
-    paths:
-      - coverage/
+#test:
+#  stage: test
+#  script:
+#    - export CI_PIPELINE_ID=$CI_PIPELINE_ID
+#    - export CI_BUILD_REF_NAME=$CI_BUILD_REF_NAME
+#    - docker-compose -p "$CI_PIPELINE_ID" -f docker-compose.test.yml run app sh /scripts/test.sh
+#  artifacts:
+#    paths:
+#      - coverage/
 
 pages:
  stage: deploy
