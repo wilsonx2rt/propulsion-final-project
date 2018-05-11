@@ -1,4 +1,4 @@
-#search-field {
+#search-field__input {
   box-sizing: border-box;
   position: relative;
   right: 280px;
@@ -16,7 +16,7 @@
   outline: none;
 }
 
-#bern-colors {
+#search-field__bern-colors {
   width: 285px;
   height: 52px;
 }
