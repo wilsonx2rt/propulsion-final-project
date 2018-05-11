@@ -7,7 +7,6 @@ QUARTER_CHOICES = (
     ('Q4', 'Q4')
 )
 
-
 """
 Main
 """

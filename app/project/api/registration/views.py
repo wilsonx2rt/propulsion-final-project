@@ -6,7 +6,7 @@ from .serializers import RegistrationSerializer, RegistrationValidationSerialize
 
 
 class RegistrationView(GenericAPIView):
-    permission_classes = [IsAdminOrReadOnly,]
+    permission_classes = [IsAdminOrReadOnly, ]
     serializer_class = RegistrationSerializer
     output_serailizer_class = UserSerializer
 

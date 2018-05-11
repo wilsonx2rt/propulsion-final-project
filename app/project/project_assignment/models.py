@@ -2,8 +2,6 @@ from django.conf import settings
 from django.db import models
 
 
-
-
 class LeadingRoleDropdown(models.Model):
     name = models.CharField(
         verbose_name='name',
