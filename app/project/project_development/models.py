@@ -6,6 +6,7 @@ class ProjectStatusDropdown(models.Model):
     value = models.CharField(
         verbose_name='status value',
         max_length=20,
+        null=True,
     )
 
     def __str__(self):
@@ -16,6 +17,7 @@ class ProjectTendencyDropdown(models.Model):
     value = models.CharField(
         verbose_name='tendency value',
         max_length=20,
+        null=True,
     )
 
     def __str__(self):

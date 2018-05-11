@@ -6,6 +6,7 @@ class Year(models.Model):
         verbose_name='year',
         help_text='jahr',
         max_length=4,
+        null=True,
     )
 
     def __str__(self):
@@ -16,6 +17,7 @@ class CalendarWeek(models.Model):
     week = models.CharField(
         verbose_name='calendar week',
         max_length=10,
+        null=True,
     )
 
     def __str__(self):

@@ -5,6 +5,7 @@ class RadarPortfolioDropdown(models.Model):
     name = models.CharField(
         verbose_name='name',
         max_length=100,
+        null=True,
     )
 
     def __str__(self):
@@ -15,6 +16,7 @@ class BusinessProposalDropdown(models.Model):
     name = models.CharField(
         verbose_name='name',
         max_length=100,
+        null=True,
     )
 
     def __str__(self):
@@ -25,6 +27,7 @@ class ProjectTypeDropdown(models.Model):
     name = models.CharField(
         verbose_name='name',
         max_length=100,
+        null=True,
     )
 
     def __str__(self):
@@ -35,6 +38,7 @@ class ProjectNatureDropdown(models.Model):
     name = models.CharField(
         verbose_name='name',
         max_length=100,
+        null=True,
     )
 
     def __str__(self):
@@ -45,6 +49,7 @@ class PoliticalSignificanceDropdown(models.Model):
     name = models.CharField(
         verbose_name='name',
         max_length=100,
+        null=True,
     )
 
     def __str__(self):
@@ -56,6 +61,7 @@ class ProjectPriorityDropdown(models.Model):
     name = models.CharField(
         verbose_name='name',
         max_length=100,
+        null=True,
     )
 
     def __str__(self):
@@ -66,6 +72,7 @@ class ProjectCharacterDropdown(models.Model):
     name = models.CharField(
         verbose_name='name',
         max_length=100,
+        null=True,
     )
 
     def __str__(self):
@@ -77,6 +84,7 @@ class ControlCycleDropdown(models.Model):
     name = models.CharField(
         verbose_name='name',
         max_length=100,
+        null=True,
     )
 
     def __str__(self):
@@ -87,6 +95,7 @@ class RiskAssessmentDropdown(models.Model):
     name = models.CharField(
         verbose_name='name',
         max_length=100,
+        null=True,
     )
 
     def __str__(self):
@@ -97,6 +106,7 @@ class ProjectHandbookDropdown(models.Model):
     name = models.CharField(
         verbose_name='name',
         max_length=100,
+        null=True,
     )
 
     def __str__(self):
@@ -107,6 +117,7 @@ class ProjectStatusPhaseDropdown(models.Model):
     name = models.CharField(
         verbose_name='name',
         max_length=100,
+        null=True,
     )
 
     def __str__(self):

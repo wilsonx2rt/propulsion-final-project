@@ -1,11 +1,11 @@
-from rest_framework.generics import GenericAPIView
-from rest_framework.response import Response
+from rest_framework.generics import ListAPIView
 
 from project.api.permissions import IsAdminOrReadOnly
+from project.api.projects.project_data.serializers import ProjectDataSerializer
+from project.project_data.models import ProjectData
 
 
-class OverviewView(GenericAPIView):
+class OverviewView(ListAPIView):
+    queryset = ProjectData.objects.all()
     permission_classes = [IsAdminOrReadOnly, ]
-
-    def get(self, request):
-        return Response('Hello')
+    serializer_class = ProjectDataSerializer

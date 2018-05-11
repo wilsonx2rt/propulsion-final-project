@@ -5,6 +5,7 @@ class FinancingDropdown(models.Model):
     name = models.CharField(
         verbose_name='name',
         max_length=20,
+        null=True,
     )
 
     def __str__(self):
@@ -15,6 +16,7 @@ class RequirementsAssessmentDropdown(models.Model):
     name = models.CharField(
         verbose_name='name',
         max_length=20,
+        null=True,
     )
 
     def __str__(self):
@@ -25,6 +27,7 @@ class CreditStatusDropdown(models.Model):
     name = models.CharField(
         verbose_name='name',
         max_length=20,
+        null=True,
     )
 
     def __str__(self):
@@ -68,7 +71,7 @@ class ProjectFinances(models.Model):
     project = models.ForeignKey(
         verbose_name='project name',
         to='project_data.ProjectData',
-        on_delete='models.SET_NULL',
+        on_delete=models.SET_NULL,
         null=True,
     )
 
