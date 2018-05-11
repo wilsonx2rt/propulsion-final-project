@@ -45,7 +45,7 @@ pages:
  dependencies:
    - test
  script:
-   - mv htmlcov public
+   - mv coverage public
  artifacts:
    paths:
      - public
