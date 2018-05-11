@@ -1,6 +1,7 @@
 .button {
   display: inline;
   padding: .5em;
+  margin-right: 20px;
   cursor: pointer;
   overflow: hidden;
   border-width: 0;
