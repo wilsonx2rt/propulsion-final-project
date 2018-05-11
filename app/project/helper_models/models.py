@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from project.api.helpers import code_generator
 
 
 class Year(models.Model):
@@ -34,6 +35,22 @@ class UserProfile(models.Model):
         verbose_name='User is admin',
         default=False,
     )
+    abreviation = models.CharField(
+        verbose_name='User initials',
+        max_length=10,
+        null=True,
+    )
+    code = models.CharField(
+        verbose_name='code',
+        help_text='Random code used for registration and for password reset',
+        max_length=15,
+        default=code_generator
+    )
+
+    def generate_new_code(self):
+        self.code = code_generator()
+        self.save()
+        return self.code
 
     def __str__(self):
         return self.user.username
