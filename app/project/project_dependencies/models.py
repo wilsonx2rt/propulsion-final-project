@@ -1,8 +1,6 @@
 from django.db import models
 
 
-# TODO: Multiple entries per project should be possible !!!
-# TODO: ask if it's enough if they can be edited/extended through out the duration of the project
 class ProjectDependencies(models.Model):
     project = models.ForeignKey(
         verbose_name='project name',
