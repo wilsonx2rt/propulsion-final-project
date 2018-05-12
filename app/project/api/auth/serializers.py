@@ -13,7 +13,7 @@ class PasswordResetSerializer(serializers.Serializer):
     def validate_email(self, value):
         try:
             user = User.objects.get(email=value)
-            return user.email
+            return user
         except User.DoesNotExist:
             raise serializers.ValidationError(
                 "User with this email address does not exist."
@@ -29,13 +29,11 @@ class PasswordResetSerializer(serializers.Serializer):
         )
         message.send()
 
-    def update_user(self, email):
-        user = User.objects.get(
-            email=email
-        )
+    def save(self, validated_data):
+        user = validated_data.get('email')
         user.user_profile.generate_new_code()
         self.send_password_reset_email(
-            email=email,
+            email=user.email,
             code=user.user_profile.code,
         )
         return user
