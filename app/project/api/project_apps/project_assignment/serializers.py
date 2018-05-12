@@ -1,6 +1,5 @@
 from rest_framework import serializers
 
-from project.api.project_apps.project_data.serializers import ProjectDataSerializer
 from project.project_assignment.models import ProjectAssignment, LeadingRoleDropdown, LeadingTeamDropdown, \
     ProjectResponsibilityDropdown, OverallPMTeamDropdown, PMDropdown, PlannerControlDropdown, \
     ConstructionManagementDropdown, IllustratorDropdown, CommunicationsDropdown
