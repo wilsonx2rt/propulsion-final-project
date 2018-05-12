@@ -7,8 +7,9 @@ from project.api.overview.serializers import OverviewSerializer
 from project.api.permissions import IsAdminOrReadOnly
 from project.project_assignment.models import ProjectAssignment
 from project.project_data.models import ProjectData
+from project.project_finances.models import ProjectFinances
 
-ProjectOverview = namedtuple('ProjectOverview', ('project_data', 'project_roles'))
+ProjectOverview = namedtuple('ProjectOverview', ('project_data', 'project_roles', 'fin'))
 
 
 class OverviewView(viewsets.ViewSet):
@@ -18,6 +19,7 @@ class OverviewView(viewsets.ViewSet):
         project_overview = ProjectOverview(
             project_data=ProjectData.objects.all(),
             project_roles=ProjectAssignment.objects.all(),
+            fin=ProjectFinances.objects.all()
         )
         serializer = OverviewSerializer(project_overview)
         return Response(serializer.data)
