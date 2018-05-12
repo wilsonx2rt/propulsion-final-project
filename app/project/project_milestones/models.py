@@ -5,6 +5,7 @@ class MilestoneDropdown(models.Model):
     value = models.CharField(
         verbose_name='milestone dropdown value',
         max_length=100,
+        null=True,
     )
 
     def __str__(self):
@@ -15,6 +16,7 @@ class TendenciesDropdown(models.Model):
     value = models.CharField(
         verbose_name='tendencies dropdown value',
         max_length=20,
+        null=True,
     )
 
     def __str__(self):

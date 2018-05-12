@@ -5,6 +5,7 @@ class FinancingDropdown(models.Model):
     name = models.CharField(
         verbose_name='name',
         max_length=20,
+        null=True,
     )
 
     def __str__(self):
@@ -15,6 +16,7 @@ class RequirementsAssessmentDropdown(models.Model):
     name = models.CharField(
         verbose_name='name',
         max_length=20,
+        null=True,
     )
 
     def __str__(self):
@@ -25,6 +27,7 @@ class CreditStatusDropdown(models.Model):
     name = models.CharField(
         verbose_name='name',
         max_length=20,
+        null=True,
     )
 
     def __str__(self):
@@ -32,6 +35,13 @@ class CreditStatusDropdown(models.Model):
 
 
 class YearlyForecast(models.Model):
+    project = models.ForeignKey(
+        verbose_name='project name',
+        to='project_data.ProjectData',
+        on_delete=models.SET_NULL,
+        null=True,
+    )
+
     year = models.ForeignKey(
         verbose_name='year',
         help_text='Jahr',
@@ -55,7 +65,7 @@ class YearlyForecast(models.Model):
     )
 
     def __str__(self):
-        str = f'{self.year} Prognose'
+        str = f'{self.year} Prognose {self.project}'
         return str
 
 
@@ -68,7 +78,7 @@ class ProjectFinances(models.Model):
     project = models.ForeignKey(
         verbose_name='project name',
         to='project_data.ProjectData',
-        on_delete='models.SET_NULL',
+        on_delete=models.SET_NULL,
         null=True,
     )
 
@@ -166,4 +176,4 @@ class ProjectFinances(models.Model):
     )
 
     def __str__(self):
-        return self.project.name
+        return f'{self.project}'
