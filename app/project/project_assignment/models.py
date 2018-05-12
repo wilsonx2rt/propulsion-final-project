@@ -72,7 +72,7 @@ class ConstructionManagementDropdown(models.Model):
         return self.name
 
 
-class IlustratorDropdown(models.Model):
+class IllustratorDropdown(models.Model):
     name = models.CharField(
         verbose_name='name',
         max_length=20,
@@ -182,7 +182,7 @@ class ProjectAssignment(models.Model):
         verbose_name='illustrator',
         help_text='ZeichnerIn',
         on_delete=models.SET_NULL,
-        to='project_assignment.IlustratorDropdown',
+        to='project_assignment.IllustratorDropdown',
         blank=True,
         null=True,
     )
@@ -197,4 +197,4 @@ class ProjectAssignment(models.Model):
     )
 
     def __str__(self):
-        return self.project.name
+        return f'{self.project}'
