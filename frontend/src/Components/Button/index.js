@@ -3,9 +3,9 @@ import './index.css'
 
 const Button = (props) => {
   return (
-    <div className='button'>
+    <button className='button' type={ props.type }>
       {props.btnText}
-    </div>
+    </button>
   )
 }
 
