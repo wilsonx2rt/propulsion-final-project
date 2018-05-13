@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./index.css";
 
-import LoginForm from "../LoginForm";
+// import LoginForm from "../LoginForm";
 
 import arrows from "../../assets/dropdown-arrows.png";
 import Button from "../Button";

@@ -1,6 +1,11 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import "./index.css";
-import Button from '../Button'
+
+import { loginAction } from '../../store/actions/userActions';
+import Button from '../Button';
+import { hideValidationMessage } from '../../helpers';
 
 class LoginForm extends Component {
   constructor(props) {
@@ -11,22 +16,30 @@ class LoginForm extends Component {
       password: ""
     };
   }
-  
+
   handleChange = e => {
     this.setState({
-      [e.target.id]: e.target.value
+      [e.target.name]: e.target.value
     });
   };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    hideValidationMessage();
+    const action = loginAction(this.state, this.props);
+    this.props.dispatch(action);
+    document.querySelector('#login-form').reset();
+  }
 
   render() {
     return (
       <div className="login-form-wrapper">
-        <form id="login-form">
+        <form id="login-form" onSubmit={ this.handleSubmit } noValidate>
+          <p className='login-form__validation-message generic-validation-message hidden-element'>Ungültiger Benutzername oder Kennwort</p>
           <input
             className="login-form__input"
             type="email"
             name="username"
-            id="username"
             placeholder="Email"
             onChange={this.handleChange}
           />
@@ -34,15 +47,24 @@ class LoginForm extends Component {
             className="login-form__input"
             type="password"
             name="password"
-            id="password"
             placeholder="Kennwort"
             onChange={this.handleChange}
           />
-          <Button id="login-form__button" btnText="Login"/>
+          <Button 
+            id="login-form__button" 
+            btnText="Login" 
+            type='submit'
+          />
         </form>
       </div>
     );
   }
 }
 
-export default LoginForm;
+const mapStateToProps = (state, props) => {
+  return {
+
+  }
+}
+
+export default withRouter(connect(mapStateToProps)(LoginForm));
