@@ -101,6 +101,7 @@ class ProjectAssignment(models.Model):
     project = models.ForeignKey(
         verbose_name='project name',
         to='project_data.ProjectData',
+        related_name='project_assignment',
         on_delete=models.SET_NULL,
         null=True,
     )

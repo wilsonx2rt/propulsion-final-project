@@ -73,17 +73,17 @@ class ProjectStatusPhaseDropdownSerializer(serializers.ModelSerializer):
 
 
 class ProjectDataSerializer(serializers.ModelSerializer):
-    radar_portfolio = RadarPortfolioDropdownSerializer()
-    business_proposal = BusinessProposalDropdownSerializer()
-    project_type = ProjectTypeDropdownSerializer()
-    project_nature = ProjectNatureDropdownSerializer()
-    political_significance = PoliticalSignificanceDropdownSerializer()
-    project_priority = ProjectPriorityDropdownSerializer()
-    project_character = ProjectCharacterDropdownSerializer()
-    control_cycle = ControlCycleDropdownSerializer()
-    risk_assessment = RiskAssessmentDropdownSerializer()
-    project_handbook = ProjectHandbookDropdownSerializer()
-    project_status_phase = ProjectStatusPhaseDropdownSerializer()
+    radar_portfolio = RadarPortfolioDropdownSerializer(read_only=True)
+    business_proposal = BusinessProposalDropdownSerializer(read_only=True)
+    project_type = ProjectTypeDropdownSerializer(read_only=True)
+    project_nature = ProjectNatureDropdownSerializer(read_only=True)
+    political_significance = PoliticalSignificanceDropdownSerializer(read_only=True)
+    project_priority = ProjectPriorityDropdownSerializer(read_only=True)
+    project_character = ProjectCharacterDropdownSerializer(read_only=True)
+    control_cycle = ControlCycleDropdownSerializer(read_only=True)
+    risk_assessment = RiskAssessmentDropdownSerializer(read_only=True)
+    project_handbook = ProjectHandbookDropdownSerializer(read_only=True)
+    project_status_phase = ProjectStatusPhaseDropdownSerializer(read_only=True)
 
     class Meta:
         model = ProjectData

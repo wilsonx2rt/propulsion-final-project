@@ -1,23 +1,26 @@
-from collections import namedtuple
+from django.contrib.auth import get_user_model
+from rest_framework.generics import ListAPIView
 
-from rest_framework import viewsets
-from rest_framework.response import Response
-
-from project.api.overview.serializers import OverviewSerializer
+from project.api.overview.serializers import ProjectOverviewSerializer
 from project.api.permissions import IsAdminOrReadOnly
-from project.project_assignment.models import ProjectAssignment
 from project.project_data.models import ProjectData
+from project.user.serializers import UserSerializer
 
-ProjectOverview = namedtuple('ProjectOverview', ('project_data', 'project_roles'))
+User = get_user_model()
 
 
-class OverviewView(viewsets.ViewSet):
+class ProjectOverviewView(ListAPIView):
     permission_classes = [IsAdminOrReadOnly, ]
+    serializer_class = ProjectOverviewSerializer
+    queryset = ProjectData.objects.all()
 
-    def list(self, request):
-        project_overview = ProjectOverview(
-            project_data=ProjectData.objects.all(),
-            project_roles=ProjectAssignment.objects.all(),
-        )
-        serializer = OverviewSerializer(project_overview)
-        return Response(serializer.data)
+
+class ProjectManagersOverviewView(ListAPIView):
+    serializer_class = UserSerializer
+    queryset = User.objects.all()
+
+    def filter_queryset(self, queryset):
+        search_string = self.request.query_params.get('search')
+        if search_string:
+            queryset = queryset.filter(content__contains=search_string)
+        return queryset

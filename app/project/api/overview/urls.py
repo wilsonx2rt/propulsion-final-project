@@ -1,9 +1,18 @@
 from django.urls import path
 
-from project.api.overview.views import OverviewView
+from project.api.overview.views import ProjectOverviewView, ProjectManagersOverviewView
 
 app_name = 'overview'
 
 urlpatterns = [
-    path('', OverviewView.as_view({'get': 'list'}), name='overview'),
+    path(
+        route='projects/',
+        view=ProjectOverviewView.as_view(),
+        name='projects overview'
+    ),
+    path(
+        route='managers/',
+        view=ProjectManagersOverviewView.as_view(),
+        name='managers overview'
+    )
 ]

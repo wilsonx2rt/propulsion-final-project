@@ -16,6 +16,7 @@ class ProjectAllocation(models.Model):
     project = models.ForeignKey(
         verbose_name='project name',
         to='project_data.ProjectData',
+        related_name='project_allocations',
         on_delete=models.SET_NULL,
         null=True,
     )
