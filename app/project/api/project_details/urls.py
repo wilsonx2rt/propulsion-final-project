@@ -15,5 +15,4 @@ urlpatterns = [
         view=ProjectGetView.as_view(),
         name='project_get'
     ),
-
 ]

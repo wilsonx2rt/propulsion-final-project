@@ -1,9 +1,18 @@
-from rest_framework.generics import GenericAPIView
+from rest_framework.generics import GenericAPIView, CreateAPIView
 from rest_framework.response import Response
 
 from project.api.permissions import IsAdminOrReadOnly
 from project.api.project_apps.project_data.serializers import ProjectDataUpdateSerializer, ProjectDataSerializer
 from project.project_data.models import ProjectData
+
+
+class ProjectDataCreateView(CreateAPIView):
+    '''
+    Creates new object
+    '''
+    permission_classes = [IsAdminOrReadOnly]
+    serializer_class = ProjectDataUpdateSerializer
+    queryset = ProjectData.objects.all()
 
 
 class ProjectDataUpdateView(GenericAPIView):
