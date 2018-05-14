@@ -1,6 +1,6 @@
 from django.urls import path
 
-from project.api.project_apps.project_data.views import ProjectDataCreateView, ProjectDataUpdateView
+from project.api.project_apps.project_data.views import ProjectDataCreateView, ProjectDataUpdateDeleteView
 
 app_name = 'project_data'
 
@@ -12,7 +12,7 @@ urlpatterns = [
     ),
     path(
         route='<int:pk>/',
-        view=ProjectDataUpdateView.as_view(),
-        name='project_data_update'
+        view=ProjectDataUpdateDeleteView.as_view(),
+        name='project_data_update_delete'
     ),
 ]

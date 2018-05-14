@@ -1,6 +1,7 @@
 from django.urls import path
 
-from project.api.project_apps.project_finances.views import ProjectFinancesCreateView, ProjectFinancesUpdateView
+from project.api.project_apps.project_finances.views import ProjectFinancesCreateView, \
+    ProjectFinancesUpdateDeleteView
 
 app_name = 'project_finances'
 
@@ -12,7 +13,7 @@ urlpatterns = [
     ),
     path(
         route='<int:pk>/',
-        view=ProjectFinancesUpdateView.as_view(),
-        name='project_finances_update'
+        view=ProjectFinancesUpdateDeleteView.as_view(),
+        name='project_finances_update_delete'
     ),
 ]
