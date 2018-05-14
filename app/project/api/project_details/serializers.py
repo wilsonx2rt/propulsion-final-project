@@ -11,11 +11,11 @@ from project.project_data.models import ProjectData
 
 
 class ProjectDetailsSerializer(ProjectDataSerializer):
-    project_assignment = ProjectAssignmentSerializer(read_only=True, many=True)
-    project_finances = ProjectFinancesSerializer(read_only=True, many=True)
-    project_allocation = ProjectAllocationSerializer(read_only=True, many=True)
+    project_assignment = ProjectAssignmentSerializer(read_only=True)
+    project_finances = ProjectFinancesSerializer(read_only=True)
+    project_allocations = ProjectAllocationSerializer(read_only=True, many=True)
     project_milestones = ProjectMilestonesSerializer(read_only=True, many=True)
-    project_development = ProjectDevelopmentSerializer(read_only=True, many=True)
+    project_development = ProjectDevelopmentSerializer(read_only=True)
     project_dependencies = ProjectDependenciesSerializer(read_only=True, many=True)
 
 

@@ -72,7 +72,14 @@ class ProjectStatusPhaseDropdownSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ProjectDataSerializer(serializers.ModelSerializer):
+class ProjectDataUpdateSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = ProjectData
+        fields = '__all__'
+
+
+class ProjectDataSerializer(ProjectDataUpdateSerializer):
     radar_portfolio = RadarPortfolioDropdownSerializer(read_only=True)
     business_proposal = BusinessProposalDropdownSerializer(read_only=True)
     project_type = ProjectTypeDropdownSerializer(read_only=True)
@@ -84,7 +91,3 @@ class ProjectDataSerializer(serializers.ModelSerializer):
     risk_assessment = RiskAssessmentDropdownSerializer(read_only=True)
     project_handbook = ProjectHandbookDropdownSerializer(read_only=True)
     project_status_phase = ProjectStatusPhaseDropdownSerializer(read_only=True)
-
-    class Meta:
-        model = ProjectData
-        fields = '__all__'

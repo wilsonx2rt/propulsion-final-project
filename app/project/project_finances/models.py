@@ -35,10 +35,12 @@ class CreditStatusDropdown(models.Model):
 
 
 class YearlyForecast(models.Model):
-    project = models.ForeignKey(
-        verbose_name='project name',
-        to='project_data.ProjectData',
+    project_finance = models.ForeignKey(
+        verbose_name='project finance',
+        help_text='Prognosen',
         on_delete=models.SET_NULL,
+        to='project_finances.ProjectFinances',
+        related_name='yearly_forecasts',
         null=True,
     )
 
@@ -65,7 +67,7 @@ class YearlyForecast(models.Model):
     )
 
     def __str__(self):
-        str = f'{self.year} Prognose {self.project}'
+        str = f'{self.year} Prognose {self.project_finance.project}'
         return str
 
 
@@ -75,7 +77,7 @@ Main
 
 
 class ProjectFinances(models.Model):
-    project = models.ForeignKey(
+    project = models.OneToOneField(
         verbose_name='project name',
         to='project_data.ProjectData',
         related_name='project_finances',
@@ -167,14 +169,7 @@ class ProjectFinances(models.Model):
         null=True,
     )
 
-    yearly_forecasts = models.ForeignKey(
-        verbose_name='yearly forecasts',
-        help_text='Prognosen',
-        on_delete=models.SET_NULL,
-        to='project_finances.YearlyForecast',
-        null=True,
-        blank=True,
-    )
+
 
     def __str__(self):
         return f'{self.project}'

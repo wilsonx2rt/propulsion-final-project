@@ -98,7 +98,7 @@ Main
 
 
 class ProjectAssignment(models.Model):
-    project = models.ForeignKey(
+    project = models.OneToOneField(
         verbose_name='project name',
         to='project_data.ProjectData',
         related_name='project_assignment',

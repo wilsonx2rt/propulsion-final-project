@@ -1,6 +1,6 @@
 from django.urls import path
 
-from project.api.project_details.views import ProjectGetUpdateDeleteView, ProjectListCreateView
+from project.api.project_details.views import ProjectGetView, ProjectListCreateView
 
 app_name = 'project_details'
 
@@ -12,7 +12,22 @@ urlpatterns = [
     ),
     path(
         route='<int:pk>/',
-        view=ProjectGetUpdateDeleteView.as_view(),
-        name='project_get_update_delete'
+        view=ProjectGetView.as_view(),
+        name='project_get'
+    ),
+    path(
+        route='update/<int:pk>/',
+        view=ProjectGetView.as_view(),
+        name='project_get'
+    ),
+    path(
+        route='update/<int:pk>/finance/new/',
+        view=ProjectGetView.as_view(),
+        name='project_get'
+    ),
+    path(
+        route='update/finance/<int:pk>/',
+        view=ProjectGetView.as_view(),
+        name='project_get'
     ),
 ]
