@@ -77,6 +77,7 @@ class ProjectDataUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProjectData
         fields = '__all__'
+        read_only_fields =['name']
 
 
 class ProjectDataSerializer(ProjectDataUpdateSerializer):
@@ -91,3 +92,17 @@ class ProjectDataSerializer(ProjectDataUpdateSerializer):
     risk_assessment = RiskAssessmentDropdownSerializer(read_only=True)
     project_handbook = ProjectHandbookDropdownSerializer(read_only=True)
     project_status_phase = ProjectStatusPhaseDropdownSerializer(read_only=True)
+
+
+class ProjectDataCreateSerializer(ProjectDataUpdateSerializer):
+    project_name = serializers.CharField(
+        label='project name'
+    )
+
+    def validate_project_name(self, project_name):
+        try:
+            ProjectData.objects.get(name=project_name)
+            raise serializers.ValidationError('Project with this name already exists')
+        except ProjectData.DoesNotExist:
+            return project_name
+

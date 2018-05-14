@@ -17,16 +17,3 @@ class ProjectDetailsSerializer(ProjectDataSerializer):
     project_milestones = ProjectMilestonesSerializer(read_only=True, many=True)
     project_development = ProjectDevelopmentSerializer(read_only=True)
     project_dependencies = ProjectDependenciesSerializer(read_only=True, many=True)
-
-
-class ProjectCreateSerializer(serializers.Serializer):
-    project_name = serializers.CharField(
-        label='project name'
-    )
-
-    def validate_project_name(self, project_name):
-        try:
-            ProjectData.objects.get(name=project_name)
-            raise serializers.ValidationError('Project with this name already exists')
-        except ProjectData.DoesNotExist:
-            return project_name
