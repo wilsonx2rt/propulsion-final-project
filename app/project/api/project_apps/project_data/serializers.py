@@ -73,7 +73,6 @@ class ProjectStatusPhaseDropdownSerializer(serializers.ModelSerializer):
 
 
 class ProjectDataUpdateSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = ProjectData
         fields = '__all__'
