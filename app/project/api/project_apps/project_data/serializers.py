@@ -77,7 +77,7 @@ class ProjectDataUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProjectData
         fields = '__all__'
-        read_only_fields =['name']
+        read_only_fields = ['name']
 
 
 class ProjectDataSerializer(ProjectDataUpdateSerializer):
@@ -105,4 +105,3 @@ class ProjectDataCreateSerializer(ProjectDataUpdateSerializer):
             raise serializers.ValidationError('Project with this name already exists')
         except ProjectData.DoesNotExist:
             return project_name
-

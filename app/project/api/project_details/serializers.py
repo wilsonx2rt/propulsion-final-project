@@ -1,5 +1,3 @@
-from rest_framework import serializers
-
 from project.api.project_apps.project_allocation.serilaizers import ProjectAllocationSerializer
 from project.api.project_apps.project_assignment.serializers import ProjectAssignmentSerializer
 from project.api.project_apps.project_data.serializers import ProjectDataSerializer
@@ -7,7 +5,6 @@ from project.api.project_apps.project_dependencies.serializers import ProjectDep
 from project.api.project_apps.project_development.serializers import ProjectDevelopmentSerializer
 from project.api.project_apps.project_finances.serializers import ProjectFinancesSerializer
 from project.api.project_apps.project_milestones.serializers import ProjectMilestonesSerializer
-from project.project_data.models import ProjectData
 
 
 class ProjectDetailsSerializer(ProjectDataSerializer):
