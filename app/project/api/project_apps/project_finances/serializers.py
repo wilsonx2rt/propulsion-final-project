@@ -27,7 +27,7 @@ class YearlyForecastSerializer(serializers.ModelSerializer):
         model = YearlyForecast
         fields = '__all__'
 
-# TODO: SERVE EVERY YEARLY FORECAST RELATED TO A PROJECT WITH THE PROJECT DETAILS CALL
+
 class ProjectFinancesSerializer(serializers.ModelSerializer):
     financing = FinancingDropdownSerializer()
     requirements_assessment = RequirementsAssessmentDropdownSerializer()

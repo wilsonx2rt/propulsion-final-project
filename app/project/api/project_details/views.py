@@ -31,4 +31,3 @@ class ProjectDataUpdateView(GenericAPIView):
         serializer.is_valid(raise_exception=True)
         project = serializer.save()
         return Response(self.output_serializer_class(project).data)
-
