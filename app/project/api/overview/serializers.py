@@ -3,4 +3,4 @@ from project.api.project_apps.project_data.serializers import ProjectDataSeriali
 
 
 class ProjectOverviewSerializer(ProjectDataSerializer):
-    project_assignment = ProjectAssignmentSerializer(read_only=True, many=True)
+    project_assignment = ProjectAssignmentSerializer(read_only=True)

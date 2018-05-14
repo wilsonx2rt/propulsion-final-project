@@ -37,3 +37,9 @@ class ProjectFinancesSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProjectFinances
         fields = '__all__'
+
+
+class ProjectFinancesUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProjectFinances
+        fields = '__all__'
