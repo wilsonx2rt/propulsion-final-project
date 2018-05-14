@@ -23,7 +23,7 @@ class ProjectResponsibilityDropdownSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class OverallPmTeamSerializer(serializers.ModelSerializer):
+class OverallPMTeamDropdownSerializer(serializers.ModelSerializer):
     class Meta:
         model = OverallPMTeamDropdown
         fields = '__all__'
@@ -61,9 +61,9 @@ class CommunicationsDropdownSerializer(serializers.ModelSerializer):
 
 class ProjectAssignmentSerializer(serializers.ModelSerializer):
     leading_role = LeadingRoleDropdownSerializer()
-    leading_team = LeadingRoleDropdownSerializer()
+    leading_team = LeadingTeamDropdownSerializer()
     project_responsibility = ProjectResponsibilityDropdownSerializer()
-    overall_pm_team = OverallPmTeamSerializer()
+    overall_pm_team = OverallPMTeamDropdownSerializer()
     project_management = PMDropdownSerializer()
     planner_control = PlannerControlDropdownSerializer()
     construction_management = ConstructionManagementDropdownSerializer()
