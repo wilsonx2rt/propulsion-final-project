@@ -5,6 +5,7 @@ class ProjectDependencies(models.Model):
     project = models.ForeignKey(
         verbose_name='project name',
         to='project_data.ProjectData',
+        related_name='project_dependencies',
         on_delete=models.SET_NULL,
         null=True,
     )
@@ -31,4 +32,4 @@ class ProjectDependencies(models.Model):
     )
 
     def __str__(self):
-        return self.project.name
+        return f'{self.project}'

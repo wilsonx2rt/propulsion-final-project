@@ -30,9 +30,10 @@ Main
 
 
 class ProjectDevelopment(models.Model):
-    project = models.ForeignKey(
+    project = models.OneToOneField(
         verbose_name='project name',
         to='project_data.ProjectData',
+        related_name='project_development',
         on_delete=models.SET_NULL,
         null=True,
     )
@@ -54,4 +55,4 @@ class ProjectDevelopment(models.Model):
     )
 
     def __str__(self):
-        return self.project.name
+        return f'{self.project}'
