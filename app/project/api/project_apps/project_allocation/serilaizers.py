@@ -11,6 +11,7 @@ class ProjectAllocationSerializer(serializers.ModelSerializer):
         model = ProjectAllocation
         fields = '__all__'
 
+
 class ProjectAllocationUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProjectAllocation
