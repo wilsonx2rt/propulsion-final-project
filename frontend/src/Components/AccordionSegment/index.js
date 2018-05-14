@@ -4,7 +4,7 @@ import "./index.css";
 // import LoginForm from "../LoginForm";
 
 import arrows from "../../assets/dropdown-arrows.png";
-import Button from "../Button";
+// import Button from "../Button";
 
 class AccordionSegment extends Component {
   constructor(props) {

@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import "./index.css";
 
-import { loginAction } from '../../../store/actions/userActions';
 import Button from '../../Button';
+import InputField from '../../InputField';
+import SelectField from '../../SelectField';
+import FileUploadField from '../../FileUploadField';
 import { hideValidationMessage } from '../../../helpers';
 
 class ProjectDataForm extends Component {
@@ -12,35 +14,42 @@ class ProjectDataForm extends Component {
     super(props);
 
     this.state = {
-      'name': '',
-      'radar_portfolio': '',
-      'business_proposal': '',
-      'project_type': '',
-      'project_nature': '',
-      'strategic_importance': '',
-      'operational_urgency': '',
-      'political_significance': '',
-      'project_priority': '',
-      'project_character': '',
-      'control_cycle': '',
-      'risk_assessment': '',
-      'project_goal': '',
-      'project_handbook': '',
-      'project_handbook_file': '',
-      'e3_number': '',
-      'business_category': '',
-      'service_nature': '',
-      'invoiceability': '',
-      'business_number': '',
-      'project_status_phase': '',
-      'comment': '',
+      'name': {value: '', type: 'input', required: 'true', placeholder: 'Project Name'},
+      'radar_portfolio': {value: '', type: 'dropdown', required: 'false', placeholder: 'Radar oder Projektportfolio'},
+      'business_proposal': {value: '', type: 'dropdown', required: 'false', placeholder: 'Geschäftsantrag'},
+      'project_type': {value: '', type: 'dropdown', required: 'false', placeholder: 'Projekttyp'},
+      'project_nature': {value: '', type: 'dropdown', required: 'false', placeholder: 'Projekttart'},
+      'strategic_importance': {value: '', type: 'input', required: 'false', placeholder: 'Strategische Bedeutung'},
+      'operational_urgency': {value: '', type: 'input', required: 'false', placeholder: 'Operative Dringlichkeit'},
+      'political_significance': {value: '', type: 'dropdown', required: 'false', placeholder: 'Politische Bedeutung'},
+      'project_priority': {value: '', type: 'dropdown', required: 'false', placeholder: 'Projektpriorität'},
+      'project_character': {value: '', type: 'dropdown', required: 'false', placeholder: 'Projektcharakter (Projektbezogen)'},
+      'control_cycle': {value: '', type: 'dropdown', required: 'false', placeholder: 'Steuerungszyklus'},
+      'risk_assessment': {value: '', type: 'dropdown', required: 'false', placeholder: 'Projekt-Risikobeurteilung'},
+      'project_goal': {value: '', type: 'input', required: 'false', placeholder: 'Projektziel'},
+      'project_handbook': {value: '', type: 'input', required: 'false', placeholder: 'Projekthandbuch'},
+      'project_handbook_file': {value: '', type: 'file', required: 'false', placeholder: 'Handbuch data'},
+      'e3_number': {value: '', type: 'input', required: 'false', placeholder: 'E3-Nummer'},
+      'business_category': {value: '', type: 'input', required: 'false', placeholder: 'Geschäftskategorie'},
+      'service_nature': {value: '', type: 'input', required: 'false', placeholder: 'Leistungsart'},
+      'invoiceability': {value: '', type: 'input', required: 'false', placeholder: 'Verrechenbarkeit'},
+      'business_number': {value: '', type: 'input', required: 'false', placeholder: 'Geschäftsnummer'},
+      'project_status_phase': {value: '', type: 'dropdown', required: 'false', placeholder: 'Projektstatus/Projektphase'},
+      'comment': {value: '', type: 'input', required: 'false', placeholder: 'Bemerkung'},
     };
   }
 
-  handleChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
+  handleChange = input_array => {
+    // input_array is of type [field_name, value]
+    // Needs to be done in this way to update state of the component based on the state of the child.
+    // Input is handled by the child.
+    const newState = Object.assign(this.state, {});
+    const newFieldState = Object.assign(newState[input_array[0]], {});
+    newFieldState.value = input_array[1];
+    newState[input_array[0]] = newFieldState;
+    this.setState(
+      newState
+    );
   };
 
   handleSubmit = (e) => {
@@ -52,35 +61,27 @@ class ProjectDataForm extends Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <div className="project-data-form-wrapper">
         <form id="project-data-form" onSubmit={ this.handleSubmit } noValidate>
           <p className='project-data-form__validation-message generic-validation-message hidden-element'>Something went wrong</p>
-          <div className='project-data-form__input-container'>
-            <label>Project Name<abbr title="required">*</abbr></label>
-            <input
-              className="project-data-form__input"
-              type="text"
-              name="name"
-              placeholder="Project Name"
-              onChange={this.handleChange}
-              value={ this.state.name }
-            />
-          </div>
-          <div className='project-data-form__input-container'>
-            <label>Radar oder Projektportfolio</label>
-            <select name='radar_portfolio' onChange={ this.handleChange } value={ this.state.radar_portfolio }>
-              {/* {
-                Object.keys(this.props.categories).map(index => {
-                  return <option key={ rand.generate(10) } value={ this.props.categories[index] }>{ this.props.categories[index] }</option>
-                })
-              } */}
-              <option value='default'></option>
-              <option value='Menu item 1'>Menu item 1</option>
-              <option value='Menu item 2'>Menu item 2</option>
-              <option value='Menu item 3'>Menu item 3</option>
-            </select>
-          </div>
+          <InputField 
+            className='project-data-form'
+            required={ this.state.name.required }
+            type='text'
+            name={ 'name' }
+            placeholder={ this.state.name.placeholder }
+            updateParentState={ this.handleChange }
+          />
+          <SelectField 
+            className='project-data-form'
+            required='True'
+            name='radar_portfolio'
+            placeholder='Radar oder Projektportfolio'
+            dropdownOptions={ ['--Default--', 'Item 1', 'Item 2', 'Item 3'] }
+            updateParentState={ this.handleChange }
+          /> 
           <div className='project-data-form__input-container'>
             <label>Geschäftsantrag</label>
             <select name='business_proposal' onChange={ this.handleChange } value={ this.state.business_proposal }>
@@ -237,18 +238,13 @@ class ProjectDataForm extends Component {
               value={ this.state.project_handbook }
             />
           </div>
-          <div className='project-data-form__input-container'>
-            <label>Handbuch file</label>
-            <div className='project-data-form__input__file-upload-container'>
-              <button className='project-data-form__input__file-upload-button'>Choose a file...</button>
-              <input 
-                className='project-data-form__input__file'
-                type="file" 
-                name="project_handbook" 
-                multiple 
-                accept=".jpg, .jpeg, .png"/>
-            </div>
-          </div>
+          <FileUploadField 
+            className='project-data-form'
+            required='True'
+            name='project_handbook_file'
+            placeholder='Handbuch data'
+            updateParentState={ this.handleChange }
+          /> 
           <div className='project-data-form__input-container'>
             <label>E3 Nummer</label>
             <input
