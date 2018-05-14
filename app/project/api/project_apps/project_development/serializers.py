@@ -22,3 +22,9 @@ class ProjectDevelopmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProjectDevelopment
         fields = '__all__'
+
+
+class ProjectDevelopmentUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProjectDevelopment
+        fields = '__all__'
