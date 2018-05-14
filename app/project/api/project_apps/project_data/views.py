@@ -8,7 +8,7 @@ from project.project_data.models import ProjectData
 
 class ProjectDataCreateView(CreateAPIView):
     '''
-
+    Creates new object
     '''
     permission_classes = [IsAdminOrReadOnly]
     serializer_class = ProjectDataUpdateSerializer

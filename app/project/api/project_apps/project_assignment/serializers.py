@@ -73,3 +73,10 @@ class ProjectAssignmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProjectAssignment
         fields = '__all__'
+
+
+class ProjectAssignmentUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProjectAssignment
+        fields = '__all__'
+        read_only_fields = ['project']
