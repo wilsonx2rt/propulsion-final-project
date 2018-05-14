@@ -32,7 +32,7 @@ class ProjectFinancesSerializer(serializers.ModelSerializer):
     financing = FinancingDropdownSerializer()
     requirements_assessment = RequirementsAssessmentDropdownSerializer()
     credit_status = CreditStatusDropdownSerializer()
-    yearly_forecasts = YearlyForecastSerializer()
+    yearly_forecasts = YearlyForecastSerializer(many=True)
 
     class Meta:
         model = ProjectFinances
