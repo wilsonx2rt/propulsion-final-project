@@ -6,6 +6,7 @@ import Nav from '../Components/Nav';
 import App from './App';
 import ScrollToTop from '../Components/ScrollToTop';
 import Login from './Login';
+import ProjectDetails from './ProjectDetails';
 // import Signup from './Signup';
 // import Footer from '../Сomponents/Footer';
 // import SignupValidation from './SignupValidation';
@@ -19,6 +20,7 @@ const Home = (props) => {
             <Nav />
             <Route exact path="/" component={ App } />
             <Route exact path="/login" component={ Login } />
+            <Route exact path="/project_details" component={ ProjectDetails } />
             {/* <Route exact path="/signup" component={ Signup } />
             <Route exact path="/registration/validation" component={ SignupValidation } />
             <Route exact path="/new_restaurant" component={ NewRestaurant } /> */}

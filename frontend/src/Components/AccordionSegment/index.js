@@ -41,29 +41,13 @@ class AccordionSegment extends Component {
         </div>
 
         <div className={this.state.visible}>
-          Lorem ipsum dolor sit amet, et nostrum appetere mel. Ex altera nostro
-          philosophia per, no sed tollit denique. Ut soluta copiosae evertitur
-          per, eu mea verear aliquam, eros falli indoctum in sit. Id decore
-          labores duo. Eos altera offendit ad. Ex est quot prompta evertitur,
-          sea te nobis munere, ex mutat vituperatoribus duo. His inani aeterno
-          voluptaria ea, et mei habeo theophrastus. In assum perpetua has, vide
-          omnes et nec, nulla vocibus an ius. Duo no referrentur definitionem,
-          nec no nulla integre legimus, te volutpat scripserit quo. Nusquam
-          noluisse pertinax sed ea, id rebum delicata suscipiantur pro. Sed ut
-          mazim solet explicari. Simul primis fierent vis in, hinc aliquando per
-          no. Quo in doctus alienum elaboraret, at mei molestie dissentias.
-          Albucius maluisset cum in, te nihil dicam vivendum usu, te veri mucius
-          phaedrum has. Ne dicant intellegam cum. Id vim error luptatum, audiam
-          invenire referrentur nec te. Vim summo dicunt splendide ut, eam
-          prompta diceret cotidieque et. At unum tation recteque usu. Tantas
-          iudicabit in mel. His falli philosophia interpretaris et, ei nonumy
-          vocibus scribentur nam, ex qui iudico prompta. Id sed admodum
-          contentiones. Convenire salutandi ne mea, usu te etiam erant
-          laboramus.
-          <div className="accordion-segment__btn-container">
+          {
+            this.props.children
+          }
+          {/* <div className="accordion-segment__btn-container">
             <Button className="accordion-segment__btn" btnText="Save" />
             <Button className="accordion-segment__btn" btnText="Next" />
-          </div>
+          </div> */}
         </div>
       </div>
     );
