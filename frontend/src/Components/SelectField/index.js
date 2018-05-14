@@ -26,14 +26,13 @@ class SelectField extends Component{
   }
 
   handleChange = (e) => {
-    this.props.updateParentState([this.props.name, this.state.value])
+    this.props.updateParentState([this.props.name, e.target.value])
     this.setState({
       value: e.target.value,
     })
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className={ this.props.className + '__input-container' }>
         <label>{ this.props.placeholder }{ this.props.required === 'true' ? <span>*</span> : '' }</label>

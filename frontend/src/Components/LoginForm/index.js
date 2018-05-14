@@ -5,6 +5,7 @@ import "./index.css";
 
 import { loginAction } from '../../store/actions/userActions';
 import Button from '../Button';
+import GenericForm from '../GenericForm';
 import { hideValidationMessage } from '../../helpers';
 
 class LoginForm extends Component {
@@ -12,15 +13,14 @@ class LoginForm extends Component {
     super(props);
 
     this.state = {
-      username: "",
-      password: ""
+      'form_settings': {type: 'login_form'},
+      'username': {value: '', type: 'input', inputType: 'email', required: 'true', placeholder: 'Email'},
+      'password': {value: '', type: 'input', inputType: 'password', required: 'true', placeholder: 'Kennwort'},
     };
   }
 
-  handleChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
+  handleChange = input_array => {
+    this.state[input_array[0]].value = input_array[1];
   };
 
   handleSubmit = (e) => {
@@ -34,7 +34,13 @@ class LoginForm extends Component {
   render() {
     return (
       <div className="login-form-wrapper">
-        <form id="login-form" onSubmit={ this.handleSubmit } noValidate>
+        <GenericForm 
+          className='login-form'
+          payload={ this.state }
+          onSubmit={ this.handleSubmit }
+          updateParentState={ this.handleChange }
+        />
+        {/* <form id="login-form" onSubmit={ this.handleSubmit } noValidate>
           <p className='login-form__validation-message generic-validation-message hidden-element'>Ungültiger Benutzername oder Kennwort</p>
           <input
             className="login-form__input"
@@ -57,7 +63,7 @@ class LoginForm extends Component {
             btnText="Login" 
             type='submit'
           />
-        </form>
+        </form> */}
       </div>
     );
   }
