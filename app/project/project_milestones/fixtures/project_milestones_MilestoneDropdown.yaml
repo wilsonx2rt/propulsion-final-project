@@ -1,93 +1,93 @@
 - model: project_milestones.milestonedropdown
   pk: 1
-  fields: {value: 0 Vorarbeiten}
+  fields: {name: 0 Vorarbeiten}
 - model: project_milestones.milestonedropdown
   pk: 2
-  fields: {value: 1 Strategische Planu}
+  fields: {name: 1 Strategische Planu}
 - model: project_milestones.milestonedropdown
   pk: 3
-  fields: {value: 21 Definition des Ba}
+  fields: {name: 21 Definition des Ba}
 - model: project_milestones.milestonedropdown
   pk: 4
-  fields: {value: 22 Auswahlverfahren}
+  fields: {name: 22 Auswahlverfahren}
 - model: project_milestones.milestonedropdown
   pk: 5
-  fields: {value: 31 BGK}
+  fields: {name: 31 BGK}
 - model: project_milestones.milestonedropdown
   pk: 6
-  fields: {value: 31 Vorprojekt}
+  fields: {name: 31 Vorprojekt}
 - model: project_milestones.milestonedropdown
   pk: 7
-  fields: {value: 32 Bauprojekt}
+  fields: {name: 32 Bauprojekt}
 - model: project_milestones.milestonedropdown
   pk: 8
-  fields: {value: 33 Bewilligungsverfa}
+  fields: {name: 33 Bewilligungsverfa}
 - model: project_milestones.milestonedropdown
   pk: 9
-  fields: {value: '41 Ausschreibung, Offertvergleich, Vergabe'}
+  fields: {name: '41 Ausschreibung, Offertvergleich, Vergabe'}
 - model: project_milestones.milestonedropdown
   pk: 10
-  fields: {value: "51 Ausf\xFChrungsprojekt"}
+  fields: {name: "51 Ausf\xFChrungsprojekt"}
 - model: project_milestones.milestonedropdown
   pk: 11
-  fields: {value: 52 Realisierung}
+  fields: {name: 52 Realisierung}
 - model: project_milestones.milestonedropdown
   pk: 12
-  fields: {value: '53 Inbetriebnahme, Abschluss'}
+  fields: {name: '53 Inbetriebnahme, Abschluss'}
 - model: project_milestones.milestonedropdown
   pk: 13
-  fields: {value: Abgabe Baudokumentation an GFP}
+  fields: {name: Abgabe Baudokumentation an GFP}
 - model: project_milestones.milestonedropdown
   pk: 14
-  fields: {value: 61 Betrieb}
+  fields: {name: 61 Betrieb}
 - model: project_milestones.milestonedropdown
   pk: 15
-  fields: {value: "62 \xDCberwachung, \xDCberpr\xFCfung, Wartung"}
+  fields: {name: "62 \xDCberwachung, \xDCberpr\xFCfung, Wartung"}
 - model: project_milestones.milestonedropdown
   pk: 16
-  fields: {value: 63 Instandhaltung}
+  fields: {name: 63 Instandhaltung}
 - model: project_milestones.milestonedropdown
   pk: 17
-  fields: {value: "Bed\xFCrfnisformulierung, L\xF6sungsstrategien"}
+  fields: {name: "Bed\xFCrfnisformulierung, L\xF6sungsstrategien"}
 - model: project_milestones.milestonedropdown
   pk: 18
-  fields: {value: GRA}
+  fields: {name: GRA}
 - model: project_milestones.milestonedropdown
   pk: 19
-  fields: {value: Antrag Projektierungskredit}
+  fields: {name: Antrag Projektierungskredit}
 - model: project_milestones.milestonedropdown
   pk: 20
-  fields: {value: Projektierungs- und Baukredit}
+  fields: {name: Projektierungs- und Baukredit}
 - model: project_milestones.milestonedropdown
   pk: 21
-  fields: {value: Workshop / Ideenwerkstatt}
+  fields: {name: Workshop / Ideenwerkstatt}
 - model: project_milestones.milestonedropdown
   pk: 22
-  fields: {value: Informationsschreiben an Quartierorganisation}
+  fields: {name: Informationsschreiben an Quartierorganisation}
 - model: project_milestones.milestonedropdown
   pk: 23
-  fields: {value: Anwohnerschreiben}
+  fields: {name: Anwohnerschreiben}
 - model: project_milestones.milestonedropdown
   pk: 24
-  fields: {value: "Schreiben an Eigent\xFCmer/innen"}
+  fields: {name: "Schreiben an Eigent\xFCmer/innen"}
 - model: project_milestones.milestonedropdown
   pk: 25
-  fields: {value: Informationsveranstaltung}
+  fields: {name: Informationsveranstaltung}
 - model: project_milestones.milestonedropdown
   pk: 26
-  fields: {value: "Vorank\xFCndigung Spielplatzbaustelle"}
+  fields: {name: "Vorank\xFCndigung Spielplatzbaustelle"}
 - model: project_milestones.milestonedropdown
   pk: 27
-  fields: {value: Medienmitteilung}
+  fields: {name: Medienmitteilung}
 - model: project_milestones.milestonedropdown
   pk: 28
-  fields: {value: Baustellentafel}
+  fields: {name: Baustellentafel}
 - model: project_milestones.milestonedropdown
   pk: 29
-  fields: {value: Medienanlass}
+  fields: {name: Medienanlass}
 - model: project_milestones.milestonedropdown
   pk: 30
-  fields: {value: Einweihung}
+  fields: {name: Einweihung}
 - model: project_milestones.milestonedropdown
   pk: 31
-  fields: {value: 'Professionelle Fotos (Bestand, Bauablauf, nach Umsetzung)'}
+  fields: {name: 'Professionelle Fotos (Bestand, Bauablauf, nach Umsetzung)'}

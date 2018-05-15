@@ -9,18 +9,17 @@ from project.user.serializers import UserSerializer
 User = get_user_model()
 
 
+# TODO: IMPLEMENT SEARCH FUNCTIONALITY
 class ProjectOverviewView(ListAPIView):
+    '''
+    Optional filter by name,
+    '''
     permission_classes = [IsAdminOrReadOnly, ]
     serializer_class = ProjectOverviewSerializer
     queryset = ProjectData.objects.all()
 
 
 class ProjectManagersOverviewView(ListAPIView):
+    permission_classes = [IsAdminOrReadOnly, ]
     serializer_class = UserSerializer
     queryset = User.objects.all()
-
-    def filter_queryset(self, queryset):
-        search_string = self.request.query_params.get('search')
-        if search_string:
-            queryset = queryset.filter(content__contains=search_string)
-        return queryset

@@ -1,12 +1,5 @@
 from django.db import models
 
-QUARTER_CHOICES = (
-    ('Q1', 'Q1'),
-    ('Q2', 'Q2'),
-    ('Q3', 'Q3'),
-    ('Q4', 'Q4')
-)
-
 """
 Main
 """
@@ -29,11 +22,11 @@ class ProjectAllocation(models.Model):
         null=True,
     )
 
-    quarter = models.CharField(
+    quarter = models.ForeignKey(
         verbose_name='quarter',
         help_text='Quartal',
-        choices=QUARTER_CHOICES,
-        max_length=20,
+        to='helper_models.Quarters',
+        on_delete=models.SET_NULL,
         null=True,
     )
 

@@ -3,7 +3,7 @@ from django.db import models
 
 # TODO: CHeck if these fields are not repeated!!!
 class ProjectStatusDropdown(models.Model):
-    value = models.CharField(
+    name = models.CharField(
         verbose_name='status value',
         max_length=20,
         null=True,
@@ -14,7 +14,7 @@ class ProjectStatusDropdown(models.Model):
 
 
 class ProjectTendencyDropdown(models.Model):
-    value = models.CharField(
+    name = models.CharField(
         verbose_name='tendency value',
         max_length=20,
         null=True,

@@ -2,7 +2,7 @@ from django.db import models
 
 
 class MilestoneDropdown(models.Model):
-    value = models.CharField(
+    name = models.CharField(
         verbose_name='milestone dropdown value',
         max_length=100,
         null=True,
@@ -13,7 +13,7 @@ class MilestoneDropdown(models.Model):
 
 
 class TendenciesDropdown(models.Model):
-    value = models.CharField(
+    name = models.CharField(
         verbose_name='tendencies dropdown value',
         max_length=20,
         null=True,
