@@ -147,7 +147,7 @@ class ProjectData(models.Model):
     )
 
     business_proposal = models.ForeignKey(
-        verbose_name='business proposal',
+        verbose_name='business_proposal',
         help_text='Geschäftsantrag',
         on_delete=models.SET_NULL,
         to='project_data.BusinessProposalDropdown',
@@ -156,7 +156,7 @@ class ProjectData(models.Model):
     )
 
     project_type = models.ForeignKey(
-        verbose_name='project type',
+        verbose_name='project_type',
         help_text='Projekttyp',
         on_delete=models.SET_NULL,
         to='project_data.ProjectTypeDropdown',
@@ -165,7 +165,7 @@ class ProjectData(models.Model):
     )
 
     project_nature = models.ForeignKey(
-        verbose_name='project nature',
+        verbose_name='project_nature',
         help_text='Projekttart',
         on_delete=models.SET_NULL,
         to='project_data.ProjectNatureDropdown',
