@@ -70,6 +70,14 @@ class YearlyForecast(models.Model):
         str = f'{self.year} Prognose {self.project_finance.project}'
         return str
 
+    class Meta:
+        verbose_name = 'Yearly forecast'
+        verbose_name_plural = 'Yearly forecasts'
+        unique_together = [(
+            'project_finance',
+            'year',
+        )]
+
 
 """
 Main

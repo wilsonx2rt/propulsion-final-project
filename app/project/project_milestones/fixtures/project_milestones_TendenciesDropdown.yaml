@@ -1,9 +1,9 @@
 - model: project_milestones.tendenciesdropdown
   pk: 1
-  fields: {value: '-'}
+  fields: {name: '-'}
 - model: project_milestones.tendenciesdropdown
   pk: 2
-  fields: {value: '='}
+  fields: {name: '='}
 - model: project_milestones.tendenciesdropdown
   pk: 3
-  fields: {value: +}
+  fields: {name: +}

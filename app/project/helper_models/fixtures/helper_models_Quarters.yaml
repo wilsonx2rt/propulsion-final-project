@@ -1,0 +1,12 @@
+- model: helper_models.quarters
+  pk: 1
+  fields: {name: 'Q1'}
+- model: helper_models.quarters
+  pk: 2
+  fields: {name: 'Q2'}
+- model: helper_models.quarters
+  pk: 3
+  fields: {name: 'Q3'}
+- model: helper_models.quarters
+  pk: 4
+  fields: {name: 'Q4'}

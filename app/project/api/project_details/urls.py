@@ -8,11 +8,11 @@ urlpatterns = [
     path(
         route='',
         view=ProjectListView.as_view(),
-        name='project_list_create'
+        name='project_list_all_fields'
     ),
     path(
         route='<int:pk>/',
         view=ProjectGetView.as_view(),
-        name='project_get'
+        name='project_get_by_id'
     ),
 ]

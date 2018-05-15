@@ -2,25 +2,25 @@ from django.db import models
 
 
 class MilestoneDropdown(models.Model):
-    value = models.CharField(
+    name = models.CharField(
         verbose_name='milestone dropdown value',
         max_length=100,
         null=True,
     )
 
     def __str__(self):
-        return self.value
+        return self.name
 
 
 class TendenciesDropdown(models.Model):
-    value = models.CharField(
+    name = models.CharField(
         verbose_name='tendencies dropdown value',
         max_length=20,
         null=True,
     )
 
     def __str__(self):
-        return self.value
+        return self.name
 
 
 class CommentaryOptions(models.Model):
@@ -114,4 +114,10 @@ class Milestones(models.Model):
         return str
 
     class Meta:
-        verbose_name_plural = "milestones"
+
+        verbose_name_plural = "Milestones"
+        unique_together = [(
+            'project',
+            'year',
+            'milestone_calendar_week',
+        )]

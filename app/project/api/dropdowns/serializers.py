@@ -67,6 +67,7 @@ class DropdownModelsSerializer(serializers.Serializer):
     project_status = ProjectStatusDropdownSerializer(many=True)
     project_tendency = ProjectTendencyDropdownSerializer(many=True)
 
+    # BUNDULED QuerySets CALLED IN VIEWS'S RESPONSE
     class QuerySets:
         radar_portfolio = RadarPortfolioDropdown.objects.all()
         business_proposal = BusinessProposalDropdown.objects.all()

@@ -5,10 +5,6 @@ from project.api.dropdowns.serializers import DropdownModelsSerializer
 from project.api.permissions import IsAdminOrReadOnly
 
 
-class TendenciesDropdow(object):
-    pass
-
-
 class DropdownModelsView(GenericAPIView):
     permission_classes = [IsAdminOrReadOnly]
     serializer_class = DropdownModelsSerializer

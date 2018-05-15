@@ -32,3 +32,9 @@ class ProjectMilestonesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Milestones
         fields = '__all__'
+
+
+class ProjectMilestonesUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Milestones
+        fields = '__all__'

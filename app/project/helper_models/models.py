@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Year(models.Model):
-    year = models.CharField(
+    name = models.CharField(
         verbose_name='year',
         help_text='jahr',
         max_length=4,
@@ -10,15 +10,26 @@ class Year(models.Model):
     )
 
     def __str__(self):
-        return self.year
+        return self.name
 
 
 class CalendarWeek(models.Model):
-    week = models.CharField(
+    name = models.CharField(
         verbose_name='calendar week',
         max_length=10,
         null=True,
     )
 
     def __str__(self):
-        return self.week
+        return self.name
+
+
+class Quarters(models.Model):
+    name = models.CharField(
+        verbose_name='quarter',
+        max_length=2,
+        null=True,
+    )
+
+    def __str__(self):
+        return self.name
