@@ -13,7 +13,7 @@ User = get_user_model()
 # TODO: IMPLEMENT SEARCH FUNCTIONALITY
 class ProjectOverviewView(ListAPIView):
     '''
-    Optional filter by name, project type, project manager, project status
+    Optional filter by name, project type, project manager, project status.
     '''
     permission_classes = [IsAdminOrReadOnly, ]
     serializer_class = ProjectOverviewSerializer
