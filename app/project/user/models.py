@@ -33,4 +33,4 @@ class UserProfile(models.Model):
         return self.code
 
     def __str__(self):
-        return self.user.username
+        return f'{self.user.username}'
