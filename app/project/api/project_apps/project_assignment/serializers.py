@@ -1,8 +1,12 @@
+from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
 from project.project_assignment.models import ProjectAssignment, LeadingRoleDropdown, LeadingTeamDropdown, \
-    ProjectResponsibilityDropdown, OverallPMTeamDropdown, PMDropdown, PlannerControlDropdown, \
+    ProjectResponsibilityDropdown, OverallPMTeamDropdown, PlannerControlDropdown, \
     ConstructionManagementDropdown, IllustratorDropdown, CommunicationsDropdown
+from project.user.serializers import UserSerializer
+
+User = get_user_model()
 
 
 class LeadingRoleDropdownSerializer(serializers.ModelSerializer):
@@ -26,12 +30,6 @@ class ProjectResponsibilityDropdownSerializer(serializers.ModelSerializer):
 class OverallPMTeamDropdownSerializer(serializers.ModelSerializer):
     class Meta:
         model = OverallPMTeamDropdown
-        fields = '__all__'
-
-
-class PMDropdownSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = PMDropdown
         fields = '__all__'
 
 
@@ -64,7 +62,7 @@ class ProjectAssignmentSerializer(serializers.ModelSerializer):
     leading_team = LeadingTeamDropdownSerializer()
     project_responsibility = ProjectResponsibilityDropdownSerializer()
     overall_pm_team = OverallPMTeamDropdownSerializer()
-    project_management = PMDropdownSerializer()
+    project_management = UserSerializer()
     planner_control = PlannerControlDropdownSerializer()
     construction_management = ConstructionManagementDropdownSerializer()
     illustrator = IllustratorDropdownSerializer()
