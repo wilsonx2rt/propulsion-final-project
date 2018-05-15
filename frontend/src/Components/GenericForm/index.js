@@ -24,10 +24,6 @@ var rand = require("random-key");
 // Expected options for 'required' is: true, false
 
 class GenericForm extends Component {
-  constructor(props) {
-    super(props);
-    this.dropdownOptions = ['--Default--', 'Item 1', 'Item 2', 'Item 3'];
-  }
 
   handleChange = input_array => {
     this.props.updateParentState(input_array);
@@ -37,12 +33,12 @@ class GenericForm extends Component {
     e.preventDefault();
     console.log('in da submit');
     hideValidationMessage();
-    this.props.onSubmit();
+    this.props.onSubmit(e);
   }
 
   render() {
     return (
-        <form id={ this.props.className } onSubmit={ this.handleSubmit } noValidate>
+        <form class={ this.props.className + ' generic-form' } onSubmit={ this.handleSubmit } noValidate>
         {
           Object.keys(this.props.payload).map( index => {
             if(index !== 'form_settings'){
@@ -50,12 +46,13 @@ class GenericForm extends Component {
                 return (
                   <InputField 
                     key={ rand.generate(10) }
-                    className={ this.props.className }
+                    className={ this.props.className}
                     required={ this.props.payload[index].required }
                     type={ this.props.payload[index].inputType }
                     name={ index }
                     placeholder={ this.props.payload[index].placeholder }
                     updateParentState={ this.handleChange }
+                    value={ this.props.payload[index].value }
                   />
                 )
               }
@@ -67,7 +64,6 @@ class GenericForm extends Component {
                     required={ this.props.payload[index].required }
                     name={ index }
                     placeholder={ this.props.payload[index].placeholder }
-                    dropdownOptions={ this.dropdownOptions }
                     updateParentState={ this.handleChange }
                   /> 
                 )
@@ -85,7 +81,7 @@ class GenericForm extends Component {
                 )
               }
             }
-            return ;
+            return '';
           })
         }
         {
@@ -93,7 +89,7 @@ class GenericForm extends Component {
             if(index === 'form_settings'){
               if (this.props.payload.form_settings.type === 'project_data_form') {
                 return (
-                  <div className="project-data-form__btn-container">
+                  <div key={ rand.generate(10) } className="project-data-form__btn-container">
                     <Button className={ this.props.className + '__btn' } btnText="Save" type='submit' />
                     <Button className={ this.props.className + '__btn' } btnText="Next" />
                   </div>
@@ -102,6 +98,7 @@ class GenericForm extends Component {
               else if (this.props.payload.form_settings.type === 'login_form') {
                 return (
                   <Button 
+                    key={ rand.generate(10) }
                     id="login-form__button" 
                     btnText="Login" 
                     type='submit'

@@ -20,6 +20,10 @@ class FileUploadField extends Component{
     this.state = {
       value: '' 
     }
+
+    this.myStyle={
+      width: '30%',
+    }
   }
 
   handleChange = (e) => {
@@ -31,7 +35,7 @@ class FileUploadField extends Component{
 
   render() {
     return (
-      <div className={ this.props.className + '__input-container' }>
+      <div className={ this.props.className + '__input-container' } style={ this.myStyle }>
             <label>{ this.props.placeholder }{ this.props.required === 'true' ? <span>*</span> : '' }</label>
             <div className={ this.props.className + '__input__file-upload-container' }>
               <button className={ this.props.className + '__input__file-upload-button' }>Choose a file...</button>

@@ -20,20 +20,23 @@ class InputField extends Component{
     super(props);
 
     this.state = {
-      value: '' 
+      value: this.props.value,
+    }
+    this.myStyle={
+      width: '30%',
     }
   }
 
   handleChange = (e) => {
-    this.props.updateParentState([this.props.name, e.target.value])
     this.setState({
       value: e.target.value,
     })
+    this.props.updateParentState([this.props.name, e.target.value]);
   }
 
   render() {
     return (
-      <div className={ this.props.className + '__input-container' }>
+      <div className={ this.props.className + '__input-container' } style={ this.myStyle } >
         <label>{ this.props.placeholder }{ this.props.required === 'true' ? <span>*</span> : '' }</label>
         <p className={ this.props.className + '__validation-message generic-validation-message hidden-element'} >{ 'Incorrect ' + this.props.placeholder }</p>
         <input

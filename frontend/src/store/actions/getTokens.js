@@ -2,12 +2,16 @@ import { setTokens } from './userActions';
 import { SERVER_URL } from '../constants';
 import { showValidationMessage } from '../../helpers';
 
-export const getTokens = (body, props, dispatch, getState) => {
-  console.log(getState().tokens.access);
+export const getTokens = (localState, props, dispatch, getState) => {
+  // console.log(localState);
   if (!getState().tokens.access){
     const headers = new Headers({
       'content-type': 'application/json',
     })
+    const body = {
+      username: localState.username.value,
+      password: localState.password.value,
+    }
     const config = {
       method: 'POST',
       body: JSON.stringify(body),

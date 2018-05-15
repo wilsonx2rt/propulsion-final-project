@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import "./index.css";
 
 // import Button from '../../Button';
 // import InputField from '../../InputField';
@@ -9,7 +8,7 @@ import "./index.css";
 // import FileUploadField from '../../FileUploadField';
 import GenericForm from '../../GenericForm';
 
-class ProjectDataForm extends Component {
+class ProjectAllocationForm extends Component {
   constructor(props) {
     super(props);
     this.dropdownOptions = ['--Default--', 'Item 1', 'Item 2', 'Item 3'];
@@ -90,4 +89,4 @@ const mapStateToProps = (state, props) => {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(ProjectDataForm));
+export default withRouter(connect(mapStateToProps)(ProjectAllocationForm));

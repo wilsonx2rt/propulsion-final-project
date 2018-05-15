@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import "./index.css";
 
 import { loginAction } from '../../store/actions/userActions';
-import Button from '../Button';
+// import Button from '../Button';
 import GenericForm from '../GenericForm';
 import { hideValidationMessage } from '../../helpers';
 
@@ -12,7 +12,7 @@ class LoginForm extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
+    this.formPayload = {
       'form_settings': {type: 'login_form'},
       'username': {value: '', type: 'input', inputType: 'email', required: 'true', placeholder: 'Email'},
       'password': {value: '', type: 'input', inputType: 'password', required: 'true', placeholder: 'Kennwort'},
@@ -20,7 +20,7 @@ class LoginForm extends Component {
   }
 
   handleChange = input_array => {
-    this.state[input_array[0]].value = input_array[1];
+    this.formPayload[input_array[0]].value = input_array[1];
   };
 
   handleSubmit = (e) => {
