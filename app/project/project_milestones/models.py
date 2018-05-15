@@ -9,7 +9,7 @@ class MilestoneDropdown(models.Model):
     )
 
     def __str__(self):
-        return self.value
+        return self.name
 
 
 class TendenciesDropdown(models.Model):
@@ -20,7 +20,7 @@ class TendenciesDropdown(models.Model):
     )
 
     def __str__(self):
-        return self.value
+        return self.name
 
 
 class CommentaryOptions(models.Model):
@@ -114,4 +114,10 @@ class Milestones(models.Model):
         return str
 
     class Meta:
-        verbose_name_plural = "milestones"
+
+        verbose_name_plural = "Milestones"
+        unique_together = [(
+            'project',
+            'year',
+            'milestone_calendar_week',
+        )]

@@ -103,3 +103,12 @@ class ProjectAllocation(models.Model):
     def __str__(self):
         str = f'{self.project}/{self.year}/{self.quarter}'
         return str
+
+    class Meta:
+        verbose_name = 'Project allocation'
+        verbose_name_plural = 'Project allocations'
+        unique_together = [(
+            'project',
+            'year',
+            'quarter'
+        )]

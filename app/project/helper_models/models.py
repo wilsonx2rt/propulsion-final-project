@@ -10,7 +10,7 @@ class Year(models.Model):
     )
 
     def __str__(self):
-        return self.year
+        return self.name
 
 
 class CalendarWeek(models.Model):
@@ -21,7 +21,7 @@ class CalendarWeek(models.Model):
     )
 
     def __str__(self):
-        return self.week
+        return self.name
 
 
 class Quarters(models.Model):
@@ -30,3 +30,6 @@ class Quarters(models.Model):
         max_length=2,
         null=True,
     )
+
+    def __str__(self):
+        return self.name

@@ -10,7 +10,7 @@ class ProjectStatusDropdown(models.Model):
     )
 
     def __str__(self):
-        return self.value
+        return self.name
 
 
 class ProjectTendencyDropdown(models.Model):
@@ -21,7 +21,7 @@ class ProjectTendencyDropdown(models.Model):
     )
 
     def __str__(self):
-        return self.value
+        return self.name
 
 
 '''
