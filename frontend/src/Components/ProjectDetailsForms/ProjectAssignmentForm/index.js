@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom';
 // import FileUploadField from '../../FileUploadField';
 import GenericForm from '../../GenericForm';
 
-class ProjectAllocationForm extends Component {
+class ProjectAssignmentForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,19 +16,15 @@ class ProjectAllocationForm extends Component {
     };
     this.formPayload = {
       'form_settings': {type: 'project_data_form', },
-      'year': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Jahr'},
-      'quarter': {value: '', type: 'dropdown', required: 'false', placeholder: 'Quartal'},
-      'project_responsibility': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Projektverantwortung'},
-      'overall_pm_team_allocation': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Gesamtprojektleitung'},
-      'project_management_allocation': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Projektleitung'},
-      'planner_control_allocation': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Planerleistung'},
-      'construction_management_allocation': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Bauleitung'},
-      'illustrator_allocation': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'ZeichnerIn'},
-      'supplementary_construction_management_allocation': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Bauleitung (Baubegleitung)'},
-      'communications_allocation': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Kommunikation'},
-      'total_allocation': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Total Aufwand'},
+      'project_responsibility': {value: '', type: 'dropdown', required: 'false', placeholder: 'Projektverantwortung'},
+      'overall_pm_team': {value: '', type: 'dropdown', required: 'false', placeholder: 'Gesamtprojektleitung'},
+      'project_management': {value: '', type: 'dropdown', required: 'false', placeholder: 'Projektleitung'},
+      'planner_control': {value: '', type: 'dropdown', required: 'false', placeholder: 'Planerleistung'},
+      'construction_management': {value: '', type: 'dropdown', required: 'false', placeholder: 'Bauleitung'},
+      'illustrator': {value: '', type: 'dropdown', required: 'false', placeholder: 'ZeichnerIn'},
+      'supplementary_construction_management': {value: '', type: 'dropdown', required: 'false', placeholder: 'Bauleitung (Baubegleitung)'},
+      'communications': {value: '', type: 'dropdown', required: 'false', placeholder: 'Kommunikation'},
     }
-
   }
 
   handleChange = input_array => {
@@ -78,4 +74,4 @@ const mapStateToProps = (state, props) => {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(ProjectAllocationForm));
+export default withRouter(connect(mapStateToProps)(ProjectAssignmentForm));

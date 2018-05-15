@@ -25,7 +25,9 @@ class SelectField extends Component{
     }
 
     this.myStyle={
-      width: '30%',
+      'width': '30%',
+      'display': 'flex',
+      'flex-direction': 'column',
     }
 
     this.state.defaultDropdown = [''];

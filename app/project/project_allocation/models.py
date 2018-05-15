@@ -36,7 +36,7 @@ class ProjectAllocation(models.Model):
         max_length=20,
         null=True,
     )
-
+# FIXME check if this field is needed for project allocation
     project_phase = models.IntegerField(
         verbose_name='project phase',
         help_text='Phase',
