@@ -1,9 +1,10 @@
+from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
 from project.api.project_apps.helper_models.serializers import YearSerializer, CalendarWeekSerializer
 from project.api.project_apps.project_assignment.serializers import LeadingRoleDropdownSerializer, \
     LeadingTeamDropdownSerializer, ProjectResponsibilityDropdownSerializer, \
-    PMDropdownSerializer, PlannerControlDropdownSerializer, ConstructionManagementDropdownSerializer, \
+    PlannerControlDropdownSerializer, ConstructionManagementDropdownSerializer, \
     IllustratorDropdownSerializer, CommunicationsDropdownSerializer, OverallPMTeamDropdownSerializer
 from project.api.project_apps.project_data.serializers import RadarPortfolioDropdownSerializer, \
     BusinessProposalDropdownSerializer, ProjectTypeDropdownSerializer, ProjectNatureDropdownSerializer, \
@@ -18,7 +19,7 @@ from project.api.project_apps.project_milestones.serializers import MilestoneDro
     TendenciesDropdownerializer, CommentaryOptionsSerializer
 from project.helper_models.models import Year, CalendarWeek
 from project.project_assignment.models import LeadingRoleDropdown, LeadingTeamDropdown, ProjectResponsibilityDropdown, \
-    PMDropdown, PlannerControlDropdown, ConstructionManagementDropdown, IllustratorDropdown, CommunicationsDropdown, \
+    PlannerControlDropdown, ConstructionManagementDropdown, IllustratorDropdown, CommunicationsDropdown, \
     OverallPMTeamDropdown
 from project.project_data.models import RadarPortfolioDropdown, BusinessProposalDropdown, ProjectTypeDropdown, \
     ProjectNatureDropdown, PoliticalSignificanceDropdown, ProjectPriorityDropdown, ProjectCharacterDropdown, \
@@ -27,6 +28,9 @@ from project.project_development.models import ProjectStatusDropdown, ProjectTen
 from project.project_finances.models import FinancingDropdown, RequirementsAssessmentDropdown, CreditStatusDropdown, \
     YearlyForecast
 from project.project_milestones.models import MilestoneDropdown, CommentaryOptions, TendenciesDropdown
+from project.user.serializers import UserSerializer
+
+User = get_user_model()
 
 
 class DropdownModelsSerializer(serializers.Serializer):
@@ -47,7 +51,7 @@ class DropdownModelsSerializer(serializers.Serializer):
     leading_team = LeadingTeamDropdownSerializer(many=True)
     project_responsibility = ProjectResponsibilityDropdownSerializer(many=True)
     overall_pm_team = OverallPMTeamDropdownSerializer(many=True)
-    project_management = PMDropdownSerializer(many=True)
+    project_management = UserSerializer(many=True)
     planner_control = PlannerControlDropdownSerializer(many=True)
     construction_management = ConstructionManagementDropdownSerializer(many=True)
     illustrator = IllustratorDropdownSerializer(many=True)
@@ -84,7 +88,7 @@ class DropdownModelsSerializer(serializers.Serializer):
         leading_team = LeadingTeamDropdown.objects.all()
         project_responsibility = ProjectResponsibilityDropdown.objects.all()
         overall_pm_team = OverallPMTeamDropdown.objects.all()
-        project_management = PMDropdown.objects.all()
+        project_management = User.objects.all()
         planner_control = PlannerControlDropdown.objects.all()
         construction_management = ConstructionManagementDropdown.objects.all()
         illustrator = IllustratorDropdown.objects.all()

@@ -4,6 +4,7 @@ Projektdaten - Namen
              - Projektpriorität
              - Steuerungszyklus
              - E3 Nummer
+             - Projektziel (R/W)
 
 |
 Projektzuteilung - Projektverantwortung
@@ -18,7 +19,7 @@ Projektzuteilung - Projektverantwortung
 Projektfinanzierung - Finanzierungsart
                     - Investitionsnummer
                     - Ist-Ausgaben laufendes Jahr
-
+                    - Prognose (R/W)(! DYNAMIC)
 |
 Projektablauf  - Gesamtprojektleitung
                - Projektleitung
@@ -27,3 +28,19 @@ Projektablauf  - Gesamtprojektleitung
 	           - ZeichnerIn
 	           - Kommunikation
 	           - Total Aufwand
+
+Meilensteine - Unique ID
+               - Jahr (R/W)
+               - Kalenderwoche (R/W)
+               - Meilensteine (R/W)
+               - Tendenz (R/W)
+               |
+               - Kommentare - Einfluss externe Faktoren (R/W)
+                            - Kommunikation (R/W)
+
+Abhängigkeiten - Inhaltlich (R/W)
+               - Zeitlich (R/W)
+               - Kapazitativ (R/W)
+
+Entwicklung - Status (R/W)
+            - Tendenz (RW)

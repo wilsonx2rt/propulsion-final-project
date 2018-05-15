@@ -59,7 +59,7 @@ class YearlyForecast(models.Model):
         null=True,
     )
 
-    forecast_further_years = models.IntegerField(
+    forecast = models.IntegerField(
         verbose_name='forecast',
         help_text='Prognose',
         blank=True,
@@ -67,7 +67,7 @@ class YearlyForecast(models.Model):
     )
 
     def __str__(self):
-        str = f'{self.year} Prognose {self.project_finance.project}'
+        str = f'{self.year} Prognose {self.project_finance}'
         return str
 
     class Meta:
@@ -159,13 +159,6 @@ class ProjectFinances(models.Model):
     spending_current_year = models.IntegerField(
         verbose_name='spending current year',
         help_text='Ist Ausgaben aktuelles Jahr',
-        blank=True,
-        null=True,
-    )
-
-    forecast_current_year = models.IntegerField(
-        verbose_name='forecast current year',
-        help_text='Prognose laufendes Jahr',
         blank=True,
         null=True,
     )

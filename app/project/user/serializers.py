@@ -9,7 +9,7 @@ User = get_user_model()
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
-        fields = '__all__'
+        fields = ['id', 'isAdmin']
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -17,4 +17,4 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'last_name', 'email', 'user_profile']
+        fields = ['id', 'username', 'first_name', 'last_name', 'email', 'user_profile']
