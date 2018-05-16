@@ -76,7 +76,6 @@ class ProjectDataUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProjectData
         fields = '__all__'
-        read_only_fields = ['name']
 
 
 class ProjectDataSerializer(ProjectDataUpdateSerializer):
