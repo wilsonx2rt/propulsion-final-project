@@ -28,15 +28,15 @@ const initialState = {
 export const project_data = (state=initialState, action) => {
   switch (action.type){
     case SET_PROJECT_DATA: {
-      // console.log(action.payload.data);
+      console.log(action.payload.data);
       const newState = Object.assign({}, initialState);
       Object.keys(newState).map(key => {
-        if(typeof action.payload.data[0][key] === 'object'){
-          const objectCopy = Object.assign({}, action.payload.data[0][key]);
+        if(typeof action.payload.data[key] === 'object'){
+          const objectCopy = Object.assign({}, action.payload.data[key]);
           newState[key] = objectCopy;
         }
         else{
-          newState[key] = action.payload.data[0][key];
+          newState[key] = action.payload.data[key];
         }
       })
       // console.log(newState);
