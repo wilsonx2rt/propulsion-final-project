@@ -34,9 +34,8 @@ Meilensteine - Unique ID
                - Kalenderwoche (R/W)
                - Meilensteine (R/W)
                - Tendenz (R/W)
-               |
-               - Kommentare - Einfluss externe Faktoren (R/W)
-                            - Kommunikation (R/W)
+               - Einfluss externe Faktoren (R/W)
+               - Kommunikation (R/W)
 
 Abhängigkeiten - Inhaltlich (R/W)
                - Zeitlich (R/W)

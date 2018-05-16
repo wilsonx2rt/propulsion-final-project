@@ -16,7 +16,7 @@ from project.api.project_apps.project_development.serializers import ProjectStat
 from project.api.project_apps.project_finances.serializers import FinancingDropdownSerializer, \
     RequirementsAssessmentDropdownSerializer, CreditStatusDropdownSerializer, YearlyForecastSerializer
 from project.api.project_apps.project_milestones.serializers import MilestoneDropdownSerializer, \
-    TendenciesDropdownerializer, CommentaryOptionsSerializer
+    TendenciesDropdownerializer
 from project.helper_models.models import Year, CalendarWeek
 from project.project_assignment.models import LeadingRoleDropdown, LeadingTeamDropdown, ProjectResponsibilityDropdown, \
     PlannerControlDropdown, ConstructionManagementDropdown, IllustratorDropdown, CommunicationsDropdown, \
@@ -27,7 +27,7 @@ from project.project_data.models import RadarPortfolioDropdown, BusinessProposal
 from project.project_development.models import ProjectStatusDropdown, ProjectTendencyDropdown
 from project.project_finances.models import FinancingDropdown, RequirementsAssessmentDropdown, CreditStatusDropdown, \
     YearlyForecast
-from project.project_milestones.models import MilestoneDropdown, CommentaryOptions, TendenciesDropdown
+from project.project_milestones.models import MilestoneDropdown, TendenciesDropdown
 from project.user.serializers import UserSerializer
 
 User = get_user_model()
@@ -66,7 +66,6 @@ class DropdownModelsSerializer(serializers.Serializer):
     milestone_calendar_week = CalendarWeekSerializer(many=True)
     milestone_value = MilestoneDropdownSerializer(many=True)
     tendency = TendenciesDropdownerializer()
-    commentary = CommentaryOptionsSerializer(many=True)
     # PROJECT DEVELOPMENT
     project_status = ProjectStatusDropdownSerializer(many=True)
     project_tendency = ProjectTendencyDropdownSerializer(many=True)
@@ -101,6 +100,5 @@ class DropdownModelsSerializer(serializers.Serializer):
         milestone_calendar_week = CalendarWeek.objects.all()
         milestone_value = MilestoneDropdown.objects.all()
         tendency = TendenciesDropdown.objects.all()
-        commentary = CommentaryOptions.objects.all()
         project_status = ProjectStatusDropdown.objects.all()
         project_tendency = ProjectTendencyDropdown.objects.all()
