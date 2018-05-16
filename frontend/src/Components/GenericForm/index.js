@@ -38,7 +38,7 @@ class GenericForm extends Component {
 
   render() {
     return (
-        <form class={ this.props.className + ' generic-form' } onSubmit={ this.handleSubmit } noValidate>
+        <form className={ this.props.className + ' generic-form' } onSubmit={ this.handleSubmit } noValidate>
         {
           Object.keys(this.props.payload).map( index => {
             if(index !== 'form_settings'){
@@ -65,6 +65,7 @@ class GenericForm extends Component {
                     name={ index }
                     placeholder={ this.props.payload[index].placeholder }
                     updateParentState={ this.handleChange }
+                    id={ Object.keys(this.props.payload[index].value).length ? this.props.payload[index].value.id : -1 }
                   /> 
                 )
               }

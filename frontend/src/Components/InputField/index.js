@@ -25,7 +25,7 @@ class InputField extends Component{
     this.myStyle={
       'width': '30%',
       'display': 'flex',
-      'flex-direction': 'column',
+      'flexDirection': 'column',
     }
   }
 

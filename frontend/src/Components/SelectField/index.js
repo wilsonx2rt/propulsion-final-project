@@ -21,23 +21,40 @@ class SelectField extends Component{
     super(props);
 
     this.state = {
-      value: '' 
+      value: '',
     }
 
     this.myStyle={
       'width': '30%',
       'display': 'flex',
-      'flex-direction': 'column',
+      'flexDirection': 'column',
     }
 
     this.state.defaultDropdown = [''];
   }
 
+  componentDidMount = () => {
+    this.dropdowns = (this.props.dropdowns[this.props.name] !== undefined) ? [...this.state.defaultDropdown, ...this.props.dropdowns[this.props.name]] : this.state.defaultDropdown;
+    // console.log(this.dropdowns);
+    let defaultValue = '';
+    if (this.props.id > 0) {
+      this.props.dropdowns[this.props.name].map(el => {
+        if (el.id = this.props.id) {
+          defaultValue = el.name;
+        }
+      })
+    }
+    this.setState({
+      value: defaultValue,
+    })
+  }
+
   handleChange = (e) => {
-    this.props.updateParentState([this.props.name, e.target.value])
+    const returnObject = this.dropdowns.filter(el => el.name===e.target.value)[0];
     this.setState({
       value: e.target.value,
     })
+    this.props.updateParentState([this.props.name, returnObject])
   }
 
   render() {
@@ -46,10 +63,10 @@ class SelectField extends Component{
     return (
       <div className={ this.props.className + '__input-container' } style={ this.myStyle }>
         <label>{ this.props.placeholder }{ this.props.required === 'true' ? <span>*</span> : '' }</label>
-        <select name={ this.props.name } onChange={ this.handleChange } value={ this.state.value }>
+        <select name={ this.props.name } onChange={ this.handleChange } value={ this.state.value } >
           {         
               dropdowns.map(el => {
-                return <option key={ rand.generate(10) } value={ el.name }>{ el.name }</option>
+                  return <option key={ rand.generate(10) } value={ el.name } >{ el.name }</option>
               })
           }
         </select>
