@@ -5,7 +5,7 @@ from project.api.project_apps.project_assignment.serializers import ProjectAssig
 from project.project_assignment.models import ProjectAssignment
 
 
-class NonAProjectAssignmentUpdateDeleteView(RetrieveUpdateAPIView):
+class NonAProjectAssignmentView(RetrieveUpdateAPIView):
     '''
     Serves all project assignment fields
     '''
