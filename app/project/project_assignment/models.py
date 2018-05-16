@@ -131,24 +131,13 @@ class ProjectAssignment(models.Model):
         blank=True,
         null=True,
     )
-    # FIXME: THINK ABOUT HOW TO LINK THE USERS THE INITIALS IN THE DOPDOWNS
-    project_management = models.ForeignKey(
+
+    project_management = models.ManyToManyField(
         verbose_name='project management',
-        on_delete=models.SET_NULL,
         help_text='Projektleitung',
         to=settings.AUTH_USER_MODEL,
-        related_name='project_assignment',
-        null=True,
+        related_name='project_assignments',
     )
-
-    # project_management = models.ForeignKey(
-    #     verbose_name='project management',
-    #     help_text='Projektleitung',
-    #     on_delete=models.SET_NULL,
-    #     to='project_assignment.PMDropdown',
-    #     blank=True,
-    #     null=True,
-    # )
 
     planner_control = models.ForeignKey(
         verbose_name='planner control',
