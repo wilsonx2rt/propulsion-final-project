@@ -35,16 +35,14 @@ class SelectField extends Component{
 
   componentDidMount = () => {
     this.dropdowns = (this.props.dropdowns[this.props.name] !== undefined) ? [...this.state.defaultDropdown, ...this.props.dropdowns[this.props.name]] : this.state.defaultDropdown;
-    console.log(this.dropdowns);
     let defaultValue = '';
-    console.log('IIIIIDDDDDD', this.props.id, this.props.name, this.dropdowns);
     // if (this.props.id > 0 && this.props.dropdowns[ this.props.name ] !== undefined) {
-    if (this.props.id > 0) {
-      this.dropdowns.map(el => {
-        if (el.id = this.props.id) {
-          defaultValue = el.name;
-        }
-      })
+      if (this.props.id > 0) {
+        this.dropdowns.map(el => {
+          if (el.id === this.props.id) {
+            defaultValue = el.name;
+          }
+        })
     }
     this.setState({
       value: defaultValue,
@@ -78,6 +76,7 @@ class SelectField extends Component{
 }
 
 const mapStateToProps = (state, props) => {
+  // console.log('DRRRRRRRRR',state.dropdowns);
   return {
     dropdowns: state.dropdowns
   }

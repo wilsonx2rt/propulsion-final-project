@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import GenericForm from '../../GenericForm';
-import { getProjectAssignmentAction } from '../../../store/actions/getProjectAssignmentAction';
+import { getProjectDetailsAction } from '../../../store/actions/getProjectDetailsAction';
 
 class ProjectAssignmentForm extends Component {
   constructor(props) {
@@ -26,22 +26,25 @@ class ProjectAssignmentForm extends Component {
   }
 
   componentDidMount = () => {
-    const action = getProjectAssignmentAction(this.props);
+    const action = getProjectDetailsAction(this.props);
     this.props.dispatch(action);
   }
 
 
   static getDerivedStateFromProps = (nextProps, prevState) => {
-    const newState = Object.assign({}, prevState);
-    Object.keys(prevState.formPayload).map(key => {
-      if (prevState.formPayload[key].value !== nextProps.project_assignment[key]){
-        if (nextProps.project_assignment[key] !== null && nextProps.project_assignment[key] !== undefined && key !== 'form_settings'){
-          newState.formPayload[key].value = nextProps.project_assignment[key];
+    if (nextProps.project_assignment!==undefined){
+      const newState = Object.assign({}, prevState);
+      Object.keys(prevState.formPayload).map(key => {
+        if (key !== 'form_settings' && prevState.formPayload[key].value !== nextProps.project_assignment[key]){
+          if (nextProps.project_assignment[key] !== null && nextProps.project_assignment[key] !== undefined ){
+            newState.formPayload[key].value = nextProps.project_assignment[key];
+          }
         }
-      }
-    })
-      console.log(newState);
-      return newState;
+      })
+      // console.log("NEW STATE", newState);
+        return newState;
+    }
+    return null;
   }
 
   handleChange = input_array => {
@@ -86,9 +89,9 @@ class ProjectAssignmentForm extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  // console.log(state);
+  // console.log('PROJECT ASSIGNMENT',state.project_details.project_assignment);
   return {
-    project_assignment: state.project_assignment,
+    project_assignment: state.project_details.project_assignment,
   }
 }
 

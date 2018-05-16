@@ -13,7 +13,7 @@ class ProjectAllocation extends Component {
 
   render(){
     return (
-      <li  onClick={ this.handleClilck }><a href=''>{ `${this.props.allocation.year.name} | ${this.props.allocation.quarter} | Total allocation: ${this.total_allocation}` }</a></li>
+      <li  onClick={ this.handleClilck }><a href=''>{ `${this.props.allocation.year.name} | ${this.props.allocation.quarter.name} | Total allocation: ${this.total_allocation}` }</a></li>
     )
   }
 }
