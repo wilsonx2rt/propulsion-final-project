@@ -16,8 +16,6 @@ class MilestoneDropdownSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-
-
 class ProjectMilestonesSerializer(serializers.ModelSerializer):
     year = YearSerializer()
     milestone_calendar_week = CalendarWeekSerializer()

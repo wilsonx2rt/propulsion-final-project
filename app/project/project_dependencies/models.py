@@ -37,4 +37,3 @@ class ProjectDependencies(models.Model):
     class Meta:
         verbose_name = 'Project dependencies',
         verbose_name_plural = 'Project dependencies',
-
