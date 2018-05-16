@@ -4,8 +4,9 @@ from rest_framework.generics import ListAPIView
 
 from project.api.overview.serializers import ProjectOverviewSerializer
 from project.api.permissions import IsAdminOrReadOnly
+from project.api.project_apps.user.serializers import UserSerializer
+
 from project.project_data.models import ProjectData
-from project.user.serializers import UserSerializer
 
 User = get_user_model()
 
