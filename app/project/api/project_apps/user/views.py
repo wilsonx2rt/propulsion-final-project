@@ -7,9 +7,6 @@ from project.api.project_apps.user.serializers import UserSerializer
 User = get_user_model()
 
 
-
-
-
 class UserProfileGetUpdateDeleteView(RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAdminOrReadOnly]
     serializer_class = UserSerializer
