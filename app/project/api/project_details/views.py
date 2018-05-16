@@ -1,12 +1,11 @@
-from rest_framework.generics import RetrieveAPIView, ListAPIView
+from rest_framework.generics import RetrieveUpdateDestroyAPIView, ListAPIView
 from rest_framework.permissions import IsAuthenticated
-
 from project.api.permissions import IsAdminOrReadOnly
 from project.api.project_details.serializers import ProjectDetailsSerializer
 from project.project_data.models import ProjectData
 
 
-class ProjectGetView(RetrieveAPIView):
+class ProjectGetView(ListAPIView):
     '''
     Delivers all fields of a project related to the provided id
     '''
@@ -15,7 +14,7 @@ class ProjectGetView(RetrieveAPIView):
     queryset = ProjectData.objects.all()
 
 
-class ProjectListView(ListAPIView):
+class ProjectListView(RetrieveUpdateDestroyAPIView):
     '''
     Delivers a list of all projects with all it's fields
     '''

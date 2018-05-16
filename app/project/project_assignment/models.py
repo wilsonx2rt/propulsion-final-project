@@ -1,4 +1,4 @@
-# from django.conf import settings
+from django.conf import settings
 from django.db import models
 
 
@@ -33,16 +33,6 @@ class ProjectResponsibilityDropdown(models.Model):
 
 
 class OverallPMTeamDropdown(models.Model):
-    name = models.CharField(
-        verbose_name='name',
-        max_length=20,
-    )
-
-    def __str__(self):
-        return self.name
-
-
-class PMDropdown(models.Model):
     name = models.CharField(
         verbose_name='name',
         max_length=20,
@@ -141,25 +131,24 @@ class ProjectAssignment(models.Model):
         blank=True,
         null=True,
     )
-# FIXME: THINK ABOUT HOW TO LINK THE USERS THE INITIALS IN THE DOPDOWNS
+    # FIXME: THINK ABOUT HOW TO LINK THE USERS THE INITIALS IN THE DOPDOWNS
+    project_management = models.ForeignKey(
+        verbose_name='project management',
+        on_delete=models.SET_NULL,
+        help_text='Projektleitung',
+        to=settings.AUTH_USER_MODEL,
+        related_name='project_assignment',
+        null=True,
+    )
+
     # project_management = models.ForeignKey(
     #     verbose_name='project management',
     #     help_text='Projektleitung',
-    #     to=settings.AUTH_USER_MODEL,
     #     on_delete=models.SET_NULL,
-    #     related_name='project_assignment',
+    #     to='project_assignment.PMDropdown',
     #     blank=True,
     #     null=True,
     # )
-
-    project_management = models.ForeignKey(
-        verbose_name='project management',
-        help_text='Projektleitung',
-        on_delete=models.SET_NULL,
-        to='project_assignment.PMDropdown',
-        blank=True,
-        null=True,
-    )
 
     planner_control = models.ForeignKey(
         verbose_name='planner control',
