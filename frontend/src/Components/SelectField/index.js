@@ -37,7 +37,7 @@ class SelectField extends Component{
     this.dropdowns = (this.props.dropdowns[this.props.name] !== undefined) ? [...this.state.defaultDropdown, ...this.props.dropdowns[this.props.name]] : this.state.defaultDropdown;
     // console.log(this.dropdowns);
     let defaultValue = '';
-    if (this.props.id > 0) {
+    if (this.props.id > 0 && this.props.dropdowns[ this.props.name ] !== undefined) {
       this.props.dropdowns[this.props.name].map(el => {
         if (el.id = this.props.id) {
           defaultValue = el.name;

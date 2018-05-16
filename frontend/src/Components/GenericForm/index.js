@@ -37,8 +37,10 @@ class GenericForm extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
         <form className={ this.props.className + ' generic-form' } onSubmit={ this.handleSubmit } noValidate>
+        <div className={ this.props.className + ' generic-form-input-container' } >
         {
           Object.keys(this.props.payload).map( index => {
             if(index !== 'form_settings'){
@@ -85,6 +87,7 @@ class GenericForm extends Component {
             return '';
           })
         }
+        </div>
         {
           Object.keys(this.props.payload).map( index => {
             if(index === 'form_settings'){

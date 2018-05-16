@@ -12,23 +12,25 @@ class LoginForm extends Component {
   constructor(props) {
     super(props);
 
-    this.formPayload = {
+    this.state = {
+      formPayload: {
       'form_settings': {type: 'login_form'},
       'username': {value: '', type: 'input', inputType: 'email', required: 'true', placeholder: 'Email'},
       'password': {value: '', type: 'input', inputType: 'password', required: 'true', placeholder: 'Kennwort'},
-    };
+    }
+  }
   }
 
   handleChange = input_array => {
-    this.formPayload[input_array[0]].value = input_array[1];
+    this.state.formPayload[input_array[0]].value = input_array[1];
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
     hideValidationMessage();
-    const action = loginAction(this.state, this.props);
+    const action = loginAction(this.state.formPayload, this.props);
     this.props.dispatch(action);
-    document.querySelector('#login-form').reset();
+    document.querySelectorAll('.login-form')[0].reset();
   }
 
   render() {
@@ -36,7 +38,7 @@ class LoginForm extends Component {
       <div className="login-form-wrapper">
         <GenericForm 
           className='login-form'
-          payload={ this.state }
+          payload={ this.state.formPayload }
           onSubmit={ this.handleSubmit }
           updateParentState={ this.handleChange }
         />

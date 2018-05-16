@@ -1,5 +1,10 @@
 .generic-form {
   display: flex;
+  flex-direction: column;
+}
+
+.generic-form-input-container {
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;

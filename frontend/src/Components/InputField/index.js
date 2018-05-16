@@ -22,11 +22,7 @@ class InputField extends Component{
     this.state = {
       value: this.props.value,
     }
-    this.myStyle={
-      'width': '30%',
-      'display': 'flex',
-      'flexDirection': 'column',
-    }
+
   }
 
   handleChange = (e) => {
@@ -38,9 +34,9 @@ class InputField extends Component{
 
   render() {
     return (
-      <div className={ this.props.className + '__input-container' } style={ this.myStyle } >
-        <label>{ this.props.placeholder }{ this.props.required === 'true' ? <span>*</span> : '' }</label>
+      <div className={ this.props.className + '__input-container' } >
         <p className={ this.props.className + '__validation-message generic-validation-message hidden-element'} >{ 'Incorrect ' + this.props.placeholder }</p>
+        <label>{ this.props.placeholder }{ this.props.required === 'true' ? <span>*</span> : '' }</label>
         <input
           className={ this.props.className + '__input' }
           type={ this.props.type }
