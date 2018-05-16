@@ -1,7 +1,6 @@
 from rest_framework.generics import RetrieveUpdateDestroyAPIView, ListAPIView
 from rest_framework.permissions import IsAuthenticated
 
-from project.api.permissions import IsAdminOrReadOnly
 from project.api.project_details.serializers import ProjectDetailsSerializer
 from project.project_data.models import ProjectData
 
