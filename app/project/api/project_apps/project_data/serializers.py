@@ -91,4 +91,3 @@ class ProjectDataSerializer(ProjectDataUpdateSerializer):
     risk_assessment = RiskAssessmentDropdownSerializer(read_only=True)
     project_handbook = ProjectHandbookDropdownSerializer(read_only=True)
     project_status_phase = ProjectStatusPhaseDropdownSerializer(read_only=True)
-

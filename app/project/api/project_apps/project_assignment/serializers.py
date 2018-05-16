@@ -1,10 +1,10 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
+from project.api.project_apps.user.serializers import UserSerializer
 from project.project_assignment.models import ProjectAssignment, LeadingRoleDropdown, LeadingTeamDropdown, \
     ProjectResponsibilityDropdown, OverallPMTeamDropdown, PlannerControlDropdown, \
     ConstructionManagementDropdown, IllustratorDropdown, CommunicationsDropdown
-from project.user.serializers import UserSerializer
 
 User = get_user_model()
 

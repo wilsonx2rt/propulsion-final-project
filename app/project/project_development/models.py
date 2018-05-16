@@ -56,3 +56,8 @@ class ProjectDevelopment(models.Model):
 
     def __str__(self):
         return f'{self.project}'
+
+    class Meta:
+        unique_together = (
+            ('project', 'project_status', 'project_tendency')
+        )

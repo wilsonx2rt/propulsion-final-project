@@ -1,11 +1,13 @@
 from django.contrib.auth import get_user_model
 from django.db.models import Q
 from rest_framework.generics import ListAPIView
+from rest_framework.permissions import IsAuthenticated
 
 from project.api.overview.serializers import ProjectOverviewSerializer
 from project.api.permissions import IsAdminOrReadOnly
+from project.api.project_apps.user.serializers import UserSerializer
+
 from project.project_data.models import ProjectData
-from project.user.serializers import UserSerializer
 
 User = get_user_model()
 
@@ -15,7 +17,7 @@ class ProjectOverviewView(ListAPIView):
     '''
     Optional filter by name, project type, project manager, project status.
     '''
-    permission_classes = [IsAdminOrReadOnly, ]
+    permission_classes = [IsAdminOrReadOnly, IsAuthenticated]
     serializer_class = ProjectOverviewSerializer
     queryset = ProjectData.objects.all()
 
@@ -32,6 +34,6 @@ class ProjectOverviewView(ListAPIView):
 
 
 class ProjectManagersOverviewView(ListAPIView):
-    permission_classes = [IsAdminOrReadOnly, ]
+    permission_classes = [IsAdminOrReadOnly, IsAuthenticated]
     serializer_class = UserSerializer
     queryset = User.objects.all()
