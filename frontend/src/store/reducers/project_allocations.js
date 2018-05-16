@@ -39,7 +39,7 @@ export const project_allocations = (state=initialState, action) => {
       // })
       // console.log(newState);
       // return newState;
-      return action.payload.data[0].project_allocations;
+      return action.payload.data.project_allocations;
     }
     default:
       return state;

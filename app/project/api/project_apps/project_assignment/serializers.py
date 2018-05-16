@@ -62,7 +62,7 @@ class ProjectAssignmentSerializer(serializers.ModelSerializer):
     leading_team = LeadingTeamDropdownSerializer()
     project_responsibility = ProjectResponsibilityDropdownSerializer()
     overall_pm_team = OverallPMTeamDropdownSerializer()
-    project_management = UserSerializer()
+    project_management = UserSerializer(many=True)
     planner_control = PlannerControlDropdownSerializer()
     construction_management = ConstructionManagementDropdownSerializer()
     illustrator = IllustratorDropdownSerializer()
