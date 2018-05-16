@@ -1,4 +1,5 @@
 from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.permissions import IsAuthenticated
 
 from project.api.permissions import IsAdminOrReadOnly
 from project.api.project_apps.project_data.serializers import ProjectDataUpdateSerializer, ProjectDataSerializer
@@ -9,13 +10,13 @@ class ProjectDataCreateView(CreateAPIView):
     '''
     Creates new object
     '''
-    permission_classes = [IsAdminOrReadOnly]
+    permission_classes = [IsAdminOrReadOnly, IsAuthenticated]
     serializer_class = ProjectDataUpdateSerializer
     queryset = ProjectData.objects.all()
 
 
 class ProjectDataUpdateDeleteView(RetrieveUpdateDestroyAPIView):
-    permission_classes = [IsAdminOrReadOnly]
+    permission_classes = [IsAdminOrReadOnly, IsAuthenticated]
     serializer_class = ProjectDataUpdateSerializer
     output_serializer_class = ProjectDataSerializer
     queryset = ProjectData.objects.all()

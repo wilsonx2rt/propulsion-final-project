@@ -1,4 +1,5 @@
 from rest_framework.generics import RetrieveUpdateDestroyAPIView, ListAPIView
+from rest_framework.permissions import IsAuthenticated
 
 from project.api.permissions import IsAdminOrReadOnly
 from project.api.project_details.serializers import ProjectDetailsSerializer
@@ -9,7 +10,7 @@ class ProjectListView(ListAPIView):
     '''
     Delivers a list of all projects with all it's fields
     '''
-    permission_classes = [IsAdminOrReadOnly]
+    permission_classes = [IsAuthenticated]
     serializer_class = ProjectDetailsSerializer
     queryset = ProjectData.objects.all()
 
@@ -18,6 +19,6 @@ class ProjectGetView(RetrieveUpdateDestroyAPIView):
     '''
     Delivers all fields of a project related to the provided id
     '''
-    permission_classes = [IsAdminOrReadOnly]
+    permission_classes = [IsAuthenticated]
     serializer_class = ProjectDetailsSerializer
     queryset = ProjectData.objects.all()
