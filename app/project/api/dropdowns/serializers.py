@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
-from project.api.project_apps.helper_models.serializers import YearSerializer, CalendarWeekSerializer
+from project.api.project_apps.helper_models.serializers import YearSerializer, CalendarWeekSerializer, QuarterSerializer
 from project.api.project_apps.project_assignment.serializers import LeadingRoleDropdownSerializer, \
     LeadingTeamDropdownSerializer, ProjectResponsibilityDropdownSerializer, \
     PlannerControlDropdownSerializer, ConstructionManagementDropdownSerializer, \
@@ -17,7 +17,7 @@ from project.api.project_apps.project_finances.serializers import FinancingDropd
     RequirementsAssessmentDropdownSerializer, CreditStatusDropdownSerializer, YearlyForecastSerializer
 from project.api.project_apps.project_milestones.serializers import MilestoneDropdownSerializer, \
     TendenciesDropdownerializer, CommentaryOptionsSerializer
-from project.helper_models.models import Year, CalendarWeek
+from project.helper_models.models import Year, CalendarWeek, Quarters
 from project.project_assignment.models import LeadingRoleDropdown, LeadingTeamDropdown, ProjectResponsibilityDropdown, \
     PlannerControlDropdown, ConstructionManagementDropdown, IllustratorDropdown, CommunicationsDropdown, \
     OverallPMTeamDropdown
@@ -63,6 +63,7 @@ class DropdownModelsSerializer(serializers.Serializer):
     yearly_forecasts = YearlyForecastSerializer(many=True)
     # PROJECT MILESTONES
     year = YearSerializer(many=True)
+    quarter = QuarterSerializer(many=True)
     milestone_calendar_week = CalendarWeekSerializer(many=True)
     milestone_value = MilestoneDropdownSerializer(many=True)
     tendency = TendenciesDropdownerializer()
@@ -98,6 +99,7 @@ class DropdownModelsSerializer(serializers.Serializer):
         credit_status = CreditStatusDropdown.objects.all()
         yearly_forecasts = YearlyForecast.objects.all()
         year = Year.objects.all()
+        quarter = Quarters.objects.all()
         milestone_calendar_week = CalendarWeek.objects.all()
         milestone_value = MilestoneDropdown.objects.all()
         tendency = TendenciesDropdown.objects.all()

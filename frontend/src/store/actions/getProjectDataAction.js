@@ -11,7 +11,8 @@ export const getProjectDataAction = (props) => (dispatch, getState) => {
       method: 'GET',
       headers,
     }
-    return fetch(SERVER_URL + 'project_details/1/', config);
+    const project_id = props.project_id;
+    return fetch(`${SERVER_URL}project_details/${project_id}/`, config);
   }
   )
   .then(response => {

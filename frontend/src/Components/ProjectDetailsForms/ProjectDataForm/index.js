@@ -46,18 +46,31 @@ class ProjectDataForm extends Component {
   }
 
   static getDerivedStateFromProps = (nextProps, prevState) => {
-    if (prevState.formPayload.name.value === '' && nextProps.project_data.name!==''){
-      const newState = Object.assign({}, prevState);
-      Object.keys(prevState.formPayload).map(key => {
+    const newState = Object.assign({}, prevState);
+    Object.keys(prevState.formPayload).map(key => {
+      if (prevState.formPayload[key].value !== nextProps.project_data[key]){
         if (nextProps.project_data[key] !== null && nextProps.project_data[key] !== undefined && key !== 'form_settings'){
-          newState.formPayload[key].value = nextProps.project_data[key]
+          newState.formPayload[key].value = nextProps.project_data[key];
         }
-      })
+      }
+    })
       // console.log(newState);
       return newState;
-    }
-    return null;
   }
+
+  // static getDerivedStateFromProps = (nextProps, prevState) => {
+  //   if (prevState.formPayload.name.value === '' && nextProps.project_data.name!==''){
+  //     const newState = Object.assign({}, prevState);
+  //     Object.keys(prevState.formPayload).map(key => {
+  //       if (nextProps.project_data[key] !== null && nextProps.project_data[key] !== undefined && key !== 'form_settings'){
+  //         newState.formPayload[key].value = nextProps.project_data[key]
+  //       }
+  //     })
+  //     // console.log(newState);
+  //     return newState;
+  //   }
+  //   return null;
+  // }
 
   handleChange = input_array => {
     this.state.formPayload[input_array[0]].value = input_array[1];

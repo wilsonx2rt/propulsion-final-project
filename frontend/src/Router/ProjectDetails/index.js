@@ -6,7 +6,7 @@ import './index.css';
 import AccordionSegment from '../../Components/AccordionSegment';
 import ProjectDataForm from '../../Components/ProjectDetailsForms/ProjectDataForm';
 import ProjectAssignmentForm from '../../Components/ProjectDetailsForms/ProjectAssignmentForm';
-import ProjectAllocationForm from '../../Components/ProjectDetailsForms/ProjectAllocationForm';
+import ProjectAllocationsForm from '../../Components/ProjectDetailsForms/ProjectAllocationsForm';
 import ProjectFinancesForm from '../../Components/ProjectDetailsForms/ProjectFinancesForm';
 import { fetchDropdownsActionCreator } from '../../store/actions/fetchDropdowns';
 
@@ -22,12 +22,13 @@ class ProjectDetails extends Component {
   }
 
   render() {
+    console.log('--------------', this.props);
     return (
       <div className='project-details-container'>
-        <AccordionSegment AccordionSegmentTitle="Projectdaten" ><ProjectDataForm /></AccordionSegment>
-        <AccordionSegment AccordionSegmentTitle="Projektzuteilung" ><ProjectAssignmentForm /></AccordionSegment>
-        <AccordionSegment AccordionSegmentTitle="Projektablauf" ><ProjectAllocationForm /></AccordionSegment>
-        <AccordionSegment AccordionSegmentTitle="Projektfinanzplanung" ><ProjectFinancesForm /></AccordionSegment>
+        <AccordionSegment AccordionSegmentTitle="Projectdaten" ><ProjectDataForm project_id={ this.props.match.params.project_id }/></AccordionSegment>
+        <AccordionSegment AccordionSegmentTitle="Projektzuteilung" ><ProjectAssignmentForm project_id={ this.props.match.params.project_id } /></AccordionSegment>
+        <AccordionSegment AccordionSegmentTitle="Projektablauf" ><ProjectAllocationsForm project_id={ this.props.match.params.project_id } /></AccordionSegment>
+        <AccordionSegment AccordionSegmentTitle="Projektfinanzplanung" ><ProjectFinancesForm project_id={ this.props.match.params.project_id } /></AccordionSegment>
       </div>
     )
   }

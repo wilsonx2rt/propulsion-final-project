@@ -30,19 +30,18 @@ class ProjectAssignmentForm extends Component {
     this.props.dispatch(action);
   }
 
+
   static getDerivedStateFromProps = (nextProps, prevState) => {
-    if (prevState.formPayload.project_responsibility.value === '' && nextProps.project_assignment.project_responsibility!==''){
-      const newState = Object.assign({}, prevState);
-      Object.keys(prevState.formPayload).map(key => {
-        console.log(nextProps);
+    const newState = Object.assign({}, prevState);
+    Object.keys(prevState.formPayload).map(key => {
+      if (prevState.formPayload[key].value !== nextProps.project_assignment[key]){
         if (nextProps.project_assignment[key] !== null && nextProps.project_assignment[key] !== undefined && key !== 'form_settings'){
-          newState.formPayload[key].value = nextProps.project_assignment[key]
+          newState.formPayload[key].value = nextProps.project_assignment[key];
         }
-      })
+      }
+    })
       console.log(newState);
       return newState;
-    }
-    return null;
   }
 
   handleChange = input_array => {
@@ -87,7 +86,7 @@ class ProjectAssignmentForm extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  console.log(state);
+  // console.log(state);
   return {
     project_assignment: state.project_assignment,
   }

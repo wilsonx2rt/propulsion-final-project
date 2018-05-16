@@ -1,7 +1,7 @@
 import { validateTokens } from "./validateTokens";
-import { SERVER_URL, SET_PROJECT_ASSIGNMENT } from '../constants';
+import { SERVER_URL, SET_PROJECT_ALLOCATIONS } from '../constants';
 
-export const getProjectAssignmentAction = (props) => (dispatch, getState) => {
+export const getProjectAllocationsAction = (props) => (dispatch, getState) => {
   validateTokens(getState(), dispatch, props)
   .then(response => {
     const headers = ({
@@ -21,14 +21,14 @@ export const getProjectAssignmentAction = (props) => (dispatch, getState) => {
   })
   .then(project_details => {
     // console.log(project_details);
-    const action = setProjectAssignment(project_details);
+    const action = setProjectAllocation(project_details);
     dispatch(action);
   })
 }
 
-const setProjectAssignment = (data) => {
+const setProjectAllocation = (data) => {
   return {
-    type: SET_PROJECT_ASSIGNMENT,
+    type: SET_PROJECT_ALLOCATIONS,
     payload: {
       data,
     }

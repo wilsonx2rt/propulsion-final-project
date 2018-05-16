@@ -28,7 +28,7 @@ class LoginForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     hideValidationMessage();
-    const action = loginAction(this.state.formPayload, this.props);
+    const action = loginAction(this.state, this.props);
     this.props.dispatch(action);
     document.querySelectorAll('.login-form')[0].reset();
   }

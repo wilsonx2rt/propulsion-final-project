@@ -20,7 +20,7 @@ const Home = (props) => {
             <Nav />
             <Route exact path="/" component={ App } />
             <Route exact path="/login" component={ Login } />
-            <Route exact path="/project-details" component={ ProjectDetails } />
+            <Route exact path="/project-details/:project_id" component={ ProjectDetails } />
             {/* <Route exact path="/signup" component={ Signup } />
             <Route exact path="/registration/validation" component={ SignupValidation } />
             <Route exact path="/new_restaurant" component={ NewRestaurant } /> */}

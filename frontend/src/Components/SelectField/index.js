@@ -30,15 +30,17 @@ class SelectField extends Component{
       'flexDirection': 'column',
     }
 
-    this.state.defaultDropdown = [''];
+    this.state.defaultDropdown = [{ id: -1, name: ''}];
   }
 
   componentDidMount = () => {
     this.dropdowns = (this.props.dropdowns[this.props.name] !== undefined) ? [...this.state.defaultDropdown, ...this.props.dropdowns[this.props.name]] : this.state.defaultDropdown;
-    // console.log(this.dropdowns);
+    console.log(this.dropdowns);
     let defaultValue = '';
-    if (this.props.id > 0 && this.props.dropdowns[ this.props.name ] !== undefined) {
-      this.props.dropdowns[this.props.name].map(el => {
+    console.log('IIIIIDDDDDD', this.props.id, this.props.name, this.dropdowns);
+    // if (this.props.id > 0 && this.props.dropdowns[ this.props.name ] !== undefined) {
+    if (this.props.id > 0) {
+      this.dropdowns.map(el => {
         if (el.id = this.props.id) {
           defaultValue = el.name;
         }
