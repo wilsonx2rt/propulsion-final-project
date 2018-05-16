@@ -17,6 +17,7 @@ from project.api.project_apps.project_finances.serializers import FinancingDropd
     RequirementsAssessmentDropdownSerializer, CreditStatusDropdownSerializer, YearlyForecastSerializer
 from project.api.project_apps.project_milestones.serializers import MilestoneDropdownSerializer, \
     TendenciesDropdownerializer
+from project.api.project_apps.user.serializers import UserSerializer
 from project.helper_models.models import Year, CalendarWeek
 from project.project_assignment.models import LeadingRoleDropdown, LeadingTeamDropdown, ProjectResponsibilityDropdown, \
     PlannerControlDropdown, ConstructionManagementDropdown, IllustratorDropdown, CommunicationsDropdown, \
@@ -28,7 +29,6 @@ from project.project_development.models import ProjectStatusDropdown, ProjectTen
 from project.project_finances.models import FinancingDropdown, RequirementsAssessmentDropdown, CreditStatusDropdown, \
     YearlyForecast
 from project.project_milestones.models import MilestoneDropdown, TendenciesDropdown
-from project.user.serializers import UserSerializer
 
 User = get_user_model()
 

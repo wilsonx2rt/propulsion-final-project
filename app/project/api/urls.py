@@ -4,7 +4,7 @@ app_name = 'api'
 
 urlpatterns = [
     path('auth/', include('project.api.auth.urls', namespace='auth')),
-    path('registration/', include('project.api.registration.urls', namespace='registration')),
+    path('registration/', include('project.api.project_apps.user.registration.urls', namespace='registration')),
     path('overview/', include('project.api.overview.urls')),
     path('project_details/', include('project.api.project_details.urls')),
     path('dropdowns/', include('project.api.dropdowns.urls')),
@@ -17,4 +17,5 @@ urlpatterns = [
     path('project_development/', include('project.api.project_apps.project_development.urls')),
     path('project_milestones/', include('project.api.project_apps.project_milestones.urls')),
     path('pm/', include('project.api.non_admin.urls')),
+    path('user/', include('project.api.project_apps.user.urls')),
 ]
