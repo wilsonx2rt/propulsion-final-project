@@ -35,7 +35,7 @@ class ProjectFinancesSerializer(serializers.ModelSerializer):
 
 
 class ProjectFinancesUpdateSerializer(serializers.ModelSerializer):
-    yearly_forecasts = YearlyForecastSerializer(many=True)
+    yearly_forecasts = YearlyForecastSerializer(many=True, read_only=True)
 
     class Meta:
         model = ProjectFinances
