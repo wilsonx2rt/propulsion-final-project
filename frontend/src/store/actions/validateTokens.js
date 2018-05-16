@@ -40,7 +40,7 @@ export const validateTokens = (state, dispatch, props) => {
       if (response === undefined) {
         return;
       }
-      // console.log(response);
+      console.log(response);
       if (response.status===200){
         const refreshBody = {
           refresh: state.tokens.refresh,
@@ -61,14 +61,14 @@ export const validateTokens = (state, dispatch, props) => {
       if (response === undefined) {
         return;
       }
-      // console.log(response);
+      console.log(response);
       return response.json()
     })
     .then(data => {
       if (data === undefined) {
         return;
       }
-      // console.log(data);
+      console.log(data);
       const tokens = {
         refresh: state.tokens.refresh,
         access: data.access, 

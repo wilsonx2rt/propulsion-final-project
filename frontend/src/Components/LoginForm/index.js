@@ -4,7 +4,8 @@ import { withRouter } from 'react-router-dom';
 import "./index.css";
 
 import { loginAction } from '../../store/actions/userActions';
-import Button from '../Button';
+// import Button from '../Button';
+import GenericForm from '../GenericForm';
 import { hideValidationMessage } from '../../helpers';
 
 class LoginForm extends Component {
@@ -12,15 +13,16 @@ class LoginForm extends Component {
     super(props);
 
     this.state = {
-      username: "",
-      password: ""
-    };
+      formPayload: {
+      'form_settings': {type: 'login_form'},
+      'username': {value: '', type: 'input', inputType: 'email', required: 'true', placeholder: 'Email'},
+      'password': {value: '', type: 'input', inputType: 'password', required: 'true', placeholder: 'Kennwort'},
+    }
+  }
   }
 
-  handleChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
+  handleChange = input_array => {
+    this.state.formPayload[input_array[0]].value = input_array[1];
   };
 
   handleSubmit = (e) => {
@@ -28,13 +30,19 @@ class LoginForm extends Component {
     hideValidationMessage();
     const action = loginAction(this.state, this.props);
     this.props.dispatch(action);
-    document.querySelector('#login-form').reset();
+    document.querySelectorAll('.login-form')[0].reset();
   }
 
   render() {
     return (
       <div className="login-form-wrapper">
-        <form id="login-form" onSubmit={ this.handleSubmit } noValidate>
+        <GenericForm 
+          className='login-form'
+          payload={ this.state.formPayload }
+          onSubmit={ this.handleSubmit }
+          updateParentState={ this.handleChange }
+        />
+        {/* <form id="login-form" onSubmit={ this.handleSubmit } noValidate>
           <p className='login-form__validation-message generic-validation-message hidden-element'>Ungültiger Benutzername oder Kennwort</p>
           <input
             className="login-form__input"
@@ -42,6 +50,7 @@ class LoginForm extends Component {
             name="username"
             placeholder="Email"
             onChange={this.handleChange}
+            value={ this.state.username }
           />
           <input
             className="login-form__input"
@@ -49,13 +58,14 @@ class LoginForm extends Component {
             name="password"
             placeholder="Kennwort"
             onChange={this.handleChange}
+            value={ this.state.password }
           />
           <Button 
             id="login-form__button" 
             btnText="Login" 
             type='submit'
           />
-        </form>
+        </form> */}
       </div>
     );
   }

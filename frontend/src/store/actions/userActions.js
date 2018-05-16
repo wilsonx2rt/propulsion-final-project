@@ -1,13 +1,13 @@
 import { getTokens } from './getTokens';
 import { AUTHORIZE_USER } from '../constants';
 
-export const loginAction = (state, props) => {
+export const loginAction = (localState, props) => {
   return (dispatch, getState) => {
-    if(!state.username || !state.password) {
+    if(!localState.formPayload.username.value || !localState.formPayload.password.value) {
       alert('Both username and password are required');
       return;
     }
-    getTokens(state, props, dispatch, getState);
+    getTokens(localState, props, dispatch, getState);
   }
 }
 
