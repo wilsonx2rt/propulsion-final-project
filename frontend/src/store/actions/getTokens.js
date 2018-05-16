@@ -9,8 +9,8 @@ export const getTokens = (localState, props, dispatch, getState) => {
       'content-type': 'application/json',
     })
     const body = {
-      username: localState.username.value,
-      password: localState.password.value,
+      username: localState.formPayload.username.value,
+      password: localState.formPayload.password.value,
     }
     const config = {
       method: 'POST',

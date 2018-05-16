@@ -3,7 +3,7 @@ import { AUTHORIZE_USER } from '../constants';
 
 export const loginAction = (localState, props) => {
   return (dispatch, getState) => {
-    if(!localState.formPayload.username || !localState.formPayload.password) {
+    if(!localState.formPayload.username.value || !localState.formPayload.password.value) {
       alert('Both username and password are required');
       return;
     }
