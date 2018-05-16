@@ -23,32 +23,6 @@ class TendenciesDropdown(models.Model):
         return self.name
 
 
-class CommentaryOptions(models.Model):
-    heading = models.CharField(
-        verbose_name='commentary heading',
-        help_text='Kommentar Title',
-        max_length=50,
-        null=True,
-    )
-
-    external_factors = models.TextField(
-        verbose_name='external factors',
-        help_text='Einfluss externe Faktoren',
-        null=True,
-        blank=True,
-    )
-
-    communications = models.TextField(
-        verbose_name='communications',
-        help_text='Kommunicaton',
-        null=True,
-        blank=True
-    )
-
-    def __str__(self):
-        return f'{self.heading}'
-
-
 """
 Main
 """
@@ -100,13 +74,18 @@ class Milestones(models.Model):
         blank=True,
     )
 
-    commentary = models.ForeignKey(
-        verbose_name='commentary',
-        help_text='Kommentare',
-        on_delete=models.SET_NULL,
-        to="project_milestones.CommentaryOptions",
+    external_factors = models.TextField(
+        verbose_name='external factors',
+        help_text='Einfluss externe Faktoren',
         null=True,
         blank=True,
+    )
+
+    communications = models.TextField(
+        verbose_name='communications',
+        help_text='Kommunicaton',
+        null=True,
+        blank=True
     )
 
     def __str__(self):
@@ -114,7 +93,7 @@ class Milestones(models.Model):
         return str
 
     class Meta:
-
+        verbose_name = 'Milestone'
         verbose_name_plural = "Milestones"
         unique_together = [(
             'project',
