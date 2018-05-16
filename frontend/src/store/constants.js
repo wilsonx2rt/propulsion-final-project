@@ -4,3 +4,4 @@ export const SERVER_URL = 'http://localhost:8888/backend/api/';
 export const SET_PROJECT_DATA = 'setProjectData';
 export const SET_PROJECT_ASSIGNMENT = 'setProjectAssignment';
 export const SET_PROJECT_ALLOCATIONS = 'setProjectAllocation';
+export const SET_PROJECT_DETAILS = 'setProjectDetails';
