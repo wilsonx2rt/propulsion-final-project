@@ -5,7 +5,7 @@ import './index.css';
 
 
 import GenericForm from '../../GenericForm';
-import { getProjectDataAction } from '../../../store/actions/getProjectDataAction';
+import { getProjectDetailsAction } from '../../../store/actions/getProjectDetailsAction';
 
 class ProjectDataForm extends Component {
   constructor(props) {
@@ -41,36 +41,25 @@ class ProjectDataForm extends Component {
   }
 
   componentDidMount = () => {
-    const action = getProjectDataAction(this.props);
+    const action = getProjectDetailsAction(this.props);
     this.props.dispatch(action);
   }
 
   static getDerivedStateFromProps = (nextProps, prevState) => {
-    const newState = Object.assign({}, prevState);
-    Object.keys(prevState.formPayload).map(key => {
-      if (prevState.formPayload[key].value !== nextProps.project_data[key]){
-        if (nextProps.project_data[key] !== null && nextProps.project_data[key] !== undefined && key !== 'form_settings'){
-          newState.formPayload[key].value = nextProps.project_data[key];
+    if (nextProps.project_data !== undefined){
+      const newState = Object.assign({}, prevState);
+      Object.keys(prevState.formPayload).map(key => {
+        if (key !== 'form_settings' && prevState.formPayload[key].value !== nextProps.project_data[key]){
+          if (nextProps.project_data[key] !== null && nextProps.project_data[key] !== undefined ){
+            newState.formPayload[key].value = nextProps.project_data[key];
+          }
         }
-      }
-    })
-      // console.log(newState);
-      return newState;
+      })
+        // console.log(newState);
+        return newState;
+    }
+    return null;
   }
-
-  // static getDerivedStateFromProps = (nextProps, prevState) => {
-  //   if (prevState.formPayload.name.value === '' && nextProps.project_data.name!==''){
-  //     const newState = Object.assign({}, prevState);
-  //     Object.keys(prevState.formPayload).map(key => {
-  //       if (nextProps.project_data[key] !== null && nextProps.project_data[key] !== undefined && key !== 'form_settings'){
-  //         newState.formPayload[key].value = nextProps.project_data[key]
-  //       }
-  //     })
-  //     // console.log(newState);
-  //     return newState;
-  //   }
-  //   return null;
-  // }
 
   handleChange = input_array => {
     this.state.formPayload[input_array[0]].value = input_array[1];
@@ -94,9 +83,7 @@ class ProjectDataForm extends Component {
 
   handleSubmit = () => {
     console.log('Yey, submiting!');
-    // const action = loginAction(this.state, this.props);
-    // this.props.dispatch(action);
-    // document.querySelector('#login-form').reset();
+
   }
 
   render() {
@@ -115,8 +102,9 @@ class ProjectDataForm extends Component {
 }
 
 const mapStateToProps = (state, props) => {
+  // console.log('PROJECT DATA', state);
   return {
-    project_data: state.project_data,
+    project_data: state.project_details,
   }
 }
 

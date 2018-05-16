@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import GenericForm from '../../GenericForm';
-import { getProjectAllocationsAction } from '../../../store/actions/getProjectAllocationsAction';
+import { getProjectDetailsAction } from '../../../store/actions/getProjectDetailsAction';
 import ProjectAllocationsList from './ProjectAllocationsList';
+import { CLIENT_RENEG_LIMIT } from "tls";
 
 class ProjectAllocationsForm extends Component {
   constructor(props) {
@@ -31,52 +32,38 @@ class ProjectAllocationsForm extends Component {
   }
 
   componentDidMount = () => {
-    const action = getProjectAllocationsAction(this.props);
+    const action = getProjectDetailsAction(this.props);
     this.props.dispatch(action);
   }
 
   static getDerivedStateFromProps = (nextProps, prevState) => {
     // if we get updated allocations which are not an empty object...
-    const newState = Object.assign({}, prevState);
-    if(prevState.project_allocations !== nextProps.project_allocations && Object.keys(nextProps.project_allocations).length) {
-      console.log('NEW ALLOCATIONS!');
-      newState.project_allocations = nextProps.project_allocations;
+    if(nextProps.project_allocations !== undefined) {
+      const newState = Object.assign({}, prevState);
+      if(prevState.project_allocations !== nextProps.project_allocations && Object.keys(nextProps.project_allocations).length) {
+        // console.log('NEW ALLOCATIONS!');
+        newState.project_allocations = nextProps.project_allocations;
+      }
+      return newState;
     }
-    return newState;
-    // const newState = Object.assign({}, prevState);
-    // Object.keys(prevState.formPayload).map(key => {
-    //   if (prevState.formPayload[key].value !== nextProps.project_allocations[key]){
-    //     if (nextProps.project_allocations[key] !== null && nextProps.project_allocations[key] !== undefined && key !== 'form_settings'){
-    //       newState.formPayload[key].value = nextProps.project_allocations[key];
-    //     }
-    //   }
-    // })
-    //   console.log(newState);
-    //   return newState;
+    return null;
   }
 
-  // static getDerivedStateFromProps = (nextProps, prevState) => {
-  //   if (prevState.formPayload.year.value === '' && nextProps.project_allocations.year!==''){
-  //     const newState = Object.assign({}, prevState);
-  //     Object.keys(prevState.formPayload).map(key => {
-  //       console.log(nextProps);
-  //       if (nextProps.project_assignment[key] !== null && nextProps.project_assignment[key] !== undefined && key !== 'form_settings'){
-  //         newState.formPayload[key].value = nextProps.project_assignment[key]
-  //       }
-  //     })
-  //     console.log(newState);
-  //     return newState;
-  //   }
-  //   return null;
-  // }
-
   handleChange = input_array => {
+    // const newState = Object.assign({}, this.state);
+    // console.log('NEW STATE ->>>>', newState);
+    // newState.formPayload[input_array[0]].value = input_array[1];
+    // console.log(newState);
+    // this.setState({
+    //   newState,
+    // })
     this.state.formPayload[input_array[0]].value = input_array[1];
+
+
     // input_array is of type [field_name, value]
     // Needs to be done in this way to update state of the component based on the state of the child.
     // Input is handled by the child.
     // console.log(input_array);
-    // const newState = Object.assign({}, this.state);
     // console.log(newState === this.state);
     // const newFieldState = Object.assign({}, newState[input_array[0]]);
     // console.log(newFieldState);
@@ -130,9 +117,9 @@ class ProjectAllocationsForm extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  console.log('--------->',state.project_allocations);
+  // console.log('--------->',state.project_details.project_allocations);
   return {
-    project_allocations: state.project_allocations,
+    project_allocations: state.project_details.project_allocations,
   }
 }
 
