@@ -37,7 +37,7 @@ class GenericForm extends Component {
   }
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     console.log('>>>>>>>', this.props.payload);
     return (
         <form className={ this.props.className + ' generic-form' } onSubmit={ this.handleSubmit } noValidate>
