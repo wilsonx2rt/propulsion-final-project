@@ -11,7 +11,7 @@ class List extends Component {
           <ul>
             {this.props.type === 'projects'
               ? this.props.overview.projectOverview.map((project, index) => {
-                  return <ListItem key={index} project={project} />;
+                  return <ListItem key={index} project={project} id={project.id} />;
                 })
               : this.props.overview.managerOverview.map((manager, index) => {
                   return <ListItem key={index} manager={manager} />;

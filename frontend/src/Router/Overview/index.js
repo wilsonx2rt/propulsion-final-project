@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import SearchBox from '../../Components/SearchBox';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import './index.css';
 import { fetchProjectOverviewActionCreator } from '../../store/actions/fetchProjectOverview';
 import { fetchManagerOverviewActionCreator } from '../../store/actions/fetchManagerOverview';
@@ -63,7 +62,7 @@ class Overview extends Component {
             <List type="projects" overview={this.state.overview} />
           </div>
           <div className="overview__managers--wrapper">
-            <List type="manager"  overview={this.state.overview}/>
+            <List type="manager" overview={this.state.overview} />
           </div>
         </div>
       </div>
@@ -80,4 +79,4 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-export default withRouter(connect(mapStateToProps)(Overview));
+export default connect(mapStateToProps)(Overview);
