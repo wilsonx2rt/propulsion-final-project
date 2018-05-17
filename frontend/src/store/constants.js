@@ -5,3 +5,4 @@ export const SET_PROJECT_DATA = 'setProjectData';
 export const SET_PROJECT_ASSIGNMENT = 'setProjectAssignment';
 export const SET_PROJECT_ALLOCATIONS = 'setProjectAllocation';
 export const SET_PROJECT_DETAILS = 'setProjectDetails';
+export const SET_OVERVIEW = 'setOverview';
