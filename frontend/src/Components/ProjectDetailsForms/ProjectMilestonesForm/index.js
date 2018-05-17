@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 // import './index.css';
 
 import GenericForm from '../../GenericForm';
-import { getProjectDetailsAction } from '../../../store/actions/getProjectDetailsAction';
+import { getProjectMilestonesAction } from '../../../store/actions/getProjectMilestonesAction';
 
 
 
@@ -32,7 +32,7 @@ class ProjectMilestonesForm extends Component {
   }
 
   componentDidMount = () => {
-    const action = getProjectDetailsAction(this.props);
+    const action = getProjectMilestonesAction(this.props);
     this.props.dispatch(action);
   }
 
@@ -120,9 +120,9 @@ class ProjectMilestonesForm extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  // console.log('--------->', state.project_details.project_milestones);
+  console.log('--------->', state.project_milestones);
   return {
-    project_milestones: state.project_details.project_milestones,
+    // project_milestones: state.project_details.project_milestones,
   }
 }
 

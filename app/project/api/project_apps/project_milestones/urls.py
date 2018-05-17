@@ -1,7 +1,7 @@
 from django.urls import path
 
 from project.api.project_apps.project_milestones.views import ProjectMilestonesCreateView, \
-    ProjectMilestonesUpdateDeleteView
+    ProjectMilestonesUpdateDeleteView, ProjectMilestonesGetView
 
 app_name = 'project_milestones'
 
@@ -15,5 +15,10 @@ urlpatterns = [
         route='<int:pk>/',
         view=ProjectMilestonesUpdateDeleteView.as_view(),
         name='project_milestones_update_delete'
+    ),
+    path(
+        route='milestones/<int:pk>/',
+        view=ProjectMilestonesGetView.as_view(),
+        name='project_milestones_get'
     ),
 ]
