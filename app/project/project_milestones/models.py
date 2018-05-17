@@ -100,3 +100,4 @@ class Milestones(models.Model):
             'year',
             'milestone_calendar_week',
         )]
+        ordering=['year', 'milestone_calendar_week']
