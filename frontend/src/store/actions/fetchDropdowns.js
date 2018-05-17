@@ -11,7 +11,7 @@ export const fetchDropdownsActionCreator = (props) => (dispatch, getState) => {
       method: 'GET',
       headers,
     }
-    return fetch('http://localhost:8888/backend/api/dropdowns/', config);
+    return fetch(`${SERVER_URL}dropdowns/`, config);
   })
   .then(response => {
     // console.log(response);

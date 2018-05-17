@@ -11,8 +11,8 @@ class YearlyForecastCreateView(CreateAPIView):
     '''
     Creates new object
     '''
-    permission_classes = [IsAdminOrReadOnly]
-    serializer_class = YearlyForecastSerializer
+    permission_classes = [IsAuthenticated]
+    serializer_class = YearlyForecastUpdateSerializer
     queryset = YearlyForecast.objects.all()
 
 

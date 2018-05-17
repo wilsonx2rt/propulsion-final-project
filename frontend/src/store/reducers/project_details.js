@@ -1,4 +1,4 @@
-import { SET_PROJECT_DETAILS } from '../constants';
+import { SET_PROJECT_DETAILS, SET_YEARLY_FORECAST } from '../constants';
 
 const initialState = {}
 

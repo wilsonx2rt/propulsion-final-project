@@ -10,7 +10,7 @@ class ProjectAllocationsList extends Component {
   }
 
   render() {
-    console.log(this.props.project_allocations);
+    // console.log(this.props.project_allocations);
     return (
       <ul className='project-allocations-list'>
         {

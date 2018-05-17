@@ -8,11 +8,11 @@ urlpatterns = [
     path(
         route='new/',
         view=YearlyForecastCreateView.as_view(),
-        name='project_data_create'
+        name='yearly_forecast_create'
     ),
     path(
         route='<int:pk>/',
         view=YearlyForecastUpdateDeleteView.as_view(),
-        name='project_data_update_delete'
+        name='yearly_forecast_update_delete'
     ),
 ]
