@@ -1,7 +1,7 @@
 import { validateTokens } from "./validateTokens";
 import { SERVER_URL, SET_PROJECT_MILESTONES } from '../constants';
 
-export const getProjectMilestonesAction = (props) => (dispatch, getState) => {
+export const getProjectMilestonesAction = (props, url) => (dispatch, getState) => {
   validateTokens(getState(), dispatch, props)
   .then(response => {
     const headers = ({
@@ -11,16 +11,15 @@ export const getProjectMilestonesAction = (props) => (dispatch, getState) => {
       method: 'GET',
       headers,
     }
-    const project_id = props.project_id;
-    return fetch(`${SERVER_URL}project_milestones/milestones/${project_id}/`, config);
+    return fetch(url, config);
   }
   )
   .then(response => {
-    // console.log(response);
+    console.log(response);
     return response.json()
   })
   .then(project_milestones => {
-    // console.log(project_details);
+    console.log(project_milestones);
     const action = setProjectMilestones(project_milestones);
     dispatch(action);
   })

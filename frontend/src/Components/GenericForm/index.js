@@ -26,6 +26,7 @@ var rand = require("random-key");
 class GenericForm extends Component {
 
   handleChange = input_array => {
+    console.log(input_array);
     this.props.updateParentState(input_array);
   };
 

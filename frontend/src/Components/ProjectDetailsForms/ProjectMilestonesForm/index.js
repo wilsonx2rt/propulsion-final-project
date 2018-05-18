@@ -5,6 +5,10 @@ import { withRouter } from 'react-router-dom';
 
 import GenericForm from '../../GenericForm';
 import { getProjectMilestonesAction } from '../../../store/actions/getProjectMilestonesAction';
+import { postProjectMilestone } from '../../../store/actions/postProjectMilestone';
+import MilestonesList from './MilestonesList';
+import Button from '../../Button';
+import { SERVER_URL, SET_PROJECT_MILESTONES } from '../../../store/constants';
 
 
 
@@ -19,36 +23,23 @@ class ProjectMilestonesForm extends Component {
         'milestone_value': {value: '', type: 'dropdown', required: 'false', placeholder: 'Meilstein Inhalt'},
         'tendency': {value: '', type: 'dropdown', required: 'false', placeholder: 'Tendenz'},
         'external_factors': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Einfluss externe Faktoren'},
-        'communications': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Kommunicaton'},
+        'communications': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Kommunication'},
       },
-      // forecastFormPayload: {
-      //   'form_settings': {type: 'yearly_forecast_form', },
-      //   'VAT': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'VAT'},
-      //   'forecast': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Prognose'},
-      //   'year': {value: '', type: 'dropdown', required: 'false', placeholder: 'Jahr'},
-      // },
       project_milestones: [],
     };
   }
 
   componentDidMount = () => {
-    const action = getProjectMilestonesAction(this.props);
+    const fetchURL = `${SERVER_URL}project_milestones/milestones/${this.props.project_id}/`
+    const action = getProjectMilestonesAction(this.props, fetchURL);
     this.props.dispatch(action);
   }
 
   static getDerivedStateFromProps = (nextProps, prevState) => {
     // if we get updated allocations which are not an empty object...
-    if (nextProps.project_milestones !== undefined && nextProps.project_milestones !== null && nextProps.project_milestones.length > 0){
+    if (nextProps.project_milestones.results !== undefined && nextProps.project_milestones.results !== null && nextProps.project_milestones.results.length > 0){
       const newState = Object.assign({}, prevState);
-      // Object.keys(prevState.formPayload).map(key => {
-      //   if (key !== 'form_settings' && prevState.formPayload[key].value !== nextProps.project_finances[key]){
-      //     if (nextProps.project_finances[key] !== null && nextProps.project_finances[key] !== undefined ){
-      //       newState.formPayload[key].value = nextProps.project_finances[key];
-      //     }
-      //   }
-      //   return key;
-      // })
-      newState.project_milestones = nextProps.project_milestones.map(milestone => {
+      newState.project_milestones = nextProps.project_milestones.results.map(milestone => {
         const newMilestone = Object.assign({}, milestone);
         Object.keys(milestone).map(entry => {
           if (milestone[entry] === null){
@@ -66,47 +57,89 @@ class ProjectMilestonesForm extends Component {
 
   handlePayloadChange = input_array => {
     this.state.formPayload[input_array[0]].value = input_array[1];
+    this.state.formPayload[input_array[0]].modified = true;
   };
 
-  handleForecastChange = input_array => {
-    this.state.forecastFormPayload[input_array[0]].value = input_array[1];
-  }
-
-  loadForecast = (forecast) => {
+  loadMilestone = (milestone) => {
     // console.log('>>>>>>>>', forecast);
-    // const newState = Object.assign({}, this.state);
-    // Object.keys(this.state.forecastFormPayload).map(key => {
-    //   if (forecast[key] !== undefined && forecast[key] !== null){
-    //     newState.forecastFormPayload[key].value = forecast[key];
-    //   }
-    // })
-    // // console.log('>>>>>>>', newState);
-    // this.setState({
-    //   newState,
-    // })
+    const newState = Object.assign({}, this.state);
+    Object.keys(this.state.formPayload).map(key => {
+      if (milestone[key] !== undefined && milestone[key] !== null && newState.formPayload[key].value !== milestone[key]){
+        newState.formPayload[key].value = milestone[key];
+        newState.formPayload[key].modified = true;
+      }
+    })
+    // console.log('>>>>>>>', newState);
+    this.setState({
+      newState,
+    })
   }
 
-  handleForecastSubmit = (e) => {
-
+  goPrevPage = (e) => {
+    e.preventDefault();
+    if (this.props.project_milestones.previous !== null){
+      const fetchURL = this.props.project_milestones.previous;
+      const action = getProjectMilestonesAction(this.props, fetchURL);
+      this.props.dispatch(action);
+    }
   }
 
-  handleSubmit = () => {
-    console.log('Yey, submiting!');
-    // const action = loginAction(this.state, this.props);
-    // this.props.dispatch(action);
-    // document.querySelector('#login-form').reset();
+  goNextPage = (e) => {
+    e.preventDefault();
+    if (this.props.project_milestones.next !== null){
+      const fetchURL = this.props.project_milestones.next;
+      const action = getProjectMilestonesAction(this.props, fetchURL);
+      this.props.dispatch(action);
+    }
+  }
+
+  grabModifiedFields = () => {
+    let changed = [];
+    Object.keys(this.state.formPayload).map(key => {
+      if (this.state.formPayload[key].modified) changed.push({[key]: this.state.formPayload[key]});
+    })
+    return changed;
+  }
+
+  getFetchBody = (arr) => {
+    let body = {};
+    arr.map(field => {
+      const bodyKey = Object.keys(field)[0];
+      if (typeof field[bodyKey].value === 'object'){
+        body[bodyKey] = field[bodyKey].value.id;
+      }
+      else {
+        body[bodyKey] = field[bodyKey].value;
+      }
+    })
+    return body;
+  }
+
+  handleSubmit = (e) => {
+    let method = 'POST';
+    let year = this.state.formPayload.year.value.id;
+    let week = this.state.formPayload.milestone_calendar_week.value.id;
+    let milestone_id;
+    const body = this.getFetchBody(this.grabModifiedFields());
+    body.project = this.props.project_id;
+    console.log(body);
+    this.props.total_milestones.map(milestone => {
+      if (milestone.year.id === year && milestone.milestone_calendar_week.id === week) {
+        method = 'PATCH';
+        milestone_id = milestone.id;
+        delete body.project;
+      }
+    })
+    const action = postProjectMilestone(this.props, body, method, milestone_id)
+    this.props.dispatch(action);
   }
 
   render() {
     return (
       <div className="project-finances-form-wrapper">
-        {/* <GenericForm 
-          title='Prognose'
-          className='project-finances-yearly-forecast-form'
-          payload={ this.state.forecastFormPayload }
-          onSubmit={ this.handleForecastSubmit }
-          updateParentState={ this.handleForecastChange }
-        /> */}
+        <Button className={ this.props.project_milestones.previous === null ? 'hidden-element' : '' } type='button' handleClick={ this.goPrevPage } btnText='Prev' /> 
+        <Button className={ this.props.project_milestones.next === null ? 'hidden-element' : '' } type='button' handleClick={ this.goNextPage } btnText='Next'/>
+        <MilestonesList milestones={ this.state.project_milestones } loadMilestone={ this.loadMilestone } />
         <GenericForm 
           title='Projektfinanzplanung'
           className='project-finances-form'
@@ -120,9 +153,10 @@ class ProjectMilestonesForm extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  console.log('--------->', state.project_milestones);
+  console.log('--------->', state.project_details.project_milestones);
   return {
-    // project_milestones: state.project_details.project_milestones,
+    project_milestones: state.project_milestones,
+    total_milestones: state.project_details.project_milestones,
   }
 }
 
