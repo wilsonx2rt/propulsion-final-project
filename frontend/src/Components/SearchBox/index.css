@@ -1,8 +1,12 @@
-#search-field__input {
+#search-box__wrapper {
+  position: relative;
+  bottom: 49px;
+}
+#search-box__input {
   box-sizing: border-box;
   position: relative;
-  right: 280px;
   bottom: 20px;
+  right: 280px;
 
   width: 274px;
   height: 40px;
@@ -12,11 +16,19 @@
   border: 1px solid white;
 }
 
-#search-field:focus {
+#search-box:focus {
   outline: none;
 }
 
-#search-field__bern-colors {
+#search-box__bern-colors {
   width: 285px;
   height: 52px;
+}
+
+#search-box__x {
+  height: 20px;
+  position: relative;
+  right: 315px;
+  bottom: 15px;
+  cursor: pointer;
 }

@@ -57,6 +57,7 @@ class Overview extends Component {
     return (
       <div>
         <SearchBox />
+        <h3>Projeckten</h3>
         <div className="overview--wrapper">
           <div className="overview__projects--wrapper">
             <List type="projects" overview={this.state.overview} />

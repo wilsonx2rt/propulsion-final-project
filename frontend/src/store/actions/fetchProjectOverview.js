@@ -15,14 +15,19 @@ export const fetchProjectOverviewActionCreator = props => (
         method: 'GET',
         headers
       };
-      return fetch(`${SERVER_URL}overview/projects/`, config);
+      let filter;
+      // Prevent error on first dispatch of action during render!
+      if (props.state) {
+      }
+      // Set filter string for dispatch on form submit
+      props.state && props.state.filter ? (filter = props.state.filter) : (filter = '');
+      console.log(filter);
+      return fetch(`${SERVER_URL}overview/projects/?filter=${filter}`, config);
     })
     .then(response => {
-      // console.log(response);
       return response.json();
     })
     .then(projectOverview => {
-      // console.log("from the fetch overviews", overview);
       const action = setProjectOverview(projectOverview);
       dispatch(action);
     });

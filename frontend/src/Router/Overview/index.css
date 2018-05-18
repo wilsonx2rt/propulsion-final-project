@@ -3,8 +3,11 @@
 }
 
 .overview__projects--wrapper {
-  flex: 4;
-  margin-right: 10px;
+  flex: 2;
+  margin-right: 25px;
+  margin-left: -50px;
+  padding-left: 10px;
+  padding-right: 0px;
 }
 
 .overview__managers--wrapper {
