@@ -57,12 +57,14 @@ class Overview extends Component {
     return (
       <div>
         <SearchBox />
-        <h3>Projeckten</h3>
+        <h2>Profolio-Übersicht</h2>
         <div className="overview--wrapper">
           <div className="overview__projects--wrapper">
+          <h3>Projeckten</h3>
             <List type="projects" overview={this.state.overview} />
           </div>
           <div className="overview__managers--wrapper">
+            <h3>Projectleitern</h3>
             <List type="manager" overview={this.state.overview} />
           </div>
         </div>

@@ -8,7 +8,7 @@ class List extends Component {
     if (this.props.overview) {
       return (
         <div>
-          <ul>
+          <ul className="no-style">
             {this.props.type === 'projects'
               ? this.props.overview.projectOverview.map((project, index) => {
                   return <ListItem key={index} project={project} id={project.id} />;

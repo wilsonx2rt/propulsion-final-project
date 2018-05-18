@@ -11,17 +11,15 @@ class ListItem extends Component {
       let project = this.props.project;
       if (project) {
         return (
-          <h4>
-            <li className="list-item" onClick={this.handleClick}>
-              <span>{project.name}</span>
-              <span>
-                {project.project_assignment.project_management[0].first_name}
-                -
-                {project.project_assignment.project_management[0].last_name}
-              </span>
-              <span>{project.project_status_phase.name}</span>
-            </li>
-          </h4>
+          <li className="list-item" onClick={this.handleClick}>
+            <span>{project.name}</span>
+            <span>
+              {project.project_assignment.project_management[0].first_name}
+              -
+              {project.project_assignment.project_management[0].last_name}
+            </span>
+            <span>{project.project_status_phase.name}</span>
+          </li>
         );
       }
     }
@@ -30,7 +28,9 @@ class ListItem extends Component {
       if (manager) {
         return (
           <li className="list-item">
-            <span>{manager.username}</span>
+            <span>
+              {manager.first_name}-{manager.last_name}
+            </span>
           </li>
         );
       }

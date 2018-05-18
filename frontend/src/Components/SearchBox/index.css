@@ -1,12 +1,14 @@
 #search-box__wrapper {
   position: relative;
-  bottom: 49px;
+  bottom: 50px;
+  width: 290px;
+  height: 59px;
 }
 #search-box__input {
   box-sizing: border-box;
   position: relative;
-  bottom: 20px;
-  right: 280px;
+  bottom: 50px;
+  left: 5px;
 
   width: 274px;
   height: 40px;
@@ -28,7 +30,7 @@
 #search-box__x {
   height: 20px;
   position: relative;
-  right: 315px;
-  bottom: 15px;
+  left: 250px;
+  bottom: 80px;
   cursor: pointer;
 }

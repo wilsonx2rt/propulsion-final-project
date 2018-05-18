@@ -25,7 +25,7 @@ class SearchBox extends Component {
     action = fetchProjectOverviewActionCreator(this.props);
     this.props.dispatch(action);
   };
-
+// FIXME: ONLY CLEARS ON DOUBLE CLICK. TAKE THE FILTER AWAY FROM REDUX
   clearFilter = () => {
     document.querySelector('#search-box__input').value = '';
     let filterString = '';
