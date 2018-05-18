@@ -1,13 +1,10 @@
 import datetime
 
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from rest_framework.exceptions import ValidationError
 from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.response import Response
-
 from project.api.project_apps.project_milestones.serializers import ProjectMilestonesSerializer, \
     ProjectMilestonesUpdateSerializer
 from project.project_data.models import ProjectData
@@ -29,7 +26,7 @@ class ProjectMilestonesGetView(ListAPIView):
     day = int(now.strftime("%d"))
     # Find current week - 4 to offset the pagination - show milestones starting from a month ago
     week = int(datetime.date(year, month, day).strftime("%V")) - 4
-    queryset = Milestones.objects.filter(Q(year=1)&Q(milestone_calendar_week__gte=week)|Q(year__gt=1))
+    queryset = Milestones.objects.filter(Q(year=1) & Q(milestone_calendar_week__gte=week) | Q(year__gt=1))
     pagination_class = SmallResultsSetPagination
 
     def get_project(self, pk):

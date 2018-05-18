@@ -1,7 +1,6 @@
 from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import IsAuthenticated
 
-from project.api.permissions import IsAdminOrReadOnly
 from project.api.project_apps.yearly_forecasts.serializers import YearlyForecastUpdateSerializer, \
     YearlyForecastSerializer
 from project.project_finances.models import YearlyForecast
