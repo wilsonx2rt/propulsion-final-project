@@ -26,6 +26,7 @@ var rand = require("random-key");
 class GenericForm extends Component {
 
   handleChange = input_array => {
+    console.log(input_array);
     this.props.updateParentState(input_array);
   };
 
@@ -38,9 +39,10 @@ class GenericForm extends Component {
 
   render() {
     // console.log(this.props);
-    console.log('>>>>>>>', this.props.payload);
+    // console.log('>>>>>>>', this.props.payload);
     return (
         <form className={ this.props.className + ' generic-form' } onSubmit={ this.handleSubmit } noValidate>
+        <h2 className={ this.props.className + '__generic-form-title' }>{ this.props.title }</h2>
         <div className={ this.props.className + ' generic-form-input-container' } >
         {
           Object.keys(this.props.payload).map( index => {
@@ -95,8 +97,8 @@ class GenericForm extends Component {
               if (this.props.payload.form_settings.type === 'project_data_form') {
                 return (
                   <div key={ rand.generate(10) } className="project-data-form__btn-container">
-                    <Button className={ this.props.className + '__btn' } btnText="Save" type='submit' />
-                    <Button className={ this.props.className + '__btn' } btnText="Next" />
+                    <Button className={ this.props.className + '__button' } btnText="Save" type='submit' />
+                    <Button className={ this.props.className + '__button' } btnText="Next" />
                   </div>
                 )
               }
@@ -104,9 +106,19 @@ class GenericForm extends Component {
                 return (
                   <Button 
                     key={ rand.generate(10) }
-                    id="login-form__button" 
                     btnText="Login" 
                     type='submit'
+                    className={ this.props.className + '__button' }
+                  />
+                )
+              }
+              else if (this.props.payload.form_settings.type === 'yearly_forecast_form') {
+                return (
+                  <Button 
+                    key={ rand.generate(10) }
+                    btnText="Save" 
+                    type='submit'
+                    className={ this.props.className + '__button' }
                   />
                 )
               }

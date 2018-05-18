@@ -5,7 +5,6 @@ import { withRouter } from 'react-router-dom';
 import GenericForm from '../../GenericForm';
 import { getProjectDetailsAction } from '../../../store/actions/getProjectDetailsAction';
 import ProjectAllocationsList from './ProjectAllocationsList';
-import { CLIENT_RENEG_LIMIT } from "tls";
 
 class ProjectAllocationsForm extends Component {
   constructor(props) {
@@ -38,7 +37,7 @@ class ProjectAllocationsForm extends Component {
 
   static getDerivedStateFromProps = (nextProps, prevState) => {
     // if we get updated allocations which are not an empty object...
-    if(nextProps.project_allocations !== undefined) {
+    if(nextProps.project_allocations !== undefined && nextProps.project_finances !== null) {
       const newState = Object.assign({}, prevState);
       if(prevState.project_allocations !== nextProps.project_allocations && Object.keys(nextProps.project_allocations).length) {
         // console.log('NEW ALLOCATIONS!');
@@ -83,6 +82,7 @@ class ProjectAllocationsForm extends Component {
       if (allocation[key] !== undefined && allocation[key] !== null){
         newState.formPayload[key].value = allocation[key];
       }
+      return key;
     })
     // console.log('>>>>>>>', newState);
     this.setState({
@@ -99,13 +99,14 @@ class ProjectAllocationsForm extends Component {
 
   render() {
     return (
-      <div className="project-data-form-wrapper">
+      <div className="project-allocation-form-wrapper">
         <ProjectAllocationsList 
           project_allocations={ this.state.project_allocations }
           loadAllocation={ this.loadAllocation }
         />
         <GenericForm 
-          className='project-data-form'
+          title='Projektablauf'
+          className='project-allocation-form'
           payload={ this.state.formPayload }
           onSubmit={ this.handleSubmit }
           updateParentState={ this.handleChange }
