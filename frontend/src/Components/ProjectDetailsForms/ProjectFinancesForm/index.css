@@ -1,0 +1,42 @@
+.project-finances-yearly-forecast-form {
+  margin: 20px 0px;
+}
+
+.project-finances-yearly-forecast-form__input-container {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-finances-yearly-forecast-form__input {
+  width: 100%;
+  margin: 10px 0px;
+}
+
+.project-finances-yearly-forecast-form__select {
+  width: 100%;
+  margin: 10px 0px;
+}
+
+.project-finances-yearly-forecast-form__button {
+  width: 50px;
+  height: 20px;
+}
+
+.project-finances-form__input-container {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-finances-form__input {
+  width: 100%;
+  margin: 10px 0px;
+}
+
+.project-finances-form__select {
+  width: 100%;
+  margin: 10px 0px;
+}

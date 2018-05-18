@@ -46,7 +46,7 @@ class ProjectDataForm extends Component {
   }
 
   static getDerivedStateFromProps = (nextProps, prevState) => {
-    if (nextProps.project_data !== undefined){
+    if (nextProps.project_data !== undefined && nextProps.project_finances !== null){
       const newState = Object.assign({}, prevState);
       Object.keys(prevState.formPayload).map(key => {
         if (key !== 'form_settings' && prevState.formPayload[key].value !== nextProps.project_data[key]){
@@ -54,6 +54,7 @@ class ProjectDataForm extends Component {
             newState.formPayload[key].value = nextProps.project_data[key];
           }
         }
+        return key;
       })
         // console.log(newState);
         return newState;
@@ -90,6 +91,7 @@ class ProjectDataForm extends Component {
     return (
       <div className="project-data-form-wrapper">
         <GenericForm 
+          title='Projectdaten'
           className='project-data-form'
           payload={ this.state.formPayload }
           onSubmit={ this.handleSubmit }

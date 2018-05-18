@@ -42,6 +42,7 @@ class SelectField extends Component{
           if (el.id === this.props.id) {
             defaultValue = el.name;
           }
+          return el;
         })
     }
     this.setState({
@@ -63,7 +64,7 @@ class SelectField extends Component{
     return (
       <div className={ this.props.className + '__input-container' } style={ this.myStyle }>
         <label>{ this.props.placeholder }{ this.props.required === 'true' ? <span>*</span> : '' }</label>
-        <select name={ this.props.name } onChange={ this.handleChange } value={ this.state.value } >
+        <select name={ this.props.name } onChange={ this.handleChange } value={ this.state.value } className={ this.props.className + '__select' }>
           {         
               dropdowns.map(el => {
                   return <option key={ rand.generate(10) } value={ el.name } >{ el.name }</option>

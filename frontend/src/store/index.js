@@ -6,6 +6,8 @@ import { project_details } from './reducers/project_details';
 import { projectOverview } from './reducers/projectOverview';
 import { managerOverview } from './reducers/managerOverview';
 import { filter } from './reducers/filter';
+import { project_milestones } from './reducers/project_milestones';
+
 
 const reducer = combineReducers({
   tokens,
@@ -13,7 +15,8 @@ const reducer = combineReducers({
   project_details,
   projectOverview,
   managerOverview,
-  filter
+  filter,
+  project_milestones
 });
 
 const store = createStore(reducer, applyMiddleware(thunk));

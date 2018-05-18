@@ -66,7 +66,7 @@ class DropdownModelsSerializer(serializers.Serializer):
     quarter = QuarterSerializer(many=True)
     milestone_calendar_week = CalendarWeekSerializer(many=True)
     milestone_value = MilestoneDropdownSerializer(many=True)
-    tendency = TendenciesDropdownerializer()
+    tendency = TendenciesDropdownerializer(many=True)
     # PROJECT DEVELOPMENT
     project_status = ProjectStatusDropdownSerializer(many=True)
     project_tendency = ProjectTendencyDropdownSerializer(many=True)
