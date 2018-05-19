@@ -28,7 +28,8 @@ class ProjectOverviewView(ListAPIView):
                 Q(name__icontains=filter_string) |
                 Q(project_type__name__icontains=filter_string) |
                 Q(project_status_phase__name__icontains=filter_string) |
-                Q(project_assignment__project_management__name__icontains=filter_string)
+                Q(project_assignment__project_management__first_name__icontains=filter_string) |
+                Q(project_assignment__project_management__last_name__icontains=filter_string)
             )
         return queryset
 

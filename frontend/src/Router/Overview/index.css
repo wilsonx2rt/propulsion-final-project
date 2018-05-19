@@ -1,0 +1,11 @@
+.overview--wrapper {
+  display: flex;
+}
+
+.overview__projects--wrapper {
+  flex: 3;
+}
+
+.overview__managers--wrapper {
+  flex: 1;
+}

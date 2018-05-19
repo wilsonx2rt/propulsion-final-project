@@ -1,0 +1,13 @@
+.list-item {
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin: 10px 0;
+  cursor: pointer;
+  background-color: rgb(135, 136, 138, 0.1);
+}
+
+.list-item:hover {
+  background-color: rgb(135, 136, 138, 0.7);
+}

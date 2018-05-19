@@ -1,9 +1,9 @@
 import { SET_PROJECT_DETAILS } from '../constants';
 
-const initialState = {}
+const initialState = {};
 
-export const project_details = (state=initialState, action) => {
-  switch (action.type){
+export const project_details = (state = initialState, action) => {
+  switch (action.type) {
     case SET_PROJECT_DETAILS: {
       // console.log('rrrrrrrrrrr',action.payload);
       return action.payload.project_details;
@@ -11,4 +11,4 @@ export const project_details = (state=initialState, action) => {
     default:
       return state;
   }
-}
+};

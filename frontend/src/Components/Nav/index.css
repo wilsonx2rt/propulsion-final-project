@@ -5,13 +5,14 @@
   justify-content: flex-end;
 }
 
-.nav-bar__item {
+.nav-bar__item , .nav-link{
   background-color: rgb(213, 0, 41);
+  text-decoration: none;
+  font-weight: bold;
   color: white;
   display: inline-block;
   border-right: solid 1px white;
   padding: 16px;
-  cursor: pointer;
 }
 
 .nav-bar__item:hover {
@@ -36,3 +37,13 @@
   padding: 16px;
   cursor: pointer;
 }
+
+/* .nav-link {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  
+} */
+
+.nav-link:hover {
+} 
