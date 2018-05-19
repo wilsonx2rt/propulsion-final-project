@@ -18,8 +18,8 @@ class Milestone extends Component{
           { 
             `Jahr: ${this.props.milestone.year.name} | 
             Woche: ${this.props.milestone.milestone_calendar_week.name } | 
-            Inhalt: ${this.props.milestone.milestone_value ? this.props.milestone.milestone_value.name : this.props.milestone.milestone_value } | 
-            Tendenz: ${this.props.milestone.tendency ? this.props.milestone.tendency.name : this.props.milestone.tendency} | 
+            Inhalt: ${this.props.milestone.milestone_value } | 
+            Tendenz: ${this.props.milestone.tendency} | 
             Einfluss externe Faktoren: ${this.props.milestone.external_factors} | 
             Kommunication: ${this.props.milestone.communications}` 
           }

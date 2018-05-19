@@ -9,6 +9,7 @@ import { postProjectMilestone } from '../../../store/actions/postProjectMileston
 import MilestonesList from './MilestonesList';
 import Button from '../../Button';
 import { SERVER_URL, SET_PROJECT_MILESTONES } from '../../../store/constants';
+import GenericProjectFeatureList from "../../GenericProjectFeatureList";
 
 
 
@@ -139,7 +140,8 @@ class ProjectMilestonesForm extends Component {
       <div className="project-milestones-form-wrapper">
         <Button className={ this.props.project_milestones.previous === null ? 'hidden-element' : '' } type='button' handleClick={ this.goPrevPage } btnText='Prev' /> 
         <Button className={ this.props.project_milestones.next === null ? 'hidden-element' : '' } type='button' handleClick={ this.goNextPage } btnText='Next'/>
-        <MilestonesList milestones={ this.state.project_milestones } loadMilestone={ this.loadMilestone } />
+        {/* <MilestonesList milestones={ this.state.project_milestones } loadMilestone={ this.loadMilestone } /> */}
+        <GenericProjectFeatureList items={ this.state.project_milestones } loadItem={ this.loadMilestone } />
         <GenericForm 
           title='Projektfinanzplanung'
           className='project-milestones-form'

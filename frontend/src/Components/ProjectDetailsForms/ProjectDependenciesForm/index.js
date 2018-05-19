@@ -6,7 +6,7 @@ import './index.css';
 import GenericForm from '../../GenericForm';
 import Button from '../../Button';
 import { SERVER_URL, SET_PROJECT_MILESTONES } from '../../../store/constants';
-
+import { getProjectDependenciesAction } from '../../../store/actions/getProjectDependenciesAction';
 
 
 class ProjectDependenciesForm extends Component {
@@ -18,34 +18,35 @@ class ProjectDependenciesForm extends Component {
         'content_dependencies': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Abhängigkeiten Inhaltlich'},
         'time_dependencies': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Abhängigkeiten Zeitlich'},
         'capacity_dependencies': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Abhängigkeiten Kapazitativ'},
+        'id': {value: ''},
       },
-      project_milestones: [],
+      project_dependencies: [],
     };
   }
 
   componentDidMount = () => {
-    // const fetchURL = `${SERVER_URL}project_milestones/milestones/${this.props.project_id}/`
-    // const action = getProjectMilestonesAction(this.props, fetchURL);
-    // this.props.dispatch(action);
+    const fetchURL = `${SERVER_URL}project_dependencies/dependencies/${this.props.project_id}/`
+    const action = getProjectDependenciesAction(this.props, fetchURL);
+    this.props.dispatch(action);
   }
 
   static getDerivedStateFromProps = (nextProps, prevState) => {
     // if we get updated allocations which are not an empty object...
-    // if (nextProps.project_milestones.results !== undefined && nextProps.project_milestones.results !== null && nextProps.project_milestones.results.length > 0){
-    //   const newState = Object.assign({}, prevState);
-    //   newState.project_milestones = nextProps.project_milestones.results.map(milestone => {
-    //     const newMilestone = Object.assign({}, milestone);
-    //     Object.keys(milestone).map(entry => {
-    //       if (milestone[entry] === null){
-    //         newMilestone[entry] = '';
-    //       }
-    //       return entry;
-    //     })
-    //     return newMilestone;
-    //   });
-    //   console.log("-----", newState);
-    //   return newState;
-    // }
+    if (nextProps.project_dependencies.results !== undefined && nextProps.project_dependencies.results !== null && nextProps.project_dependencies.results.length > 0){
+      const newState = Object.assign({}, prevState);
+      newState.project_dependencies = nextProps.project_dependencies.results.map(dependency => {
+        const newDependency = Object.assign({}, dependency);
+        Object.keys(dependency).map(entry => {
+          if (dependency[entry] === null){
+            dependency[entry] = '';
+          }
+          return entry;
+        })
+        return newDependency;
+      });
+      console.log("-----", newState);
+      return newState;
+    }
     return null;
   }
 
@@ -114,7 +115,7 @@ class ProjectDependenciesForm extends Component {
     return (
       <div className="project-dependencies-form-wrapper">
         <GenericForm 
-          title='Projektfinanzplanung'
+          title='Projektabhängigkeiten'
           className='project-dependencies-form'
           payload={ this.state.formPayload }
           onSubmit={ this.handleSubmit }
@@ -126,10 +127,10 @@ class ProjectDependenciesForm extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  console.log('--------->', state.project_details.project_milestones);
+  // console.log('--------->', state.project_dependencies);
   return {
-    project_milestones: state.project_milestones,
-    total_milestones: state.project_details.project_milestones,
+    project_dependencies: state.project_dependencies,
+    all_dependencies: state.project_details.project_dependencies,
   }
 }
 

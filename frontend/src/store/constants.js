@@ -6,4 +6,4 @@ export const SET_PROJECT_OVERVIEW = 'setProjectOverview';
 export const SET_PROJECT_MANAGER = 'setProjectManager';
 export const SET_FILTER = 'setFilter';
 export const SET_PROJECT_MILESTONES = 'setProjectMilestones';
-
+export const SET_PROJECT_DEPENDENCIES = 'serProjectDependencies';

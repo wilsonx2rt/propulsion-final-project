@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import GenericForm from '../../GenericForm';
 import { getProjectDetailsAction } from '../../../store/actions/getProjectDetailsAction';
 import ProjectAllocationsList from './ProjectAllocationsList';
+import GenericProjectFeatureList from '../../GenericProjectFeatureList';
 
 class ProjectAllocationsForm extends Component {
   constructor(props) {
@@ -41,7 +42,15 @@ class ProjectAllocationsForm extends Component {
       const newState = Object.assign({}, prevState);
       if(prevState.project_allocations !== nextProps.project_allocations && Object.keys(nextProps.project_allocations).length) {
         // console.log('NEW ALLOCATIONS!');
-        newState.project_allocations = nextProps.project_allocations;
+        newState.project_allocations = nextProps.project_allocations.map(allocation => {
+          Object.keys(allocation).map(entry => {
+            if (allocation[entry] === null){
+              allocation[entry] = '';
+            }
+            return;
+          })
+          return allocation;
+        });
       }
       return newState;
     }
@@ -100,10 +109,11 @@ class ProjectAllocationsForm extends Component {
   render() {
     return (
       <div className="project-allocation-form-wrapper">
-        <ProjectAllocationsList 
+        {/* <ProjectAllocationsList 
           project_allocations={ this.state.project_allocations }
           loadAllocation={ this.loadAllocation }
-        />
+        /> */}
+        <GenericProjectFeatureList items={ this.state.project_allocations } loadItems={ this.loadAllocation } />
         <GenericForm 
           title='Projektablauf'
           className='project-allocation-form'

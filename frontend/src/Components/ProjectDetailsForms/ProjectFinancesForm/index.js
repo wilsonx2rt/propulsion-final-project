@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import './index.css';
 
 import GenericForm from '../../GenericForm';
+import GenericProjectFeatureList from '../../GenericProjectFeatureList';
 import { getProjectDetailsAction } from '../../../store/actions/getProjectDetailsAction';
 import { postYearlyForecastAction } from '../../../store/actions/postYearlyForecastAction';
 import YearlyForecastList from "./YearlyForecastList";
@@ -115,23 +116,19 @@ class ProjectFinancesForm extends Component {
         }
       }
     })
-    // console.log(method);
-    // console.log(this.props, requestBody, method);
     const action = postYearlyForecastAction(this.props, requestBody, method, forecast_id);
     this.props.dispatch(action);
   }
 
   handleSubmit = () => {
     console.log('Yey, submiting!');
-    // const action = loginAction(this.state, this.props);
-    // this.props.dispatch(action);
-    // document.querySelector('#login-form').reset();
+
   }
 
   render() {
     return (
       <div className="project-finances-form-wrapper">
-        <YearlyForecastList yearly_forecasts={ this.state.yearly_forecasts } loadForecast={ this.loadForecast }/>
+        <GenericProjectFeatureList items={ this.state.yearly_forecasts } loadItem={ this.loadForecast }/>
         <GenericForm 
           title='Prognose'
           className='project-finances-yearly-forecast-form'
