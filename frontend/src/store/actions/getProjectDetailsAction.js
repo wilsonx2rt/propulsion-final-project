@@ -20,7 +20,7 @@ export const getProjectDetailsAction = (props) => (dispatch, getState) => {
     return response.json()
   })
   .then(project_details => {
-    // console.log(project_details);
+    console.log(project_details);
     const action = setProjectDetails(project_details);
     dispatch(action);
   })

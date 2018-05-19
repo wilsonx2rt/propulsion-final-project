@@ -1,0 +1,20 @@
+.project-dependencies-form-wrapper {
+  width: 100%;
+}
+
+.project-dependencies-form__input-container {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-dependencies-form__input {
+  width: 100%;
+  margin: 10px 0px;
+}
+
+.project-dependencies-form__select {
+  width: 100%;
+  margin: 10px 0px;
+}

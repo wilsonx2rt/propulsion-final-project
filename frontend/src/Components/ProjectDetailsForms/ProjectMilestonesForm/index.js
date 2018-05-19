@@ -49,7 +49,7 @@ class ProjectMilestonesForm extends Component {
         })
         return newMilestone;
       });
-      console.log("-----", newState);
+      // console.log("-----", newState);
       return newState;
     }
     return null;
@@ -122,7 +122,7 @@ class ProjectMilestonesForm extends Component {
     let milestone_id;
     const body = this.getFetchBody(this.grabModifiedFields());
     body.project = this.props.project_id;
-    console.log(body);
+    // console.log(body);
     this.props.total_milestones.map(milestone => {
       if (milestone.year.id === year && milestone.milestone_calendar_week.id === week) {
         method = 'PATCH';
@@ -136,13 +136,13 @@ class ProjectMilestonesForm extends Component {
 
   render() {
     return (
-      <div className="project-finances-form-wrapper">
+      <div className="project-milestones-form-wrapper">
         <Button className={ this.props.project_milestones.previous === null ? 'hidden-element' : '' } type='button' handleClick={ this.goPrevPage } btnText='Prev' /> 
         <Button className={ this.props.project_milestones.next === null ? 'hidden-element' : '' } type='button' handleClick={ this.goNextPage } btnText='Next'/>
         <MilestonesList milestones={ this.state.project_milestones } loadMilestone={ this.loadMilestone } />
         <GenericForm 
           title='Projektfinanzplanung'
-          className='project-finances-form'
+          className='project-milestones-form'
           payload={ this.state.formPayload }
           onSubmit={ this.handleSubmit }
           updateParentState={ this.handlePayloadChange }
@@ -153,7 +153,7 @@ class ProjectMilestonesForm extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  console.log('--------->', state.project_details.project_milestones);
+  // console.log('--------->', state.project_details.project_milestones);
   return {
     project_milestones: state.project_milestones,
     total_milestones: state.project_details.project_milestones,
