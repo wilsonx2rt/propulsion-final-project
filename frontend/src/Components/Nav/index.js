@@ -14,11 +14,15 @@ class Nav extends Component {
   render() {
     return (
       <div className="nav-bar">
-        
-          
-          <Link class="nav-link nav-bar__item" to="/overview">Übersicht</Link>
-          <Link class="nav-link nav-bar__item" to="/overview">Auswertungen</Link>
-          <Link class="nav-link nav-bar__item" to="/overview">Hawaii</Link>
+        <Link className="nav-link nav-bar__item" to="/overview">
+          Übersicht
+        </Link>
+        <Link className="nav-link nav-bar__item" to="/overview">
+          Auswertungen
+        </Link>
+        <Link className="nav-link nav-bar__item" to="/overview">
+          Hawaii
+        </Link>
         <div
           className="nav-bar__item nav-bar__item--logout"
           onClick={this.handleLogout}

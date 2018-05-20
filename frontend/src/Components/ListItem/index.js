@@ -4,7 +4,10 @@ import './index.css';
 
 class ListItem extends Component {
   handleClickProjects = projectId => {
-    this.props.history.push(`/project-details/${this.props.id}`);
+    this.props.history.push(`/project-details/${this.props.projectID}`);
+  };
+  handleClickManagers = managerId => {
+    this.props.history.push(`/manager-details/${this.props.managerID}`);
   };
 
   

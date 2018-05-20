@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import SearchBox from '../../Components/SearchBox';
+import AccordionSegment from '../../Components/AccordionSegment';
+import ProjectManagerForm from '../../Components/ProjectManagerForm';
 import { connect } from 'react-redux';
 import './index.css';
 import { fetchProjectOverviewActionCreator } from '../../store/actions/fetchProjectOverview';
@@ -20,7 +22,6 @@ class Overview extends Component {
   componentDidMount = () => {
     let action = fetchProjectOverviewActionCreator(this.props);
     this.props.dispatch(action);
-    // console.log("from the lifecycle", this.props);
     action = fetchManagerOverviewActionCreator(this.props);
     this.props.dispatch(action);
   };
@@ -53,19 +54,31 @@ class Overview extends Component {
     return null;
   };
 
+  // updateProjectManagerState = (props) => {
+  //   newProjectManagerOverview = {}
+  // }
+
   render() {
     return (
       <div>
         <SearchBox />
-        <h2>Profolio-Übersicht</h2>
+        <h2>Protfolio-Übersicht</h2>
         <div className="overview--wrapper">
           <div className="overview__projects--wrapper">
-          <h3>Projeckten</h3>
+            <h3>Projeckten</h3>
             <List type="projects" overview={this.state.overview} />
           </div>
           <div className="overview__managers--wrapper">
             <h3>Projectleitern</h3>
-            <List type="manager" overview={this.state.overview} />
+            {Object.keys(this.props.overview.managerOverview).length != 0 ? this.props.overview.managerOverview.map((manager, index) => {
+              return (
+                <AccordionSegment key={index} AccordionSegmentTitle={`${manager.first_name}-${manager.last_name}`}>
+                <ProjectManagerForm managerDetails={manager}/>
+                </AccordionSegment>
+              )
+            }) : null}
+            {/* {list view w/o dropdown option} */}
+            {/* <List type="manager" overview={this.state.overview} /> */}
           </div>
         </div>
       </div>

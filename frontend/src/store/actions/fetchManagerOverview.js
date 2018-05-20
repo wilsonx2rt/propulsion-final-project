@@ -1,4 +1,4 @@
-import { SERVER_URL, SET_PROJECT_MANAGER } from '../constants';
+import { SERVER_URL, SET_MANAGER_OVERVIEW } from '../constants';
 import { validateTokens } from './validateTokens';
 import { projectManager } from '../reducers/managerOverview';
 
@@ -28,7 +28,7 @@ export const fetchManagerOverviewActionCreator = props => (
 
 const setManagerOverview = managerOverview => {
   return {
-    type: SET_PROJECT_MANAGER,
+    type: SET_MANAGER_OVERVIEW,
     payload: {
       managerOverview
     }
