@@ -1,0 +1,14 @@
+.manager-details-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.manager-details-form__button {
+  width: 100px;
+  margin-top: 10px;
+}
+
+.manager-details-form__input-container {
+  margin: 10px 0;
+}

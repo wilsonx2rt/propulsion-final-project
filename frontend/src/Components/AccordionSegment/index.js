@@ -30,9 +30,9 @@ class AccordionSegment extends Component {
     return (
       <div className="accordion-segment">
         <div className="accordion-segment__header" onClick={this.toggleClass}>
-          <h1 className="accordion-segment__title">
+          <div className="accordion-segment__title">
             {this.props.AccordionSegmentTitle}
-          </h1>
+          </div>
           <img
             className="accordion-segment__dropdown-icon"
             src={arrows}
