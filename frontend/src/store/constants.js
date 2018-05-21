@@ -7,3 +7,5 @@ export const SET_PROJECT_MANAGER = 'setProjectManager';
 export const SET_FILTER = 'setFilter';
 export const SET_PROJECT_MILESTONES = 'setProjectMilestones';
 export const SET_PROJECT_DEPENDENCIES = 'serProjectDependencies';
+export const SET_YEARLY_FORECASTS = 'setYearlyForecasts';
+export const SET_PROJECT_ALLOCATIONS = 'setProjectAllocations';

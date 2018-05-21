@@ -17,11 +17,11 @@ class ListItem extends Component{
           { 
             Object.keys(this.props.item).map(entry => {
               if (entry !== 'id' && entry !== 'project') {
-                if (typeof this.props.item[entry] === 'object'){
-                  return ` ${[entry]}: ${this.props.item[entry].name} |`;
+                if (this.props.item[entry] !== undefined && this.props.item[entry] !== null && typeof this.props.item[entry] === 'string' || typeof this.props.item[entry] === 'number'){
+                  return ` ${[entry]}: ${this.props.item[entry]} |`;
                 }
                 else {
-                  return ` ${[entry]}: ${this.props.item[entry]} |`;
+                  return ` ${[entry]}: ${this.props.item[entry].name} |`;
                 }
               }
             })

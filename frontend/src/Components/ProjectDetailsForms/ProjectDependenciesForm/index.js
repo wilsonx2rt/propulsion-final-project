@@ -7,6 +7,10 @@ import GenericForm from '../../GenericForm';
 import Button from '../../Button';
 import { SERVER_URL, SET_PROJECT_MILESTONES } from '../../../store/constants';
 import { getProjectDependenciesAction } from '../../../store/actions/getProjectDependenciesAction';
+import { postProjectDependencyAction } from '../../../store/actions/postProjectDependencyAction';
+import GenericProjectFeatureList from '../../GenericProjectFeatureList';
+import PaginationButtons from "../../GenericProjectFeatureList/PaginationButtons";
+import { goNextPage, goPrevPage, grabModifiedFields, getFetchBody, resetFormPayload } from '../helpers';
 
 
 class ProjectDependenciesForm extends Component {
@@ -31,20 +35,18 @@ class ProjectDependenciesForm extends Component {
   }
 
   static getDerivedStateFromProps = (nextProps, prevState) => {
-    // if we get updated allocations which are not an empty object...
     if (nextProps.project_dependencies.results !== undefined && nextProps.project_dependencies.results !== null && nextProps.project_dependencies.results.length > 0){
       const newState = Object.assign({}, prevState);
       newState.project_dependencies = nextProps.project_dependencies.results.map(dependency => {
         const newDependency = Object.assign({}, dependency);
         Object.keys(dependency).map(entry => {
           if (dependency[entry] === null){
-            dependency[entry] = '';
+            newDependency[entry] = '';
           }
           return entry;
         })
         return newDependency;
       });
-      console.log("-----", newState);
       return newState;
     }
     return null;
@@ -56,64 +58,46 @@ class ProjectDependenciesForm extends Component {
   };
 
   loadDependency = (dependency) => {
-    // console.log('>>>>>>>>', dependency);
     const newState = Object.assign({}, this.state);
     Object.keys(this.state.formPayload).map(key => {
       if (dependency[key] !== undefined && dependency[key] !== null && newState.formPayload[key].value !== dependency[key]){
         newState.formPayload[key].value = dependency[key];
-        newState.formPayload[key].modified = true;
       }
     })
-    // console.log('>>>>>>>', newState);
     this.setState({
       newState,
     })
   }
 
-  grabModifiedFields = () => {
-    let changed = [];
-    Object.keys(this.state.formPayload).map(key => {
-      if (this.state.formPayload[key].modified) {
-        changed.push({[key]: this.state.formPayload[key]});
+  handleSubmit = () => {
+    let method = 'POST';
+    let dependency_id;
+    const body = getFetchBody(grabModifiedFields(this.state.formPayload));
+    body.project = this.props.project_id;
+    this.props.all_dependencies.map(dependency => {
+      if (dependency.id === this.state.formPayload.id.value) {
+        method = 'PATCH';
+        dependency_id = dependency.id;
+        delete body.project;
       }
     })
-    return changed;
-  }
-
-  getFetchBody = (arr) => {
-    // let body = {};
-    // arr.map(field => {
-    //   const bodyKey = Object.keys(field)[0];
-    //   if (typeof field[bodyKey].value === 'object'){
-    //     body[bodyKey] = field[bodyKey].value.id;
-    //   }
-    //   else {
-    //     body[bodyKey] = field[bodyKey].value;
-    //   }
-    // })
-    // return body;
-  }
-
-  handleSubmit = (e) => {
-    // let method = 'POST';
-    // let year = this.state.formPayload.year.value.id;
-    // let week = this.state.formPayload.milestone_calendar_week.value.id;
-    // let milestone_id;
-    // const body = this.getFetchBody(this.grabModifiedFields());
-    // body.project = this.props.project_id;
-    // this.props.total_milestones.map(milestone => {
-    //   if (milestone.year.id === year && milestone.milestone_calendar_week.id === week) {
-    //     method = 'PATCH';
-    //     milestone_id = milestone.id;
-    //     delete body.project;
-    //   }
-    // })
-    // this.props.dispatch(action);
+    if (Object.keys(body).length !== 0){
+      resetFormPayload(this);
+      const action = postProjectDependencyAction(this.props, body, method, dependency_id)
+      this.props.dispatch(action);
+    }
   }
 
   render() {
     return (
       <div className="project-dependencies-form-wrapper">
+        <PaginationButtons 
+          next={ this.props.project_dependencies.next }
+          previous={ this.props.project_dependencies.previous }
+          action={ getProjectDependenciesAction }
+          parentProps={ this.props }
+        />
+        <GenericProjectFeatureList items={ this.state.project_dependencies } loadItem={ this.loadDependency } />
         <GenericForm 
           title='Projektabhängigkeiten'
           className='project-dependencies-form'

@@ -32,7 +32,6 @@ class GenericForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log('in da submit');
     hideValidationMessage();
     this.props.onSubmit(e);
   }

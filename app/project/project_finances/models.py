@@ -77,6 +77,7 @@ class YearlyForecast(models.Model):
             'project_finance',
             'year',
         )]
+        ordering = ['year']
 
 
 """

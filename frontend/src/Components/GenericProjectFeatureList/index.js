@@ -10,6 +10,7 @@ class GenericProjectFeatureList extends Component{
   }
 
   render(){
+    // console.log(this.props.items);
     return (
       <ul>
         {
