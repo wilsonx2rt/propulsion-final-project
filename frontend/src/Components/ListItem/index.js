@@ -27,7 +27,10 @@ class ListItem extends Component {
               ${project.project_assignment.project_management[0].last_name}`
                 : 'N/A'}
             </span>
-            <span>{project.project_status_phase.name}</span>
+            <span>
+              {/* Prevent error if project status not yet assigned */}
+              {project.project_status_phase.name ? project.project_status_phase.name : 'N/A'}
+            </span>
           </li>
         );
       }
