@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './index.css';
 import { hideNavBar } from '../../helpers';
 import RegistrationForm from '../../Components/RegistrationForm';
-import queryString from 'query-string';
+const queryString = require('query-string');
 class Registration extends Component {
   constructor(props) {
     super(props);
