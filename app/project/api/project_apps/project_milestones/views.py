@@ -3,18 +3,13 @@ import datetime
 from django.db.models import Q
 from rest_framework.exceptions import ValidationError
 from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
-from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
+
+from project.api.project_apps.pagination import SmallResultsSetPagination
 from project.api.project_apps.project_milestones.serializers import ProjectMilestonesSerializer, \
     ProjectMilestonesUpdateSerializer
 from project.project_data.models import ProjectData
 from project.project_milestones.models import Milestones
-
-
-class SmallResultsSetPagination(PageNumberPagination):
-    page_size = 10
-    page_size_query_param = 'page_size'
-    max_page_size = 100
 
 
 class ProjectMilestonesGetView(ListAPIView):

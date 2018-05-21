@@ -1,0 +1,20 @@
+.project-development-form-wrapper {
+  width: 100%;
+}
+
+.project-development-form__input-container {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-development-form__input {
+  width: 100%;
+  margin: 10px 0px;
+}
+
+.project-development-form__select {
+  width: 100%;
+  margin: 10px 0px;
+}

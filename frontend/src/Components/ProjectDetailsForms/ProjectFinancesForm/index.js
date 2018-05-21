@@ -4,9 +4,13 @@ import { withRouter } from 'react-router-dom';
 import './index.css';
 
 import GenericForm from '../../GenericForm';
-import { getProjectDetailsAction } from '../../../store/actions/getProjectDetailsAction';
+import GenericProjectFeatureList from '../../GenericProjectFeatureList';
+import PaginationButtons from "../../GenericProjectFeatureList/PaginationButtons";
+import { getYearlyForecastAction } from '../../../store/actions/getYearlyForecastAction';
 import { postYearlyForecastAction } from '../../../store/actions/postYearlyForecastAction';
-import YearlyForecastList from "./YearlyForecastList";
+import { postProjectFinancesAction } from '../../../store/actions/postProjectFinancesAction';
+import { grabModifiedFields, getFetchBody, resetFormPayload } from '../helpers';
+import { SERVER_URL } from '../../../store/constants';
 
 class ProjectFinancesForm extends Component {
   constructor(props) {
@@ -23,7 +27,6 @@ class ProjectFinancesForm extends Component {
         'net_expense_previous_years': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Netto-Ausgaben Vorjahre'},
         'remaining_credit_current_year': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Kreditrest per 1.1. aktuelles Jahr'},
         'spending_current_year': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Ist Ausgaben aktuelles Jahr'},
-        // 'forecast_current_year': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Prognose laufendes Jahr'},
         'remaining_credit_following_year': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Kreditrest per 1.1. folgendes Jahr'},
       },
       forecastFormPayload: {
@@ -37,12 +40,13 @@ class ProjectFinancesForm extends Component {
   }
 
   componentDidMount = () => {
-    const action = getProjectDetailsAction(this.props);
-    this.props.dispatch(action);
-  }
+    if(this.props.project_finances){
+      
+    }
+}
+
 
   static getDerivedStateFromProps = (nextProps, prevState) => {
-    // if we get updated allocations which are not an empty object...
     if (nextProps.project_finances !== undefined && nextProps.project_finances !== null){
       const newState = Object.assign({}, prevState);
       Object.keys(prevState.formPayload).map(key => {
@@ -53,17 +57,18 @@ class ProjectFinancesForm extends Component {
         }
         return key;
       })
-      newState.yearly_forecasts = nextProps.project_finances.yearly_forecasts.map(forecast => {
-        const newForecast = Object.assign({}, forecast);
-        Object.keys(forecast).map(entry => {
-          if (forecast[entry] === null){
-            newForecast[entry] = '';
-          }
-          return entry;
-        })
-        return newForecast;
-      });
-      // console.log("-----", newState);
+      if(nextProps.yearly_forecasts.results){
+        newState.yearly_forecasts = nextProps.yearly_forecasts.results.map(forecast => {
+          const newForecast = Object.assign({}, forecast);
+          Object.keys(forecast).map(entry => {
+            if (forecast[entry] === null || forecast[entry] === undefined){
+              newForecast[entry] = '';
+            }
+            return entry;
+          })
+          return newForecast;
+        });
+      }
       return newState;
     }
     return null;
@@ -71,67 +76,72 @@ class ProjectFinancesForm extends Component {
 
   handlePayloadChange = input_array => {
     this.state.formPayload[input_array[0]].value = input_array[1];
+    this.state.formPayload[input_array[0]].modified = true;
   };
 
   handleForecastChange = input_array => {
     this.state.forecastFormPayload[input_array[0]].value = input_array[1];
+    this.state.forecastFormPayload[input_array[0]].modified = true;
   }
 
   loadForecast = (forecast) => {
-    // console.log('>>>>>>>>', forecast);
     const newState = Object.assign({}, this.state);
     Object.keys(this.state.forecastFormPayload).map(key => {
       if (forecast[key] !== undefined && forecast[key] !== null){
         newState.forecastFormPayload[key].value = forecast[key];
       }
     })
-    // console.log('>>>>>>>', newState);
     this.setState({
       newState,
     })
   }
 
   handleForecastSubmit = (e) => {
-    // console.log(this.state.forecastFormPayload);
-    // console.log('FORECASTS', this.state.yearly_forecasts);
     let method = 'POST';
     let forecast_id;
-    let requestBody = {
-      project_finance: this.props.project_finances.id,
-      VAT: this.state.forecastFormPayload.VAT.value,
-      forecast: this.state.forecastFormPayload.forecast.value,
-      year: this.state.forecastFormPayload.year.value.id,
-    }
+    let body = getFetchBody(grabModifiedFields(this.state.forecastFormPayload));
+    body.project_finance = this.props.project_finances.id;
     this.state.yearly_forecasts.map(forecast => {
       if (forecast.year.id === this.state.forecastFormPayload.year.value.id) {
-        // console.log('same year!');
         method = 'PATCH';
         forecast_id = forecast.id;
-        // console.log(forecast_id);
-        requestBody = {
-          VAT: this.state.forecastFormPayload.VAT.value,
-          forecast: this.state.forecastFormPayload.forecast.value,
-          year: this.state.forecastFormPayload.year.value.id,
-        }
+        delete body.project_finance;
       }
     })
-    // console.log(method);
-    // console.log(this.props, requestBody, method);
-    const action = postYearlyForecastAction(this.props, requestBody, method, forecast_id);
-    this.props.dispatch(action);
+    if (Object.keys(body).length !== 0){
+      resetFormPayload(this);
+      const action = postYearlyForecastAction(this.props, body, method, forecast_id);
+      this.props.dispatch(action);
+    }
   }
 
   handleSubmit = () => {
-    console.log('Yey, submiting!');
-    // const action = loginAction(this.state, this.props);
-    // this.props.dispatch(action);
-    // document.querySelector('#login-form').reset();
+    let method = 'POST';
+    let finances_id;
+    let body = getFetchBody(grabModifiedFields(this.state.formPayload));
+    body.project = this.props.project_id;
+    if (this.props.project_finances) {
+      method = 'PATCH';
+      finances_id = this.props.project_finances.id;
+      delete body.project;
+    }
+    if (Object.keys(body).length !== 0){
+      resetFormPayload(this);
+      const action = postProjectFinancesAction(this.props, body, method, finances_id);
+      this.props.dispatch(action);
+    }
   }
 
   render() {
     return (
       <div className="project-finances-form-wrapper">
-        <YearlyForecastList yearly_forecasts={ this.state.yearly_forecasts } loadForecast={ this.loadForecast }/>
+        <PaginationButtons 
+          next={ this.props.yearly_forecasts.next }
+          previous={ this.props.yearly_forecasts.previous }
+          action={ getYearlyForecastAction }
+          parentProps={ this.props }
+        />
+        <GenericProjectFeatureList items={ this.state.yearly_forecasts } loadItem={ this.loadForecast }/>
         <GenericForm 
           title='Prognose'
           className='project-finances-yearly-forecast-form'
@@ -152,9 +162,10 @@ class ProjectFinancesForm extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  // console.log('--------->', state.project_details.project_finances);
+  // console.log('--------->', state.yearly_forecasts);
   return {
     project_finances: state.project_details.project_finances,
+    yearly_forecasts: state.yearly_forecasts,
   }
 }
 

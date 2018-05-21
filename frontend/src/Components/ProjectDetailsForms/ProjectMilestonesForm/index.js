@@ -6,10 +6,11 @@ import { withRouter } from 'react-router-dom';
 import GenericForm from '../../GenericForm';
 import { getProjectMilestonesAction } from '../../../store/actions/getProjectMilestonesAction';
 import { postProjectMilestone } from '../../../store/actions/postProjectMilestone';
-import MilestonesList from './MilestonesList';
 import Button from '../../Button';
-import { SERVER_URL, SET_PROJECT_MILESTONES } from '../../../store/constants';
-
+import { SERVER_URL } from '../../../store/constants';
+import GenericProjectFeatureList from "../../GenericProjectFeatureList";
+import { goNextPage, goPrevPage, grabModifiedFields, getFetchBody, resetFormPayload } from '../helpers';
+import PaginationButtons from "../../GenericProjectFeatureList/PaginationButtons";
 
 
 class ProjectMilestonesForm extends Component {
@@ -36,7 +37,6 @@ class ProjectMilestonesForm extends Component {
   }
 
   static getDerivedStateFromProps = (nextProps, prevState) => {
-    // if we get updated allocations which are not an empty object...
     if (nextProps.project_milestones.results !== undefined && nextProps.project_milestones.results !== null && nextProps.project_milestones.results.length > 0){
       const newState = Object.assign({}, prevState);
       newState.project_milestones = nextProps.project_milestones.results.map(milestone => {
@@ -49,7 +49,6 @@ class ProjectMilestonesForm extends Component {
         })
         return newMilestone;
       });
-      console.log("-----", newState);
       return newState;
     }
     return null;
@@ -61,58 +60,15 @@ class ProjectMilestonesForm extends Component {
   };
 
   loadMilestone = (milestone) => {
-    // console.log('>>>>>>>>', forecast);
     const newState = Object.assign({}, this.state);
     Object.keys(this.state.formPayload).map(key => {
       if (milestone[key] !== undefined && milestone[key] !== null && newState.formPayload[key].value !== milestone[key]){
         newState.formPayload[key].value = milestone[key];
-        newState.formPayload[key].modified = true;
       }
     })
-    // console.log('>>>>>>>', newState);
     this.setState({
       newState,
     })
-  }
-
-  goPrevPage = (e) => {
-    e.preventDefault();
-    if (this.props.project_milestones.previous !== null){
-      const fetchURL = this.props.project_milestones.previous;
-      const action = getProjectMilestonesAction(this.props, fetchURL);
-      this.props.dispatch(action);
-    }
-  }
-
-  goNextPage = (e) => {
-    e.preventDefault();
-    if (this.props.project_milestones.next !== null){
-      const fetchURL = this.props.project_milestones.next;
-      const action = getProjectMilestonesAction(this.props, fetchURL);
-      this.props.dispatch(action);
-    }
-  }
-
-  grabModifiedFields = () => {
-    let changed = [];
-    Object.keys(this.state.formPayload).map(key => {
-      if (this.state.formPayload[key].modified) changed.push({[key]: this.state.formPayload[key]});
-    })
-    return changed;
-  }
-
-  getFetchBody = (arr) => {
-    let body = {};
-    arr.map(field => {
-      const bodyKey = Object.keys(field)[0];
-      if (typeof field[bodyKey].value === 'object'){
-        body[bodyKey] = field[bodyKey].value.id;
-      }
-      else {
-        body[bodyKey] = field[bodyKey].value;
-      }
-    })
-    return body;
   }
 
   handleSubmit = (e) => {
@@ -120,9 +76,8 @@ class ProjectMilestonesForm extends Component {
     let year = this.state.formPayload.year.value.id;
     let week = this.state.formPayload.milestone_calendar_week.value.id;
     let milestone_id;
-    const body = this.getFetchBody(this.grabModifiedFields());
+    const body = getFetchBody(grabModifiedFields(this.state.formPayload));
     body.project = this.props.project_id;
-    console.log(body);
     this.props.total_milestones.map(milestone => {
       if (milestone.year.id === year && milestone.milestone_calendar_week.id === week) {
         method = 'PATCH';
@@ -130,19 +85,26 @@ class ProjectMilestonesForm extends Component {
         delete body.project;
       }
     })
-    const action = postProjectMilestone(this.props, body, method, milestone_id)
-    this.props.dispatch(action);
+    if (Object.keys(body).length !== 0){
+      resetFormPayload(this);
+      const action = postProjectMilestone(this.props, body, method, milestone_id)
+      this.props.dispatch(action);
+    }
   }
 
   render() {
     return (
-      <div className="project-finances-form-wrapper">
-        <Button className={ this.props.project_milestones.previous === null ? 'hidden-element' : '' } type='button' handleClick={ this.goPrevPage } btnText='Prev' /> 
-        <Button className={ this.props.project_milestones.next === null ? 'hidden-element' : '' } type='button' handleClick={ this.goNextPage } btnText='Next'/>
-        <MilestonesList milestones={ this.state.project_milestones } loadMilestone={ this.loadMilestone } />
+      <div className="project-milestones-form-wrapper">
+        <PaginationButtons 
+          next={ this.props.project_milestones.next }
+          previous={ this.props.project_milestones.previous }
+          action={ getProjectMilestonesAction }
+          parentProps={ this.props }
+        />
+        <GenericProjectFeatureList items={ this.state.project_milestones } loadItem={ this.loadMilestone } />
         <GenericForm 
-          title='Projektfinanzplanung'
-          className='project-finances-form'
+          title='Projektmeilensteine'
+          className='project-milestones-form'
           payload={ this.state.formPayload }
           onSubmit={ this.handleSubmit }
           updateParentState={ this.handlePayloadChange }
@@ -153,7 +115,7 @@ class ProjectMilestonesForm extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  console.log('--------->', state.project_details.project_milestones);
+  // console.log('--------->', state.project_details.project_milestones);
   return {
     project_milestones: state.project_milestones,
     total_milestones: state.project_details.project_milestones,

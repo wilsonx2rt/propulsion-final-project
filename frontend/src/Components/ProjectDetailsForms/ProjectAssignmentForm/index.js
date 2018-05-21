@@ -4,6 +4,8 @@ import { withRouter } from 'react-router-dom';
 
 import GenericForm from '../../GenericForm';
 import { getProjectDetailsAction } from '../../../store/actions/getProjectDetailsAction';
+import { postProjectAssignmentAction } from '../../../store/actions/postProjectAssignmentAction';
+import { grabModifiedFields, getFetchBody, resetFormPayload } from '../helpers';
 
 class ProjectAssignmentForm extends Component {
   constructor(props) {
@@ -25,14 +27,9 @@ class ProjectAssignmentForm extends Component {
     };
   }
 
-  componentDidMount = () => {
-    const action = getProjectDetailsAction(this.props);
-    this.props.dispatch(action);
-  }
-
-
   static getDerivedStateFromProps = (nextProps, prevState) => {
-    if (nextProps.project_assignment!==undefined && nextProps.project_finances !== null){
+    console.log(nextProps.project_assignment);
+    if (nextProps.project_assignment!==undefined && nextProps.project_assignment !== null){
       const newState = Object.assign({}, prevState);
       Object.keys(prevState.formPayload).map(key => {
         if (key !== 'form_settings' && prevState.formPayload[key].value !== nextProps.project_assignment[key]){
@@ -50,28 +47,24 @@ class ProjectAssignmentForm extends Component {
 
   handleChange = input_array => {
     this.state.formPayload[input_array[0]].value = input_array[1];
-    // input_array is of type [field_name, value]
-    // Needs to be done in this way to update state of the component based on the state of the child.
-    // Input is handled by the child.
-    // console.log(input_array);
-    // const newState = Object.assign({}, this.state);
-    // console.log(newState === this.state);
-    // const newFieldState = Object.assign({}, newState[input_array[0]]);
-    // console.log(newFieldState);
-    // newFieldState.value = input_array[1];
-    // console.log(newFieldState === newState[input_array[0]]);
-    // newState[input_array[0]] = newFieldState;
-    // console.log(newState);
-    // this.setState(
-    //   newState
-    // );
+    this.state.formPayload[input_array[0]].modified = true;
   };
 
   handleSubmit = () => {
-    console.log('Yey, submiting!');
-    // const action = loginAction(this.state, this.props);
-    // this.props.dispatch(action);
-    // document.querySelector('#login-form').reset();
+    let method = 'POST';
+    let assignment_id;
+    let body = getFetchBody(grabModifiedFields(this.state.formPayload));
+    body.project = this.props.project_id;
+    if (this.props.project_assignment) {
+      method = 'PATCH';
+      assignment_id = this.props.project_assignment.id;
+      delete body.project;
+    }
+    if (Object.keys(body).length !== 0){
+      resetFormPayload(this);
+      const action = postProjectAssignmentAction(this.props, body, method, assignment_id);
+      this.props.dispatch(action);
+    }
   }
 
   render() {

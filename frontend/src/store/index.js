@@ -7,6 +7,9 @@ import { projectOverview } from './reducers/projectOverview';
 import { managerOverview } from './reducers/managerOverview';
 import { filter } from './reducers/filter';
 import { project_milestones } from './reducers/project_milestones';
+import { project_dependencies } from './reducers/project_dependencies';
+import { yearly_forecasts } from './reducers/yearly_forecasts';
+import { project_allocations } from './reducers/project_allocations';
 import { managerDetails } from './reducers/managerDetails';
 import { currentUser } from './reducers/currentUser';
 
@@ -20,6 +23,9 @@ const reducer = combineReducers({
   managerOverview,
   filter,
   project_milestones,
+  project_dependencies,
+  yearly_forecasts,
+  project_allocations,
   managerDetails,
   currentUser
 });

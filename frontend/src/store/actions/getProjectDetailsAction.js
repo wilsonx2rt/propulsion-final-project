@@ -1,5 +1,6 @@
 import { validateTokens } from "./validateTokens";
 import { SERVER_URL, SET_PROJECT_DETAILS } from '../constants';
+import { getYearlyForecastAction } from './getYearlyForecastAction';
 
 export const getProjectDetailsAction = (props) => (dispatch, getState) => {
   validateTokens(getState(), dispatch, props)
@@ -23,6 +24,11 @@ export const getProjectDetailsAction = (props) => (dispatch, getState) => {
     // console.log(project_details);
     const action = setProjectDetails(project_details);
     dispatch(action);
+    if(project_details.project_finances.id){
+      const fetchURL = `${SERVER_URL}yearly_forecasts/forecasts/${project_details.project_finances.id}/`;
+      const action = getYearlyForecastAction(props, fetchURL);
+      dispatch(action);
+    }
   })
 }
 
