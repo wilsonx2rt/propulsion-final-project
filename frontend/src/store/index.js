@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { tokens } from './reducers/tokens';
 import { dropdowns } from './reducers/dropdowns';
@@ -10,6 +10,10 @@ import { project_milestones } from './reducers/project_milestones';
 import { project_dependencies } from './reducers/project_dependencies';
 import { yearly_forecasts } from './reducers/yearly_forecasts';
 import { project_allocations } from './reducers/project_allocations';
+import { managerDetails } from './reducers/managerDetails';
+import { currentUser } from './reducers/currentUser';
+
+const middleware = [thunk];
 
 const reducer = combineReducers({
   tokens,
@@ -21,9 +25,17 @@ const reducer = combineReducers({
   project_milestones,
   project_dependencies,
   yearly_forecasts,
-  project_allocations
+  project_allocations,
+  managerDetails,
+  currentUser
 });
 
-const store = createStore(reducer, applyMiddleware(thunk));
+const store = createStore(
+  reducer,
+  compose(
+    applyMiddleware(...middleware),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  )
+);
 
 export default store;

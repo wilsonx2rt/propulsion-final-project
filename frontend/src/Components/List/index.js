@@ -11,10 +11,10 @@ class List extends Component {
           <ul className="no-style">
             {this.props.type === 'projects'
               ? this.props.overview.projectOverview.map((project, index) => {
-                  return <ListItem key={index} project={project} id={project.id} />;
+                  return <ListItem key={index} project={project} projectID={project.id} />;
                 })
               : this.props.overview.managerOverview.map((manager, index) => {
-                  return <ListItem key={index} manager={manager} />;
+                  return <ListItem key={index} manager={manager}  managerID={manager.id}/>;
                 })}
           </ul>
         </div>

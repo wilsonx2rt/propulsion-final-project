@@ -121,6 +121,16 @@ class GenericForm extends Component {
                   />
                 )
               }
+              else if (this.props.payload.form_settings.type === 'manager_details_form') {
+                return (
+                  <Button 
+                    key={ rand.generate(10) }
+                    btnText="Save" 
+                    type='submit'
+                    className={ this.props.className + '__button' }
+                  />
+                )
+              }
             }
         })
         }
