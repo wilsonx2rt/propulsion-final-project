@@ -9,3 +9,46 @@
 .overview__managers--wrapper {
   flex: 1;
 }
+
+.overview__section-header-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.new-project-manager {
+  background-color: rgb(135, 136, 138, 0.1);
+  border-bottom: solid white 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.new-project-manager__header-wrapper {
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.new-project-manager__header-wrapper:hover {
+  background-color: rgb(135, 136, 138, 0.7);
+}
+
+.new-project-manager__header {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+#plus {
+  height: 25px;
+}
+
+.new-project-manager__inner-container {
+  width: 200px;
+  align-self: center;
+  padding: 50px;
+}
+
+.new-project-manager__inner-container--hidden {
+  display: none;
+}

@@ -14,19 +14,19 @@ class RegistrationSerializer(serializers.Serializer):
     last_name = serializers.CharField(
         label='PM last name'
     )
-    abreviation = serializers.CharField(
-        label='PM abreviation'
-    )
+    # abreviation = serializers.CharField(
+    #     label='PM abreviation'
+    # )
     email = serializers.EmailField(
         label='Registration E-Mail Address'
     )
 
-    def validate_abreviation(self, abreviation):
-        try:
-            UserProfile.objects.get(abreviation=abreviation)
-            raise serializers.ValidationError('User with such initials already exists')
-        except UserProfile.DoesNotExist:
-            return abreviation
+    # def validate_abreviation(self, abreviation):
+    #     try:
+    #         UserProfile.objects.get(abreviation=abreviation)
+    #         raise serializers.ValidationError('User with such initials already exists')
+    #     except UserProfile.DoesNotExist:
+    #         return abreviation
 
     def validate_email(self, email):
         try:

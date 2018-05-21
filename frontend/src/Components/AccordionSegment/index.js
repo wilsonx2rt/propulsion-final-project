@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import "./index.css";
+import React, { Component } from 'react';
+import './index.css';
 
 // import LoginForm from "../LoginForm";
 
-import arrows from "../../assets/dropdown-arrows.png";
+import arrows from '../../assets/dropdown-arrows.png';
 // import Button from "../Button";
 
 class AccordionSegment extends Component {
@@ -11,17 +11,17 @@ class AccordionSegment extends Component {
     super(props);
 
     this.state = {
-      visible: "accordion-segment__inner-container-hidden"
+      visible: 'accordion-segment__inner-container-hidden'
     };
   }
 
   toggleClass = event => {
     let visible = { ...this.state.visible };
-    if (this.state.visible === "accordion-segment__inner-container-hidden") {
-      visible = "accordion-segment__inner-container";
+    if (this.state.visible === 'accordion-segment__inner-container-hidden') {
+      visible = 'accordion-segment__inner-container';
       this.setState({ visible });
     } else {
-      visible = "accordion-segment__inner-container-hidden";
+      visible = 'accordion-segment__inner-container-hidden';
       this.setState({ visible });
     }
   };
@@ -41,9 +41,7 @@ class AccordionSegment extends Component {
         </div>
 
         <div className={this.state.visible}>
-          {
-            this.props.children
-          }
+          {this.props.children}
           {/* <div className="accordion-segment__btn-container">
             <Button className="accordion-segment__btn" btnText="Save" />
             <Button className="accordion-segment__btn" btnText="Next" />

@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './index.css';
 import GenericForm from '../GenericForm';
-import { updateManagerActionCreator } from '../../store/actions/managerActions';
+import { updateManagerActionCreator, createNewManagerActionCreator, deleteManagerActionCreator } from '../../store/actions/managerActions';
 import { fetchManagerOverviewActionCreator } from '../../store/actions/fetchManagerOverview';
+import Button from '../Button';
 
 class ProjectManagerForm extends Component {
   constructor(props) {
@@ -46,20 +47,43 @@ class ProjectManagerForm extends Component {
     return null;
   };
 
-  handleSubmit = (e) => {
-    let action = updateManagerActionCreator(this.state.formPayload, this.props);
-    this.props.dispatch(action);
-    // target accordion inner container to close on submit
-    const form = e.target;
-    const formWrapper = form.parentElement;
-    const innerContainer = formWrapper.parentElement;
-    // hide on submit
-    innerContainer.classList.toggle('accordion-segment__inner-container-hidden')    
+  handleSubmit = e => {
+    if (!this.props.create) {
+      const action = updateManagerActionCreator(
+        this.state.formPayload,
+        this.props
+      );
+      this.props.dispatch(action);
+      // target accordion inner container to close on submit
+      const form = e.target;
+      const formWrapper = form.parentElement;
+      const innerContainer = formWrapper.parentElement;
+      // hide on submit
+      innerContainer.classList.toggle(
+        'accordion-segment__inner-container-hidden'
+      );
+    } else {
+      const action = createNewManagerActionCreator(
+        this.state.formPayload,
+        this.props
+      );
+      this.props.dispatch(action);
+      const form = e.target;
+      const formWrapper = form.parentElement;
+      const innerContainer = formWrapper.parentElement;
+      // hide on submit
+      this.props.toggleClass()
+    }
   };
 
   handleChange = input_array => {
     this.state.formPayload[input_array[0]].value = input_array[1];
   };
+
+  handleClick = () => {
+    let action = deleteManagerActionCreator(this.props);
+    this.props.dispatch(action);
+  }
 
   render() {
     // this.props.managerDetails ? console.log(this.props.managerDetails): null
@@ -71,6 +95,7 @@ class ProjectManagerForm extends Component {
           onSubmit={this.handleSubmit}
           updateParentState={this.handleChange}
         />
+        <Button handleClick={this.handleClick} btnText="X" />
       </div>
     );
   }
