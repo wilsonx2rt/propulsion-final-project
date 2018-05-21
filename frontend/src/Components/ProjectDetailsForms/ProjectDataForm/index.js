@@ -6,6 +6,8 @@ import './index.css';
 
 import GenericForm from '../../GenericForm';
 import { getProjectDetailsAction } from '../../../store/actions/getProjectDetailsAction';
+import { postProjectDataAction } from '../../../store/actions/postProjectDataAction';
+import { grabModifiedFields, getFetchBody, resetFormPayload } from '../helpers';
 
 class ProjectDataForm extends Component {
   constructor(props) {
@@ -56,7 +58,6 @@ class ProjectDataForm extends Component {
         }
         return key;
       })
-        // console.log(newState);
         return newState;
     }
     return null;
@@ -64,26 +65,17 @@ class ProjectDataForm extends Component {
 
   handleChange = input_array => {
     this.state.formPayload[input_array[0]].value = input_array[1];
-    // console.log(this.state);
-    // input_array is of type [field_name, value]
-    // Needs to be done in this way to update state of the component based on the state of the child.
-    // Input is handled by the child.
-    // console.log(input_array);
-    // const newState = Object.assign({}, this.state);
-    // console.log(newState === this.state);
-    // const newFieldState = Object.assign({}, newState[input_array[0]]);
-    // console.log(newFieldState);
-    // newFieldState.value = input_array[1];
-    // console.log(newFieldState === newState[input_array[0]]);
-    // newState[input_array[0]] = newFieldState;
-    // console.log(newState);
-    // this.setState(
-    //   newState
-    // );
+    this.state.formPayload[input_array[0]].modified = true;
   };
 
   handleSubmit = () => {
-    console.log('Yey, submiting!');
+    let body = getFetchBody(grabModifiedFields(this.state.formPayload));
+    const method = 'PATCH';
+    if (Object.keys(body).length !== 0){
+      resetFormPayload(this);
+      const action = postProjectDataAction(this.props, body, method, this.props.project_id);
+      this.props.dispatch(action);
+    }
 
   }
 

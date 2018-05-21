@@ -44,6 +44,7 @@ class InputField extends Component{
           placeholder={ this.props.placeholder }
           onChange={ this.handleChange }
           value={ this.state.value }
+          readOnly={ this.props.name==='name' ? true : false }
         />
       </div>
     )

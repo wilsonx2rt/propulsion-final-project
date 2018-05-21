@@ -29,7 +29,7 @@ class ProjectAllocation(models.Model):
         on_delete=models.SET_NULL,
         null=True,
     )
-# FIXME check if this field is needed for project allocation
+    # FIXME check if this field is needed for project allocation
     project_phase = models.IntegerField(
         verbose_name='project phase',
         help_text='Phase',
@@ -112,3 +112,4 @@ class ProjectAllocation(models.Model):
             'year',
             'quarter'
         )]
+        ordering = ['year', 'quarter']

@@ -1,7 +1,7 @@
 import { validateTokens } from "./validateTokens";
-import { SERVER_URL, SET_PROJECT_MILESTONES } from '../constants';
+import { SERVER_URL, SET_PROJECT_DEPENDENCIES } from '../constants';
 
-export const getProjectMilestonesAction = (props, url) => (dispatch, getState) => {
+export const getProjectDependenciesAction = (props, url) => (dispatch, getState) => {
   validateTokens(getState(), dispatch, props)
   .then(response => {
     const headers = ({
@@ -18,18 +18,18 @@ export const getProjectMilestonesAction = (props, url) => (dispatch, getState) =
     // console.log(response);
     return response.json()
   })
-  .then(project_milestones => {
-    // console.log(project_milestones);
-    const action = setProjectMilestones(project_milestones);
+  .then(project_dependencies => {
+    // console.log(project_dependencies);
+    const action = setProjectDependencies(project_dependencies);
     dispatch(action);
   })
 }
 
-const setProjectMilestones = (project_milestones) => {
+const setProjectDependencies = (project_dependencies) => {
   return {
-    type: SET_PROJECT_MILESTONES,
+    type: SET_PROJECT_DEPENDENCIES,
     payload: {
-      project_milestones,
+      project_dependencies,
     }
   }
 }

@@ -3,8 +3,12 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import GenericForm from '../../GenericForm';
-import { getProjectDetailsAction } from '../../../store/actions/getProjectDetailsAction';
-import ProjectAllocationsList from './ProjectAllocationsList';
+import { getProjectAllocationsAction } from '../../../store/actions/getProjectAllocationsAction';
+import { postProjectAllocationAction } from '../../../store/actions/postProjectAllocationAction';
+import { SERVER_URL } from '../../../store/constants';
+import GenericProjectFeatureList from '../../GenericProjectFeatureList';
+import PaginationButtons from "../../GenericProjectFeatureList/PaginationButtons";
+import { goNextPage, goPrevPage, grabModifiedFields, getFetchBody, resetFormPayload } from '../helpers';
 
 class ProjectAllocationsForm extends Component {
   constructor(props) {
@@ -31,79 +35,77 @@ class ProjectAllocationsForm extends Component {
   }
 
   componentDidMount = () => {
-    const action = getProjectDetailsAction(this.props);
+    const fetchURL = `${SERVER_URL}project_allocation/allocations/${this.props.project_id}/`
+    const action = getProjectAllocationsAction(this.props, fetchURL);
     this.props.dispatch(action);
   }
 
   static getDerivedStateFromProps = (nextProps, prevState) => {
-    // if we get updated allocations which are not an empty object...
-    if(nextProps.project_allocations !== undefined && nextProps.project_finances !== null) {
+    if (nextProps.project_allocations.results !== undefined && nextProps.project_allocations.results !== null && nextProps.project_allocations.results.length > 0){
       const newState = Object.assign({}, prevState);
-      if(prevState.project_allocations !== nextProps.project_allocations && Object.keys(nextProps.project_allocations).length) {
-        // console.log('NEW ALLOCATIONS!');
-        newState.project_allocations = nextProps.project_allocations;
-      }
+      newState.project_allocations = nextProps.project_allocations.results.map(allocation => {
+        const newAllocation = Object.assign({}, allocation);
+        Object.keys(allocation).map(entry => {
+          if (allocation[entry] === null){
+            newAllocation[entry] = '';
+          }
+          return entry;
+        })
+        return newAllocation;
+      });
       return newState;
     }
     return null;
   }
 
   handleChange = input_array => {
-    // const newState = Object.assign({}, this.state);
-    // console.log('NEW STATE ->>>>', newState);
-    // newState.formPayload[input_array[0]].value = input_array[1];
-    // console.log(newState);
-    // this.setState({
-    //   newState,
-    // })
     this.state.formPayload[input_array[0]].value = input_array[1];
-
-
-    // input_array is of type [field_name, value]
-    // Needs to be done in this way to update state of the component based on the state of the child.
-    // Input is handled by the child.
-    // console.log(input_array);
-    // console.log(newState === this.state);
-    // const newFieldState = Object.assign({}, newState[input_array[0]]);
-    // console.log(newFieldState);
-    // newFieldState.value = input_array[1];
-    // console.log(newFieldState === newState[input_array[0]]);
-    // newState[input_array[0]] = newFieldState;
-    // console.log(newState);
-    // this.setState(
-    //   newState
-    // );
+    this.state.formPayload[input_array[0]].modified = true;
   };
 
   loadAllocation = (allocation) => {
-    // console.log('>>>>>>>>',allocation);
     const newState = Object.assign({}, this.state);
     Object.keys(this.state.formPayload).map(key => {
-      if (allocation[key] !== undefined && allocation[key] !== null){
+      if (allocation[key] !== undefined && allocation[key] !== null && newState.formPayload[key].value !== allocation[key]){
         newState.formPayload[key].value = allocation[key];
       }
-      return key;
     })
-    // console.log('>>>>>>>', newState);
     this.setState({
       newState,
     })
   }
 
   handleSubmit = () => {
-    console.log('Yey, submiting!');
-    // const action = loginAction(this.state, this.props);
-    // this.props.dispatch(action);
-    // document.querySelector('#login-form').reset();
+    let method = 'POST';
+    let year = this.state.formPayload.year.value.id;
+    let quarter = this.state.formPayload.quarter.value.id;
+    let allocation_id;
+    const body = getFetchBody(grabModifiedFields(this.state.formPayload));
+    body.project = this.props.project_id;
+    this.props.all_allocations.map(allocation => {
+      if (allocation.year.id === year && allocation.quarter.id === quarter) {
+        method = 'PATCH';
+        allocation_id = allocation.id;
+        delete body.project;
+      }
+    })
+    if (Object.keys(body).length !== 0){
+      resetFormPayload(this);
+      const action = postProjectAllocationAction(this.props, body, method, allocation_id)
+      this.props.dispatch(action);
+    }
   }
 
   render() {
     return (
       <div className="project-allocation-form-wrapper">
-        <ProjectAllocationsList 
-          project_allocations={ this.state.project_allocations }
-          loadAllocation={ this.loadAllocation }
+        <PaginationButtons 
+          next={ this.props.project_allocations.next }
+          previous={ this.props.project_allocations.previous }
+          action={ getProjectAllocationsAction }
+          parentProps={ this.props }
         />
+        <GenericProjectFeatureList items={ this.state.project_allocations } loadItem={ this.loadAllocation } />
         <GenericForm 
           title='Projektablauf'
           className='project-allocation-form'
@@ -120,7 +122,8 @@ class ProjectAllocationsForm extends Component {
 const mapStateToProps = (state, props) => {
   // console.log('--------->',state.project_details.project_allocations);
   return {
-    project_allocations: state.project_details.project_allocations,
+    project_allocations: state.project_allocations,
+    all_allocations: state.project_details.project_allocations,
   }
 }
 

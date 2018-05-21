@@ -9,6 +9,8 @@ import ProjectAssignmentForm from '../../Components/ProjectDetailsForms/ProjectA
 import ProjectAllocationsForm from '../../Components/ProjectDetailsForms/ProjectAllocationsForm';
 import ProjectFinancesForm from '../../Components/ProjectDetailsForms/ProjectFinancesForm';
 import ProjectMilestonesForm from '../../Components/ProjectDetailsForms/ProjectMilestonesForm';
+import ProjectDependenciesForm from '../../Components/ProjectDetailsForms/ProjectDependenciesForm';
+import ProjectDevelopmentForm from '../../Components/ProjectDetailsForms/ProjectDevelopmentForm';
 import { fetchDropdownsActionCreator } from '../../store/actions/fetchDropdowns';
 
 class ProjectDetails extends Component {
@@ -31,6 +33,8 @@ class ProjectDetails extends Component {
         <AccordionSegment AccordionSegmentTitle="Projektfinanzplanung" ><ProjectFinancesForm project_id={ this.props.match.params.project_id } /></AccordionSegment>
         <AccordionSegment AccordionSegmentTitle="Projektablauf" ><ProjectAllocationsForm project_id={ this.props.match.params.project_id } /></AccordionSegment>
         <AccordionSegment AccordionSegmentTitle="Projektmeilensteine" ><ProjectMilestonesForm project_id={ this.props.match.params.project_id } /></AccordionSegment>
+        <AccordionSegment AccordionSegmentTitle="Projektabhängigkeiten" ><ProjectDependenciesForm project_id={ this.props.match.params.project_id } /></AccordionSegment>
+        <AccordionSegment AccordionSegmentTitle="Projektentwicklung" ><ProjectDevelopmentForm project_id={ this.props.match.params.project_id } /></AccordionSegment>
       </div>
     )
   }

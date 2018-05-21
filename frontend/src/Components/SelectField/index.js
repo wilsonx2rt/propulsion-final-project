@@ -22,21 +22,14 @@ class SelectField extends Component{
 
     this.state = {
       value: '',
+      defaultDropdown: [{ id: -1, name: ''}],
     }
 
-    this.myStyle={
-      'width': '30%',
-      'display': 'flex',
-      'flexDirection': 'column',
-    }
-
-    this.state.defaultDropdown = [{ id: -1, name: ''}];
   }
 
   componentDidMount = () => {
     this.dropdowns = (this.props.dropdowns[this.props.name] !== undefined) ? [...this.state.defaultDropdown, ...this.props.dropdowns[this.props.name]] : this.state.defaultDropdown;
     let defaultValue = '';
-    // if (this.props.id > 0 && this.props.dropdowns[ this.props.name ] !== undefined) {
       if (this.props.id > 0) {
         this.dropdowns.map(el => {
           if (el.id === this.props.id) {
@@ -62,7 +55,7 @@ class SelectField extends Component{
     // Check if the state has been already set up. If no, use default empty array, otherwise use dropdowns from the state.
     const dropdowns = (this.props.dropdowns[this.props.name] !== undefined) ? [...this.state.defaultDropdown, ...this.props.dropdowns[this.props.name]] : this.state.defaultDropdown;
     return (
-      <div className={ this.props.className + '__input-container' } style={ this.myStyle }>
+      <div className={ this.props.className + '__input-container' } >
         <label>{ this.props.placeholder }{ this.props.required === 'true' ? <span>*</span> : '' }</label>
         <select name={ this.props.name } onChange={ this.handleChange } value={ this.state.value } className={ this.props.className + '__select' }>
           {         
