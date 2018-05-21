@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import SearchBox from '../../Components/SearchBox';
 import AccordionSegment from '../../Components/AccordionSegment';
 import ProjectManagerForm from '../../Components/ProjectManagerForm';
+import Button from '../../Components/Button';
+import plus from '../../assets/plus.png';
+
 import { connect } from 'react-redux';
 import './index.css';
 import { fetchProjectOverviewActionCreator } from '../../store/actions/fetchProjectOverview';
@@ -15,7 +18,8 @@ class Overview extends Component {
       overview: {
         projectOverview: [],
         managerOverview: []
-      }
+      },
+      visible: 'new-project-manager__inner-container--hidden',
     };
   }
 
@@ -54,10 +58,17 @@ class Overview extends Component {
     return null;
   };
 
-  // updateProjectManagerState = (props) => {
-  //   newProjectManagerOverview = {}
-  // }
-
+  toggleClass = () => {
+    let visible = { ...this.state.visible };
+    if (this.state.visible === 'new-project-manager__inner-container--hidden ') {
+      visible = 'new-project-manager__inner-container';
+      this.setState({ visible });
+    } else {
+      visible = 'new-project-manager__inner-container--hidden ';
+      this.setState({ visible });
+    }
+  }
+ 
   render() {
     return (
       <div>
@@ -65,18 +76,35 @@ class Overview extends Component {
         <h2>Protfolio-Übersicht</h2>
         <div className="overview--wrapper">
           <div className="overview__projects--wrapper">
-            <h3>Projeckten</h3>
+            <h3>Projekte</h3>
             <List type="projects" overview={this.state.overview} />
           </div>
           <div className="overview__managers--wrapper">
             <h3>Projectleitern</h3>
-            {Object.keys(this.props.overview.managerOverview).length != 0 ? this.props.overview.managerOverview.map((manager, index) => {
-              return (
-                <AccordionSegment key={index} AccordionSegmentTitle={`${manager.first_name}-${manager.last_name}`}>
-                <ProjectManagerForm managerDetails={manager}/>
-                </AccordionSegment>
-              )
-            }) : null}
+            <div className="new-project-manager">
+              <div onClick={this.toggleClass} className="new-project-manager__header-wrapper">
+                <div className="new-project-manager__header">Neu PL</div>
+                <img id="plus" src={plus} alt="plus icon" />
+              </div>
+              <div className={this.state.visible}>
+                <ProjectManagerForm create="true" toggleClass={this.toggleClass}/>
+              </div>
+            </div>
+            {/* {console.log(this.props)} */}
+            {Object.keys(this.props.overview.managerOverview).length != 0
+              ? this.props.overview.managerOverview.map((manager, index) => {
+                  return (
+                    <AccordionSegment
+                      key={index}
+                      AccordionSegmentTitle={`${manager.first_name}-${
+                        manager.last_name
+                      }`}
+                    >
+                      <ProjectManagerForm managerDetails={manager} />
+                    </AccordionSegment>
+                  );
+                })
+              : null}
             {/* {list view w/o dropdown option} */}
             {/* <List type="manager" overview={this.state.overview} /> */}
           </div>

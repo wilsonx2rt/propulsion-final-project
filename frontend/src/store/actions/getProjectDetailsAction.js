@@ -24,7 +24,7 @@ export const getProjectDetailsAction = (props) => (dispatch, getState) => {
     // console.log(project_details);
     const action = setProjectDetails(project_details);
     dispatch(action);
-    if(project_details.project_finances.id){
+    if(project_details.project_finances){
       const fetchURL = `${SERVER_URL}yearly_forecasts/forecasts/${project_details.project_finances.id}/`;
       const action = getYearlyForecastAction(props, fetchURL);
       dispatch(action);
