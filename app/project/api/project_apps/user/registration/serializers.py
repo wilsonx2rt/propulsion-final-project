@@ -14,19 +14,19 @@ class RegistrationSerializer(serializers.Serializer):
     last_name = serializers.CharField(
         label='PM last name'
     )
-    abreviation = serializers.CharField(
-        label='PM abreviation'
-    )
+    # abreviation = serializers.CharField(
+    #     label='PM abreviation'
+    # )
     email = serializers.EmailField(
         label='Registration E-Mail Address'
     )
 
-    def validate_abreviation(self, abreviation):
-        try:
-            UserProfile.objects.get(abreviation=abreviation)
-            raise serializers.ValidationError('User with such initials already exists')
-        except UserProfile.DoesNotExist:
-            return abreviation
+    # def validate_abreviation(self, abreviation):
+    #     try:
+    #         UserProfile.objects.get(abreviation=abreviation)
+    #         raise serializers.ValidationError('User with such initials already exists')
+    #     except UserProfile.DoesNotExist:
+    #         return abreviation
 
     def validate_email(self, email):
         try:
@@ -39,8 +39,8 @@ class RegistrationSerializer(serializers.Serializer):
     def send_registration_email(email, code):
         message = EmailMessage(
             subject='Registration',
-            body=f'This is your registration link =>> http://forecastingtool.propulsion-learn.ch/registration/'
-                 f'validation?email={email}&validation?code={code}',
+            body=f'This is your registration link =>> http://localhost:3000/registration/'
+                 f'validation?email={email}&code={code}',
             to=[email],
         )
         message.send()

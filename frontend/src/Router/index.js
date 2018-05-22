@@ -9,6 +9,8 @@ import Login from './Login';
 import ProjectDetails from './ProjectDetails';
 import Overview from './Overview';
 import ManagerDetails from './ManagerDetails';
+import Registration from './Registration';
+import RegistrationSucces from './RegistrationSuccess';
 // import Signup from './Signup';
 // import Footer from '../Сomponents/Footer';
 // import SignupValidation from './SignupValidation';
@@ -33,6 +35,8 @@ const Home = props => {
             path="/manager-details/:manager_id"
             component={ManagerDetails}
           />
+          <Route exact path="/registration/validation/" component={Registration} />
+          <Route exact path="/registration-success/" component={RegistrationSucces} />
           {/* <Route exact path="/signup" component={ Signup } />
             <Route exact path="/registration/validation" component={ SignupValidation } />
             <Route exact path="/new_restaurant" component={ NewRestaurant } /> */}

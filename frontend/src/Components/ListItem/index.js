@@ -10,7 +10,6 @@ class ListItem extends Component {
     this.props.history.push(`/manager-details/${this.props.managerID}`);
   };
 
-  
   render() {
     if (this.props.project !== {}) {
       let project = this.props.project;
@@ -19,11 +18,19 @@ class ListItem extends Component {
           <li className="list-item" onClick={this.handleClickProjects}>
             <span>{project.name}</span>
             <span>
-              {project.project_assignment.project_management[0].first_name}
+              {/* Prevent error if project manager not yet assigned or project assignment object not created */}
+              {project.project_assignment.project_management[0]
+                ? `${
+                    project.project_assignment.project_management[0].first_name
+                  }
               -
-              {project.project_assignment.project_management[0].last_name}
+              ${project.project_assignment.project_management[0].last_name}`
+                : 'N/A'}
             </span>
-            <span>{project.project_status_phase.name}</span>
+            <span>
+              {/* Prevent error if project status not yet assigned */}
+              {project.project_status_phase.name ? project.project_status_phase.name : 'N/A'}
+            </span>
           </li>
         );
       }
