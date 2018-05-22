@@ -25,11 +25,15 @@ class SearchBox extends Component {
     action = fetchProjectOverviewActionCreator(this.state, this.props);
     this.props.dispatch(action);
   };
+  // FIXME: does not update on backstace (lach char only)
   clearFilter = () => {
     document.querySelector('#search-box__input').value = '';
-    let action = setFilterActionCreator('')
+    let action = setFilterActionCreator('');
     this.props.dispatch(action);
-    action = fetchProjectOverviewActionCreator({filterString: ''}, this.props);
+    action = fetchProjectOverviewActionCreator(
+      { filterString: '' },
+      this.props
+    );
     this.props.dispatch(action);
   };
 
@@ -56,7 +60,7 @@ class SearchBox extends Component {
 
 const mapStateToProps = state => {
   return {
-    currentUser: state.currentUser,
+    currentUser: state.currentUser
   };
 };
 
