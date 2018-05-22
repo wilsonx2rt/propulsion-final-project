@@ -1,5 +1,5 @@
 .accordion-segment {
-  background-color: rgb(135, 136, 138, 0.1);
+  background-color: rgba(135, 136, 138, 0.1);
   border-bottom: solid white 5px;
 }
 
@@ -7,13 +7,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 15px 0;
   cursor: pointer;
+}
+
+.accordion-segment__header:hover {
+  background-color: rgba(135, 136, 138, 0.7);
 }
 
 .accordion-segment__title {
   margin-left: 20px;
   font-weight: bold;
-  font-size: 32px;
+  font-size: 22px;
 }
 
 .accordion-segment__dropdown-icon {
@@ -21,9 +26,6 @@
   margin-right: 20px;
 }
 
-.accordion-segment__header:hover {
-  background-color: rgb(135, 136, 138, 0.7);
-}
 
 .accordion-segment__inner-container {
   padding: 50px;
