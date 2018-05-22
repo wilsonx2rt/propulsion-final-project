@@ -1,11 +1,13 @@
 import { SERVER_URL, SET_PROJECT_OVERVIEW } from '../constants';
 import { validateTokens } from './validateTokens';
 import { projectOverview } from '../reducers/projectOverview';
+import { fetchCurrentUserActionCreator } from './fetchCurrentUser';
 
 export const fetchProjectOverviewActionCreator = props => (
   dispatch,
   getState
 ) => {
+  console.log(props);
   validateTokens(getState(), dispatch, props)
     .then(response => {
       const headers = {
@@ -17,12 +19,16 @@ export const fetchProjectOverviewActionCreator = props => (
       };
       let filter;
       // Prevent error on first dispatch of action during render!
-      if (props.state) {
-      }
       // Set filter string for dispatch on form submit
-      props.state && props.state.filter ? (filter = props.state.filter) : (filter = '');
-      console.log(filter);
-      return fetch(`${SERVER_URL}overview/projects/?filter=${filter}`, config);
+      props.state && props.state.filter
+        ? (filter = props.state.filter)
+        : (filter = '');
+      // fetch to right endpoint depending on isAdmin status
+      let URL =
+        props.currentUser.user_profile.isAdmin === true
+          ? `${SERVER_URL}overview/projects/?filter=${filter}`
+          : `${SERVER_URL}pm/overview/`;
+      return fetch(URL, config);
     })
     .then(response => {
       return response.json();

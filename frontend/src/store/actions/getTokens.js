@@ -1,6 +1,8 @@
 import { setTokens } from './userActions'; 
 import { SERVER_URL } from '../constants';
 import { showValidationMessage } from '../../helpers';
+import {fetchCurrentUserActionCreator } from '../actions/fetchCurrentUser';
+
 
 export const getTokens = (localState, props, dispatch, getState) => {
   // console.log(localState);
@@ -28,6 +30,7 @@ export const getTokens = (localState, props, dispatch, getState) => {
         const action = setTokens(data);
         dispatch(action);
         localStorage.setItem('tokens', JSON.stringify(data));
+        dispatch(fetchCurrentUserActionCreator(data));
         props.history.push('/overview');
       }
       else{
