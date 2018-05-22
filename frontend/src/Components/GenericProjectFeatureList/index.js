@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ListItem from './ListItem';
+import PaginationButtons from './PaginationButtons';
 
 var rand = require("random-key");
 
@@ -10,8 +11,9 @@ class GenericProjectFeatureList extends Component{
   }
 
   render(){
-    // console.log(this.props.items);
+    console.log(this.props);
     return (
+      <div className={ this.props.className }>
       <ul>
         {
           this.props.items.map(item => {
@@ -19,6 +21,13 @@ class GenericProjectFeatureList extends Component{
           })
         }
       </ul>
+      <PaginationButtons 
+        next={ this.props.next }
+        previous={ this.props.previous }
+        action={ this.props.action }
+        parentProps={ this.props.parentProps }
+      />
+    </div>
     )
   }
 }

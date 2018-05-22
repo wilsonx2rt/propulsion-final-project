@@ -22,7 +22,7 @@ class SelectField extends Component{
 
     this.state = {
       value: '',
-      defaultDropdown: [{ id: -1, name: ''}],
+      defaultDropdown: [{ id: '', name: ''}],
     }
 
   }

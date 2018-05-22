@@ -82,19 +82,21 @@ class ProjectDependenciesForm extends Component {
   render() {
     return (
       <div className="project-dependencies-form-wrapper">
-        <PaginationButtons 
-          next={ this.props.project_dependencies.next }
-          previous={ this.props.project_dependencies.previous }
-          action={ getProjectDependenciesAction }
-          parentProps={ this.props }
-        />
-        <GenericProjectFeatureList items={ this.state.project_dependencies } loadItem={ this.loadDependency } />
         <GenericForm 
           title='Projektabhängigkeiten'
           className='project-dependencies-form'
           payload={ this.state.formPayload }
           onSubmit={ this.handleSubmit }
           updateParentState={ this.handlePayloadChange }
+        />
+        <GenericProjectFeatureList 
+          className={ this.props.project_dependencies ? '' : 'hidden-element' }
+          items={ this.state.project_dependencies } 
+          loadItem={ this.loadDependency } 
+          parentProps={ this.props } 
+          next={ this.props.project_dependencies.next }
+          previous={ this.props.project_dependencies.previous }
+          action={ getProjectDependenciesAction }
         />
       </div>
     )

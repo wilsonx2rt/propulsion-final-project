@@ -62,7 +62,8 @@ class ProjectAllocationsForm extends Component {
   handleChange = input_array => {
     this.state.formPayload[input_array[0]].value = input_array[1];
     this.state.formPayload[input_array[0]].modified = true;
-    if (this.state.formPayload['year'].modified && this.state.formPayload['quarter'].modified) {
+    console.log(input_array);
+    if (this.state.formPayload['year'].modified && this.state.formPayload['quarter'].modified && (input_array[0] === 'year' || input_array[0] === 'quarter')) {
       const yearID = this.state.formPayload['year'].value.id;
       const quarterID = this.state.formPayload['quarter'].value.id;
       const allocation = this.checkExistingAllocations(this.props.all_allocations, yearID, quarterID);
@@ -73,6 +74,8 @@ class ProjectAllocationsForm extends Component {
   };
 
   loadAllocation = (allocation) => {
+    this.state.formPayload['year'].modified = true;
+    this.state.formPayload['quarter'].modified = true;
     const newState = Object.assign({}, this.state);
     Object.keys(this.state.formPayload).map(key => {
       if (allocation[key] !== undefined && allocation[key] !== null && newState.formPayload[key].value !== allocation[key]){
@@ -108,19 +111,21 @@ class ProjectAllocationsForm extends Component {
   render() {
     return (
       <div className="project-allocation-form-wrapper">
-        <PaginationButtons 
-          next={ this.props.project_allocations.next }
-          previous={ this.props.project_allocations.previous }
-          action={ getProjectAllocationsAction }
-          parentProps={ this.props }
-        />
-        <GenericProjectFeatureList items={ this.state.project_allocations } loadItem={ this.loadAllocation } />
         <GenericForm 
           title='Projektablauf'
           className='project-allocation-form'
           payload={ this.state.formPayload }
           onSubmit={ this.handleSubmit }
           updateParentState={ this.handleChange }
+        />
+        <GenericProjectFeatureList 
+          className={ this.props.project_allocations ? '' : 'hidden-element' }
+          items={ this.state.project_allocations } 
+          loadItem={ this.loadAllocation } 
+          parentProps={ this.props } 
+          next={ this.props.project_allocations.next }
+          previous={ this.props.project_allocations.previous }
+          action={ getProjectAllocationsAction }
         />
       </div>
     )
