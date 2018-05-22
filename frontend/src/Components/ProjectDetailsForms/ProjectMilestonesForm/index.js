@@ -58,7 +58,7 @@ class ProjectMilestonesForm extends Component {
   handlePayloadChange = input_array => {
     this.state.formPayload[input_array[0]].value = input_array[1];
     this.state.formPayload[input_array[0]].modified = true;
-    if (this.state.formPayload['year'].modified && this.state.formPayload['milestone_calendar_week'].modified) {
+    if (this.state.formPayload['year'].modified && this.state.formPayload['milestone_calendar_week'].modified && (input_array[0] === 'year' || input_array[0] === 'milestone_calendar_week')) {
       const yearID = this.state.formPayload['year'].value.id;
       const weekID = this.state.formPayload['milestone_calendar_week'].value.id;
       const milestone = this.checkExistingMilestones(this.props.total_milestones, yearID, weekID);

@@ -66,7 +66,7 @@ class GenericForm extends Component {
                     name={ index }
                     placeholder={ this.props.payload[index].placeholder }
                     updateParentState={ this.handleChange }
-                    id={ Object.keys(this.props.payload[index].value).length ? this.props.payload[index].value.id : -1 }
+                    id={ Object.keys(this.props.payload[index].value).length ? this.props.payload[index].value.id : '' }
                   /> 
                 )
               }

@@ -62,7 +62,8 @@ class ProjectAllocationsForm extends Component {
   handleChange = input_array => {
     this.state.formPayload[input_array[0]].value = input_array[1];
     this.state.formPayload[input_array[0]].modified = true;
-    if (this.state.formPayload['year'].modified && this.state.formPayload['quarter'].modified) {
+    console.log(input_array);
+    if (this.state.formPayload['year'].modified && this.state.formPayload['quarter'].modified && (input_array[0] === 'year' || input_array[0] === 'quarter')) {
       const yearID = this.state.formPayload['year'].value.id;
       const quarterID = this.state.formPayload['quarter'].value.id;
       const allocation = this.checkExistingAllocations(this.props.all_allocations, yearID, quarterID);

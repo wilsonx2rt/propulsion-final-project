@@ -76,7 +76,7 @@ class ProjectFinancesForm extends Component {
   handleForecastChange = input_array => {
     this.state.forecastFormPayload[input_array[0]].value = input_array[1];
     this.state.forecastFormPayload[input_array[0]].modified = true;
-    if(this.state.forecastFormPayload['year'].modified){
+    if(this.state.forecastFormPayload['year'].modified  && input_array[0] === 'year'){
       const forecast = this.checkExistingForecasts(this.props.project_finances.yearly_forecasts, input_array[1].id);
       if (Object.keys(forecast).length !== 0){
         this.loadForecast(forecast);
