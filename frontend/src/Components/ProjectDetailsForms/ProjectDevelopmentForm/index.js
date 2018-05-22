@@ -52,7 +52,6 @@ class ProjectDevelopmentForm extends Component {
       development_id = this.props.project_development.id;
       delete body.project;
     }
-    console.log(body);
     if (Object.keys(body).length !== 0){
       resetFormPayload(this);
       const action = postProjectDevelopmentAction(this.props, body, method, development_id);
@@ -77,7 +76,6 @@ class ProjectDevelopmentForm extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  console.log(state.project_details);
   return {
     project_development: state.project_details.project_development,
   }

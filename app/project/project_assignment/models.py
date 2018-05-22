@@ -137,6 +137,7 @@ class ProjectAssignment(models.Model):
         help_text='Projektleitung',
         to=settings.AUTH_USER_MODEL,
         related_name='project_assignments',
+        blank=True,
     )
 
     planner_control = models.ForeignKey(

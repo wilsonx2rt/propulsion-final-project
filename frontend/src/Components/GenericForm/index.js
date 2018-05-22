@@ -26,7 +26,6 @@ var rand = require("random-key");
 class GenericForm extends Component {
 
   handleChange = input_array => {
-    console.log(input_array);
     this.props.updateParentState(input_array);
   };
 
@@ -37,11 +36,9 @@ class GenericForm extends Component {
   }
 
   render() {
-    // console.log(this.props);
-    // console.log('>>>>>>>', this.props.payload);
     return (
         <form className={ this.props.className + ' generic-form' } onSubmit={ this.handleSubmit } noValidate>
-        <h2 className={ this.props.className + '__generic-form-title' }>{ this.props.title }</h2>
+        <h3 className={ this.props.className + '__generic-form-title' }>{ this.props.title }</h3>
         <div className={ this.props.className + ' generic-form-input-container' } >
         {
           Object.keys(this.props.payload).map( index => {
@@ -73,11 +70,6 @@ class GenericForm extends Component {
                   /> 
                 )
               }
-              // else if (this.props.payload[index].type === 'project_management') {
-              //   return (
-              //     <PM
-              //   )
-              // }
               else if (this.props.payload[index].type === 'file') {
                 return (
                   <FileUploadField 

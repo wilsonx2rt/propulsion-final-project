@@ -5,7 +5,8 @@ import { withRouter } from 'react-router-dom';
 import GenericForm from '../../GenericForm';
 import { getProjectDetailsAction } from '../../../store/actions/getProjectDetailsAction';
 import { postProjectAssignmentAction } from '../../../store/actions/postProjectAssignmentAction';
-import { grabModifiedFields, getFetchBody, resetFormPayload } from '../helpers';
+import PMField from '../../PMField';
+import { grabModifiedFields, getFetchBody, resetFormPayload, hasPM, removePM } from '../helpers';
 
 class ProjectAssignmentForm extends Component {
   constructor(props) {
@@ -15,20 +16,19 @@ class ProjectAssignmentForm extends Component {
         'form_settings': {type: 'project_data_form', },
         'project_responsibility': {value: '', type: 'dropdown', required: 'false', placeholder: 'Projektverantwortung'},
         'overall_pm_team': {value: '', type: 'dropdown', required: 'false', placeholder: 'Gesamtprojektleitung'},
-        'project_management': {value: '', type: 'dropdown', required: 'false', placeholder: 'Projektleitung'},
+        'project_management': {value: '', type: 'project_management', required: 'false', placeholder: 'Projektleitung'},
         'planner_control': {value: '', type: 'dropdown', required: 'false', placeholder: 'Planerleistung'},
         'construction_management': {value: '', type: 'dropdown', required: 'false', placeholder: 'Bauleitung'},
         'illustrator': {value: '', type: 'dropdown', required: 'false', placeholder: 'ZeichnerIn'},
         'communications': {value: '', type: 'dropdown', required: 'false', placeholder: 'Kommunikation'},
         'leading_role': {value: '', type: 'dropdown', required: 'false', placeholder: 'Federführende Stelle'},
         'leading_team': {value: '', type: 'dropdown', required: 'false', placeholder: 'Federführende Fachgruppe'},
-      }
-      
+      },
+      all_managers: [],
     };
   }
 
   static getDerivedStateFromProps = (nextProps, prevState) => {
-    console.log(nextProps.project_assignment);
     if (nextProps.project_assignment!==undefined && nextProps.project_assignment !== null){
       const newState = Object.assign({}, prevState);
       Object.keys(prevState.formPayload).map(key => {
@@ -39,8 +39,14 @@ class ProjectAssignmentForm extends Component {
         }
         return key;
       })
-      // console.log("NEW STATE", newState);
+      if (nextProps.all_managers!==undefined && nextProps.all_managers !== null && Object.keys(nextProps.all_managers).length !== 0){
+        const tempManagers = [];
+        nextProps.all_managers.map(manager => {
+          tempManagers.push(manager);
+        })
+        newState.all_managers = tempManagers;
         return newState;
+      }
     }
     return null;
   }
@@ -49,6 +55,18 @@ class ProjectAssignmentForm extends Component {
     this.state.formPayload[input_array[0]].value = input_array[1];
     this.state.formPayload[input_array[0]].modified = true;
   };
+
+  toggleCheckboxes = item => {
+    const newState = Object.assign({}, this.state);
+    if (hasPM(newState.formPayload.project_management.value, item)){
+      newState.formPayload.project_management.value = removePM(newState.formPayload.project_management.value, item);
+    }
+    else {
+      newState.formPayload.project_management.value.push(item);
+    }
+    newState.formPayload.project_management.modified = true;
+    this.setState(newState);
+  }
 
   handleSubmit = () => {
     let method = 'POST';
@@ -70,6 +88,13 @@ class ProjectAssignmentForm extends Component {
   render() {
     return (
       <div className="project-assignment-form-wrapper">
+        <PMField 
+          className={ 'project-assignment-form__checkboxes-container' }
+          name='Projektleitung'
+          toggleCheckboxes={ this.toggleCheckboxes }
+          all_managers={ this.state.all_managers }
+          current_managers={ Object.keys(this.state.formPayload['project_management'].value).length ? this.state.formPayload['project_management'].value : null }
+        />
         <GenericForm 
           title='Projektzuteilung'
           className='project-assignment-form'
@@ -84,9 +109,10 @@ class ProjectAssignmentForm extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  // console.log('PROJECT ASSIGNMENT',state.project_details.project_assignment);
+  // console.log('PROJECT STATE',state.managerOverview);
   return {
     project_assignment: state.project_details.project_assignment,
+    all_managers: state.managerOverview,
   }
 }
 

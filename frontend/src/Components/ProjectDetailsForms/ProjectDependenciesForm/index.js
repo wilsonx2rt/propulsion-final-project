@@ -10,7 +10,7 @@ import { getProjectDependenciesAction } from '../../../store/actions/getProjectD
 import { postProjectDependencyAction } from '../../../store/actions/postProjectDependencyAction';
 import GenericProjectFeatureList from '../../GenericProjectFeatureList';
 import PaginationButtons from "../../GenericProjectFeatureList/PaginationButtons";
-import { goNextPage, goPrevPage, grabModifiedFields, getFetchBody, resetFormPayload } from '../helpers';
+import { goNextPage, goPrevPage, grabModifiedFields, getFetchBody, resetFormPayload, replaceNullWithEmptyString } from '../helpers';
 
 
 class ProjectDependenciesForm extends Component {
@@ -37,16 +37,7 @@ class ProjectDependenciesForm extends Component {
   static getDerivedStateFromProps = (nextProps, prevState) => {
     if (nextProps.project_dependencies.results !== undefined && nextProps.project_dependencies.results !== null && nextProps.project_dependencies.results.length > 0){
       const newState = Object.assign({}, prevState);
-      newState.project_dependencies = nextProps.project_dependencies.results.map(dependency => {
-        const newDependency = Object.assign({}, dependency);
-        Object.keys(dependency).map(entry => {
-          if (dependency[entry] === null){
-            newDependency[entry] = '';
-          }
-          return entry;
-        })
-        return newDependency;
-      });
+      newState.project_dependencies = nextProps.project_dependencies.results;
       return newState;
     }
     return null;
@@ -112,6 +103,12 @@ class ProjectDependenciesForm extends Component {
 
 const mapStateToProps = (state, props) => {
   // console.log('--------->', state.project_dependencies);
+  if (state.project_dependencies.results) {
+    state.project_dependencies.results = replaceNullWithEmptyString(state.project_dependencies.results);
+  }
+  if (state.project_details && state.project_details.project_dependencies) {
+    state.project_details.project_dependencies = replaceNullWithEmptyString(state.project_details.project_dependencies);
+  }
   return {
     project_dependencies: state.project_dependencies,
     all_dependencies: state.project_details.project_dependencies,

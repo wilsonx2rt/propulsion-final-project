@@ -8,7 +8,7 @@ import { postProjectAllocationAction } from '../../../store/actions/postProjectA
 import { SERVER_URL } from '../../../store/constants';
 import GenericProjectFeatureList from '../../GenericProjectFeatureList';
 import PaginationButtons from "../../GenericProjectFeatureList/PaginationButtons";
-import { goNextPage, goPrevPage, grabModifiedFields, getFetchBody, resetFormPayload } from '../helpers';
+import { goNextPage, goPrevPage, grabModifiedFields, getFetchBody, resetFormPayload, replaceNullWithEmptyString } from '../helpers';
 
 class ProjectAllocationsForm extends Component {
   constructor(props) {
@@ -43,24 +43,33 @@ class ProjectAllocationsForm extends Component {
   static getDerivedStateFromProps = (nextProps, prevState) => {
     if (nextProps.project_allocations.results !== undefined && nextProps.project_allocations.results !== null && nextProps.project_allocations.results.length > 0){
       const newState = Object.assign({}, prevState);
-      newState.project_allocations = nextProps.project_allocations.results.map(allocation => {
-        const newAllocation = Object.assign({}, allocation);
-        Object.keys(allocation).map(entry => {
-          if (allocation[entry] === null){
-            newAllocation[entry] = '';
-          }
-          return entry;
-        })
-        return newAllocation;
-      });
+      newState.project_allocations = nextProps.project_allocations.results;
       return newState;
     }
     return null;
   }
 
+  checkExistingAllocations = (allocations, yearID, quarterID) => {
+    let result = {};
+    allocations.map(allocation => {
+      if (allocation.year.id === yearID & allocation.quarter.id === quarterID) {
+        result = allocation;
+      }
+    })
+    return result;
+  }
+
   handleChange = input_array => {
     this.state.formPayload[input_array[0]].value = input_array[1];
     this.state.formPayload[input_array[0]].modified = true;
+    if (this.state.formPayload['year'].modified && this.state.formPayload['quarter'].modified) {
+      const yearID = this.state.formPayload['year'].value.id;
+      const quarterID = this.state.formPayload['quarter'].value.id;
+      const allocation = this.checkExistingAllocations(this.props.all_allocations, yearID, quarterID);
+      if (Object.keys(allocation).length !== 0) {
+        this.loadAllocation(allocation);
+      }
+    }
   };
 
   loadAllocation = (allocation) => {
@@ -121,6 +130,12 @@ class ProjectAllocationsForm extends Component {
 
 const mapStateToProps = (state, props) => {
   // console.log('--------->',state.project_details.project_allocations);
+  if (state.project_details && state.project_details.project_allocations) {
+    state.project_details.project_allocations = replaceNullWithEmptyString(state.project_details.project_allocations);
+  }
+  if (state.project_allocations.results) {
+    state.project_allocations.results = replaceNullWithEmptyString(state.project_allocations.results);
+  }
   return {
     project_allocations: state.project_allocations,
     all_allocations: state.project_details.project_allocations,

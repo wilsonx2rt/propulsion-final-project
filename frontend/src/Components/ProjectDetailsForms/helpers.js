@@ -27,7 +27,15 @@ export const getFetchBody = (arr) => {
   arr.map(field => {
     const bodyKey = Object.keys(field)[0];
     if (typeof field[bodyKey].value === 'object'){
-      body[bodyKey] = field[bodyKey].value.id;
+      if (bodyKey === 'project_management'){
+        body[bodyKey] = [];
+        field[bodyKey].value.map(manager => {
+          body[bodyKey].push(manager.id)
+        })
+      }
+      else {
+        body[bodyKey] = field[bodyKey].value.id;
+      }
     }
     else {
       body[bodyKey] = field[bodyKey].value;
@@ -48,10 +56,42 @@ export const resetFormPayload = (componentThis) => {
           delete newState[property][key].modified;
         }
         if (newState[property][key].value){
-          newState[property][key].value = 'Loading';
+          newState[property][key].value = '';
         }
+        
       });
+      if (property === 'all_managers'){
+        const empty = [];
+        newState[property] = empty;
+      }
     }
   })
   componentThis.setState(newState);
+}
+
+export const hasPM = (arr, manager) => {
+  let managerIsInArray = false;
+  arr.map(item => {
+    if(item.id === manager.id) managerIsInArray = true;
+  })
+  return managerIsInArray;
+}
+
+export const removePM = (arr, manager) => {
+  let result = arr.filter(item => item.id !== manager.id);
+  return result;
+}
+
+export const replaceNullWithEmptyString = (arr) => {
+  const result = arr.map(property => {
+    const newProperty = Object.assign({}, property);
+    Object.keys(property).map(entry => {
+      if (property[entry] === null || property[entry] === undefined){
+        newProperty[entry] = '';
+      }
+      return entry;
+    })
+    return newProperty;
+  });
+return result;
 }
