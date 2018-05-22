@@ -15,12 +15,7 @@ class UserProfile(models.Model):
         verbose_name='User is admin',
         default=False,
     )
-    # abreviation = models.CharField(
-    #     verbose_name='User initials',
-    #     max_length=10,
-    #     null=True,
-    #     blank=True,
-    # )
+
     code = models.CharField(
         verbose_name='code',
         help_text='Random code used for registration and for password reset',
