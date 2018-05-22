@@ -2,6 +2,10 @@
   display: flex;
 }
 
+.overview__projects--header{
+  display: flex;
+}
+
 .overview__projects--wrapper {
   flex: 3;
 }
