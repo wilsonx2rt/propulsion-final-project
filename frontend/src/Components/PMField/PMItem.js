@@ -28,10 +28,10 @@ class PMItem extends Component {
 
   render() {
     return (
-      <div>
-        <input type="checkbox" id={ `PMid-${this.props.item.id}` } name="PM" value={ this.props.item.name } onChange={ this.handleChange } checked={ this.state.isChecked}/>
-        <label htmlFor={ `PMid-${this.props.item.id}` }>{ this.props.item.name }</label>
-      </div>
+        <div className={ this.props.item.name.trim().length > 0 ? '' : 'hidden-element' }>
+              <input type="checkbox" id={ `PMid-${this.props.item.id}` } name="PM" value={ this.props.item.name } onChange={ this.handleChange } checked={ this.state.isChecked}/>
+              <label htmlFor={ `PMid-${this.props.item.id}` }>{ this.props.item.name }</label>
+        </div>
     )
   }
 }

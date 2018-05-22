@@ -19,7 +19,7 @@ class ListItem extends Component {
             <span>{project.name}</span>
             <span>
               {/* Prevent error if project manager not yet assigned or project assignment object not created */}
-              {project.project_assignment.project_management[0]
+              {(project.project_assignment && project.project_assignment.project_management[0])
                 ? `${
                     project.project_assignment.project_management[0].first_name
                   }
@@ -29,7 +29,7 @@ class ListItem extends Component {
             </span>
             <span>
               {/* Prevent error if project status not yet assigned */}
-              {project.project_status_phase.name ? project.project_status_phase.name : 'N/A'}
+              {project.project_status_phase && project.project_status_phase.name ? project.project_status_phase.name : 'N/A'}
             </span>
           </li>
         );

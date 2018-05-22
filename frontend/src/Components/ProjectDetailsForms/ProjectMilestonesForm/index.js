@@ -52,13 +52,6 @@ class ProjectMilestonesForm extends Component {
         result = milestone;
       }
     })
-    if (Object.keys(result).length  === 0) {
-      Object.keys(this.state.formPayload).map(property => {
-        if (property !== 'form_settings' && property !== 'year' && property !== 'milestone_calendar_week') {
-          result[property] = '';
-        }
-      })
-    }
     return result;
   }
 
@@ -69,11 +62,16 @@ class ProjectMilestonesForm extends Component {
       const yearID = this.state.formPayload['year'].value.id;
       const weekID = this.state.formPayload['milestone_calendar_week'].value.id;
       const milestone = this.checkExistingMilestones(this.props.total_milestones, yearID, weekID);
-      this.loadMilestone(milestone);
+      console.log(milestone);
+      if (Object.keys(milestone).length !== 0){
+        this.loadMilestone(milestone);
+      }
     }
   };
 
   loadMilestone = (milestone) => {
+    this.state.formPayload['year'].modified = true;
+    this.state.formPayload['milestone_calendar_week'].modified = true;
     const newState = Object.assign({}, this.state);
     Object.keys(this.state.formPayload).map(key => {
       if (milestone[key] !== undefined && milestone[key] !== null && newState.formPayload[key].value !== milestone[key]){
@@ -116,13 +114,21 @@ class ProjectMilestonesForm extends Component {
           onSubmit={ this.handleSubmit }
           updateParentState={ this.handlePayloadChange }
         />
-        <GenericProjectFeatureList items={ this.state.project_milestones } loadItem={ this.loadMilestone } />
-        <PaginationButtons
+        <GenericProjectFeatureList 
+          className={ this.props.project_milestones ? '' : 'hidden-element' }
+          items={ this.state.project_milestones } 
+          loadItem={ this.loadMilestone } 
+          parentProps={ this.props } 
+          next={ this.props.project_milestones.next }
+          previous={ this.props.project_milestones.previous }
+          action={ getProjectMilestonesAction }  
+        />
+        {/* <PaginationButtons
           next={ this.props.project_milestones.next }
           previous={ this.props.project_milestones.previous }
           action={ getProjectMilestonesAction }
           parentProps={ this.props }
-        />
+        /> */}
       </div>
     )
   }

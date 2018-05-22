@@ -39,13 +39,6 @@ class ProjectFinancesForm extends Component {
     };
   }
 
-  componentDidMount = () => {
-    if(this.props.project_finances){
-      
-    }
-}
-
-
   static getDerivedStateFromProps = (nextProps, prevState) => {
     if (nextProps.project_finances !== undefined && nextProps.project_finances !== null){
       const newState = Object.assign({}, prevState);
@@ -85,8 +78,7 @@ class ProjectFinancesForm extends Component {
     this.state.forecastFormPayload[input_array[0]].modified = true;
     if(this.state.forecastFormPayload['year'].modified){
       const forecast = this.checkExistingForecasts(this.props.project_finances.yearly_forecasts, input_array[1].id);
-      if (Object.keys(forecast).length!==0) {
-        this.state.forecastFormPayload['year'].modified = false;
+      if (Object.keys(forecast).length !== 0){
         this.loadForecast(forecast);
       }
     }
@@ -141,6 +133,7 @@ class ProjectFinancesForm extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="project-finances-form-wrapper">
         <GenericForm 
@@ -152,17 +145,19 @@ class ProjectFinancesForm extends Component {
         />
         <GenericForm 
           title='Prognose'
-          className='project-finances-yearly-forecast-form'
+          className={ this.props.project_finances ? 'project-finances-yearly-forecast-form' : 'hidden-element'} 
           payload={ this.state.forecastFormPayload }
           onSubmit={ this.handleForecastSubmit }
           updateParentState={ this.handleForecastChange }
         />
-        <GenericProjectFeatureList items={ this.state.yearly_forecasts } loadItem={ this.loadForecast }/>
-        <PaginationButtons 
-          next={ this.props.yearly_forecasts.next }
-          previous={ this.props.yearly_forecasts.previous }
-          action={ getYearlyForecastAction }
-          parentProps={ this.props }
+        <GenericProjectFeatureList 
+          className={ this.props.project_finances ? '' : 'hidden-element' }
+          items={ this.state.yearly_forecasts } 
+          loadItem={ this.loadForecast } 
+          parentProps={ this.props } 
+          next = { this.props.yearly_forecasts.next ? this.props.yearly_forecasts.next : null }
+          previous={ this.props.yearly_forecasts.previous ? this.props.yearly_forecasts.previous : null }
+          action={ getYearlyForecastAction } 
         />
       </div>
     )
