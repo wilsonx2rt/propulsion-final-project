@@ -82,12 +82,6 @@ class ProjectDependenciesForm extends Component {
   render() {
     return (
       <div className="project-dependencies-form-wrapper">
-        {/* <PaginationButtons 
-          next={ this.props.project_dependencies.next }
-          previous={ this.props.project_dependencies.previous }
-          action={ getProjectDependenciesAction }
-          parentProps={ this.props }
-        /> */}
         <GenericForm 
           title='Projektabhängigkeiten'
           className='project-dependencies-form'

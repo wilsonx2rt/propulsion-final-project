@@ -110,12 +110,6 @@ class ProjectAllocationsForm extends Component {
   render() {
     return (
       <div className="project-allocation-form-wrapper">
-        {/* <PaginationButtons 
-          next={ this.props.project_allocations.next }
-          previous={ this.props.project_allocations.previous }
-          action={ getProjectAllocationsAction }
-          parentProps={ this.props }
-        /> */}
         <GenericForm 
           title='Projektablauf'
           className='project-allocation-form'
