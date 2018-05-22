@@ -52,7 +52,6 @@ class RegistrationForm extends Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <div className="registration-form">
         <label htmlFor="email">Email</label>

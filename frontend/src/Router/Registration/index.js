@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './index.css';
 import { hideNavBar } from '../../helpers';
 import RegistrationForm from '../../Components/RegistrationForm';
-const queryString = require('query-string');
+import simpleQueryString from "simple-query-string";
 class Registration extends Component {
   constructor(props) {
     super(props);
@@ -19,8 +19,8 @@ class Registration extends Component {
 
   static getDerivedStateFromProps = (nextProps, prevState) => {
     if (nextProps.location.search) {
-      const email = queryString.parse(nextProps.location.search).email;
-      const code = queryString.parse(nextProps.location.search).code;
+      const email = simpleQueryString.parse(nextProps.location.search).email;
+      const code = simpleQueryString.parse(nextProps.location.search).code;
       const newState = {...prevState};
       newState.email = email;
       newState.code = code;
