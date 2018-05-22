@@ -16,7 +16,7 @@ class ListItem extends Component{
         <a href=''>
           { 
             Object.keys(this.props.item).map(entry => {
-              if (entry !== 'id' && entry !== 'project') {
+              if (entry !== 'id' && entry !== 'project' && entry !== 'project_finance') {
                 if (this.props.item[entry] !== undefined && this.props.item[entry] !== null && typeof this.props.item[entry] === 'string' || typeof this.props.item[entry] === 'number'){
                   return ` ${[entry]}: ${this.props.item[entry]} |`;
                 }

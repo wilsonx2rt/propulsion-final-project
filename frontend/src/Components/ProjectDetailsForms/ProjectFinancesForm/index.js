@@ -9,7 +9,7 @@ import PaginationButtons from "../../GenericProjectFeatureList/PaginationButtons
 import { getYearlyForecastAction } from '../../../store/actions/getYearlyForecastAction';
 import { postYearlyForecastAction } from '../../../store/actions/postYearlyForecastAction';
 import { postProjectFinancesAction } from '../../../store/actions/postProjectFinancesAction';
-import { grabModifiedFields, getFetchBody, resetFormPayload } from '../helpers';
+import { grabModifiedFields, getFetchBody, resetFormPayload, replaceNullWithEmptyString } from '../helpers';
 import { SERVER_URL } from '../../../store/constants';
 
 class ProjectFinancesForm extends Component {
@@ -58,16 +58,7 @@ class ProjectFinancesForm extends Component {
         return key;
       })
       if(nextProps.yearly_forecasts.results){
-        newState.yearly_forecasts = nextProps.yearly_forecasts.results.map(forecast => {
-          const newForecast = Object.assign({}, forecast);
-          Object.keys(forecast).map(entry => {
-            if (forecast[entry] === null || forecast[entry] === undefined){
-              newForecast[entry] = '';
-            }
-            return entry;
-          })
-          return newForecast;
-        });
+        newState.yearly_forecasts = nextProps.yearly_forecasts.results;
       }
       return newState;
     }
@@ -79,9 +70,26 @@ class ProjectFinancesForm extends Component {
     this.state.formPayload[input_array[0]].modified = true;
   };
 
+  checkExistingForecasts = (arr, yearIdToFind) => {
+    let result = {};
+    arr.map(forecast => {
+      if (forecast['year'].id === yearIdToFind) {
+        result = forecast;
+      }
+    })
+    return result;
+  }
+
   handleForecastChange = input_array => {
     this.state.forecastFormPayload[input_array[0]].value = input_array[1];
     this.state.forecastFormPayload[input_array[0]].modified = true;
+    if(this.state.forecastFormPayload['year'].modified){
+      const forecast = this.checkExistingForecasts(this.props.project_finances.yearly_forecasts, input_array[1].id);
+      if (Object.keys(forecast).length!==0) {
+        this.state.forecastFormPayload['year'].modified = false;
+        this.loadForecast(forecast);
+      }
+    }
   }
 
   loadForecast = (forecast) => {
@@ -135,20 +143,6 @@ class ProjectFinancesForm extends Component {
   render() {
     return (
       <div className="project-finances-form-wrapper">
-        <PaginationButtons 
-          next={ this.props.yearly_forecasts.next }
-          previous={ this.props.yearly_forecasts.previous }
-          action={ getYearlyForecastAction }
-          parentProps={ this.props }
-        />
-        <GenericProjectFeatureList items={ this.state.yearly_forecasts } loadItem={ this.loadForecast }/>
-        <GenericForm 
-          title='Prognose'
-          className='project-finances-yearly-forecast-form'
-          payload={ this.state.forecastFormPayload }
-          onSubmit={ this.handleForecastSubmit }
-          updateParentState={ this.handleForecastChange }
-        />
         <GenericForm 
           title='Projektfinanzplanung'
           className='project-finances-form'
@@ -156,13 +150,33 @@ class ProjectFinancesForm extends Component {
           onSubmit={ this.handleSubmit }
           updateParentState={ this.handlePayloadChange }
         />
+        <GenericForm 
+          title='Prognose'
+          className='project-finances-yearly-forecast-form'
+          payload={ this.state.forecastFormPayload }
+          onSubmit={ this.handleForecastSubmit }
+          updateParentState={ this.handleForecastChange }
+        />
+        <GenericProjectFeatureList items={ this.state.yearly_forecasts } loadItem={ this.loadForecast }/>
+        <PaginationButtons 
+          next={ this.props.yearly_forecasts.next }
+          previous={ this.props.yearly_forecasts.previous }
+          action={ getYearlyForecastAction }
+          parentProps={ this.props }
+        />
       </div>
     )
   }
 }
 
 const mapStateToProps = (state, props) => {
-  // console.log('--------->', state.yearly_forecasts);
+  // console.log('--------->', state.project_details.project_finances);
+  if(state.yearly_forecasts.results){
+    state.yearly_forecasts.results = replaceNullWithEmptyString(state.yearly_forecasts.results);
+  }
+  if (state.project_details.project_finances && state.project_details.project_finances.yearly_forecasts){
+    state.project_details.project_finances.yearly_forecasts = replaceNullWithEmptyString(state.project_details.project_finances.yearly_forecasts);
+  }
   return {
     project_finances: state.project_details.project_finances,
     yearly_forecasts: state.yearly_forecasts,
