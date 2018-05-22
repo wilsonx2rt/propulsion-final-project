@@ -25,7 +25,7 @@ class RegistrationViewTest(APITestCase):
             "email": "new_user@gmail.com",
             "first_name": "John",
             "last_name": "Smith",
-            "abreviation": "JS"
+            # "abreviation": "JS"
         }
         response = self.client.post(url, full_data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -33,7 +33,7 @@ class RegistrationViewTest(APITestCase):
         self.assertEquals(num_users, 2)
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].subject, 'Registration')
-        self.assertEqual(len(mail.outbox[0].body), 148)
+        self.assertEqual(len(mail.outbox[0].body), 116)
 
     def test_registration_existing_user(self):
         url = reverse('api:registration:registration')

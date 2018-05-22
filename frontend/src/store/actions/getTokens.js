@@ -28,7 +28,7 @@ export const getTokens = (localState, props, dispatch, getState) => {
         const action = setTokens(data);
         dispatch(action);
         localStorage.setItem('tokens', JSON.stringify(data));
-        props.history.push('/');
+        props.history.push('/overview');
       }
       else{
         showValidationMessage();
@@ -37,6 +37,6 @@ export const getTokens = (localState, props, dispatch, getState) => {
     })
   }
   else {
-    props.history.push('/')
+    props.history.push('/overview')
   }
 }
