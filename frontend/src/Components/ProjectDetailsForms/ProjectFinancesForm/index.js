@@ -12,23 +12,31 @@ import { postProjectFinancesAction } from '../../../store/actions/postProjectFin
 import { grabModifiedFields, getFetchBody, resetFormPayload, replaceNullWithEmptyString } from '../helpers';
 import { SERVER_URL } from '../../../store/constants';
 
+const adminForm = {
+  'form_settings': {type: 'project_data_form', },
+  'financing': {value: '', type: 'dropdown', required: 'false', placeholder: 'Finanzierungsart / MIP Rubrik'},
+  'requirements_assessment': {value: '', type: 'dropdown', required: 'false', placeholder: 'Bedürfnisabklärung'},
+  'credit_status': {value: '', type: 'dropdown', required: 'false', placeholder: 'Status Projektkredit'},
+  'investment_number': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Investitions-Nr.'},
+  'loan_budget': {value: '', type: 'input', inputType: 'text', required: 'true', placeholder: 'Kredit- /Budgetsumme'},
+  'third_party_contributions': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Beiträge Dritter'},
+  'net_expense_previous_years': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Netto-Ausgaben Vorjahre'},
+  'remaining_credit_current_year': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Kreditrest per 1.1. aktuelles Jahr'},
+  'spending_current_year': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Ist Ausgaben aktuelles Jahr'},
+  'remaining_credit_following_year': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Kreditrest per 1.1. folgendes Jahr'},
+}
+const nonAdminForm = {
+  'form_settings': {type: 'project_data_form_nonadmin', },
+  'financing': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Finanzierungsart / MIP Rubrik', readonly: 'true'},
+  'investment_number': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Investitions-Nr.', readonly: 'true'},
+  'spending_current_year': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Ist Ausgaben aktuelles Jahr', readonly: 'true'},
+}
+
 class ProjectFinancesForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      formPayload: {
-        'form_settings': {type: 'project_data_form', },
-        'financing': {value: '', type: 'dropdown', required: 'false', placeholder: 'Finanzierungsart / MIP Rubrik'},
-        'requirements_assessment': {value: '', type: 'dropdown', required: 'false', placeholder: 'Bedürfnisabklärung'},
-        'credit_status': {value: '', type: 'dropdown', required: 'false', placeholder: 'Status Projektkredit'},
-        'investment_number': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Investitions-Nr.'},
-        'loan_budget': {value: '', type: 'input', inputType: 'text', required: 'true', placeholder: 'Kredit- /Budgetsumme'},
-        'third_party_contributions': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Beiträge Dritter'},
-        'net_expense_previous_years': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Netto-Ausgaben Vorjahre'},
-        'remaining_credit_current_year': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Kreditrest per 1.1. aktuelles Jahr'},
-        'spending_current_year': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Ist Ausgaben aktuelles Jahr'},
-        'remaining_credit_following_year': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Kreditrest per 1.1. folgendes Jahr'},
-      },
+      formPayload: {},
       forecastFormPayload: {
         'form_settings': {type: 'yearly_forecast_form', },
         'VAT': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'VAT'},
@@ -42,8 +50,17 @@ class ProjectFinancesForm extends Component {
   static getDerivedStateFromProps = (nextProps, prevState) => {
     if (nextProps.project_finances !== undefined && nextProps.project_finances !== null){
       const newState = Object.assign({}, prevState);
-      Object.keys(prevState.formPayload).map(key => {
-        if (key !== 'form_settings' && prevState.formPayload[key].value !== nextProps.project_finances[key]){
+      if (Object.keys(nextProps.currentUser).length !== 0) {
+        newState.isAdmin = nextProps.currentUser.user_profile.isAdmin;
+        if (newState.isAdmin) {
+          newState.formPayload = adminForm;
+        }
+        else {
+          newState.formPayload = nonAdminForm;
+        }
+      }
+      Object.keys(newState.formPayload).map(key => {
+        if (key !== 'form_settings' && newState.formPayload[key].value !== nextProps.project_finances[key]){
           if (nextProps.project_finances[key] !== null && nextProps.project_finances[key] !== undefined ){
             newState.formPayload[key].value = nextProps.project_finances[key];
           }
@@ -133,7 +150,7 @@ class ProjectFinancesForm extends Component {
   }
 
   render() {
-    console.log(this.props);
+    console.log(this.state.formPayload);
     return (
       <div className="project-finances-form-wrapper">
         <GenericForm 
@@ -165,7 +182,7 @@ class ProjectFinancesForm extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  // console.log('--------->', state.project_details.project_finances);
+  console.log('--------->', state.project_details.project_finances);
   if(state.yearly_forecasts.results){
     state.yearly_forecasts.results = replaceNullWithEmptyString(state.yearly_forecasts.results);
   }
@@ -175,6 +192,7 @@ const mapStateToProps = (state, props) => {
   return {
     project_finances: state.project_details.project_finances,
     yearly_forecasts: state.yearly_forecasts,
+    currentUser: state.currentUser,
   }
 }
 

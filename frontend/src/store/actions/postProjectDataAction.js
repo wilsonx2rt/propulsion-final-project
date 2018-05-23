@@ -15,8 +15,8 @@ export const postProjectDataAction = (props, body, method, project_id) => (dispa
       body: JSON.stringify(body),
     }
     let url;
-    if (method === 'PATCH') url = `${SERVER_URL}project_data/${project_id}/`
-    else if (method === "POST") url = `${SERVER_URL}project_data/new/`
+    if (method === 'PATCH' && props.currentUser.user_profile.isAdmin) url = `${SERVER_URL}project_data/${project_id}/`;
+    else if(method === 'PATCH' && !props.currentUser.user_profile.isAdmin) url=`${SERVER_URL}pm/project_data/${project_id}/`
     // console.log(config);
     return fetch(url, config);
   })

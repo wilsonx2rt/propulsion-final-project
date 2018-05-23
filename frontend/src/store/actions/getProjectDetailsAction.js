@@ -2,9 +2,13 @@ import { validateTokens } from "./validateTokens";
 import { SERVER_URL, SET_PROJECT_DETAILS } from '../constants';
 import { getYearlyForecastAction } from './getYearlyForecastAction';
 import { fetchManagerOverviewActionCreator } from './fetchManagerOverview';
+import { fetchCurrentUserActionCreator } from './fetchCurrentUser';
 
 export const getProjectDetailsAction = (props) => (dispatch, getState) => {
   validateTokens(getState(), dispatch, props)
+  .then (response => {
+    return dispatch(fetchCurrentUserActionCreator)
+  })
   .then(response => {
     const headers = ({
       Authorization: `Bearer ${getState().tokens.access}`,
