@@ -1,5 +1,5 @@
 .accordion-segment {
-  background-color: rgba(135, 136, 138, 0.1);
+  background-color: rgba(196, 196, 196, 0.1);
   border-bottom: solid white 5px;
 }
 
@@ -28,7 +28,7 @@
 
 
 .accordion-segment__inner-container {
-  padding: 50px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;

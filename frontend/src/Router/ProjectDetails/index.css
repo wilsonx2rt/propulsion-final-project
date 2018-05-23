@@ -3,3 +3,21 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.project-details-container {
+  min-width: 1000px;
+}
+
+.project-details-container__header__button {
+  width: 150px;
+  height: 35px;
+  font-size: 12pt;
+  border-radius: 3px;
+  background-color: rgba(221, 221, 221, 0.3);
+  cursor: pointer;
+}
+
+.project-details-container__header__button:hover {
+  background-color: rgb(105, 0, 0);
+  color: #fff;
+}

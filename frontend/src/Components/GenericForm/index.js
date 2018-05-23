@@ -96,9 +96,8 @@ class GenericForm extends Component {
                   this.props.payload.form_settings.type === 'yearly_forecast_form' || 
                   this.props.payload.form_settings.type === 'manager_details_form') {
                 return (
-                  <div key={ rand.generate(10) } className="project-data-form__btn-container">
-                    <Button className={ this.props.className + '__button' } btnText="Save" type='submit' />
-                    {/* <Button className={ this.props.className + '__button' } btnText="Next" /> */}
+                  <div key={ rand.generate(10) } className="project-data-form__btn-container generic-form__button-container">
+                    <Button className={ this.props.className + '__button generic-form__button' } btnText="Save" type='submit' />
                   </div>
                 )
               }
@@ -108,20 +107,10 @@ class GenericForm extends Component {
                     key={ rand.generate(10) }
                     btnText="Login" 
                     type='submit'
-                    className={ this.props.className + '__button' }
+                    className={ this.props.className + '__button generic-form__button' }
                   />
                 )
               }
-              // else if (this.props.payload.form_settings.type === 'yearly_forecast_form' || this.props.payload.form_settings.type === 'manager_details_form') {
-              //   return (
-              //     <Button 
-              //       key={ rand.generate(10) }
-              //       btnText="Save" 
-              //       type='submit'
-              //       className={ this.props.className + '__button' }
-              //     />
-              //   )
-              // }
               else if (this.props.payload.form_settings.type === 'project_data_form_nonadmin') {
                 return ;
               }

@@ -38,7 +38,7 @@ class ProjectDetails extends Component {
       <div className="project-details-container">
         <div className="project-details-container__header">
           <h1>{this.props.projectName? this.props.projectName : null}</h1>
-          <Button handleClick={this.handleClick} btnText="Projekt Löschen" />
+          <Button className='project-details-container__header__button' handleClick={this.handleClick} btnText="Projekt Löschen" />
         </div>
         <AccordionSegment AccordionSegmentTitle="Projectdaten">
           <ProjectDataForm project_id={this.props.match.params.project_id} />

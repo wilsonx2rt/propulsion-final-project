@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PMItem from './PMItem';
+import './index.css';
 
 var rand = require("random-key");
 
@@ -12,7 +13,7 @@ class PMField extends Component{
 
   render(){
     return(
-      <div>
+      <div className='project-assignment-form__project-management-container'>
         <h3>{ this.props.name }</h3>
         {
           this.props.all_managers.map(manager => {
