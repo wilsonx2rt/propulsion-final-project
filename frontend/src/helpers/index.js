@@ -12,3 +12,8 @@ export const hideNavBar = () => {
   const navBar = document.querySelectorAll('.nav-bar')[0];
   navBar.classList.add('hidden-element');
 }
+
+export const showNavBar = () => {
+  const navBar = document.querySelectorAll('.nav-bar')[0];
+  navBar.classList.remove('hidden-element');
+}

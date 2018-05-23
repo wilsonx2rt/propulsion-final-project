@@ -1,5 +1,5 @@
 import { getTokens } from './getTokens';
-import { AUTHORIZE_USER } from '../constants';
+import { AUTHORIZE_USER, LOG_OUT } from '../constants';
 
 export const loginAction = (localState, props) => {
   return (dispatch, getState) => {
@@ -28,6 +28,10 @@ export const logOutAction = props => {
     localStorage.clear();
     const action = setTokens({});
     dispatch(action);
+    const logoutAction = {
+      type: LOG_OUT,
+    }
+    dispatch(logoutAction);
     props.history.push('/login');
   };
 };

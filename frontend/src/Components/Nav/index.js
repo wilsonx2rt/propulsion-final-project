@@ -11,10 +11,14 @@ class Nav extends Component {
     this.props.dispatch(action);
   };
 
+  cleanState = () => {
+    console.log('aaaaaaa');
+  }
+
   render() {
     return (
       <div className="nav-bar">
-        <Link className="nav-link nav-bar__item" to="/overview">
+        <Link className="nav-link nav-bar__item" to="/overview" onClick={ this.cleanState }>
           Übersicht
         </Link>
         <Link className="nav-link nav-bar__item" to="/overview">

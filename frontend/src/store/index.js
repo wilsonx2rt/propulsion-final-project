@@ -12,8 +12,16 @@ import { yearly_forecasts } from './reducers/yearly_forecasts';
 import { project_allocations } from './reducers/project_allocations';
 import { managerDetails } from './reducers/managerDetails';
 import { currentUser } from './reducers/currentUser';
+import { LOG_OUT } from './constants';
 
 const middleware = [thunk];
+
+const rootReducer = (state, action) => {
+  if(action.type === LOG_OUT) {
+    state = undefined;
+  }
+  return reducer(state, action);
+}
 
 const reducer = combineReducers({
   tokens,
@@ -31,7 +39,7 @@ const reducer = combineReducers({
 });
 
 const store = createStore(
-  reducer,
+  rootReducer,
   compose(
     applyMiddleware(...middleware),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

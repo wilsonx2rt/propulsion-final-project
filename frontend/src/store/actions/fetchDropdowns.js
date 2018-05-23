@@ -14,11 +14,9 @@ export const fetchDropdownsActionCreator = (props) => (dispatch, getState) => {
     return fetch(`${SERVER_URL}dropdowns/`, config);
   })
   .then(response => {
-    // console.log(response);
     return response.json();
   })
   .then(dropdowns => {
-    // console.log('DDDDDDDDDDDRRRRRRRRRRR', dropdowns);
     const action = setDropdowns(dropdowns);
     dispatch(action);
   })

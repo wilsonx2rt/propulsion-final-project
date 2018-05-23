@@ -9,7 +9,7 @@ import { getProjectDetailsAction } from '../../../store/actions/getProjectDetail
 import { fetchProjectOverviewActionCreator } from '../../../store/actions/fetchProjectOverview';
 import { fetchManagerOverviewActionCreator } from '../../../store/actions/fetchManagerOverview';
 import { postProjectDataAction } from '../../../store/actions/postProjectDataAction';
-import { grabModifiedFields, getFetchBody, resetFormPayload } from '../helpers';
+import { grabModifiedFields, getFetchBody, resetFormPayload, replaceNullWithEmptyString } from '../helpers';
 
 const adminForm = {
   'form_settings': {type: 'project_data_form', },
@@ -82,7 +82,7 @@ class ProjectDataForm extends Component {
         }
         return key;
       })
-      console.log(newState);
+      // console.log(newState);
       return newState;
     }
     return null;
@@ -97,7 +97,7 @@ class ProjectDataForm extends Component {
     let body = getFetchBody(grabModifiedFields(this.state.formPayload));
     const method = 'PATCH';
     if (Object.keys(body).length !== 0){
-      resetFormPayload(this);
+      // resetFormPayload(this);
       const action = postProjectDataAction(this.props, body, method, this.props.project_id);
       this.props.dispatch(action);
     }
@@ -121,7 +121,10 @@ class ProjectDataForm extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  // console.log('PROJECT DATA', state.currentUser);
+  // console.log('PROJECT DATA', state.project_details);
+  if (state.project_details) {
+    state.project_details = replaceNullWithEmptyString(state.project_details);
+  }
   return {
     project_data: state.project_details,
     currentUser: state.currentUser,

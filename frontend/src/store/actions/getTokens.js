@@ -2,7 +2,7 @@ import { setTokens } from './userActions';
 import { SERVER_URL } from '../constants';
 import { showValidationMessage } from '../../helpers';
 import {fetchCurrentUserActionCreator } from '../actions/fetchCurrentUser';
-
+import { showNavBar } from '../../helpers';
 
 export const getTokens = (localState, props, dispatch, getState) => {
   // console.log(localState);
@@ -31,6 +31,8 @@ export const getTokens = (localState, props, dispatch, getState) => {
         dispatch(action);
         localStorage.setItem('tokens', JSON.stringify(data));
         dispatch(fetchCurrentUserActionCreator(data));
+        // login page has navbar hidden, so let's show it.
+        showNavBar();
         props.history.push('/overview');
       }
       else{

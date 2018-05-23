@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import './index.css';
 import { fetchProjectOverviewActionCreator } from '../../store/actions/fetchProjectOverview';
 import { fetchManagerOverviewActionCreator } from '../../store/actions/fetchManagerOverview';
+import { validateTokensAction } from '../../store/actions/validateTokens';
 import List from '../../Components/List';
 
 class Overview extends Component {
@@ -23,6 +24,11 @@ class Overview extends Component {
       isAdmin: null,
       currentUserFetch: false
     };
+  }
+
+  componentDidMount = () => {
+    const action = validateTokensAction(this.props);
+    this.props.dispatch(action);
   }
 
   static getDerivedStateFromProps = (nextProps, prevState) => {
