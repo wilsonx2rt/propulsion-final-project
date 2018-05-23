@@ -131,7 +131,7 @@ Main
 
 class ProjectData(models.Model):
     name = models.CharField(
-        max_length=50,
+        max_length=80,
         verbose_name='project name',
         help_text='Project Namen',
         unique=True,
