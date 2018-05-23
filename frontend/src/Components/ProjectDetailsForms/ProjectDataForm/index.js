@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import './index.css';
+import '../index.css';
 
 
 import GenericForm from '../../GenericForm';
@@ -106,10 +106,10 @@ class ProjectDataForm extends Component {
 
   render() {
     return (
-      <div className="project-data-form-wrapper">
+      <div className="project-data-form-wrapper generic-form-container">
         <GenericForm 
           title='Projectdaten'
-          className='project-data-form'
+          className='project-data-form project-details__form'
           payload={ this.state.formPayload }
           onSubmit={ this.handleSubmit }
           updateParentState={ this.handleChange }

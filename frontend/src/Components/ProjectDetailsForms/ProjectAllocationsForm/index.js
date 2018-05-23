@@ -7,8 +7,7 @@ import { getProjectAllocationsAction } from '../../../store/actions/getProjectAl
 import { postProjectAllocationAction } from '../../../store/actions/postProjectAllocationAction';
 import { SERVER_URL } from '../../../store/constants';
 import GenericProjectFeatureList from '../../GenericProjectFeatureList';
-import PaginationButtons from "../../GenericProjectFeatureList/PaginationButtons";
-import { goNextPage, goPrevPage, grabModifiedFields, getFetchBody, resetFormPayload, replaceNullWithEmptyString } from '../helpers';
+import { grabModifiedFields, getFetchBody, resetFormPayload, replaceNullWithEmptyString } from '../helpers';
 
 const adminForm = {
   'form_settings': {type: 'project_data_form', },
@@ -54,7 +53,7 @@ class ProjectAllocationsForm extends Component {
   }
 
   static getDerivedStateFromProps = (nextProps, prevState) => {
-    if (nextProps.project_allocations.results !== undefined && nextProps.project_allocations.results !== null && nextProps.project_allocations.results.length > 0){
+    if (nextProps.project_allocations.results !== undefined && nextProps.project_allocations.results !== null){
       const newState = Object.assign({}, prevState);
       if (Object.keys(nextProps.currentUser).length !== 0) {
         newState.isAdmin = nextProps.currentUser.user_profile.isAdmin;
@@ -84,7 +83,6 @@ class ProjectAllocationsForm extends Component {
   handleChange = input_array => {
     this.state.formPayload[input_array[0]].value = input_array[1];
     this.state.formPayload[input_array[0]].modified = true;
-    console.log(input_array);
     if (this.state.formPayload['year'].modified && this.state.formPayload['quarter'].modified && (input_array[0] === 'year' || input_array[0] === 'quarter')) {
       const yearID = this.state.formPayload['year'].value.id;
       const quarterID = this.state.formPayload['quarter'].value.id;
@@ -158,13 +156,14 @@ class ProjectAllocationsForm extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  // console.log('--------->',state.project_details.project_allocations);
+  // console.log('--------->',state.project_allocations);
   if (state.project_details && state.project_details.project_allocations) {
     state.project_details.project_allocations = replaceNullWithEmptyString(state.project_details.project_allocations);
   }
   if (state.project_allocations.results) {
     state.project_allocations.results = replaceNullWithEmptyString(state.project_allocations.results);
   }
+  // console.log(state.project_details.project_allocations);
   return {
     project_allocations: state.project_allocations,
     all_allocations: state.project_details.project_allocations,

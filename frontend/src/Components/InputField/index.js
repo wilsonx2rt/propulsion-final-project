@@ -55,11 +55,11 @@ class InputField extends Component{
 
   render() {
     return (
-      <div className={ this.props.className + '__input-container' } >
+      <div className={ this.props.className + '__input-container generic-form__input-container' } >
         <p className={ this.props.className + '__validation-message generic-validation-message hidden-element'} >{ 'Incorrect ' + this.props.placeholder }</p>
-        <label>{ this.props.placeholder }{ this.props.required === 'true' ? <span>*</span> : '' }</label>
+        <label className='generic-form__input-label'>{ this.props.placeholder }{ this.props.required === 'true' ? <span>*</span> : '' }</label>
         <input
-          className={ this.props.className + '__input' }
+          className={ this.props.className + '__input generic-form__input' }
           type={ this.props.type }
           name={ this.props.name }
           placeholder={ this.props.placeholder }

@@ -1,0 +1,20 @@
+.pagination-button {
+  width: 50px;
+  height: 25px;
+  border-radius: 3px;
+  background-color: rgba(141, 0, 0, 0);
+  border: 2px solid rgba(192, 1, 1, 0.5);
+  margin-left: 30px;
+  font-size: 11pt;
+  color: rgba(192, 1, 1, 0.7);
+  cursor: pointer;
+}
+
+.pagination-button:focus {
+  outline: 0;
+}
+
+.pagination-button:active {
+  border: 2px solid rgba(192, 1, 1, 0.8);
+  color: rgba(192, 1, 1, 1);
+}
