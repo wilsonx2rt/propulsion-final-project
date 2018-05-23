@@ -18,6 +18,7 @@ export const grabModifiedFields = (formPayload) => {
   let changed = [];
   Object.keys(formPayload).map(key => {
     if (formPayload[key].modified) changed.push({[key]: formPayload[key]});
+    return null;
   })
   return changed;
 }

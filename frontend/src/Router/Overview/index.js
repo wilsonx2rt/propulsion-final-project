@@ -30,7 +30,7 @@ class Overview extends Component {
   componentDidMount = () => {
     const action = validateTokensAction(this.props);
     this.props.dispatch(action);
-  }
+  };
 
   static getDerivedStateFromProps = (nextProps, prevState) => {
     const newState = { ...prevState };
@@ -108,46 +108,62 @@ class Overview extends Component {
         <div className={this.state.isAdmin === true ? '' : 'hidden-element'}>
           <SearchBox />
         </div>
-        <h2>Protfolio-Übersicht</h2>
+        <div className="overview__top-header">
+          <h2>Protfolio-Übersicht</h2>
+          <div>
+            <Button handleClick={this.handleClick} btnText="Neu Project" />
+            <input
+              className="overview__new-project-input"
+              onChange={this.handleChange}
+              id="newProjectName"
+              type="text"
+            />
+          </div>
+        </div>
+
         <div className="overview--wrapper">
           <div className="overview__projects--wrapper">
             <div className="overview__projects--header">
-              <h3>Projekte</h3>
-              <div>
-                <Button handleClick={this.handleClick} btnText="Neu Project" />
-                <input
-                  onChange={this.handleChange}
-                  id="newProjectName"
-                  type="text"
-                />
+              <div className="overview__projects--header--project-name">
+                Projekt
+              </div>
+              <div className="overview__projects--header--project-manager">
+                Projectleiter
+              </div>
+              <div className="overview__projects--header--project-status">
+                Status
               </div>
             </div>
             <List type="projects" overview={this.state.overview} />
           </div>
           {/* hide PM list if user id non admin */}
-          <div className={this.state.isAdmin === false ? 'hidden-element' : ''}>
-            <div className="overview__managers--wrapper">
-              <h3>Projectleitern</h3>
-              <div className="new-project-manager">
-                <div
-                  onClick={this.toggleClass}
-                  className="new-project-manager__header-wrapper"
-                >
-                  <div className="new-project-manager__header">Neu PL</div>
-                  <img id="plus" src={plus} alt="plus icon" />
-                </div>
-                <div className={this.state.visible}>
-                  <ProjectManagerForm
-                    create="true"
-                    toggleClass={this.toggleClass}
-                  />
-                </div>
+          <div
+            id="overview__managers--wrapper"
+            className={this.state.isAdmin === false ? 'hidden-element' : ''}
+          >
+            <div className="overview__project-manager--header">
+              Projectleitern
+            </div>
+            <div className="new-project-manager">
+              <div
+                onClick={this.toggleClass}
+                className="new-project-manager__header-wrapper"
+              >
+                <div className="new-project-manager__header">Neu PL</div>
+                <img id="plus" src={plus} alt="plus icon" />
               </div>
-              {Object.keys(this.props.overview.managerOverview).length != 0
-                ? this.props.overview.managerOverview.map((manager, index) => {
-                    return (
+              <div className={this.state.visible}>
+                <ProjectManagerForm
+                  create="true"
+                  toggleClass={this.toggleClass}
+                />
+              </div>
+            </div>
+            {Object.keys(this.props.overview.managerOverview).length !== 0
+              ? this.props.overview.managerOverview.map((manager, index) => {
+                  return (
+                    <div className="overview__project-manager-accordion">
                       <AccordionSegment
-                        id="manager-form"
                         key={index}
                         AccordionSegmentTitle={`${manager.first_name}-${
                           manager.last_name
@@ -155,12 +171,12 @@ class Overview extends Component {
                       >
                         <ProjectManagerForm managerDetails={manager} />
                       </AccordionSegment>
-                    );
-                  })
-                : null}
-              {/* {list view w/o dropdown option} */}
-              {/* <List type="manager" overview={this.state.overview} /> */}
-            </div>
+                    </div>
+                  );
+                })
+              : null}
+            {/* {list view w/o dropdown option} */}
+            {/* <List type="manager" overview={this.state.overview} /> */}
           </div>
         </div>
       </div>
