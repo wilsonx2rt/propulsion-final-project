@@ -20,12 +20,6 @@ class FileUploadField extends Component{
     this.state = {
       value: '' 
     }
-
-    this.myStyle={
-      'width': '30%',
-      'display': 'flex',
-      'flexDirection': 'column',
-    }
   }
 
   handleChange = (e) => {
@@ -37,12 +31,12 @@ class FileUploadField extends Component{
 
   render() {
     return (
-      <div className={ this.props.className + '__input-container' } style={ this.myStyle }>
-            <label>{ this.props.placeholder }{ this.props.required === 'true' ? <span>*</span> : '' }</label>
-            <div className={ this.props.className + '__input__file-upload-container' }>
-              <button className={ this.props.className + '__input__file-upload-button' }>Choose a file...</button>
+      <div className={ this.props.className + '__input-container generic-form__input-container' } >
+            <label className='generic-form__input-label'>{ this.props.placeholder }{ this.props.required === 'true' ? <span>*</span> : '' }</label>
+            <div className={ this.props.className + '__input__file-upload-container generic-form__file-upload-container' }>
+              <button className={ this.props.className + '__input__file-upload-button generic-form__file-upload-button generic-form__input' }>Choose a file...</button>
               <input 
-                className={ this.props.className + '__input__file' }
+                className={ this.props.className + '__input__file generic-form__file-upload-input' }
                 type="file" 
                 name={ this.props.name }
                 multiple 
