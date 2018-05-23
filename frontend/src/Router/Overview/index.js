@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import './index.css';
 import { fetchProjectOverviewActionCreator } from '../../store/actions/fetchProjectOverview';
 import { fetchManagerOverviewActionCreator } from '../../store/actions/fetchManagerOverview';
+import { validateTokensAction } from '../../store/actions/validateTokens';
 import { createNewProjectActionCreator } from '../../store/actions/createProject';
 import List from '../../Components/List';
 
@@ -24,6 +25,11 @@ class Overview extends Component {
       currentUserFetch: false,
       newProjectName: ''
     };
+  }
+
+  componentDidMount = () => {
+    const action = validateTokensAction(this.props);
+    this.props.dispatch(action);
   }
 
   static getDerivedStateFromProps = (nextProps, prevState) => {

@@ -36,6 +36,7 @@ class GenericForm extends Component {
   }
 
   render() {
+    // console.log(this.props.payload);
     return (
         <form className={ this.props.className + ' generic-form' } onSubmit={ this.handleSubmit } noValidate>
         <h3 className={ this.props.className + '__generic-form-title' }>{ this.props.title }</h3>
@@ -54,6 +55,7 @@ class GenericForm extends Component {
                     placeholder={ this.props.payload[index].placeholder }
                     updateParentState={ this.handleChange }
                     value={ this.props.payload[index].value }
+                    readonly={ this.props.payload[index].readonly }
                   />
                 )
               }
@@ -66,7 +68,7 @@ class GenericForm extends Component {
                     name={ index }
                     placeholder={ this.props.payload[index].placeholder }
                     updateParentState={ this.handleChange }
-                    id={ Object.keys(this.props.payload[index].value).length ? this.props.payload[index].value.id : '' }
+                    id={ this.props.payload[index] && Object.keys(this.props.payload[index].value).length ? this.props.payload[index].value.id : '' }
                   /> 
                 )
               }
@@ -108,7 +110,7 @@ class GenericForm extends Component {
                   />
                 )
               }
-              else if (this.props.payload.form_settings.type === 'yearly_forecast_form') {
+              else if (this.props.payload.form_settings.type === 'yearly_forecast_form' || this.props.payload.form_settings.type === 'manager_details_form') {
                 return (
                   <Button 
                     key={ rand.generate(10) }
@@ -118,16 +120,19 @@ class GenericForm extends Component {
                   />
                 )
               }
-              else if (this.props.payload.form_settings.type === 'manager_details_form') {
-                return (
-                  <Button 
-                    key={ rand.generate(10) }
-                    btnText="Save" 
-                    type='submit'
-                    className={ this.props.className + '__button' }
-                  />
-                )
+              else if (this.props.payload.form_settings.type === 'project_data_form_nonadmin') {
+                return ;
               }
+              // else if (this.props.payload.form_settings.type === 'manager_details_form') {
+              //   return (
+              //     <Button 
+              //       key={ rand.generate(10) }
+              //       btnText="Save" 
+              //       type='submit'
+              //       className={ this.props.className + '__button' }
+              //     />
+              //   )
+              // }
             }
         })
         }

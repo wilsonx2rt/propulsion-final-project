@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import GenericForm from '../../GenericForm';
 import { getProjectDetailsAction } from '../../../store/actions/getProjectDetailsAction';
 import { postProjectDevelopmentAction } from '../../../store/actions/postProjectDevelopmentAction';
-import { grabModifiedFields, getFetchBody, resetFormPayload } from '../helpers';
+import { grabModifiedFields, getFetchBody, resetFormPayload, replaceNullWithEmptyString } from '../helpers';
 import './index.css';
 
 class ProjectDevelopmentForm extends Component {
@@ -76,6 +76,9 @@ class ProjectDevelopmentForm extends Component {
 }
 
 const mapStateToProps = (state, props) => {
+  if (state.project_details && state.project_details.project_development) {
+    state.project_details.project_development = replaceNullWithEmptyString(state.project_details.project_development);
+  }
   return {
     project_development: state.project_details.project_development,
   }

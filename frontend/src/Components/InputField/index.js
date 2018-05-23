@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 /* 
   Example of the InputField component
@@ -21,8 +22,28 @@ class InputField extends Component{
 
     this.state = {
       value: this.props.value,
+      defaultDropdown: [{ id: '', name: ''}],
     }
 
+  }
+
+  componentDidMount = () => {
+    const dropdowns = this.props.dropdowns[this.props.name] ? [...this.state.defaultDropdown, ...this.props.dropdowns[this.props.name]] : this.state.defaultDropdown;
+    let defaultValue = '';
+    if (typeof this.props.value === 'object') {
+      dropdowns.map(el => {
+        if (el.id === this.props.value.id) {
+          defaultValue = el.name;
+        }
+        return el;
+      })
+    }
+    else {
+      defaultValue = this.props.value;
+    }
+    this.setState({
+      value: defaultValue,
+    })
   }
 
   handleChange = (e) => {
@@ -44,11 +65,17 @@ class InputField extends Component{
           placeholder={ this.props.placeholder }
           onChange={ this.handleChange }
           value={ this.state.value }
-          readOnly={ this.props.name==='name' ? true : false }
+          readOnly={ this.props.readonly }
         />
       </div>
     )
   }
 }
 
-export default InputField;
+const mapStateToProps = (state, props) => {
+  return {
+    dropdowns: state.dropdowns
+  }
+}
+
+export default connect(mapStateToProps)(InputField);

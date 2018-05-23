@@ -6,47 +6,78 @@ import GenericForm from '../../GenericForm';
 import { getProjectDetailsAction } from '../../../store/actions/getProjectDetailsAction';
 import { postProjectAssignmentAction } from '../../../store/actions/postProjectAssignmentAction';
 import PMField from '../../PMField';
-import { grabModifiedFields, getFetchBody, resetFormPayload, hasPM, removePM } from '../helpers';
+import { grabModifiedFields, getFetchBody, resetFormPayload, hasPM, removePM, replaceNullWithEmptyString } from '../helpers';
+
+const adminForm = {
+  'form_settings': {type: 'project_data_form', },
+  'project_responsibility': {value: '', type: 'dropdown', required: 'false', placeholder: 'Projektverantwortung'},
+  'overall_pm_team': {value: '', type: 'dropdown', required: 'false', placeholder: 'Gesamtprojektleitung'},
+  'project_management': {value: '', type: 'project_management', required: 'false', placeholder: 'Projektleitung'},
+  'planner_control': {value: '', type: 'dropdown', required: 'false', placeholder: 'Planerleistung'},
+  'construction_management': {value: '', type: 'dropdown', required: 'false', placeholder: 'Bauleitung'},
+  'illustrator': {value: '', type: 'dropdown', required: 'false', placeholder: 'ZeichnerIn'},
+  'communications': {value: '', type: 'dropdown', required: 'false', placeholder: 'Kommunikation'},
+  'leading_role': {value: '', type: 'dropdown', required: 'false', placeholder: 'Federführende Stelle'},
+  'leading_team': {value: '', type: 'dropdown', required: 'false', placeholder: 'Federführende Fachgruppe'},
+}
+
+const nonAdminForm = {
+  'form_settings': {type: 'project_data_form_nonadmin', },
+  'project_responsibility': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Projektverantwortung', readonly: 'true'},
+  'overall_pm_team': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Gesamtprojektleitung', readonly: 'true'},
+  'project_management': {value: '', type: 'project_management', required: 'false', placeholder: 'Projektleitung', readonly: 'true'},
+  'planner_control': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Planerleistung', readonly: 'true'},
+  'construction_management': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Bauleitung', readonly: 'true'},
+  'illustrator': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'ZeichnerIn', readonly: 'true'},
+  'communications': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Kommunikation', readonly: 'true'},
+}
 
 class ProjectAssignmentForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      formPayload: {
-        'form_settings': {type: 'project_data_form', },
-        'project_responsibility': {value: '', type: 'dropdown', required: 'false', placeholder: 'Projektverantwortung'},
-        'overall_pm_team': {value: '', type: 'dropdown', required: 'false', placeholder: 'Gesamtprojektleitung'},
-        'project_management': {value: '', type: 'project_management', required: 'false', placeholder: 'Projektleitung'},
-        'planner_control': {value: '', type: 'dropdown', required: 'false', placeholder: 'Planerleistung'},
-        'construction_management': {value: '', type: 'dropdown', required: 'false', placeholder: 'Bauleitung'},
-        'illustrator': {value: '', type: 'dropdown', required: 'false', placeholder: 'ZeichnerIn'},
-        'communications': {value: '', type: 'dropdown', required: 'false', placeholder: 'Kommunikation'},
-        'leading_role': {value: '', type: 'dropdown', required: 'false', placeholder: 'Federführende Stelle'},
-        'leading_team': {value: '', type: 'dropdown', required: 'false', placeholder: 'Federführende Fachgruppe'},
-      },
+      formPayload: {},
       all_managers: [],
+      isAdmin: null,
     };
   }
 
   static getDerivedStateFromProps = (nextProps, prevState) => {
     if (nextProps.project_assignment!==undefined && nextProps.project_assignment !== null){
       const newState = Object.assign({}, prevState);
-      Object.keys(prevState.formPayload).map(key => {
-        if (key !== 'form_settings' && prevState.formPayload[key].value !== nextProps.project_assignment[key]){
+      if (Object.keys(nextProps.currentUser).length !== 0) {
+        newState.isAdmin = nextProps.currentUser.user_profile.isAdmin;
+        if (newState.isAdmin) {
+          newState.formPayload = adminForm;
+        }
+        else {
+          newState.formPayload = nonAdminForm;
+        }
+      }
+      Object.keys(newState.formPayload).map(key => {
+        if (key !== 'form_settings'){
           if (nextProps.project_assignment[key] !== null && nextProps.project_assignment[key] !== undefined ){
             newState.formPayload[key].value = nextProps.project_assignment[key];
           }
         }
         return key;
       })
-      if (nextProps.all_managers!==undefined && nextProps.all_managers !== null && Object.keys(nextProps.all_managers).length !== 0){
-        const tempManagers = [];
-        nextProps.all_managers.map(manager => {
-          tempManagers.push(manager);
-        })
-        newState.all_managers = tempManagers;
-        return newState;
+      if (newState.isAdmin){
+        if (nextProps.all_managers!==undefined && nextProps.all_managers !== null && Object.keys(nextProps.all_managers).length !== 0){
+          const tempManagers = [];
+          nextProps.all_managers.map(manager => {
+            tempManagers.push(manager);
+          })
+          newState.all_managers = tempManagers;
+        }
       }
+      else {
+        if (nextProps.project_assignment.project_management) {
+          newState.all_managers = nextProps.project_assignment.project_management;
+        }
+      }
+      // console.log(newState);
+      return newState;
     }
     return null;
   }
@@ -93,7 +124,8 @@ class ProjectAssignmentForm extends Component {
           name='Projektleitung'
           toggleCheckboxes={ this.toggleCheckboxes }
           all_managers={ this.state.all_managers }
-          current_managers={ Object.keys(this.state.formPayload['project_management'].value).length ? this.state.formPayload['project_management'].value : null }
+          current_managers={ this.state.formPayload['project_management'] && Object.keys(this.state.formPayload['project_management'].value).length ? this.state.formPayload['project_management'].value : null }
+          isAdmin={ this.state.isAdmin }
         />
         <GenericForm 
           title='Projektzuteilung'
@@ -109,10 +141,17 @@ class ProjectAssignmentForm extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  // console.log('PROJECT STATE',state.managerOverview);
+  console.log('PROJECT STATE',state.managerOverview);
+  if (state.project_details && state.project_details.project_assignment) {
+    state.project_details.project_assignment = replaceNullWithEmptyString(state.project_details.project_assignment);
+  }
+  if (state.managerOverview) {
+    state.managerOverview = replaceNullWithEmptyString(state.managerOverview);
+  }
   return {
     project_assignment: state.project_details.project_assignment,
     all_managers: state.managerOverview,
+    currentUser: state.currentUser,
   }
 }
 

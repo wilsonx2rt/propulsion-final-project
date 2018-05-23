@@ -83,15 +83,27 @@ export const removePM = (arr, manager) => {
 }
 
 export const replaceNullWithEmptyString = (arr) => {
-  const result = arr.map(property => {
-    const newProperty = Object.assign({}, property);
-    Object.keys(property).map(entry => {
-      if (property[entry] === null || property[entry] === undefined){
-        newProperty[entry] = '';
+  let result;
+  if (Array.isArray(arr)){
+    result = arr.map(property => {
+      const newProperty = Object.assign({}, property);
+      Object.keys(property).map(entry => {
+        if (property[entry] === null || property[entry] === undefined){
+          newProperty[entry] = '';
+        }
+        return entry;
+      })
+      return newProperty;
+    });
+  }
+  else if (typeof arr === 'object') {
+    Object.keys(arr).map(property => {
+      if (arr[property] === null || arr[property] === undefined) {
+        arr[property] = '';
       }
-      return entry;
+      return property;
     })
-    return newProperty;
-  });
+    result = arr;
+  }
 return result;
 }

@@ -11,3 +11,4 @@ export const SET_YEARLY_FORECASTS = 'setYearlyForecasts';
 export const SET_PROJECT_ALLOCATIONS = 'setProjectAllocations';
 export const SET_MANAGER_DETAILS = 'setManagerDetails';
 export const SET_CURRENT_USER = 'setCurrentUser';
+export const LOG_OUT = 'logOut';
