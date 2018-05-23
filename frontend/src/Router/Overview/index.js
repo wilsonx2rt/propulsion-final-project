@@ -54,7 +54,7 @@ class Overview extends Component {
         // only fetch once after isAdmin is set to local state
         // to pass actions props where currentUser is not an empty object
         if (!prevState.currentUserFetch) {
-          let action = fetchProjectOverviewActionCreator(prevState ,nextProps);
+          let action = fetchProjectOverviewActionCreator(prevState, nextProps);
           nextProps.dispatch(action);
           action = fetchManagerOverviewActionCreator(nextProps);
           nextProps.dispatch(action);
@@ -86,10 +86,7 @@ class Overview extends Component {
   };
 
   handleClick = () => {
-    const action = createNewProjectActionCreator(
-      this.state,
-      this.props
-    );
+    const action = createNewProjectActionCreator(this.state, this.props);
     this.props.dispatch(action);
     document.querySelector('#newProjectName').value = '';
     const newProjectName = '';
@@ -110,12 +107,14 @@ class Overview extends Component {
           <div className="overview__projects--wrapper">
             <div className="overview__projects--header">
               <h3>Projekte</h3>
-              <Button handleClick={this.handleClick} btnText="Neu Project" />
-              <input
-                onChange={this.handleChange}
-                id="newProjectName"
-                type="text"
-              />
+              <div>
+                <Button handleClick={this.handleClick} btnText="Neu Project" />
+                <input
+                  onChange={this.handleChange}
+                  id="newProjectName"
+                  type="text"
+                />
+              </div>
             </div>
             <List type="projects" overview={this.state.overview} />
           </div>
@@ -142,6 +141,7 @@ class Overview extends Component {
                 ? this.props.overview.managerOverview.map((manager, index) => {
                     return (
                       <AccordionSegment
+                        id="manager-form"
                         key={index}
                         AccordionSegmentTitle={`${manager.first_name}-${
                           manager.last_name

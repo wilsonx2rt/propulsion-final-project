@@ -4,6 +4,7 @@
 
 .overview__projects--header{
   display: flex;
+  align-items: center;
 }
 
 .overview__projects--wrapper {
@@ -12,11 +13,8 @@
 
 .overview__managers--wrapper {
   flex: 1;
-}
-
-.overview__section-header-wrapper {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
 .new-project-manager {

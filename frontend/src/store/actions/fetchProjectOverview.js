@@ -7,6 +7,7 @@ export const fetchProjectOverviewActionCreator = (state, props) => (
   dispatch,
   getState
 ) => {
+  console.log('hola');
   validateTokens(getState(), dispatch, props)
     .then(response => {
       const headers = {
@@ -38,7 +39,7 @@ export const fetchProjectOverviewActionCreator = (state, props) => (
     });
 };
 
-const setProjectOverview = projectOverview => {
+export const setProjectOverview = projectOverview => {
   return {
     type: SET_PROJECT_OVERVIEW,
     payload: {
