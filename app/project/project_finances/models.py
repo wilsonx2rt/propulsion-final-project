@@ -38,7 +38,7 @@ class YearlyForecast(models.Model):
     project_finance = models.ForeignKey(
         verbose_name='project finance',
         help_text='Prognosen',
-        on_delete=models.SET_NULL,
+        on_delete=models.CASCADE,
         to='project_finances.ProjectFinances',
         related_name='yearly_forecasts',
         null=True,
@@ -90,7 +90,7 @@ class ProjectFinances(models.Model):
         verbose_name='project name',
         to='project_data.ProjectData',
         related_name='project_finances',
-        on_delete=models.SET_NULL,
+        on_delete=models.CASCADE,
         null=True,
     )
 

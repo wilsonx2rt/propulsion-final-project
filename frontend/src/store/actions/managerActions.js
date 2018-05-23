@@ -71,7 +71,7 @@ export const createNewManagerActionCreator = (state, props) => (
         email: state.email.value
       };
       const config = {
-        method: 'Post',
+        method: 'POST',
         headers,
         body: JSON.stringify(content)
       };
@@ -81,7 +81,7 @@ export const createNewManagerActionCreator = (state, props) => (
       response.status === 200
         ? console.log('registration success')
         : alert('Error');
-      let action = fetchManagerOverviewActionCreator(this.props);
+      let action = fetchManagerOverviewActionCreator(props);
       dispatch(action);
     });
 };

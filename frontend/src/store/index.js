@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
+import {createStore, applyMiddleware, combineReducers, compose} from 'redux';
 import thunk from 'redux-thunk';
 import { tokens } from './reducers/tokens';
 import { dropdowns } from './reducers/dropdowns';
@@ -24,19 +24,20 @@ const rootReducer = (state, action) => {
 }
 
 const reducer = combineReducers({
-  tokens,
-  dropdowns,
-  project_details,
-  projectOverview,
-  managerOverview,
-  filter,
-  project_milestones,
-  project_dependencies,
-  yearly_forecasts,
-  project_allocations,
-  managerDetails,
-  currentUser
+    tokens,
+    dropdowns,
+    project_details,
+    projectOverview,
+    managerOverview,
+    filter,
+    project_milestones,
+    project_dependencies,
+    yearly_forecasts,
+    project_allocations,
+    managerDetails,
+    currentUser
 });
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   rootReducer,

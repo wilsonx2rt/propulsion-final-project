@@ -40,7 +40,7 @@ class RegistrationForm extends Component {
     };
     this.state.password === this.state.password_repeat
       ? fetch(`${SERVER_URL}registration/validation/`, config).then(response =>
-          response.status === 200 ? this.props.history.push(`/registration-success/`) : alert(' Registrierung fehlgeschlagen')
+          response.ok ? this.props.history.push(`/registration-success/`) : alert(' Registrierung fehlgeschlagen')
         )
       : alert('Passwörter nicht übereinstimmen');
   };

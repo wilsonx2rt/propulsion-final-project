@@ -34,7 +34,7 @@ class ProjectDevelopment(models.Model):
         verbose_name='project name',
         to='project_data.ProjectData',
         related_name='project_development',
-        on_delete=models.SET_NULL,
+        on_delete=models.CASCADE,
         null=True,
     )
 

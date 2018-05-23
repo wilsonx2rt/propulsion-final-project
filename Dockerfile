@@ -29,6 +29,7 @@ RUN echo 'export PATH=/opt/miniconda/bin:$PATH' > /etc/profile.d/conda.sh && \
 
 # NodeJS
 RUN npm install -g n
+RUN npm install -g yarn
 RUN n 9.11.1
 
 RUN mkdir -p /app | \
@@ -48,7 +49,8 @@ ENV PATH /opt/miniconda/envs/app/bin:$PATH
 WORKDIR /frontend
 COPY ./frontend/package.json /frontend/
 COPY ./frontend/package-lock.json /frontend/
-RUN npm install
+COPY ./frontend/yarn.lock /frontend/
+RUN yarn install
 COPY ./frontend /frontend
 RUN npm run build
 

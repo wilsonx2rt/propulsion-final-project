@@ -27,6 +27,7 @@ services:
       - database
     volumes:
       - ./app:/app
+      - ./frontend:/frontend
       - ./media-files:/media-files
       - ./static-files:/static-files
       - ./scripts:/scripts

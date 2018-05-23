@@ -15,24 +15,26 @@ class SearchBox extends Component {
     };
   }
 
-  handleChange = () => {
-    let filterString = document.querySelector('#search-box__input').value;
+  handleChange = e => {
+    let filterString = e.target.value;
     this.setState({
-      filterString
+      filterString: filterString
     });
     let action = setFilterActionCreator(filterString);
     this.props.dispatch(action);
-    action = fetchProjectOverviewActionCreator(this.props);
+    action = fetchProjectOverviewActionCreator(this.state, this.props);
     this.props.dispatch(action);
   };
-// FIXME: ONLY CLEARS ON DOUBLE CLICK. TAKE THE FILTER AWAY FROM REDUX
+  // FIXME: does not update on backstace (lach char only)
   clearFilter = () => {
     document.querySelector('#search-box__input').value = '';
-    let filterString = '';
-    this.setState({
-      filterString
-    });
-    this.handleChange();
+    let action = setFilterActionCreator('');
+    this.props.dispatch(action);
+    action = fetchProjectOverviewActionCreator(
+      { filterString: '' },
+      this.props
+    );
+    this.props.dispatch(action);
   };
 
   render() {
@@ -58,7 +60,7 @@ class SearchBox extends Component {
 
 const mapStateToProps = state => {
   return {
-    state
+    currentUser: state.currentUser
   };
 };
 

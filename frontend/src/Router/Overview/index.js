@@ -4,12 +4,12 @@ import AccordionSegment from '../../Components/AccordionSegment';
 import ProjectManagerForm from '../../Components/ProjectManagerForm';
 import Button from '../../Components/Button';
 import plus from '../../assets/plus.png';
-
 import { connect } from 'react-redux';
 import './index.css';
 import { fetchProjectOverviewActionCreator } from '../../store/actions/fetchProjectOverview';
 import { fetchManagerOverviewActionCreator } from '../../store/actions/fetchManagerOverview';
 import { validateTokensAction } from '../../store/actions/validateTokens';
+import { createNewProjectActionCreator } from '../../store/actions/createProject';
 import List from '../../Components/List';
 
 class Overview extends Component {
@@ -22,7 +22,8 @@ class Overview extends Component {
       },
       visible: 'new-project-manager__inner-container--hidden',
       isAdmin: null,
-      currentUserFetch: false
+      currentUserFetch: false,
+      newProjectName: ''
     };
   }
 
@@ -59,7 +60,7 @@ class Overview extends Component {
         // only fetch once after isAdmin is set to local state
         // to pass actions props where currentUser is not an empty object
         if (!prevState.currentUserFetch) {
-          let action = fetchProjectOverviewActionCreator(nextProps);
+          let action = fetchProjectOverviewActionCreator(prevState, nextProps);
           nextProps.dispatch(action);
           action = fetchManagerOverviewActionCreator(nextProps);
           nextProps.dispatch(action);
@@ -84,6 +85,22 @@ class Overview extends Component {
     }
   };
 
+  handleChange = e => {
+    this.setState({
+      [e.target.id]: e.target.value
+    });
+  };
+
+  handleClick = () => {
+    const action = createNewProjectActionCreator(this.state, this.props);
+    this.props.dispatch(action);
+    document.querySelector('#newProjectName').value = '';
+    const newProjectName = '';
+    this.setState({
+      newProjectName
+    });
+  };
+
   render() {
     return (
       <div>
@@ -94,7 +111,17 @@ class Overview extends Component {
         <h2>Protfolio-Übersicht</h2>
         <div className="overview--wrapper">
           <div className="overview__projects--wrapper">
-            <h3>Projekte</h3>
+            <div className="overview__projects--header">
+              <h3>Projekte</h3>
+              <div>
+                <Button handleClick={this.handleClick} btnText="Neu Project" />
+                <input
+                  onChange={this.handleChange}
+                  id="newProjectName"
+                  type="text"
+                />
+              </div>
+            </div>
             <List type="projects" overview={this.state.overview} />
           </div>
           {/* hide PM list if user id non admin */}
@@ -116,11 +143,11 @@ class Overview extends Component {
                   />
                 </div>
               </div>
-
               {Object.keys(this.props.overview.managerOverview).length != 0
                 ? this.props.overview.managerOverview.map((manager, index) => {
                     return (
                       <AccordionSegment
+                        id="manager-form"
                         key={index}
                         AccordionSegmentTitle={`${manager.first_name}-${
                           manager.last_name
@@ -147,7 +174,8 @@ const mapStateToProps = (state, props) => {
       projectOverview: state.projectOverview,
       managerOverview: state.managerOverview
     },
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+    tokens: state.tokens
   };
 };
 
