@@ -5,9 +5,8 @@
   justify-content: flex-end;
 }
 
-.nav-bar__item , .nav-link{
+a.nav-bar__item , div.nav-bar__item{
   background-color: rgb(213, 0, 41);
-  text-decoration: none;
   font-weight: bold;
   color: white;
   display: inline-block;
@@ -16,15 +15,15 @@
 }
 
 .nav-bar__item:hover {
-  background-color: white;
-  color: #808080;
+  background-color: rgba(213, 0, 41, 0.6);
+  color: #fff;
   /* display: inline-block;
   border-right: solid 1px white;
   padding: 16px;
   cursor: pointer; */
 }
 
-.nav-bar__item--logout {
+div.nav-bar__item--logout {
   color: rgba(0,0,255, 0.6);
   margin-left: 5px;
   cursor: pointer;
