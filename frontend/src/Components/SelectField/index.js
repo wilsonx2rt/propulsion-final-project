@@ -55,9 +55,9 @@ class SelectField extends Component{
     // Check if the state has been already set up. If no, use default empty array, otherwise use dropdowns from the state.
     const dropdowns = (this.props.dropdowns[this.props.name] !== undefined) ? [...this.state.defaultDropdown, ...this.props.dropdowns[this.props.name]] : this.state.defaultDropdown;
     return (
-      <div className={ this.props.className + '__input-container' } >
-        <label>{ this.props.placeholder }{ this.props.required === 'true' ? <span>*</span> : '' }</label>
-        <select name={ this.props.name } onChange={ this.handleChange } value={ this.state.value } className={ this.props.className + '__select' }>
+      <div className={ this.props.className + '__input-container generic-form__input-container' } >
+        <label className='generic-form__input-label'>{ this.props.placeholder }{ this.props.required === 'true' ? <span>*</span> : '' }</label>
+        <select name={ this.props.name } onChange={ this.handleChange } value={ this.state.value } className={ this.props.className + '__select generic-form__input' }>
           {         
               dropdowns.map(el => {
                   return <option key={ rand.generate(10) } value={ el.name } >{ el.name }</option>
