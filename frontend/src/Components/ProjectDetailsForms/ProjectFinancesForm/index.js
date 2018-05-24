@@ -143,7 +143,7 @@ class ProjectFinancesForm extends Component {
       delete body.project;
     }
     if (Object.keys(body).length !== 0){
-      resetFormPayload(this);
+      // resetFormPayload(this);
       const action = postProjectFinancesAction(this.props, body, method, finances_id);
       this.props.dispatch(action);
     }
@@ -151,7 +151,7 @@ class ProjectFinancesForm extends Component {
 
   render() {
     return (
-      <div className="project-finances-form-wrapper">
+      <div className="project-finances-form-wrapper generic-form-container">
         <GenericForm 
           title='Projektfinanzplanung'
           className='project-finances-form'
@@ -173,7 +173,8 @@ class ProjectFinancesForm extends Component {
           parentProps={ this.props } 
           next = { this.props.yearly_forecasts.next ? this.props.yearly_forecasts.next : null }
           previous={ this.props.yearly_forecasts.previous ? this.props.yearly_forecasts.previous : null }
-          action={ getYearlyForecastAction } 
+          action={ getYearlyForecastAction }
+          payload={ this.state.forecastFormPayload } 
         />
       </div>
     )

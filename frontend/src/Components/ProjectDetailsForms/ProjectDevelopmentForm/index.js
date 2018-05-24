@@ -53,7 +53,7 @@ class ProjectDevelopmentForm extends Component {
       delete body.project;
     }
     if (Object.keys(body).length !== 0){
-      resetFormPayload(this);
+      // resetFormPayload(this);
       const action = postProjectDevelopmentAction(this.props, body, method, development_id);
       this.props.dispatch(action);
     }
@@ -61,7 +61,7 @@ class ProjectDevelopmentForm extends Component {
 
   render() {
     return (
-      <div className="project-development-form-wrapper">
+      <div className="project-development-form-wrapper generic-form-container">
         <GenericForm 
           title='Projektentwicklung'
           className='project-development-form'

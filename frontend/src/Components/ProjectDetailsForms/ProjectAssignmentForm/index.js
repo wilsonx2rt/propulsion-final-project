@@ -38,7 +38,7 @@ class ProjectAssignmentForm extends Component {
     this.state = {
       formPayload: {},
       all_managers: [],
-      isAdmin: null,
+      // isAdmin: false,
     };
   }
 
@@ -110,7 +110,7 @@ class ProjectAssignmentForm extends Component {
       delete body.project;
     }
     if (Object.keys(body).length !== 0){
-      resetFormPayload(this);
+      // resetFormPayload(this);
       const action = postProjectAssignmentAction(this.props, body, method, assignment_id);
       this.props.dispatch(action);
     }
@@ -118,7 +118,7 @@ class ProjectAssignmentForm extends Component {
 
   render() {
     return (
-      <div className="project-assignment-form-wrapper">
+      <div className="project-assignment-form-wrapper generic-form-container">
         <PMField 
           className={ 'project-assignment-form__checkboxes-container' }
           name='Projektleitung'

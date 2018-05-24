@@ -4,7 +4,6 @@
   border-radius: 3px;
   background-color: rgba(141, 0, 0, 0);
   border: 2px solid rgba(192, 1, 1, 0.5);
-  margin-left: 30px;
   font-size: 11pt;
   color: rgba(192, 1, 1, 0.7);
   cursor: pointer;
@@ -17,4 +16,40 @@
 .pagination-button:active {
   border: 2px solid rgba(192, 1, 1, 0.8);
   color: rgba(192, 1, 1, 1);
+}
+
+.generic-feature-list__table-container {
+  width: 100%;
+  padding: 0px 30px;
+}
+
+.generic-feature-list__table {
+  width: 100%;
+  /* max-width: 900px; */
+  margin: 0px 0px 20px;
+  display: block;
+  overflow-x: scroll;
+  white-space: nowrap;
+  border-spacing: 5px;
+}
+
+td.generic-feature-list__table__td--highlighted {
+  box-shadow: 0px 0px 2px 1px rgba(170, 47, 47, 0.3);
+}
+
+.generic-feature-list__table__th {
+  border-radius: 2px;
+  padding: 3px 10px;
+  font-size: 12pt;
+  color: rgba(192, 1, 1, 0.8);
+  cursor: pointer;
+  background-color: rgba(192, 1, 1, 0.2);
+}
+
+.generic-feature-list__table__td {
+  overflow-x: auto;
+  padding: 2px;
+  color: #777;
+  box-shadow: 0px 0px 1px 1px #f1f1f1;
+  cursor: pointer;
 }
