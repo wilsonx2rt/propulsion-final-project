@@ -119,4 +119,5 @@
 
 .generic-form__buttons-container {
   display: flex;
+  align-self: center;
 }
