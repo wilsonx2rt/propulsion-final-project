@@ -5,12 +5,11 @@
 }
 
 .login-form {
-    display: flex;
     height: 100%;
+    display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    position: relative;
+    align-items: center;
 }
 
 .login-form__validation-message {
@@ -22,14 +21,17 @@
 .login-form__input-container {
     width: 90%;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
 
 .login-form__input {
-    box-sizing: border-box;
     width: 300px;
     padding: 9px 35px 9px 10px;
     font-size: 16px;
+}
+
+.login-form__container {
+    display: flex;
+    flex-direction: column;
 }
