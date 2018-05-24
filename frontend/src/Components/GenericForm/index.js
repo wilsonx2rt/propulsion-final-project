@@ -9,13 +9,6 @@ import { hideValidationMessage } from '../../helpers';
 
 var rand = require('random-key');
 
-/* <GenericForm
-  className='some-class-name'
-  payload={ someHugeObject }
-  onSubmit={ callbackFunction }
-  updateParentState={ someFunction }
-/> */
-
 // GenericForm expects to get a className property
 // GenericForm expects a function onSubmit for action on submition
 // GenericForm expects to get a payload object, containing one field 'form_settings" with possible config instructions for the UI of the form,
@@ -96,7 +89,7 @@ class GenericForm extends Component {
                 );
               }
             }
-            return '';
+            return null;
           })}
         </div>
         {Object.keys(this.props.payload).map(index => {
@@ -107,7 +100,7 @@ class GenericForm extends Component {
             ) {
               return (
                 <div
-                  key={rand.generate(10)}
+                  key={ rand.generate(10) }
                   className="project-data-form__btn-container generic-form__button-container"
                 >
                   <Button
@@ -121,22 +114,27 @@ class GenericForm extends Component {
               );
             } else if (this.props.payload.form_settings.type === 'login_form') {
               return (
-                <Button
-                  key={rand.generate(10)}
-                  btnText="Login"
-                  type="submit"
-                  className={
-                    this.props.className + '__button generic-form__button'
-                  }
-                />
-              );
-            } else if (
-              this.props.payload.form_settings.type === 'manager_details_form'
-            ) {
-              return (
-                <div className="generic-form__buttons-container">
+                <div
+                  key={ rand.generate(10) }
+                  className="project-data-form__btn-container generic-form__button-container"
+                >
                   <Button
                     key={rand.generate(10)}
+                    btnText="Login"
+                    type="submit"
+                    className={
+                      this.props.className + '__button generic-form__button'
+                    }
+                  />
+                </div>
+              );
+            } else if (this.props.payload.form_settings.type === 'manager_details_form') {
+              return (
+                <div 
+                  className="generic-form__buttons-container"
+                  key={rand.generate(10)}
+                >
+                  <Button
                     btnText="Speichern"
                     type="submit"
                     className={
@@ -145,7 +143,6 @@ class GenericForm extends Component {
                   />
                   {!this.props.create ? (
                     <Button
-                      key={rand.generate(10)}
                       btnText="Löschen"
                       type="button"
                       handleClick={this.props.onDelete}
@@ -160,19 +157,10 @@ class GenericForm extends Component {
               this.props.payload.form_settings.type ===
               'project_data_form_nonadmin'
             ) {
-              return;
+              return '';
             }
-            // else if (this.props.payload.form_settings.type === 'manager_details_form') {
-            //   return (
-            //     <Button
-            //       key={ rand.generate(10) }
-            //       btnText="Save"
-            //       type='submit'
-            //       className={ this.props.className + '__button' }
-            //     />
-            //   )
-            // }
           }
+          return null;
         })}
       </form>
     );

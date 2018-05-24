@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { setFilterActionCreator } from '../../store/actions/filterActions';
 import { fetchProjectOverviewActionCreator } from '../../store/actions/fetchProjectOverview';
 import redBlack from '../../assets/bern-red-black.png';
-import searchGlass from '../../assets/search-glass.png';
 import x from '../../assets/x.jpeg';
 class SearchBox extends Component {
   constructor(props) {

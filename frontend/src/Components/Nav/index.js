@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { logOutAction } from '../../store/actions/userActions';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
-import Overview from '../../Router/Overview';
 import './index.css';
 
 class Nav extends Component {

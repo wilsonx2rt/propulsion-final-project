@@ -9,7 +9,6 @@ export const fetchCurrentUserActionCreator = tokens => dispatch => {
     method: 'GET',
     headers
   };
-  console.log('getting current user');
   fetch(`${SERVER_URL}user/`, config)
     .then(response => response.json())
     .then(currentUser => {

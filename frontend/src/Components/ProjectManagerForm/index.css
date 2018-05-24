@@ -4,9 +4,10 @@
   align-items: center;
 }
 
-.manager-details-form__button {
-  width: 100px;
+button.manager-details-form__button {
+  /* width: 100px; */
   margin-top: 10px;
+  margin-left: 0px;
 }
 
 .manager-details-form__input-container {

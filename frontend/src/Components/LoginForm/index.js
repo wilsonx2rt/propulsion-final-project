@@ -42,30 +42,6 @@ class LoginForm extends Component {
           onSubmit={ this.handleSubmit }
           updateParentState={ this.handleChange }
         />
-        {/* <form id="login-form" onSubmit={ this.handleSubmit } noValidate>
-          <p className='login-form__validation-message generic-validation-message hidden-element'>Ungültiger Benutzername oder Kennwort</p>
-          <input
-            className="login-form__input"
-            type="email"
-            name="username"
-            placeholder="Email"
-            onChange={this.handleChange}
-            value={ this.state.username }
-          />
-          <input
-            className="login-form__input"
-            type="password"
-            name="password"
-            placeholder="Kennwort"
-            onChange={this.handleChange}
-            value={ this.state.password }
-          />
-          <Button 
-            id="login-form__button" 
-            btnText="Login" 
-            type='submit'
-          />
-        </form> */}
       </div>
     );
   }

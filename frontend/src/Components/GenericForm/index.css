@@ -45,6 +45,10 @@
   border-radius: 3px;
 }
 
+.generic-form__input--inactive {
+  background-color: transparent;
+}
+
 .generic-form__input-label {
   margin: 20px 0px 8px;
   font-size: 12pt;
@@ -119,4 +123,5 @@
 
 .generic-form__buttons-container {
   display: flex;
+  justify-content: space-between;
 }

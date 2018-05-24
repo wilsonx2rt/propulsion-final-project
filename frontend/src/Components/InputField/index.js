@@ -59,13 +59,13 @@ class InputField extends Component{
         <p className={ this.props.className + '__validation-message generic-validation-message hidden-element'} >{ 'Incorrect ' + this.props.placeholder }</p>
         <label className='generic-form__input-label'>{ this.props.placeholder }{ this.props.required === 'true' ? <span>*</span> : '' }</label>
         <input
-          className={ this.props.className + '__input generic-form__input' }
+          className={ this.props.readonly ? this.props.className + '__input generic-form__input generic-form__input--inactive' :  this.props.className + '__input generic-form__input generic-form__input'}
           type={ this.props.type }
           name={ this.props.name }
           placeholder={ this.props.placeholder }
           onChange={ this.handleChange }
           value={ this.state.value }
-          readOnly={ this.props.readonly }
+          disabled={ this.props.readonly }
         />
       </div>
     )

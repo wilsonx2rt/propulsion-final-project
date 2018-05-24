@@ -1,5 +1,4 @@
-import { vlaidateTokens, validateTokens } from './validateTokens';
-import { fetchProjectOverviewActionCreator } from './fetchProjectOverview';
+import { validateTokens } from './validateTokens';
 import { setProjectOverview } from './fetchProjectOverview';
 
 import { SERVER_URL } from '../constants';

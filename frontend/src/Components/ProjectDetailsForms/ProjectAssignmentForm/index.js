@@ -3,10 +3,9 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import GenericForm from '../../GenericForm';
-import { getProjectDetailsAction } from '../../../store/actions/getProjectDetailsAction';
 import { postProjectAssignmentAction } from '../../../store/actions/postProjectAssignmentAction';
 import PMField from '../../PMField';
-import { grabModifiedFields, getFetchBody, resetFormPayload, hasPM, removePM, replaceNullWithEmptyString } from '../helpers';
+import { grabModifiedFields, getFetchBody, hasPM, removePM, replaceNullWithEmptyString } from '../helpers';
 
 const adminForm = {
   'form_settings': {type: 'project_data_form', },
@@ -67,6 +66,7 @@ class ProjectAssignmentForm extends Component {
           const tempManagers = [];
           nextProps.all_managers.map(manager => {
             tempManagers.push(manager);
+            return null;
           })
           newState.all_managers = tempManagers;
         }
@@ -141,7 +141,6 @@ class ProjectAssignmentForm extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  console.log('PROJECT STATE',state.managerOverview);
   if (state.project_details && state.project_details.project_assignment) {
     state.project_details.project_assignment = replaceNullWithEmptyString(state.project_details.project_assignment);
   }

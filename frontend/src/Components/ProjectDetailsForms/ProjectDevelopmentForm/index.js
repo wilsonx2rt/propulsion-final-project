@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import GenericForm from '../../GenericForm';
-import { getProjectDetailsAction } from '../../../store/actions/getProjectDetailsAction';
 import { postProjectDevelopmentAction } from '../../../store/actions/postProjectDevelopmentAction';
-import { grabModifiedFields, getFetchBody, resetFormPayload, replaceNullWithEmptyString } from '../helpers';
+import { grabModifiedFields, getFetchBody, replaceNullWithEmptyString } from '../helpers';
 import './index.css';
 
 class ProjectDevelopmentForm extends Component {

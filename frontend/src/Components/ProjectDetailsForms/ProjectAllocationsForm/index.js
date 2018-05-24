@@ -7,7 +7,7 @@ import { getProjectAllocationsAction } from '../../../store/actions/getProjectAl
 import { postProjectAllocationAction } from '../../../store/actions/postProjectAllocationAction';
 import { SERVER_URL } from '../../../store/constants';
 import GenericProjectFeatureList from '../../GenericProjectFeatureList';
-import { grabModifiedFields, getFetchBody, resetFormPayload, replaceNullWithEmptyString } from '../helpers';
+import { grabModifiedFields, getFetchBody, replaceNullWithEmptyString } from '../helpers';
 
 const adminForm = {
   'form_settings': {type: 'project_data_form', },
@@ -78,6 +78,7 @@ class ProjectAllocationsForm extends Component {
       if (allocation.year.id === yearID & allocation.quarter.id === quarterID) {
         result = allocation;
       }
+      return null;
     })
     return result;
   }
@@ -104,6 +105,7 @@ class ProjectAllocationsForm extends Component {
         if (allocation[key] !== undefined && allocation[key] !== null && newState.formPayload[key].value !== allocation[key]){
           newState.formPayload[key].value = allocation[key];
         }
+        return null;
       })
       this.setState({
         newState,
@@ -124,6 +126,7 @@ class ProjectAllocationsForm extends Component {
         allocation_id = allocation.id;
         delete body.project;
       }
+      return null;
     })
     if (Object.keys(body).length !== 0){
       // resetFormPayload(this);
