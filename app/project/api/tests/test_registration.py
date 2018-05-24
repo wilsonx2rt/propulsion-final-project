@@ -33,7 +33,7 @@ class RegistrationViewTest(APITestCase):
         self.assertEquals(num_users, 2)
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].subject, 'Registration')
-        self.assertEqual(len(mail.outbox[0].body), 144)
+        self.assertEqual(len(mail.outbox[0].body), 137)
 
     def test_registration_existing_user(self):
         url = reverse('api:registration:registration')
