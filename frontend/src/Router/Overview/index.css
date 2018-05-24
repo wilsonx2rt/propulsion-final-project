@@ -4,6 +4,7 @@ height: 70vh;
 
 .overview--wrapper {
   display: flex;
+  justify-content: space-evenly;
 }
 
 .overview__top-header {
@@ -84,7 +85,7 @@ height: 70vh;
   display: flex;
   flex-direction: column;
   margin-top: 10px;
-  width: 300px;
+  width: 350px;
 }
 
 .new-project-manager__header-wrapper {
@@ -109,9 +110,8 @@ height: 70vh;
 }
 
 .new-project-manager__inner-container {
-  width: 200px;
   align-self: center;
-  padding: 50px;
+  padding: 10px;
 }
 
 .new-project-manager__inner-container--hidden {

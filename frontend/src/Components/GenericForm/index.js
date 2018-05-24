@@ -42,7 +42,7 @@ class GenericForm extends Component {
         >
           {this.props.title}
         </h3>
-        <div className={this.props.className + ' generic-form-input-container'}>
+        <div className={`${this.props.className}__container generic-form-input-container`}>
           {Object.keys(this.props.payload).map(index => {
             if (index !== 'form_settings') {
               if (this.props.payload[index].type === 'input') {

@@ -86,7 +86,6 @@ class ProjectManagerForm extends Component {
   render() {
     // this.props.managerDetails ? console.log(this.props.managerDetails): null
     return (
-      <div className="manager-details-form-wrapper">
         <GenericForm
           className="manager-details-form"
           payload={this.state.formPayload}
@@ -95,7 +94,6 @@ class ProjectManagerForm extends Component {
           updateParentState={this.handleChange}
           create={this.props.create}
         />
-      </div>
     );
   }
 }

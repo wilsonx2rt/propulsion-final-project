@@ -41,3 +41,7 @@
 .accordion-segment__btn-container {
   margin: 25px 0;
 }
+
+.overview__project-manager-accordion {
+  width: 350px;
+}
