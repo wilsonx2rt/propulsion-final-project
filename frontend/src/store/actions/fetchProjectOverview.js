@@ -1,7 +1,5 @@
 import { SERVER_URL, SET_PROJECT_OVERVIEW } from '../constants';
 import { validateTokens } from './validateTokens';
-import { projectOverview } from '../reducers/projectOverview';
-import { fetchCurrentUserActionCreator } from './fetchCurrentUser';
 
 export const fetchProjectOverviewActionCreator = (state, props) => (
   dispatch,

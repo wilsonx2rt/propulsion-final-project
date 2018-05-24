@@ -1,6 +1,5 @@
 import { SERVER_URL, SET_MANAGER_OVERVIEW } from '../constants';
 import { validateTokens } from './validateTokens';
-import { projectManager } from '../reducers/managerOverview';
 
 export const fetchManagerOverviewActionCreator = props => (
   dispatch,

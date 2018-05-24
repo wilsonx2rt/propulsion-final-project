@@ -1,5 +1,5 @@
 import { validateTokens } from "./validateTokens";
-import { SERVER_URL, SET_PROJECT_ALLOCATIONS } from '../constants';
+import { SET_PROJECT_ALLOCATIONS } from '../constants';
 
 export const getProjectAllocationsAction = (props, url) => (dispatch, getState) => {
   validateTokens(getState(), dispatch, props)

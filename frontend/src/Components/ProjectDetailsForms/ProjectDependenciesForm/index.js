@@ -4,13 +4,11 @@ import { withRouter } from 'react-router-dom';
 import './index.css';
 
 import GenericForm from '../../GenericForm';
-import Button from '../../Button';
-import { SERVER_URL, SET_PROJECT_MILESTONES } from '../../../store/constants';
+import { SERVER_URL } from '../../../store/constants';
 import { getProjectDependenciesAction } from '../../../store/actions/getProjectDependenciesAction';
 import { postProjectDependencyAction } from '../../../store/actions/postProjectDependencyAction';
 import GenericProjectFeatureList from '../../GenericProjectFeatureList';
-import PaginationButtons from "../../GenericProjectFeatureList/PaginationButtons";
-import { goNextPage, goPrevPage, grabModifiedFields, getFetchBody, resetFormPayload, replaceNullWithEmptyString } from '../helpers';
+import { grabModifiedFields, getFetchBody, replaceNullWithEmptyString } from '../helpers';
 
 
 class ProjectDependenciesForm extends Component {
@@ -54,6 +52,7 @@ class ProjectDependenciesForm extends Component {
       if (dependency[key] !== undefined && dependency[key] !== null && newState.formPayload[key].value !== dependency[key]){
         newState.formPayload[key].value = dependency[key];
       }
+      return null;
     })
     this.setState({
       newState,
@@ -71,6 +70,7 @@ class ProjectDependenciesForm extends Component {
         dependency_id = dependency.id;
         delete body.project;
       }
+      return null;
     })
     if (Object.keys(body).length !== 0){
       // resetFormPayload(this);

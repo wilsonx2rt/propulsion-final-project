@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createNewManagerActionCreator, deleteManagerActionCreator, updateManagerActionCreator } from '../../store/actions/managerActions';
-import Button from '../Button';
 import GenericForm from '../GenericForm';
 import './index.css';
 
@@ -71,9 +70,9 @@ class ProjectManagerForm extends Component {
         this.props
       );
       this.props.dispatch(action);
-      const form = e.target;
-      const formWrapper = form.parentElement;
-      const innerContainer = formWrapper.parentElement;
+      // const form = e.target;
+      // const formWrapper = form.parentElement;
+      // const innerContainer = formWrapper.parentElement;
       // hide on submit
       this.props.toggleClass()
     }
