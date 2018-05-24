@@ -1,5 +1,5 @@
 import { validateTokens } from "./validateTokens";
-import { SERVER_URL, SET_YEARLY_FORECASTS } from '../constants';
+import { SET_YEARLY_FORECASTS } from '../constants';
 
 export const getYearlyForecastAction = (props, url) => (dispatch, getState) => {
   validateTokens(getState(), dispatch, props)

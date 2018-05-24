@@ -1,5 +1,4 @@
 import { setTokens } from './userActions';
-import { SERVER_URL } from '../constants';
 import {fetchCurrentUserActionCreator } from '../actions/fetchCurrentUser';
 
 export const fetchLocalUser = () => (dispatch, getState) => {

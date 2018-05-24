@@ -32,6 +32,7 @@ export const getFetchBody = (arr) => {
         body[bodyKey] = [];
         field[bodyKey].value.map(manager => {
           body[bodyKey].push(manager.id)
+          return null;
         })
       }
       else {
@@ -41,6 +42,7 @@ export const getFetchBody = (arr) => {
     else {
       body[bodyKey] = field[bodyKey].value;
     }
+    return null;
   })
   return body;
 }
@@ -59,13 +61,14 @@ export const resetFormPayload = (componentThis) => {
         if (newState[property][key].value){
           newState[property][key].value = '';
         }
-        
+        return null;
       });
       if (property === 'all_managers'){
         const empty = [];
         newState[property] = empty;
       }
     }
+    return null;
   })
   componentThis.setState(newState);
 }
@@ -74,6 +77,7 @@ export const hasPM = (arr, manager) => {
   let managerIsInArray = false;
   arr.map(item => {
     if(item.id === manager.id) managerIsInArray = true;
+    return null;
   })
   return managerIsInArray;
 }

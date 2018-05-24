@@ -10,7 +10,7 @@ class Header extends Component {
     return (
       <div className='header'>
         <Link to="/overview"><img src={bernLogo} alt="bern logo"/></Link>
-        <h1>Stadtgrün-PPM</h1>
+        <h1>Matryoshka</h1>
       </div>
     )
   }

@@ -159,12 +159,11 @@ class Overview extends Component {
                 />
               </div>
             </div>
-            {Object.keys(this.props.overview.managerOverview).length !== 0
+            {Object.keys(this.props.overview && this.props.overview.managerOverview).length !== 0
               ? this.props.overview.managerOverview.map((manager, index) => {
                   return (
-                    <div className="overview__project-manager-accordion">
+                    <div key={index} className="overview__project-manager-accordion">
                       <AccordionSegment
-                        key={index}
                         AccordionSegmentTitle={`${manager.first_name}-${
                           manager.last_name
                         }`}
