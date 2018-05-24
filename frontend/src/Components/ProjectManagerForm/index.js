@@ -46,6 +46,10 @@ class ProjectManagerForm extends Component {
     return null;
   };
 
+  handleChange = input_array => {
+    this.state.formPayload[input_array[0]].value = input_array[1];
+  };
+
   handleSubmit = e => {
     if (!this.props.create) {
       const action = updateManagerActionCreator(
@@ -75,10 +79,6 @@ class ProjectManagerForm extends Component {
     }
   };
 
-  handleChange = input_array => {
-    this.state.formPayload[input_array[0]].value = input_array[1];
-  };
-
   handleDelete = () => {
     let action = deleteManagerActionCreator(this.props);
     this.props.dispatch(action);
@@ -92,9 +92,10 @@ class ProjectManagerForm extends Component {
           className="manager-details-form"
           payload={this.state.formPayload}
           onSubmit={this.handleSubmit}
+          onDelete={this.handleDelete}
           updateParentState={this.handleChange}
+          create={this.props.create}
         />
-        <Button handleClick={this.handleDelete} btnText="Löschen" />
       </div>
     );
   }

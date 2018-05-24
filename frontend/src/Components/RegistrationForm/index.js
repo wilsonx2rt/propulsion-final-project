@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './index.css';
 import Button from '../Button';
 import { withRouter } from 'react-router-dom';
 
@@ -39,8 +40,11 @@ class RegistrationForm extends Component {
       body: JSON.stringify(content)
     };
     this.state.password === this.state.password_repeat
-      ? fetch(`${SERVER_URL}registration/validation/`, config).then(response =>
-          response.ok ? this.props.history.push(`/registration-success/`) : alert(' Registrierung fehlgeschlagen')
+      ? fetch(`${SERVER_URL}registration/validation/`, config).then(
+          response =>
+            response.ok
+              ? this.props.history.push(`/registration-success/`)
+              : alert(' Registrierung fehlgeschlagen')
         )
       : alert('Passwörter nicht übereinstimmen');
   };
@@ -53,30 +57,57 @@ class RegistrationForm extends Component {
 
   render() {
     return (
-      <div className="registration-form">
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          value={this.state.email}
-          disabled="true"
-        />
-        <label htmlFor="validation-code">Code</label>
-        <input
-          type="text"
-          id="validation-code"
-          value={this.state.code}
-          disabled="true"
-        />
-        <label htmlFor="password">Password</label>
-        <input onChange={this.handleChange} type="password" id="password" />
-        <label htmlFor="password">Password Repeat</label>
-        <input
-          onChange={this.handleChange}
-          type="password"
-          id="password_repeat"
-        />
-        <Button handleClick={this.handleClick} btnText="Registrieren" />
+      <div className="registration-page-container">
+        <div className="registration-form">
+          <div className="registration__input-wrapper">
+            <label htmlFor="email">Email</label>
+            <input
+              className="registration__input"
+              type="email"
+              id="email"
+              value={this.state.email}
+              disabled="true"
+            />
+          </div>
+          <div className="registration__input-wrapper">
+            <label htmlFor="validation-code">Code</label>
+            <input
+              className="registration__input"
+              type="text"
+              id="validation-code"
+              value={this.state.code}
+              disabled="true"
+            />
+          </div>
+          <div className="registration__input-wrapper" id="password-wrapper">
+            <label htmlFor="password">Password</label>
+            <input
+              className="registration__input"
+              onChange={this.handleChange}
+              type="password"
+              id="password"
+            />
+          </div>
+          <div
+            className="registration__input-wrapper"
+            id="password-repeat-wrapper"
+          >
+            <label htmlFor="password">Password Repeat</label>
+            <input
+              className="registration__input"
+              onChange={this.handleChange}
+              type="password"
+              id="password_repeat"
+            />
+          </div>
+          <div className="button-wrapper">
+            <Button
+              className="generic-form__button"
+              handleClick={this.handleClick}
+              btnText="Registrieren"
+            />
+          </div>
+        </div>
       </div>
     );
   }

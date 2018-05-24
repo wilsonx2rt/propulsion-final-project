@@ -75,12 +75,12 @@ class Overview extends Component {
   toggleClass = () => {
     let visible = { ...this.state.visible };
     if (
-      this.state.visible === 'new-project-manager__inner-container--hidden '
+      this.state.visible === 'new-project-manager__inner-container--hidden'
     ) {
       visible = 'new-project-manager__inner-container';
       this.setState({ visible });
     } else {
-      visible = 'new-project-manager__inner-container--hidden ';
+      visible = 'new-project-manager__inner-container--hidden';
       this.setState({ visible });
     }
   };
@@ -103,20 +103,21 @@ class Overview extends Component {
 
   render() {
     return (
-      <div>
+      <div className="overview__container">
         {/* hide search box if user id non admin */}
         <div className={this.state.isAdmin === true ? '' : 'hidden-element'}>
           <SearchBox />
         </div>
         <div className="overview__top-header">
           <h2>Protfolio-Übersicht</h2>
-          <div>
-            <Button handleClick={this.handleClick} btnText="Neu Project" />
+          <div className="overview__new-project__container">
+            <Button handleClick={this.handleClick} btnText="Neu Project" className="overview__new-project__button" />
             <input
               className="overview__new-project-input"
               onChange={this.handleChange}
               id="newProjectName"
               type="text"
+              placeholder="Projekt Name"
             />
           </div>
         </div>
@@ -155,6 +156,7 @@ class Overview extends Component {
               <div className={this.state.visible}>
                 <ProjectManagerForm
                   create="true"
+                  // set display non on response.ok
                   toggleClass={this.toggleClass}
                 />
               </div>
