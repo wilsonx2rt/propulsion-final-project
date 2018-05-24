@@ -1,14 +1,44 @@
 .registration-page-container {
-  height: 100vh;
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .registration-form {
-  background-color: rgb(135, 136, 138, 0.1);
+  border: solid#d3d3d3 1px;
+  width: 700px;
+  height: 600px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   align-items: center;
-  height: 400px;
-  width: 400px;
-  margin: 150px auto
+  flex-direction: column;
+  justify-content: center;
+}
+
+.registration__input-wrapper {
+  height: 98px;
+}
+
+.registration__input {
+  box-sizing: border-box;
+  width: 300px;
+  padding: 9px 35px 9px 10px;
+  margin: 12px;
+  font-size: 16px;
+  height: 40px;
+}
+
+#password,
+#password_repeat {
+  width: 300px;
+}
+
+#password-wrapper {
+  position: relative;
+  right: 15px;
+}
+
+#password-repeat-wrapper {
+  position: relative;
+  right: 40px;
 }

@@ -6,6 +6,7 @@ import './index.css';
 import AccordionSegment from '../../Components/AccordionSegment';
 import ProjectDataForm from '../../Components/ProjectDetailsForms/ProjectDataForm';
 import ProjectAssignmentForm from '../../Components/ProjectDetailsForms/ProjectAssignmentForm';
+import Footer from '../../Components/Footer'
 import ProjectAllocationsForm from '../../Components/ProjectDetailsForms/ProjectAllocationsForm';
 import ProjectFinancesForm from '../../Components/ProjectDetailsForms/ProjectFinancesForm';
 import ProjectMilestonesForm from '../../Components/ProjectDetailsForms/ProjectMilestonesForm';
@@ -26,19 +27,18 @@ class ProjectDetails extends Component {
     this.props.dispatch(action);
   };
 
-  handleClick = () => {
+  handleDelete = () => {
     this.props.dispatch(deleteProjectDataAction(this.props, this.state))
   }
 
   // TODO : remove connect and dropdown action from this component
   render() {
-    console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', this.props);
 
     return (
       <div className="project-details-container">
         <div className="project-details-container__header">
           <h1>{this.props.projectName? this.props.projectName : null}</h1>
-          <Button className='project-details-container__header__button' handleClick={this.handleClick} btnText="Projekt Löschen" />
+          <Button className='project-details-container__header__button generic-form__button--delete' handleClick={this.handleDelete} btnText="Projekt Löschen" />
         </div>
         <AccordionSegment AccordionSegmentTitle="Projectdaten">
           <ProjectDataForm project_id={this.props.match.params.project_id} />
@@ -73,6 +73,7 @@ class ProjectDetails extends Component {
             project_id={this.props.match.params.project_id}
           />
         </AccordionSegment>
+        <Footer />
       </div>
     );
   }
