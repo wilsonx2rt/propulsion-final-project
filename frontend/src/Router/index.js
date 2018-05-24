@@ -11,6 +11,7 @@ import Overview from './Overview';
 import ManagerDetails from './ManagerDetails';
 import Registration from './Registration';
 import RegistrationSucces from './RegistrationSuccess';
+import Footer from '../Components/Footer';
 // import Signup from './Signup';
 // import Footer from '../Сomponents/Footer';
 // import SignupValidation from './SignupValidation';

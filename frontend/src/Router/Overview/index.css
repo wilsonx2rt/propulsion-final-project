@@ -1,17 +1,37 @@
+.overview__container {
+height: 70vh;
+}
+
 .overview--wrapper {
   display: flex;
 }
 
 .overview__top-header {
   width: 80%;
+  margin-bottom: 50px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.overview__top-header > div {
+.overview__new-project__container {
   position: relative;
-  right: 30px;
+  right: 60px;
+}
+
+.overview__new-project__button {
+  width: 150px;
+  height: 35px;
+  margin-right: 25px;
+  font-size: 12pt;
+  border-radius: 3px;
+  background-color: rgba(221, 221, 221, 0.3);
+  cursor: pointer;
+}
+
+.overview__new-project__button:hover {
+  background-color: rgb(105, 0, 0);
+  color: #fff;
 }
 
 .overview__projects--header,
@@ -39,6 +59,7 @@
 
 .overview__new-project-input {
   height: 40px;
+  width: 300px;
   border: 1px solid #ddd;
   padding-left: 15px;
   font-size: 12pt;

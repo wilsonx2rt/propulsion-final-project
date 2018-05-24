@@ -12,3 +12,7 @@
 .manager-details-form__input-container {
   margin: 10px 0;
 }
+
+.new-project-manager__inner-container {
+  align-items: flex-start;
+}

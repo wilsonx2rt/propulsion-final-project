@@ -1,7 +1,7 @@
 .login-form-wrapper {
-    background-color: rgb(135, 136, 138, 0.3);
-    width: 400px;
-    height: 250px;
+    border:solid#d3d3d3 1px;
+    width: 600px;
+    height: 400px;
 }
 
 .login-form {
@@ -29,9 +29,13 @@
 
 .login-form__input {
     box-sizing: border-box;
-    width: 250px;
+    width: 300px;
     padding: 9px 35px 9px 10px;
     margin: 12px;
     font-size: 16px;
     height: 40px;
 }
+
+input[name=password] {    
+    width: 350px;
+}   
