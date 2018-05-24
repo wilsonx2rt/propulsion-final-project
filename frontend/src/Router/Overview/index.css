@@ -27,6 +27,7 @@ height: 70vh;
   border-radius: 3px;
   background-color: rgba(221, 221, 221, 0.3);
   cursor: pointer;
+  outline: 0;
 }
 
 .overview__new-project__button:hover {
@@ -68,10 +69,11 @@ height: 70vh;
   font-family: sans-serif;
   background-color: #fff;
   border-radius: 3px;
+  outline: none;
 }
 
 #overview__managers--wrapper {
-  width: 20%;
+  width: 300px;
   display: flex;
   flex-direction: column;
 }
@@ -82,6 +84,7 @@ height: 70vh;
   display: flex;
   flex-direction: column;
   margin-top: 10px;
+  width: 300px;
 }
 
 .new-project-manager__header-wrapper {

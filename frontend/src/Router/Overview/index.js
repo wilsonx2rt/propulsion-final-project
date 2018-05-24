@@ -75,12 +75,12 @@ class Overview extends Component {
   toggleClass = () => {
     let visible = { ...this.state.visible };
     if (
-      this.state.visible === 'new-project-manager__inner-container--hidden '
+      this.state.visible === 'new-project-manager__inner-container--hidden'
     ) {
       visible = 'new-project-manager__inner-container';
       this.setState({ visible });
     } else {
-      visible = 'new-project-manager__inner-container--hidden ';
+      visible = 'new-project-manager__inner-container--hidden';
       this.setState({ visible });
     }
   };
