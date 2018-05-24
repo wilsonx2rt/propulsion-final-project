@@ -12,7 +12,7 @@ const adminForm = {
   'form_settings': {type: 'project_data_form', },
   'project_responsibility': {value: '', type: 'dropdown', required: 'false', placeholder: 'Projektverantwortung'},
   'overall_pm_team': {value: '', type: 'dropdown', required: 'false', placeholder: 'Gesamtprojektleitung'},
-  'project_management': {value: '', type: 'project_management', required: 'false', placeholder: 'Projektleitung'},
+  'project_management': {value: [], type: 'project_management', required: 'false', placeholder: 'Projektleitung'},
   'planner_control': {value: '', type: 'dropdown', required: 'false', placeholder: 'Planerleistung'},
   'construction_management': {value: '', type: 'dropdown', required: 'false', placeholder: 'Bauleitung'},
   'illustrator': {value: '', type: 'dropdown', required: 'false', placeholder: 'ZeichnerIn'},
