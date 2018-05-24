@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './index.css';
-import GenericForm from '../GenericForm';
-import { updateManagerActionCreator, createNewManagerActionCreator, deleteManagerActionCreator } from '../../store/actions/managerActions';
-import { fetchManagerOverviewActionCreator } from '../../store/actions/fetchManagerOverview';
+import { createNewManagerActionCreator, deleteManagerActionCreator, updateManagerActionCreator } from '../../store/actions/managerActions';
 import Button from '../Button';
+import GenericForm from '../GenericForm';
+import './index.css';
 
 class ProjectManagerForm extends Component {
   constructor(props) {
@@ -80,7 +79,7 @@ class ProjectManagerForm extends Component {
     this.state.formPayload[input_array[0]].value = input_array[1];
   };
 
-  handleClick = () => {
+  handleDelete = () => {
     let action = deleteManagerActionCreator(this.props);
     this.props.dispatch(action);
   }
@@ -95,7 +94,7 @@ class ProjectManagerForm extends Component {
           onSubmit={this.handleSubmit}
           updateParentState={this.handleChange}
         />
-        <Button handleClick={this.handleClick} btnText="X" />
+        <Button handleClick={this.handleDelete} btnText="Löschen" />
       </div>
     );
   }

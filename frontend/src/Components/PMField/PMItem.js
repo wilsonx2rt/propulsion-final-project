@@ -15,6 +15,7 @@ class PMItem extends Component {
       const newState = Object.assign({}, prevState);
       nextProps.current_managers.map(manager => {
         if (nextProps.item && nextProps.item.id === manager.id) newState.isChecked = true;
+        return null;
       })
       return newState;
     }

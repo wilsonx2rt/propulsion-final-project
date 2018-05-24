@@ -8,6 +8,20 @@
   background-color: rgb(135, 136, 138, 0.1);
 }
 
+.list-item__project__manager {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list-item__project-name {
+  flex: 2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .list-item:hover {
   background-color: rgb(135, 136, 138, 0.7);
 }

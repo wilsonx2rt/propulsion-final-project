@@ -1,13 +1,13 @@
 .accordion-segment {
-  background-color: rgba(196, 196, 196, 0.1);
-  border-bottom: solid white 5px;
+  background-color: rgba(135, 136, 138, 0.1);
+  border-bottom: solid white 10px;
 }
 
 .accordion-segment__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 0;
+  padding: 10px 0;
   cursor: pointer;
 }
 

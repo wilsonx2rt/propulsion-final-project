@@ -7,8 +7,7 @@ import { getProjectAllocationsAction } from '../../../store/actions/getProjectAl
 import { postProjectAllocationAction } from '../../../store/actions/postProjectAllocationAction';
 import { SERVER_URL } from '../../../store/constants';
 import GenericProjectFeatureList from '../../GenericProjectFeatureList';
-import PaginationButtons from "../../GenericProjectFeatureList/PaginationButtons";
-import { goNextPage, goPrevPage, grabModifiedFields, getFetchBody, resetFormPayload, replaceNullWithEmptyString } from '../helpers';
+import { grabModifiedFields, getFetchBody, resetFormPayload, replaceNullWithEmptyString } from '../helpers';
 
 const adminForm = {
   'form_settings': {type: 'project_data_form', },
