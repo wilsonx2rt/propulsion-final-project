@@ -39,7 +39,7 @@ class RegistrationSerializer(serializers.Serializer):
     def send_registration_email(email, code):
         message = EmailMessage(
             subject='Registration',
-            body=f'This is your registration link =>> http://localhost:3000/registration/'
+            body=f'This is your registration link =>> http://forecastingtool.propulsion-learn.ch/registration/'
                  f'validation?email={email}&code={code}',
             to=[email],
         )

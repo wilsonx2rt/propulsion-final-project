@@ -1,6 +1,5 @@
 export const AUTHORIZE_USER = 'authoriseUser';
 export const SET_DROPDOWNS = 'setDropdowns;';
-export const SERVER_URL = 'http://localhost:8888/backend/api/';
 export const SET_PROJECT_DETAILS = 'setProjectDetails';
 export const SET_PROJECT_OVERVIEW = 'setProjectOverview';
 export const SET_MANAGER_OVERVIEW = 'setManagerOverview';
@@ -12,3 +11,5 @@ export const SET_PROJECT_ALLOCATIONS = 'setProjectAllocations';
 export const SET_MANAGER_DETAILS = 'setManagerDetails';
 export const SET_CURRENT_USER = 'setCurrentUser';
 export const LOG_OUT = 'logOut';
+
+export const SERVER_URL = process.env.NODE_ENV === 'development' ? 'http://localhost:8888/backend/api/' : 'http://forecastingtool.propulsion-learn.ch/backend/api/';
