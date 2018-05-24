@@ -24,7 +24,6 @@ a.nav-bar__item , div.nav-bar__item{
 }
 
 div.nav-bar__item--logout {
-  color: rgba(0,0,255, 0.6);
   margin-left: 5px;
   cursor: pointer;
 }

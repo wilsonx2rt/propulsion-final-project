@@ -73,7 +73,7 @@ class ProjectDependenciesForm extends Component {
       }
     })
     if (Object.keys(body).length !== 0){
-      resetFormPayload(this);
+      // resetFormPayload(this);
       const action = postProjectDependencyAction(this.props, body, method, dependency_id)
       this.props.dispatch(action);
     }
@@ -81,7 +81,7 @@ class ProjectDependenciesForm extends Component {
 
   render() {
     return (
-      <div className="project-dependencies-form-wrapper">
+      <div className="project-dependencies-form-wrapper generic-form-container">
         <GenericForm 
           title='Projektabhängigkeiten'
           className='project-dependencies-form'
@@ -97,6 +97,7 @@ class ProjectDependenciesForm extends Component {
           next={ this.props.project_dependencies.next }
           previous={ this.props.project_dependencies.previous }
           action={ getProjectDependenciesAction }
+          payload={ this.state.formPayload } 
         />
       </div>
     )

@@ -98,7 +98,7 @@ class ProjectMilestonesForm extends Component {
       }
     })
     if (Object.keys(body).length !== 0){
-      resetFormPayload(this);
+      // resetFormPayload(this);
       const action = postProjectMilestone(this.props, body, method, milestone_id)
       this.props.dispatch(action);
     }
@@ -106,7 +106,7 @@ class ProjectMilestonesForm extends Component {
 
   render() {
     return (
-      <div className="project-milestones-form-wrapper">
+      <div className="project-milestones-form-wrapper generic-form-container">
         <GenericForm 
           title='Projektmeilensteine'
           className='project-milestones-form'
@@ -122,6 +122,7 @@ class ProjectMilestonesForm extends Component {
           next={ this.props.project_milestones.next }
           previous={ this.props.project_milestones.previous }
           action={ getProjectMilestonesAction }  
+          payload={ this.state.formPayload } 
         />
         {/* <PaginationButtons
           next={ this.props.project_milestones.next }

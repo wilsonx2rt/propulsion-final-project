@@ -52,7 +52,7 @@ class ProjectDataForm extends Component {
     super(props);
     this.state = {
       formPayload: {},
-      isAdmin: null,
+      isAdmin: false,
     };
   }
 

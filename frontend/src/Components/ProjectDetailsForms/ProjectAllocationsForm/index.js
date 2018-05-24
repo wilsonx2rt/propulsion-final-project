@@ -15,7 +15,7 @@ const adminForm = {
   'quarter': {value: '', type: 'dropdown', required: 'false', placeholder: 'Quartal'},
   'project_phase': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Phase'},
   'project_responsibility': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Projektverantwortung'},
-  'overall_pm_team__allocation': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Gesamtprojektleitung'},
+  'overall_pm_team_allocation': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Gesamtprojektleitung'},
   'project_management_allocation': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Projektleitung'},
   'planner_control_allocation': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Planerleistung'},
   'construction_management_allocation': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Bauleitung'},
@@ -26,7 +26,8 @@ const adminForm = {
 }
 
 const nonAdminForm = {
-  'form_settings': {type: 'project_data_form_nonadmin', },
+  'year': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Jahr'},
+  'quarter': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Quartal'},
   'overall_pm_team__allocation': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Gesamtprojektleitung', readonly: 'true'},
   'project_management_allocation': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Projektleitung', readonly: 'true'},
   'planner_control_allocation': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Planerleistung', readonly: 'true'},
@@ -34,6 +35,7 @@ const nonAdminForm = {
   'illustrator_allocation': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'ZeichnerIn', readonly: 'true'},
   'communications_allocation': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Kommunikation', readonly: 'true'},
   'total_allocation': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Total Aufwand', readonly: 'true'},
+  'form_settings': {type: 'project_data_form_nonadmin', },
 }
 
 
@@ -124,7 +126,7 @@ class ProjectAllocationsForm extends Component {
       }
     })
     if (Object.keys(body).length !== 0){
-      resetFormPayload(this);
+      // resetFormPayload(this);
       const action = postProjectAllocationAction(this.props, body, method, allocation_id)
       this.props.dispatch(action);
     }
@@ -132,7 +134,7 @@ class ProjectAllocationsForm extends Component {
 
   render() {
     return (
-      <div className="project-allocation-form-wrapper">
+      <div className="project-allocation-form-wrapper generic-form-container">
         <GenericForm 
           title='Projektablauf'
           className={ this.state.isAdmin ? 'project-allocation-form' : 'hidden-element'}
@@ -148,6 +150,7 @@ class ProjectAllocationsForm extends Component {
           next={ this.props.project_allocations.next }
           previous={ this.props.project_allocations.previous }
           action={ getProjectAllocationsAction }
+          payload={ this.state.formPayload } 
         />
       </div>
     )
