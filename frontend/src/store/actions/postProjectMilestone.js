@@ -18,11 +18,9 @@ export const postProjectMilestone = (props, body, method, milestone_id) => (disp
     let url;
     if (method === 'PATCH') url = `${SERVER_URL}project_milestones/${milestone_id}/`
     else if (method === "POST") url = `${SERVER_URL}project_milestones/new/`
-    console.log(config);
     return fetch(url, config);
   })
   .then(response => {
-    console.log(response);
     if (response.ok) {
       const fetchURL = `${SERVER_URL}project_milestones/milestones/${props.project_id}/`
       dispatch(getProjectDetailsAction(props));

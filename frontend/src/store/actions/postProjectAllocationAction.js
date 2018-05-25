@@ -18,11 +18,9 @@ export const postProjectAllocationAction = (props, body, method, allocation_id) 
     let url;
     if (method === 'PATCH') url = `${SERVER_URL}project_allocation/${allocation_id}/`
     else if (method === "POST") url = `${SERVER_URL}project_allocation/new/`
-    console.log(config);
     return fetch(url, config);
   })
   .then(response => {
-    console.log(response);
     if (response.ok) {
       const fetchURL = `${SERVER_URL}project_allocation/allocations/${props.project_id}/`
       dispatch(getProjectDetailsAction(props));

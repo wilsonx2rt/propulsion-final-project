@@ -15,11 +15,9 @@ export const getYearlyForecastAction = (props, url) => (dispatch, getState) => {
   }
   )
   .then(response => {
-    // console.log(response);
     return response.json()
   })
   .then(yearly_forecasts => {
-    // console.log(yearly_forecasts);
     const action = setYearlyForecasts(yearly_forecasts);
     dispatch(action);
   })

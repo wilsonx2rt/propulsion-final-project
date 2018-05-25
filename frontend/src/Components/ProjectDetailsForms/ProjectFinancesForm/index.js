@@ -182,7 +182,6 @@ class ProjectFinancesForm extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  // console.log('--------->', state.project_details.project_finances);
   if(state.yearly_forecasts.results){
     state.yearly_forecasts.results = replaceNullWithEmptyString(state.yearly_forecasts.results);
   }

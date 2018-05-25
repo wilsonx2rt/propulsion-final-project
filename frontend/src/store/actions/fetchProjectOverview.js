@@ -5,7 +5,6 @@ export const fetchProjectOverviewActionCreator = (state, props) => (
   dispatch,
   getState
 ) => {
-  console.log('hola');
   validateTokens(getState(), dispatch, props)
     .then(response => {
       const headers = {

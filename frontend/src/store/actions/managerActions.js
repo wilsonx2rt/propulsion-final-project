@@ -47,7 +47,6 @@ export const updateManagerActionCreator = (state, props) => (
     })
     .then(response => response.json())
     .then(manager_details => {
-      console.log(manager_details);
       let action = setManagerDetails(manager_details);
       dispatch(action);
       action = fetchManagerOverviewActionCreator(this.props);
@@ -79,7 +78,7 @@ export const createNewManagerActionCreator = (state, props) => (
     })
     .then(response => {
       response.status === 200
-        ? console.log('registration success')
+        ? null
         : alert('Error');
       let action = fetchManagerOverviewActionCreator(props);
       dispatch(action);

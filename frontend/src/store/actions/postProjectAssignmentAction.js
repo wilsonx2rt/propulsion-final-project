@@ -17,11 +17,9 @@ export const postProjectAssignmentAction = (props, body, method, assignment_id) 
     let url;
     if (method === 'PATCH') url = `${SERVER_URL}project_assignment/${assignment_id}/`
     else if (method === "POST") url = `${SERVER_URL}project_assignment/new/`
-    // console.log(config);
     return fetch(url, config);
   })
   .then(response => {
-    // console.log(response);
     if (response.ok) {
       dispatch(getProjectDetailsAction(props));
     }

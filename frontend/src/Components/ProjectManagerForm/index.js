@@ -84,7 +84,6 @@ class ProjectManagerForm extends Component {
   }
 
   render() {
-    // this.props.managerDetails ? console.log(this.props.managerDetails): null
     return (
         <GenericForm
           className="manager-details-form"

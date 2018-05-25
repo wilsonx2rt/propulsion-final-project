@@ -76,7 +76,6 @@ class ProjectAssignmentForm extends Component {
           newState.all_managers = nextProps.project_assignment.project_management;
         }
       }
-      // console.log(newState);
       return newState;
     }
     return null;

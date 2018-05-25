@@ -15,11 +15,9 @@ export const getProjectAllocationsAction = (props, url) => (dispatch, getState) 
   }
   )
   .then(response => {
-    // console.log(response);
     return response.json()
   })
   .then(project_allocations => {
-    // console.log(project_allocations);
     const action = setProjectAllocations(project_allocations);
     dispatch(action);
   })

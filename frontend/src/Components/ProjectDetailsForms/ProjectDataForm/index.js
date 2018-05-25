@@ -74,7 +74,6 @@ class ProjectDataForm extends Component {
         }
       }
       Object.keys(newState.formPayload).map(key => {
-        // console.log(key, prevState.formPayload[key], nextProps.project_data[key]);
         if (key !== 'form_settings'){
           if (nextProps.project_data[key] !== null && nextProps.project_data[key] !== undefined ){
             newState.formPayload[key].value = nextProps.project_data[key];
@@ -82,7 +81,6 @@ class ProjectDataForm extends Component {
         }
         return key;
       })
-      // console.log(newState);
       return newState;
     }
     return null;
@@ -121,7 +119,6 @@ class ProjectDataForm extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  // console.log('PROJECT DATA', state.project_details);
   if (state.project_details) {
     state.project_details = replaceNullWithEmptyString(state.project_details);
   }

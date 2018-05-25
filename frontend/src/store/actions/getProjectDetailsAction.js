@@ -22,11 +22,9 @@ export const getProjectDetailsAction = (props) => (dispatch, getState) => {
   }
   )
   .then(response => {
-    // console.log(response);
     return response.json()
   })
   .then(project_details => {
-    // console.log(project_details);
     const action = setProjectDetails(project_details);
     dispatch(action);
     dispatch(fetchManagerOverviewActionCreator(props));

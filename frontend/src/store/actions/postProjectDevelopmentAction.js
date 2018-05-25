@@ -17,11 +17,9 @@ export const postProjectDevelopmentAction = (props, body, method, development_id
     let url;
     if (method === 'PATCH') url = `${SERVER_URL}project_development/${development_id}/`
     else if (method === "POST") url = `${SERVER_URL}project_development/new/`
-    // console.log(config);
     return fetch(url, config);
   })
   .then(response => {
-    // console.log(response);
     if (response.ok) {
       dispatch(getProjectDetailsAction(props));
     }

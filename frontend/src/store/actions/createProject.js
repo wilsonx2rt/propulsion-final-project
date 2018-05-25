@@ -3,7 +3,6 @@ import { validateTokens } from './validateTokens';
 import { fetchProjectOverviewActionCreator } from './fetchProjectOverview';
 
 export const createNewProjectActionCreator = (state, props) => (dispatch, getState) => {
-  console.log(state);
   validateTokens(getState(), dispatch, props)
   .then(response => {
     const headers = {
@@ -22,7 +21,7 @@ export const createNewProjectActionCreator = (state, props) => (dispatch, getSta
   })
   .then(response => {
     response.status === 201
-      ? console.log('project created')
+      ? null
       : alert('Error');
     let action = fetchProjectOverviewActionCreator(state,props);
     dispatch(action);

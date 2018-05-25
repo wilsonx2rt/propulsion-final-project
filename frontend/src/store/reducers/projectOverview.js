@@ -5,7 +5,6 @@ const initialState = {};
 export const projectOverview = (state = initialState, action) => {
   switch (action.type) {
     case SET_PROJECT_OVERVIEW: {
-      // console.log('from overview reducer');
       return action.payload.projectOverview;
     }
     default:

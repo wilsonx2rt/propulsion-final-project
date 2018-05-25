@@ -17,7 +17,6 @@ export const deleteProjectDataAction = (props, state) => (dispatch, getState) =>
       return fetch(`${SERVER_URL}project_data/${id}/`, config);
     })
     .then(response => {
-      console.log(response);
       // ensure that last project is not renderd in overview after redirect
       dispatch(setProjectOverview({}));
       response.ok ? props.history.push('/overview') : alert('Error');
