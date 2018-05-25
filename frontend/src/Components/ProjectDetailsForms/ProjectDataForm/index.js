@@ -13,7 +13,7 @@ import { grabModifiedFields, getFetchBody, resetFormPayload, replaceNullWithEmpt
 
 const adminForm = {
   'form_settings': {type: 'project_data_form', },
-  'name': {value: '', type: 'input', inputType: 'text', required: 'true', placeholder: 'Project Name', readonly: 'true'},
+  'name': {value: '', type: 'input', inputType: 'text', required: 'true', placeholder: 'Projekt Name', readonly: 'true'},
   'radar_portfolio': {value: {}, type: 'dropdown', required: 'false', placeholder: 'Radar oder Projektportfolio'},
   'business_proposal': {value: {}, type: 'dropdown', required: 'false', placeholder: 'Geschäftsantrag'},
   'project_type': {value: {}, type: 'dropdown', required: 'false', placeholder: 'Projekttyp'},
@@ -39,7 +39,7 @@ const adminForm = {
 
 const nonAdminForm = {
   'form_settings': {type: 'project_data_form', },
-  'name': {value: '', type: 'input', inputType: 'text', required: 'true', placeholder: 'Project Name', readonly: 'true'},
+  'name': {value: '', type: 'input', inputType: 'text', required: 'true', placeholder: 'Projekt Name', readonly: 'true'},
   'project_type': {value: {}, type: 'input', inputType: 'text', required: 'false', placeholder: 'Projekttyp',  readonly: 'true'},
   'project_priority': {value: {}, type: 'input', inputType: 'text', required: 'false', placeholder: 'Projektpriorität',  readonly: 'true'},
   'control_cycle': {value: {}, type: 'input', inputType: 'text', required: 'false', placeholder: 'Steuerungszyklus',  readonly: 'true'},
