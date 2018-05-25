@@ -109,9 +109,9 @@ height: 70vh;
 }
 
 .new-project-manager__inner-container {
-  width: 200px;
+  width: 100%;
   align-self: center;
-  padding: 50px;
+
 }
 
 .new-project-manager__inner-container--hidden {
@@ -120,4 +120,23 @@ height: 70vh;
 
 .overview__project-manager-accordion > div > div > div {
   font-size: 16px;
+}
+
+div.manager-details-form__input-container {
+  width: 90%;
+  margin: 0px;
+}
+
+div.manager-details-form__button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+button.manager-details-form__button {
+  margin: 10% 15px;;
+}
+
+div.overview__project-manager-accordion__inner-container {
+  padding: 0;
 }

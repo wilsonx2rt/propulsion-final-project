@@ -108,7 +108,7 @@ class ProjectDataForm extends Component {
     return (
       <div className="project-data-form-wrapper generic-form-container">
         <GenericForm 
-          title='Projectdaten'
+          title='Projektdaten'
           className='project-data-form project-details__form'
           payload={ this.state.formPayload }
           onSubmit={ this.handleSubmit }

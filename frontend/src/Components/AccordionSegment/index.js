@@ -40,7 +40,7 @@ class AccordionSegment extends Component {
           />
         </div>
 
-        <div className={this.state.visible}>
+        <div className={ `${this.props.className}__inner-container ${this.state.visible}`}>
           {this.props.children}
           {/* <div className="accordion-segment__btn-container">
             <Button className="accordion-segment__btn" btnText="Save" />

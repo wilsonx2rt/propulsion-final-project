@@ -17,3 +17,7 @@ button.manager-details-form__button {
 .new-project-manager__inner-container {
   align-items: flex-start;
 }
+
+.manager-details-form-wrapper {
+  width: 100%;
+}

@@ -4,6 +4,7 @@ import AccordionSegment from '../../Components/AccordionSegment';
 import ProjectManagerForm from '../../Components/ProjectManagerForm';
 import Button from '../../Components/Button';
 import plus from '../../assets/plus.png';
+import Footer from '../../Components/Footer';
 import { connect } from 'react-redux';
 import './index.css';
 import { fetchProjectOverviewActionCreator } from '../../store/actions/fetchProjectOverview';
@@ -171,6 +172,7 @@ class Overview extends Component {
                         AccordionSegmentTitle={`${manager.first_name}-${
                           manager.last_name
                         }`}
+                        className='overview__project-manager-accordion'
                       >
                         <ProjectManagerForm managerDetails={manager} />
                       </AccordionSegment>
@@ -182,6 +184,7 @@ class Overview extends Component {
             {/* <List type="manager" overview={this.state.overview} /> */}
           </div>
         </div>
+        <Footer />
       </div>
     );
   }

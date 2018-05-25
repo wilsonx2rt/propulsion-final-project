@@ -131,7 +131,7 @@ class GenericForm extends Component {
             } else if (this.props.payload.form_settings.type === 'manager_details_form') {
               return (
                 <div 
-                  className="generic-form__buttons-container"
+                  className={ this.props.className + "__button-container generic-form__buttons-container"}
                   key={rand.generate(10)}
                 >
                   <Button
