@@ -1,5 +1,6 @@
 import { SERVER_URL , SET_DROPDOWNS } from '../constants';
 import { validateTokens } from './validateTokens';
+import {getProjectDetailsAction} from './getProjectDetailsAction';
 
 export const fetchDropdownsActionCreator = (props) => (dispatch, getState) => {
   validateTokens(getState(), dispatch, props)
@@ -19,6 +20,7 @@ export const fetchDropdownsActionCreator = (props) => (dispatch, getState) => {
   .then(dropdowns => {
     const action = setDropdowns(dropdowns);
     dispatch(action);
+    dispatch(getProjectDetailsAction(props));
   })
 }
 

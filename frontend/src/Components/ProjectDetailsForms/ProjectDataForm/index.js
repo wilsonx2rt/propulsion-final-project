@@ -56,10 +56,10 @@ class ProjectDataForm extends Component {
     };
   }
 
-  componentDidMount = () => {
-    const action = getProjectDetailsAction(this.props);
-    this.props.dispatch(action);
-  }
+  // componentDidMount = () => {
+  //   const action = getProjectDetailsAction(this.props);
+  //   this.props.dispatch(action);
+  // }
 
   static getDerivedStateFromProps = (nextProps, prevState) => {
     if (nextProps.project_data !== undefined && nextProps.project_finances !== null){
