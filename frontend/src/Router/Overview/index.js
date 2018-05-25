@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import './index.css';
+
 import SearchBox from '../../Components/SearchBox';
 import AccordionSegment from '../../Components/AccordionSegment';
 import ProjectManagerForm from '../../Components/ProjectManagerForm';
 import Button from '../../Components/Button';
 import plus from '../../assets/plus.png';
-import { connect } from 'react-redux';
-import './index.css';
+
 import { fetchProjectOverviewActionCreator } from '../../store/actions/fetchProjectOverview';
 import { fetchManagerOverviewActionCreator } from '../../store/actions/fetchManagerOverview';
 import { validateTokensAction } from '../../store/actions/validateTokens';
