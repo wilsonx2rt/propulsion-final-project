@@ -62,7 +62,6 @@ class ProjectMilestonesForm extends Component {
       const yearID = this.state.formPayload['year'].value.id;
       const weekID = this.state.formPayload['milestone_calendar_week'].value.id;
       const milestone = this.checkExistingMilestones(this.props.total_milestones, yearID, weekID);
-      console.log(milestone);
       if (Object.keys(milestone).length !== 0){
         this.loadMilestone(milestone);
       }
@@ -136,7 +135,6 @@ class ProjectMilestonesForm extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  // console.log('--------->', state.project_details.project_milestones);
   if (state.project_milestones.results) {
     state.project_milestones.results = replaceNullWithEmptyString(state.project_milestones.results);
   }

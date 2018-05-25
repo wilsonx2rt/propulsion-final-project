@@ -6,7 +6,6 @@ export const validateTokensAction = (props) => (dispatch, getState) => {
 }
 
 export const validateTokens = (state, dispatch, props) => {
-  // console.log('validating tokens');
   if (!state.tokens.access) {
     dispatch(logOutAction);
   }
@@ -28,7 +27,6 @@ export const validateTokens = (state, dispatch, props) => {
   });
   return fetch(SERVER_URL + 'auth/token/verify/', accessConfig)
     .then(response => {
-      // console.log(response);
       if(!response.ok){
         // checking refresh token
         const refresh = state.tokens.refresh;
@@ -48,7 +46,6 @@ export const validateTokens = (state, dispatch, props) => {
       if (response === undefined) {
         return;
       }
-      // console.log(response);
       if (response.status===200){
         const refreshBody = {
           refresh: state.tokens.refresh,
@@ -61,7 +58,6 @@ export const validateTokens = (state, dispatch, props) => {
         return fetch(SERVER_URL + 'auth/token/refresh/', refreshConfig);
       }
       else {
-        // console.log('in da logout');
         dispatch(logOutAction(props));
         return;
       }
@@ -70,14 +66,12 @@ export const validateTokens = (state, dispatch, props) => {
       if (response === undefined) {
         return;
       }
-      // console.log(response);
       return response.json()
     })
     .then(data => {
       if (data === undefined) {
         return;
       }
-      // console.log(data);
       const tokens = {
         refresh: state.tokens.refresh,
         access: data.access, 

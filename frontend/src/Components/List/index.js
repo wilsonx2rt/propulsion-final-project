@@ -7,7 +7,7 @@ class List extends Component {
   render() {
     if (this.props.overview) {
       return (
-        <div>
+        <div className="list__wrapper">
           <ul className="no-style">
             {this.props.type === 'projects'
               ? this.props.overview.projectOverview.map((project, index) => {

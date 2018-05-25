@@ -10,8 +10,13 @@ button.manager-details-form__button {
   margin-left: 0px;
 }
 
+.manager-details-form__container {
+  width: 300px;
+}
 .manager-details-form__input-container {
-  margin: 10px 0;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0;
 }
 
 .new-project-manager__inner-container {

@@ -12,4 +12,7 @@ export const SET_MANAGER_DETAILS = 'setManagerDetails';
 export const SET_CURRENT_USER = 'setCurrentUser';
 export const LOG_OUT = 'logOut';
 
-export const SERVER_URL = process.env.NODE_ENV === 'development' ? 'http://localhost:8888/backend/api/' : 'http://forecastingtool.propulsion-learn.ch/backend/api/';
+export const SERVER_URL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:8888/backend/api/'
+    : 'http://forecastingtool.propulsion-learn.ch/backend/api/';

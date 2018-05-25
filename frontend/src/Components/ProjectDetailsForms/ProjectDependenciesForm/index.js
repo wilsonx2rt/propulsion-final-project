@@ -105,7 +105,6 @@ class ProjectDependenciesForm extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  // console.log('--------->', state.project_dependencies);
   if (state.project_dependencies.results) {
     state.project_dependencies.results = replaceNullWithEmptyString(state.project_dependencies.results);
   }

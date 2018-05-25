@@ -17,11 +17,9 @@ export const postYearlyForecastAction = (props, body, method, forecast_id) => (d
     let url;
     if (method === 'PATCH') url = `${SERVER_URL}yearly_forecasts/${forecast_id}/`
     else if (method === "POST") url = `${SERVER_URL}yearly_forecasts/new/`
-    // console.log(config);
     return fetch(url, config);
   })
   .then(response => {
-    // console.log(response);
     if (response.ok) {
       dispatch(getProjectDetailsAction(props));
     }

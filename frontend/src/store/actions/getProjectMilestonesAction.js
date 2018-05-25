@@ -15,11 +15,9 @@ export const getProjectMilestonesAction = (props, url) => (dispatch, getState) =
   }
   )
   .then(response => {
-    // console.log(response);
     return response.json()
   })
   .then(project_milestones => {
-    // console.log(project_milestones);
     const action = setProjectMilestones(project_milestones);
     dispatch(action);
   })

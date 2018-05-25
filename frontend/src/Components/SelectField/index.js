@@ -70,7 +70,6 @@ class SelectField extends Component{
 }
 
 const mapStateToProps = (state, props) => {
-  // console.log('DRRRRRRRRR',state.dropdowns);
   return {
     dropdowns: state.dropdowns
   }

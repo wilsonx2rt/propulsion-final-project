@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import './index.css';
+
 import SearchBox from '../../Components/SearchBox';
 import AccordionSegment from '../../Components/AccordionSegment';
 import ProjectManagerForm from '../../Components/ProjectManagerForm';

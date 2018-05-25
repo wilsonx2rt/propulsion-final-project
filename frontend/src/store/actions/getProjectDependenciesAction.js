@@ -15,11 +15,9 @@ export const getProjectDependenciesAction = (props, url) => (dispatch, getState)
   }
   )
   .then(response => {
-    // console.log(response);
     return response.json()
   })
   .then(project_dependencies => {
-    // console.log(project_dependencies);
     const action = setProjectDependencies(project_dependencies);
     dispatch(action);
   })

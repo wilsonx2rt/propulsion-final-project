@@ -162,14 +162,12 @@ class ProjectAllocationsForm extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  // console.log('--------->',state.project_allocations);
   if (state.project_details && state.project_details.project_allocations) {
     state.project_details.project_allocations = replaceNullWithEmptyString(state.project_details.project_allocations);
   }
   if (state.project_allocations.results) {
     state.project_allocations.results = replaceNullWithEmptyString(state.project_allocations.results);
   }
-  // console.log(state.project_details.project_allocations);
   return {
     project_allocations: state.project_allocations,
     all_allocations: state.project_details.project_allocations,

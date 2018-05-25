@@ -17,11 +17,9 @@ export const postProjectDataAction = (props, body, method, project_id) => (dispa
     let url;
     if (method === 'PATCH' && props.currentUser.user_profile.isAdmin) url = `${SERVER_URL}project_data/${project_id}/`;
     else if(method === 'PATCH' && !props.currentUser.user_profile.isAdmin) url=`${SERVER_URL}pm/project_data/${project_id}/`
-    // console.log(config);
     return fetch(url, config);
   })
   .then(response => {
-    // console.log(response);
     if (response.ok) {
       dispatch(getProjectDetailsAction(props));
     }

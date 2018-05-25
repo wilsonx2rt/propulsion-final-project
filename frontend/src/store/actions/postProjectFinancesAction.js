@@ -17,11 +17,9 @@ export const postProjectFinancesAction = (props, body, method, finances_id) => (
     let url;
     if (method === 'PATCH' && props.currentUser.user_profile.isAdmin) url = `${SERVER_URL}project_finances/${finances_id}/`
     else if (method === "POST" && props.currentUser.user_profile.isAdmin) url = `${SERVER_URL}project_finances/new/`
-    // console.log(config);
     return fetch(url, config);
   })
   .then(response => {
-    // console.log(response);
     if (response.ok) {
       dispatch(getProjectDetailsAction(props));
     }
