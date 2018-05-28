@@ -133,7 +133,7 @@ class Overview extends Component {
                 Projekt
               </div>
               <div className="overview__projects--header--project-manager">
-                Projectleiter
+                Projektleiter
               </div>
               <div className="overview__projects--header--project-status">
                 Status
@@ -147,7 +147,7 @@ class Overview extends Component {
             className={this.state.isAdmin === false ? 'hidden-element' : ''}
           >
             <div className="overview__project-manager--header">
-              Projectleiter
+              Projektleiter
             </div>
             <div className="new-project-manager">
               <div
