@@ -13,7 +13,7 @@ import { grabModifiedFields, getFetchBody, resetFormPayload, replaceNullWithEmpt
 
 const adminForm = {
   'form_settings': {type: 'project_data_form', },
-  'name': {value: '', type: 'input', inputType: 'text', required: 'true', placeholder: 'Projekt Name', readonly: 'true'},
+  'name': {value: '', type: 'input', inputType: 'text', required: 'true', placeholder: 'Projektname', readonly: 'true'},
   'radar_portfolio': {value: {}, type: 'dropdown', required: 'false', placeholder: 'Radar oder Projektportfolio'},
   'business_proposal': {value: {}, type: 'dropdown', required: 'false', placeholder: 'Geschäftsantrag'},
   'project_type': {value: {}, type: 'dropdown', required: 'false', placeholder: 'Projekttyp'},
@@ -27,7 +27,7 @@ const adminForm = {
   'risk_assessment': {value: {}, type: 'dropdown', required: 'false', placeholder: 'Projekt-Risikobeurteilung'},
   'project_goal': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Projektziel'},
   'project_handbook': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Projekthandbuch'},
-  'project_handbook_file': {value: '', type: 'file', required: 'false', placeholder: 'Handbuch data'},
+  'project_handbook_file': {value: '', type: 'file', required: 'false', placeholder: 'Handbuch (file)'},
   'e3_number': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'E3-Nummer'},
   'business_category': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Geschäftskategorie'},
   'service_nature': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Leistungsart'},

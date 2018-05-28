@@ -115,7 +115,7 @@ class Overview extends Component {
         <div className="overview__top-header">
           <h2>Protfolio-Übersicht</h2>
           <div className="overview__new-project__container">
-            <Button handleClick={this.handleClick} btnText="Neu Project" className="overview__new-project__button" />
+            <Button handleClick={this.handleClick} btnText="Neues Projekt" className="overview__new-project__button" />
             <input
               className="overview__new-project-input"
               onChange={this.handleChange}
@@ -147,7 +147,7 @@ class Overview extends Component {
             className={this.state.isAdmin === false ? 'hidden-element' : ''}
           >
             <div className="overview__project-manager--header">
-              Projectleitern
+              Projectleiter
             </div>
             <div className="new-project-manager">
               <div
