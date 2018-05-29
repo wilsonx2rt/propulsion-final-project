@@ -58,7 +58,6 @@ export const validateTokens = (state, dispatch, props) => {
         return fetch(SERVER_URL + 'auth/token/refresh/', refreshConfig);
       }
       else {
-        console.log('Logging out!');
         dispatch(logOutAction(props));
         return;
       }
