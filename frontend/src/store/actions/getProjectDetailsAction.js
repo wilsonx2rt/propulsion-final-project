@@ -17,7 +17,7 @@ export const getProjectDetailsAction = (props) => (dispatch, getState) => {
       method: 'GET',
       headers,
     }
-    const project_id = props.project_id;
+    const project_id = props.match.params.project_id;
     return fetch(`${SERVER_URL}project_details/${project_id}/`, config);
   }
   )

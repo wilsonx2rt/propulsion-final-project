@@ -33,7 +33,6 @@ class ProjectDetails extends Component {
 
   // TODO : remove connect and dropdown action from this component
   render() {
-
     return (
       <div className="project-details-container">
         <div className="project-details-container__header">

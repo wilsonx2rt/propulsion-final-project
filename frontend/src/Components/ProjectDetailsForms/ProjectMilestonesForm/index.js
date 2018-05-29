@@ -24,7 +24,7 @@ class ProjectMilestonesForm extends Component {
         'milestone_value': {value: '', type: 'dropdown', required: 'false', placeholder: 'Meilstein Inhalt'},
         'tendency': {value: '', type: 'dropdown', required: 'false', placeholder: 'Tendenz'},
         'external_factors': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Einfluss externe Faktoren'},
-        'communications': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Kommunication'},
+        'communications': {value: '', type: 'input', inputType: 'text', required: 'false', placeholder: 'Kommunikation'},
       },
       project_milestones: [],
     };
@@ -123,12 +123,6 @@ class ProjectMilestonesForm extends Component {
           action={ getProjectMilestonesAction }  
           payload={ this.state.formPayload } 
         />
-        {/* <PaginationButtons
-          next={ this.props.project_milestones.next }
-          previous={ this.props.project_milestones.previous }
-          action={ getProjectMilestonesAction }
-          parentProps={ this.props }
-        /> */}
       </div>
     )
   }
