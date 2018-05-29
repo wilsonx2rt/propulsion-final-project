@@ -16,6 +16,8 @@ import { fetchDropdownsActionCreator } from '../../store/actions/fetchDropdowns'
 import { deleteProjectDataAction } from '../../store/actions/deleteProjectDataAction';
 import Button from '../../Components/Button';
 
+import alertify from 'alertify.js';
+
 class ProjectDetails extends Component {
   constructor(props) {
     super(props);
@@ -28,7 +30,14 @@ class ProjectDetails extends Component {
   };
 
   handleDelete = () => {
-    this.props.dispatch(deleteProjectDataAction(this.props, this.state));
+    // confirm dialog
+    alertify.confirm('Message', () => {
+      this.props.dispatch(deleteProjectDataAction(this.props, this.state));
+      },
+      () => {
+        null
+      }
+    );
   };
 
   // TODO : remove connect and dropdown action from this component
@@ -85,10 +94,10 @@ class ProjectDetails extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  console.log(state)
+  console.log(state);
   return {
     projectName: state.project_details.name,
-    user_profile: state.currentUser.user_profile,
+    user_profile: state.currentUser.user_profile
   };
 };
 
