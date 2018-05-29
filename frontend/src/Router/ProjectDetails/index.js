@@ -31,7 +31,7 @@ class ProjectDetails extends Component {
 
   handleDelete = () => {
     // confirm dialog
-    alertify.confirm('Message', () => {
+    alertify.confirm('Möchten Sie dieses Projekt wirklich löschen?', () => {
       this.props.dispatch(deleteProjectDataAction(this.props, this.state));
       },
       () => {
