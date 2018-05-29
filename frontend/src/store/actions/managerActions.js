@@ -2,6 +2,8 @@ import { SERVER_URL, SET_MANAGER_DETAILS } from '../constants';
 import { validateTokens } from './validateTokens';
 import { fetchManagerOverviewActionCreator } from '../../store/actions/fetchManagerOverview';
 
+import alertify from 'alertify.js';
+
 export const fetchManagerActionCreator = props => (dispatch, getState) => {
   validateTokens(getState(), dispatch, props)
     .then(response => {
@@ -79,7 +81,7 @@ export const createNewManagerActionCreator = (state, props) => (
     .then(response => {
       response.status === 200
         ? null
-        : alert('Error');
+        : alertify.alert('Benutzer konnte nicht erstellt werden. Bitte versuche es erneut.');
       let action = fetchManagerOverviewActionCreator(props);
       dispatch(action);
     });

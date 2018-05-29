@@ -1,5 +1,6 @@
 import { validateTokens } from './validateTokens';
 import { setProjectOverview } from './fetchProjectOverview';
+import alertify from 'alertify.js';
 
 import { SERVER_URL } from '../constants';
 
@@ -19,6 +20,6 @@ export const deleteProjectDataAction = (props, state) => (dispatch, getState) =>
     .then(response => {
       // ensure that last project is not renderd in overview after redirect
       dispatch(setProjectOverview({}));
-      response.ok ? props.history.push('/overview') : alert('Error');
+      response.ok ? props.history.push('/overview') : alertify.alert('Das Projekt konnte nicht gelöscht werden. Bitte versuche es erneut.');
     });
 };

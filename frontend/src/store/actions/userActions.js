@@ -1,5 +1,6 @@
 import { getTokens } from './getTokens';
 import { AUTHORIZE_USER, LOG_OUT } from '../constants';
+import alertify from 'alertify.js';
 
 export const loginAction = (localState, props) => {
   return (dispatch, getState) => {
@@ -7,7 +8,7 @@ export const loginAction = (localState, props) => {
       !localState.formPayload.username.value ||
       !localState.formPayload.password.value
     ) {
-      alert('Both username and password are required');
+      alertify.alert('Benutzername und Passwort sind erforderlich');
       return;
     }
     getTokens(localState, props, dispatch, getState);

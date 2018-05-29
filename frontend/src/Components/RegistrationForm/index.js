@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+
+import alertify from 'alertify.js';
+
 import './index.css';
 import Button from '../Button';
 import { withRouter } from 'react-router-dom';
@@ -44,9 +47,9 @@ class RegistrationForm extends Component {
           response =>
             response.ok
               ? this.props.history.push(`/registration-success/`)
-              : alert(' Registrierung fehlgeschlagen')
+              : alertify.alert(' Registrierung fehlgeschlagen')
         )
-      : alert('Passwörter nicht übereinstimmen');
+      : alertify.alert('Passwörter nicht übereinstimmen');
   };
 
   handleChange = e => {

@@ -1,6 +1,7 @@
 import { SERVER_URL } from '../constants';
 import { validateTokens } from './validateTokens';
 import { fetchProjectOverviewActionCreator } from './fetchProjectOverview';
+import alertify from 'alertify.js';
 
 export const createNewProjectActionCreator = (state, props) => (dispatch, getState) => {
   validateTokens(getState(), dispatch, props)
@@ -22,7 +23,7 @@ export const createNewProjectActionCreator = (state, props) => (dispatch, getSta
   .then(response => {
     response.status === 201
       ? null
-      : alert('Error');
+      : alertify.alert('Das Projekt wurde nicht erstellt. Bitte versuchen Sie es erneut.');
     let action = fetchProjectOverviewActionCreator(state,props);
     dispatch(action);
   })
