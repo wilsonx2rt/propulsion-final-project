@@ -2,6 +2,7 @@ import { validateTokens } from "./validateTokens";
 import { SERVER_URL } from "../constants";
 import { getProjectDetailsAction } from './getProjectDetailsAction';
 import { getProjectDependenciesAction } from './getProjectDependenciesAction';
+import alertify from 'alertify.js';
 
 export const postProjectDependencyAction = (props, body, method, dependency_id) => (dispatch, getState) => {
   validateTokens(getState(), dispatch, props)
@@ -25,6 +26,9 @@ export const postProjectDependencyAction = (props, body, method, dependency_id) 
       const fetchURL = `${SERVER_URL}project_dependencies/dependencies/${props.project_id}/`
       dispatch(getProjectDetailsAction(props));
       dispatch(getProjectDependenciesAction(props, fetchURL));
+      alertify.delay(3000).success('Erfolgreich gespeichert');
+    } else {
+      alertify.delay(3000).error('Es ist ein Fehler aufgetreten. Versuchen Sie es erneut.')
     }
   })
   

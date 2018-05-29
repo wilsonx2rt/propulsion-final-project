@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createNewManagerActionCreator, deleteManagerActionCreator, updateManagerActionCreator } from '../../store/actions/managerActions';
+import {
+  createNewManagerActionCreator,
+  deleteManagerActionCreator,
+  updateManagerActionCreator
+} from '../../store/actions/managerActions';
 import GenericForm from '../GenericForm';
 import './index.css';
+
+import alertify from 'alertify.js';
 
 class ProjectManagerForm extends Component {
   constructor(props) {
@@ -74,25 +80,34 @@ class ProjectManagerForm extends Component {
       // const formWrapper = form.parentElement;
       // const innerContainer = formWrapper.parentElement;
       // hide on submit
-      this.props.toggleClass()
+      this.props.toggleClass();
     }
   };
 
   handleDelete = () => {
-    let action = deleteManagerActionCreator(this.props);
-    this.props.dispatch(action);
-  }
+    // confirm dialog
+    alertify.confirm(
+      'Möchten Sie dieses Projekt wirklich löschen?',
+      () => {
+        let action = deleteManagerActionCreator(this.props);
+        this.props.dispatch(action);
+      },
+      () => {
+        null;
+      }
+    );
+  };
 
   render() {
     return (
-        <GenericForm
-          className="manager-details-form"
-          payload={this.state.formPayload}
-          onSubmit={this.handleSubmit}
-          onDelete={this.handleDelete}
-          updateParentState={this.handleChange}
-          create={this.props.create}
-        />
+      <GenericForm
+        className="manager-details-form"
+        payload={this.state.formPayload}
+        onSubmit={this.handleSubmit}
+        onDelete={this.handleDelete}
+        updateParentState={this.handleChange}
+        create={this.props.create}
+      />
     );
   }
 }

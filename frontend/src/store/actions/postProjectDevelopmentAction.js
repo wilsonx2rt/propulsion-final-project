@@ -1,6 +1,7 @@
 import { validateTokens } from "./validateTokens";
 import { SERVER_URL } from "../constants";
 import { getProjectDetailsAction } from './getProjectDetailsAction';
+import alertify from 'alertify.js';
 
 export const postProjectDevelopmentAction = (props, body, method, development_id) => (dispatch, getState) => {
   validateTokens(getState(), dispatch, props)
@@ -22,6 +23,9 @@ export const postProjectDevelopmentAction = (props, body, method, development_id
   .then(response => {
     if (response.ok) {
       dispatch(getProjectDetailsAction(props));
+      alertify.delay(3000).success('Erfolgreich gespeichert');
+    } else {
+      alertify.delay(3000).error('Es ist ein Fehler aufgetreten. Versuchen Sie es erneut.')
     }
   })
   
