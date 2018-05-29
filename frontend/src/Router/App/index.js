@@ -9,7 +9,7 @@ import AccordionSegment from '../../Components/AccordionSegment';
 class App extends Component {
 
   componentDidMount = () => {
-    this.props.history.push("/overview/");
+    this.props.history.push("/overview");
   }
 
   render() {
