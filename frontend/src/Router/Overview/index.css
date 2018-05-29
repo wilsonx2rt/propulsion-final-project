@@ -4,7 +4,7 @@ height: 70vh;
 
 .overview--wrapper {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
 }
 
 .overview__top-header {
@@ -36,8 +36,7 @@ height: 70vh;
   color: #fff;
 }
 
-.overview__projects--header,
-.overview__projects--header > div,
+
 .overview__project-manager--header {
   display: flex;
   align-items: center;
@@ -45,11 +44,18 @@ height: 70vh;
   font-weight: bold;
 }
 
+.overview__projects--header {
+  width: 80%;
+  display: flex;
+  padding: 0 10px;
+  font-weight: bold;
+}
+
 .overview__projects--header--project-name {
-  flex: 2;
+  flex: 6;
 }
 .overview__projects--header--project-manager {
-  flex: 1;
+  flex: 3;
 }
 .overview__projects--header--project-status {
   flex: 1;

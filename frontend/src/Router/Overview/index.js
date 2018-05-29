@@ -114,7 +114,7 @@ class Overview extends Component {
         </div>
         <div className="overview__top-header">
           <h2>Protfolio-Übersicht</h2>
-          <div className="overview__new-project__container">
+          {this.state.isAdmin ? <div className="overview__new-project__container">
             <Button handleClick={this.handleClick} btnText="Neu Project" className="overview__new-project__button" />
             <input
               className="overview__new-project-input"
@@ -123,7 +123,7 @@ class Overview extends Component {
               type="text"
               placeholder="Projekt Name"
             />
-          </div>
+          </div> : null}
         </div>
 
         <div className="overview--wrapper">
