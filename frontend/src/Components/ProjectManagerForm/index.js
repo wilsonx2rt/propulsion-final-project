@@ -87,7 +87,7 @@ class ProjectManagerForm extends Component {
   handleDelete = () => {
     // confirm dialog
     alertify.confirm(
-      'Möchten Sie dieses Projekt wirklich löschen?',
+      'Möchten Sie dieses Projektleiter wirklich löschen?',
       () => {
         let action = deleteManagerActionCreator(this.props);
         this.props.dispatch(action);
