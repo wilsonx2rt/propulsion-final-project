@@ -3,7 +3,6 @@ import './index.css';
 import { connect } from 'react-redux';
 import { setFilterActionCreator } from '../../store/actions/filterActions';
 import { fetchProjectOverviewActionCreator } from '../../store/actions/fetchProjectOverview';
-import redBlack from '../../assets/bern-red-black.png';
 import x from '../../assets/x.jpeg';
 class SearchBox extends Component {
   constructor(props) {
@@ -39,7 +38,6 @@ class SearchBox extends Component {
   render() {
     return (
       <div id="search-box__wrapper">
-        <img id="search-box__bern-colors" src={redBlack} alt="bern colors" />
         <input
           onChange={this.handleChange}
           id="search-box__input"
